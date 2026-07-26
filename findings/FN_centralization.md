@@ -1,0 +1,1 @@
+Centralization reduces latency
