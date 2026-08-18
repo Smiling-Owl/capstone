@@ -1,0 +1,1 @@
+The system's objectives should be evaluated through separately defined measures for accessibility, task performance, data quality, workflow correctness, SitRep aggregation, provenance, recovery, and organization isolation. Standards provide useful quality models and test criteria, but they do not supply universal pass scores for this platform.

@@ -1,0 +1,1 @@
+A reusable DRRM platform requires a clear boundary between the startup's technical role and each participating organization's public authority. Every organization must retain control of its jurisdiction, users, validation decisions, official reports, and government records, while the shared application enforces organization-level data isolation and auditable support access.

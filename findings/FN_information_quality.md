@@ -1,0 +1,1 @@
+Centralization does not automatically produce accurate or decision-ready information. Disaster records must preserve completeness, validity, credibility, accuracy, currency, accessibility, interpretability, consistency, provenance, and validation status according to the needs of the operational user.

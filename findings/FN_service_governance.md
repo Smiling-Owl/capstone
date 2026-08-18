@@ -1,0 +1,1 @@
+A startup-operated, multi-organization DRRM service requires governance as well as software. Each participating organization must retain authority over its users, jurisdictions, validation decisions, records, and disclosure, while support access, recovery, portability, procurement, and offboarding remain documented and testable service responsibilities.
