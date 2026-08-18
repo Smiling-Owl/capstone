@@ -12,4 +12,4 @@ items:
 execution:
   batch_size: 3
   items_per_agent: 1
-  output_dir: "E:/capstone/startup_drrm_section_research/results"
+  output_dir: "startup_drrm_section_research/results"
