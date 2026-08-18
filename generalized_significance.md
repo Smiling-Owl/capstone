@@ -28,11 +28,15 @@ For the startup, the project provides a reusable service model rather than a cus
 
 The startup's significance also depends on responsibilities that do not appear in a single-client prototype. These include service monitoring, security updates, support capacity, backup restoration, incident communication, authorized subprocessor management, portability, and orderly offboarding. A technically reusable platform is not automatically a viable public-sector product. Adoption remains subject to procurement, appropriations, contractual allocation of duties, customer oversight, provider performance, and value-for-money assessment under applicable government rules (Republic Act No. 12009, 2024).
 
+The reusable model can reduce duplicated maintenance only if the provider remains capable of serving multiple organizations without weakening isolation, responsiveness, or local control. Conversely, a provider outage, compromise, insolvency, staffing failure, or abrupt termination can create correlated risk across customers. Its public value therefore includes tested restoration, integrity-checked customer exports, documented formats and data dictionaries, transition assistance, access revocation, subprocessor controls, and records-law-compatible treatment of retained copies. These controls make dependence visible and reducible; they do not eliminate it.
+
 ### Affected Communities
 
 Communities may benefit indirectly when local needs are represented through more complete, consistently categorized, and traceable records. Better-organized information can support authorized officials' situational awareness and prioritization, but the project should not claim that the application by itself accelerates rescue, releases funds, prevents casualties, or guarantees equitable relief. Those outcomes depend on verification, organizational capacity, logistics, communications, and policy decisions beyond the software's scope.
 
 A browser-based reporting channel must complement rather than displace telephone, radio, paper, and in-person procedures. Otherwise, communities in areas with weak connectivity, limited device access, or disrupted power may become less visible instead of better represented. The system's contribution to affected communities should therefore be evaluated through the completeness and traceability of local information available to authorized decision-makers, not through unmeasured claims about response speed, casualty reduction, or relief outcomes.
+
+Disaggregated information may help authorized personnel recognize needs that totals conceal, but collecting granular location, disability, health, displacement, age, sex, or other vulnerability information can also increase re-identification, stigma, surveillance, and security risks. The platform should collect only decision-relevant data under a documented lawful purpose, restrict detailed access, distinguish zero from unknown or no report, and prefer aggregate or de-identified disclosure where identity is unnecessary. Differences in reporting volume must not automatically be interpreted as differences in disaster impact because device access, connectivity, language, trust, and staffing can make some communities less visible in digital records.
 
 ### System Administrators and Data-Protection Officers
 
@@ -81,6 +85,8 @@ Stable identifiers, geographic units, hazard categories, statuses, timestamps, v
 Customer significance also depends on a workable exit. Contracts and system functions should define customer custody, export formats, included records and metadata, versions and audit evidence, retention and legal holds, assistance, access revocation, and the treatment of processor-held copies. Portability is demonstrated only when an organization's records and metadata can be exported completely in a documented, usable form. A download button alone does not establish that the records can be independently understood or migrated.
 
 The Sendai Framework emphasizes the availability and accessibility of disaster-risk information as part of understanding disaster risk. The project contributes narrowly to that goal by improving how authorized local actors structure and retrieve operational records; it is not itself a complete early-warning, public-information, or disaster-response system (UNDRR, 2015).
+
+Electronic records may also preserve approval identity, role, time, report version, and integrity evidence more consistently than an untracked file exchange. The Electronic Commerce Act recognizes government use of electronic documents and signatures, but acceptance still depends on the responsible agency's prescribed requirements and the reliability of the method used. The platform can therefore support authentic and attributable approval evidence without claiming that every generated file is automatically an official, admissible, or accepted SitRep (Republic Act No. 8792, 2000).
 
 ## 1.5.3 Conditions for Realizing the Benefits
 

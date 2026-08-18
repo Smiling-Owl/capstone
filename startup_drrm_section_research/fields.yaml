@@ -1,0 +1,35 @@
+categories:
+  - name: "evidence"
+    fields:
+      - name: "primary_sources"
+        description: "Authoritative laws, regulations, government guidelines, standards, or original peer-reviewed studies with direct links and precise relevant provisions or findings."
+        detail_level: detailed
+      - name: "evidence_quality_and_caveats"
+        description: "Source type, jurisdiction, applicability, limitations, conflicts, and claims the evidence does not establish."
+        detail_level: detailed
+  - name: "paper_implications"
+    fields:
+      - name: "scope_inclusions"
+        description: "Functions, actors, records, organizational levels, hazards, stages, and service responsibilities that belong in scope."
+        detail_level: detailed
+      - name: "scope_exclusions_and_dependencies"
+        description: "Explicit non-features, external dependencies, operating assumptions, legal limits, and non-claims."
+        detail_level: detailed
+      - name: "objective_requirements_and_metrics"
+        description: "Implementable objectives with measurable outputs, comparators, calculations, test conditions, and defensible acceptance rules."
+        detail_level: detailed
+      - name: "significance_mechanisms_and_beneficiaries"
+        description: "Beneficiaries, causal mechanism, conditional benefit, prerequisites, possible harms, and evidence required before claiming an outcome."
+        detail_level: detailed
+  - name: "governance_and_design"
+    fields:
+      - name: "authority_and_responsibility_matrix"
+        description: "Government/customer versus startup authority for creation, verification, approval, disclosure, custody, support, security, export, retention, and disposition."
+        detail_level: detailed
+      - name: "data_lifecycle_and_interoperability"
+        description: "Provenance, classification, verification state, versioning, authenticity, identifiers, schemas, exchange, retention, and offboarding requirements."
+        detail_level: detailed
+      - name: "risk_continuity_and_inclusion"
+        description: "Privacy, security, tenant leakage, outages, provider failure, accessibility, connectivity exclusion, bias, re-identification, and mitigation requirements."
+        detail_level: detailed
+uncertain: []

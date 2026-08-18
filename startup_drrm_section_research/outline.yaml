@@ -1,0 +1,15 @@
+topic: "Enhancing the scope and limitations, objectives, and significance of a startup-operated, multi-organization Online Disaster Situation Report Generation and Record Management System for Philippine DRRM organizations"
+items:
+  - name: "Institutional authority and electronic disaster records"
+    category: "Philippine legal and operational framework"
+    description: "RA 10121, NDRRMC SOPG 2024, Operation L!STO, RA 8792, RA 9470, and RA 12254 implications for jurisdiction, report lifecycle, human approval, electronic authenticity, public-record custody, interoperability, and boundaries on official warnings and decisions."
+  - name: "Startup service governance privacy security and continuity"
+    category: "Multi-organization public-sector digital service"
+    description: "RA 10173 and NPC issuances, RA 12009, GovTech procurement, tenant isolation, support access, controller-processor responsibilities, continuity and recovery, portability, provider exit, adoption readiness, and contractual accountability."
+  - name: "Information quality inclusion and measurable evaluation"
+    category: "Academic evidence and benchmarks"
+    description: "Disaster information quality and situational-awareness literature, bias and vulnerable-group risks, ISO 25010 and 25012, WCAG 2.2, SUS, scenario-based benchmarks, baseline comparisons, attribution limits, and evidence needed for operational and stakeholder significance."
+execution:
+  batch_size: 3
+  items_per_agent: 1
+  output_dir: "E:/capstone/startup_drrm_section_research/results"

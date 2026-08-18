@@ -1,0 +1,179 @@
+{
+  "primary_sources": [
+    {
+      "source": "Republic Act No. 10121, Philippine Disaster Risk Reduction and Management Act of 2010",
+      "url": "https://lawphil.net/statutes/repacts/ra2010/ra_10121_2010.html",
+      "relevant_provisions": [
+        "Sections 6 and 9 assign the NDRRMC and Office of Civil Defense (OCD) responsibility for national standards, the DRRM information system, national early warning, information-sharing procedures, inter-council communications, and the 24-hour NDRRM Operations Center.",
+        "Sections 11 and 12 assign local councils and LDRRM offices authority within territorial jurisdiction: councils approve, monitor, and evaluate local DRRM plans and recommend forced or pre-emptive evacuation; LDRRM offices consolidate risk information, operate local multi-hazard early warning, monitor disasters, maintain operational databases, implement approved policies, and submit prescribed fund-utilization reports.",
+        "The Act permits private-sector participation and partnerships, but does not transfer the statutory decision authority of NDRRMC, OCD, local chief executives, local councils, or LDRRM offices to a vendor."
+      ]
+    },
+    {
+      "source": "NDRRM Operations Center Standard Operating Procedures and Guidelines, 2024 Edition",
+      "url": "https://ndrrmc.gov.ph/attachments/article/4125/NDRRMOC_SOPG_2024_EDITION.pdf",
+      "relevant_provisions": [
+        "The SOPG defines NDRRMOC operating, alert, warning, coordination, and reporting workflows rather than a general software specification.",
+        "Its warning-dissemination matrix routes advisories received from official warning agencies through prescribed OCD/NDRRMC channels such as the OCD SMS Blast System, NDRRMC Monitoring Dashboard, Emergency Alert and Warning Messages, email, and Viber, with triggers and templates developed with warning agencies.",
+        "The workflow supports a system design that preserves source agency, receipt time, dissemination channel, recipients, version, operator, and approval/escalation events; it does not support autonomous generation or alteration of official warnings by a startup product."
+      ]
+    },
+    {
+      "source": "DILG Operation L!STO Disaster Preparedness Manuals and program materials",
+      "url": "https://lgrc.calabarzon.dilg.gov.ph/ppa-1-drr-cca-activities/",
+      "relevant_provisions": [
+        "Operation L!STO translates preparedness duties into minimum actions and checklists for local chief executives and LGUs, including institutional structures, competencies, resource mobilization, and hazard-specific preparedness actions.",
+        "For this paper, L!STO is an operational benchmark for checklist coverage and evidence capture; it is not independent legal authority for a private system to issue warnings, order evacuation, certify compliance, or replace the accountable public official."
+      ]
+    },
+    {
+      "source": "Republic Act No. 8792, Electronic Commerce Act of 2000",
+      "url": "https://lawphil.net/statutes/repacts/ra2000/ra_8792_2000.html",
+      "relevant_provisions": [
+        "Sections 6 to 13 recognize electronic data messages, documents, and signatures, but evidential weight turns on reliable generation, storage, communication, originator identification, integrity, accessibility, accurate representation, and date/time information.",
+        "Sections 18 to 22 address attribution, duplicate messages, errors, acknowledgement, dispatch, and receipt; these support explicit identities, designated inboxes, acknowledgements, duplicate detection, and immutable transmission logs.",
+        "Section 27 authorizes government electronic transactions subject to agency-adopted rules specifying format, signatures, control procedures, integrity, security, and confidentiality. Electronic form alone therefore does not make a startup record an approved official filing."
+      ]
+    },
+    {
+      "source": "Republic Act No. 9470, National Archives of the Philippines Act of 2007",
+      "url": "https://lawphil.net/statutes/repacts/ra2007/ra_9470_2007.html",
+      "relevant_provisions": [
+        "Sections 6 and 9 place government-wide public-record creation, protection, use, storage, preservation, access, transfer, and disposition standards under the National Archives of the Philippines (NAP).",
+        "Sections 15 to 21 require agency registries and approved disposition schedules; public records cannot be destroyed without prior written authority, and electronic records may remain with the controlling office when the NAP Executive Director so instructs.",
+        "Sections 30 to 37 make access classification and restrictions decisions of the controlling government office and NAP, not the software provider."
+      ]
+    },
+    {
+      "source": "Republic Act No. 12254, E-Governance Act",
+      "url": "https://lawphil.net/statutes/repacts/ra2025/ra_12254_2025.html",
+      "relevant_provisions": [
+        "Sections 3 to 6 promote whole-of-government interoperability and private-sector/startup participation while retaining agency mandates and placing harmonization and standards leadership with DICT.",
+        "Section 9 requires an integrated government network, a Philippine Government Interoperability Framework, and records workflows covering creation through disposal, plus secure APIs for common datasets.",
+        "Sections 10 to 13 require privacy impact assessment, minimum information-security standards, security testing for critical information infrastructure, incident reporting, and public-service continuity.",
+        "Sections 16, 18, 19, and 23 to 24 keep agency heads and CIOs accountable, require nondigital alternatives and inclusive access, restrict government-system access to duly authorized officers and agents, and require risk-proportionate security for systems operated by contractors on an agency's behalf."
+      ]
+    }
+  ],
+  "evidence_quality_and_caveats": {
+    "quality": "RA 10121, RA 8792, RA 9470, and RA 12254 are primary Philippine statutes. The 2024 SOPG is an official NDRRMC/OCD operational issuance. Operation L!STO material is official DILG program guidance but is not a statute.",
+    "applicability": "The statutes establish minimum authority and lifecycle boundaries nationwide. Exact report forms, approval chains, retention periods, access classes, warning triggers, and interfaces remain dependent on current NDRRMC/OCD/DILG/DICT/NAP issuances, the adopting LGU's ordinances and records-disposition schedule, and the executed government contract.",
+    "caveats": [
+      "Legal recognition of an electronic record is not the same as automatic authenticity, admissibility, official acceptance, or evidential weight; those depend on integrity, attribution, procedure, and agency rules.",
+      "Interoperability duties do not create unrestricted data-sharing authority and remain subject to privacy, confidentiality, security, records, and agency-mandate limits.",
+      "The sources do not establish that automation improves disaster outcomes, reporting accuracy, or response time; those are empirical claims requiring field evaluation.",
+      "Operation L!STO manuals vary by hazard and edition, so a requirements baseline must identify the exact customer-adopted manual and revision before compliance testing."
+    ]
+  },
+  "scope_inclusions": [
+    "A multi-tenant startup service for authorized LGU/LDRRMO personnel to capture, validate, version, route, acknowledge, consolidate, search, export, and audit disaster preparedness and incident records.",
+    "Configurable role-based workflows reflecting barangay, municipal/city, provincial, regional, and national reporting paths without changing the legal authority attached to each office.",
+    "Source-labelled ingestion of official hazard advisories and warnings, with verbatim preservation, timestamps, delivery status, and links or identifiers back to the issuing warning agency.",
+    "Operation L!STO-aligned preparedness checklists and evidence attachments when the customer identifies the applicable manual, hazard, and edition.",
+    "Electronic signatures or approvals, audit trails, record version history, acknowledgement, duplicate/error controls, retention labels, legal hold, export, and disposition workflows configured to agency rules.",
+    "Standards-based import/export and documented APIs for authorized government interoperability, plus offline or low-connectivity capture and accessible/manual fallback paths.",
+    "Service responsibilities for availability monitoring, backups, tested restoration, tenant isolation, access logging, security incident handling, portability, and orderly offboarding."
+  ],
+  "scope_exclusions_and_dependencies": {
+    "exclusions": [
+      "Issuing, rewriting, or certifying official hazard warnings independently of PAGASA, PHIVOLCS, OCD/NDRRMC, or another legally authorized warning agency.",
+      "Autonomously ordering evacuation, declaring a state of calamity, approving a DRRM plan, authorizing fund use, certifying regulatory compliance, or making final resource-allocation or incident-command decisions.",
+      "Replacing NDRRMC/OCD reporting systems, PhilAWARE, official government repositories, NAP authority, or the agency's records officer unless formally designated and integrated under applicable rules.",
+      "Promising that system records are automatically admissible, authentic, public, permanent, or legally sufficient merely because they are electronic.",
+      "Destroying, anonymizing, publishing, or transferring public records solely on vendor policy or a user click."
+    ],
+    "dependencies": [
+      "A written data-processing/service agreement, agency authorization matrix, designated approvers, approved forms and reporting timelines, records-disposition schedule, access classification, incident-response contacts, and offboarding plan.",
+      "DICT interoperability, security, privacy-impact, and accessibility requirements; NAP records-management rules; relevant National Privacy Commission rules; customer ordinances and SOPs; and current NDRRMC/OCD/DILG issuances.",
+      "Reliable official source feeds or designated human entry, connectivity or store-and-forward capability, trained staff, and government validation of imported and consolidated information."
+    ],
+    "non_claims": "The startup is a workflow and recordkeeping processor/support provider, not the disaster authority, warning originator, records custodian by default, or substitute for professional and accountable human judgment."
+  },
+  "objective_requirements_and_metrics": [
+    {
+      "objective": "Preserve provenance and human accountability across the report lifecycle.",
+      "measures": ["Percentage of test records retaining source office, named originator, role, creation/receipt time, verification state, approver, version, and every status transition", "Target: 100% in scripted lifecycle tests; no record can enter an approved/final state without an authorized human approval event"]
+    },
+    {
+      "objective": "Demonstrate electronic-record integrity and reproducible export.",
+      "measures": ["Tamper-evidence tests detect modification of finalized content or audit events", "Export/re-import comparison preserves content, identifiers, timestamps, attachments, signatures/approval evidence, and checksums", "Target: 100% detection of the defined tamper cases and 100% field/attachment reconciliation in the test corpus"]
+    },
+    {
+      "objective": "Support prescribed reporting without claiming authority over it.",
+      "measures": ["Map each customer-approved NDRRMC/OCD/LGU field and routing step to the system schema", "Target: 100% coverage of the agreed sample forms and zero unauthorized-role submissions in permission tests", "Compare median completion time and correction rate against the customer's existing process using the same scenarios; report effect size and confidence intervals rather than presuming improvement"]
+    },
+    {
+      "objective": "Provide interoperable, portable government records.",
+      "measures": ["Publish versioned schema/API documentation and export a non-proprietary machine-readable package plus human-readable rendition", "Target: 100% successful validation against the agreed schema and complete tenant export within the contractual recovery-time objective", "Test idempotency and duplicate detection using repeated submissions and delayed acknowledgements"]
+    },
+    {
+      "objective": "Maintain service continuity and inclusion during disruptions.",
+      "measures": ["Measure recovery time, recovery point, backup restoration success, offline queue reconciliation, and accessibility against contractually approved thresholds", "Target: zero silent data loss in interruption tests, 100% successful restoration in scheduled drills, and no critical WCAG/Philippine Web Accessibility defects in the tested workflows", "Retain a documented manual fallback and verify it in an operational exercise"]
+    },
+    {
+      "objective": "Enforce retention, access, and disposition authority.",
+      "measures": ["Target: 100% denial of cross-tenant and unauthorized-role access in the defined test matrix", "No final disposal without the configured records-officer approval and required NAP/agency authority", "Every view, export, classification change, legal hold, retention change, and disposition is logged and reviewable"]
+    }
+  ],
+  "significance_mechanisms_and_beneficiaries": {
+    "beneficiaries": ["LDRRM offices and councils", "local chief executives and authorized approvers", "barangay and field reporters", "OCD/NDRRMC and partner agencies receiving reports", "records officers, auditors, and archivists", "residents, including persons with disabilities and people with limited connectivity"],
+    "mechanisms": [
+      "Structured fields, validation states, acknowledgement, and version history may reduce missing context and make corrections traceable.",
+      "Role-based routing and explicit human approval may shorten administrative handoffs while preserving statutory responsibility.",
+      "Provenance, immutable audit history, and portable exports may improve accountability, evidential reliability, auditability, and continuity when staff or vendors change.",
+      "Interoperable schemas and secure APIs may reduce repeated encoding, conditional on data-sharing authority and compatible government systems.",
+      "Offline capture, accessible interfaces, and manual fallback may reduce exclusion during connectivity or service failures."
+    ],
+    "prerequisites_and_possible_harms": [
+      "Benefits require current official templates, trained users, reliable upstream data, maintained integrations, funded support, and government ownership of approvals and records policy.",
+      "Automation can accelerate an incorrect or unverified report; the interface must visibly distinguish draft, reported, verified, approved, superseded, and official-warning states.",
+      "Centralization can increase breach, surveillance, re-identification, and outage impact; minimization, segregation, encryption, least privilege, logging, tested recovery, and purpose-bound sharing are required.",
+      "Digital-only delivery can exclude affected communities and field staff; alternative electronic and manual channels must remain available.",
+      "Outcome claims such as faster response, fewer casualties, or improved allocation require prospective comparative evidence and cannot be inferred from feature completion or user satisfaction alone."
+    ]
+  },
+  "authority_and_responsibility_matrix": {
+    "government_customer": {
+      "creation_and_verification": "Defines official forms, authorized originators, validation rules, evidentiary requirements, and who may verify field reports.",
+      "approval_and_decisions": "Retains approval of plans/reports and all statutory warnings, evacuation, calamity, funding, command, and disclosure decisions.",
+      "custody_access_retention_disposition": "Acts as controlling office/custodian; classifies access, applies approved retention schedules and legal holds, secures NAP authority where required, and authorizes transfer or disposal.",
+      "interoperability_and_security": "Authorizes recipients and purposes, approves integrations, completes required impact/risk assessments, and accepts residual operational risk.",
+      "offboarding": "Designates successor repository and confirms complete, intelligible transfer before authorizing deletion of vendor copies."
+    },
+    "startup_provider": {
+      "processing_and_support": "Processes only documented instructions, implements configured workflows, trains/supports users, and does not present drafts or analytics as official decisions.",
+      "technical_controls": "Maintains tenant isolation, least privilege, encryption, logs, versioning, backups, recovery, vulnerability management, incident notification, and availability commitments.",
+      "records_and_export": "Preserves provenance and integrity, prevents unauthorized disposal, supplies complete portable exports, and documents transformations and migrations.",
+      "disclosure": "Does not publish, share, or reuse government data except as authorized by the controlling agency and applicable law.",
+      "offboarding": "Assists migration, returns data and metadata, preserves records under hold, and deletes remaining copies only after written authority and verification."
+    },
+    "shared_but_not_transferred": "Configuration, testing, incident exercises, schema mapping, and continuity planning may be collaborative; accountability assigned by statute to public officials and agencies is not delegated merely by procurement or software use."
+  },
+  "data_lifecycle_and_interoperability": {
+    "lifecycle": [
+      "Create/ingest with stable record ID, tenant, jurisdiction, hazard/incident ID, source agency/person/system, source URL or message identifier, received/created timestamps, and original payload.",
+      "Classify as draft, submitted, acknowledged, under verification, verified, approved, rejected, superseded, final, archived, or disposed; keep status and authority distinct from factual content.",
+      "Preserve every version and correction relationship; never overwrite the original official advisory or finalized report.",
+      "Authenticate users and approvals; retain evidence of signing/approval method, intent, time, and document version.",
+      "Apply agency/NAP-approved access and retention rules, legal holds, archival transfer, and written disposal authorization; record the actor, authority, scope, method, and result.",
+      "On offboarding, export data, attachments, schemas, audit logs, access/retention labels, and integrity evidence; obtain customer acceptance before authorized deletion."
+    ],
+    "interoperability": [
+      "Use versioned, documented, non-proprietary exchange representations with stable identifiers, enumerated verification states, explicit timezone/precision, and code-list provenance.",
+      "Provide authenticated, least-privilege APIs with purpose and recipient controls, acknowledgements, idempotency keys, rate limits, error reconciliation, and complete exchange logs.",
+      "Map rather than silently normalize source terminology; retain original values and transformation rules so exported records remain explainable.",
+      "Treat DICT's government interoperability framework and customer-designated schemas as controlling when issued; do not claim national interoperability from a proprietary API alone."
+    ]
+  },
+  "risk_continuity_and_inclusion": [
+    "Privacy and re-identification: minimize personal and precise location data, segregate sensitive attachments, enforce purpose-bound access, and conduct the required privacy impact assessment before production processing.",
+    "Tenant leakage: test authorization at every object and export boundary; use tenant-scoped identifiers, storage, keys where appropriate, and audit alerts for anomalous access.",
+    "Security and critical-service disruption: apply DICT/customer standards, pre-deployment and periodic security testing, prompt incident notification, offline/manual fallback, redundant backups, and restoration exercises.",
+    "Provider failure and lock-in: require escrow or documented deployment configuration where appropriate, open exports, migration assistance, defined support termination, and verified handover to the government-selected repository.",
+    "Connectivity exclusion: support low-bandwidth pages, resumable uploads, store-and-forward operation, SMS/phone/paper-assisted fallback where authorized, and reconciliation without duplicate official records.",
+    "Accessibility: conform to applicable Philippine Web Accessibility rules and test keyboard, screen-reader, contrast, error-identification, mobile, and language/reading-level needs with representative users.",
+    "Bias and false certainty: do not turn incomplete reports or analytics into automatic risk, priority, warning, or eligibility decisions; display provenance, uncertainty, missingness, and human reviewer responsibility.",
+    "Warning integrity: ingest and redistribute only authorized source messages through approved channels; preserve wording and version, identify the issuing authority, and prevent vendor branding or AI-generated text from appearing to be an official warning."
+  ],
+  "uncertain": []
+}

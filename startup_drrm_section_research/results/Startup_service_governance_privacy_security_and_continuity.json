@@ -1,0 +1,176 @@
+{
+  "primary_sources": [
+    {
+      "source": "Republic Act No. 10173 (Data Privacy Act of 2012), especially Sections 11, 20, 21, and 25",
+      "url": "https://privacy.gov.ph/data-privacy-act/",
+      "relevance": "Requires transparent, legitimate, and proportionate processing; reasonable organizational, physical, and technical safeguards; accountability for personal data transferred to a processor; and contractual or other reasonable means to keep outsourced processing compliant. The LGU does not shed accountability merely because the startup hosts the data."
+    },
+    {
+      "source": "Implementing Rules and Regulations of Republic Act No. 10173, especially Rules VI and IX-XII (Sections 25-29 and 38-51)",
+      "url": "https://privacy.gov.ph/implementing-rules-regulations-data-privacy-act-2012/",
+      "relevance": "Requires confidentiality, integrity, availability, resilience, vulnerability monitoring, incident documentation, risk-based security, breach notification where applicable, and a binding controller-processor instrument. Section 44 requires documented instructions, confidentiality, security, subprocessor control, assistance with data-subject rights and compliance, audit support, processing location, and return or deletion at contract end unless another law authorizes storage."
+    },
+    {
+      "source": "NPC Circular No. 2023-06, Security of Personal Data in the Government and the Private Sector",
+      "url": "https://privacy.gov.ph/npc-circular-no-2023-06-security-of-personal-data-in-the-government-and-the-private-sector/",
+      "relevance": "Current NPC security issuance for access governance, authentication, acceptable use, mobile/remote access, incident management, and organizational security controls. It supports making privileged support access controlled, time-bounded, logged, and reviewable rather than giving provider staff standing access."
+    },
+    {
+      "source": "Republic Act No. 9470 (National Archives of the Philippines Act of 2007), especially Sections 15-21 and 23",
+      "url": "https://lawphil.net/statutes/repacts/ra2007/ra_9470_2007.html",
+      "relevance": "Defines LGU-created or received records as local government records; assigns custody and control to the controlling LGU; requires inventories and approved disposition schedules; and prohibits destruction of public records without prior written authority. A SaaS termination clause cannot override government-record retention and disposition law."
+    },
+    {
+      "source": "Republic Act No. 12009 (New Government Procurement Act), especially Sections 2-7, 13, and 20",
+      "url": "https://lawphil.net/statutes/repacts/ra2024/ra_12009_2024.html",
+      "relevance": "Applies to LGU procurement and requires transparency, competition, efficiency, proportionality, accountability, sustainability, value for money, market scoping, risk management, lifecycle consideration, and electronic procurement through PhilGEPS. Startup status is not itself a basis to bypass procurement."
+    },
+    {
+      "source": "Implementing Rules and Regulations of Republic Act No. 12009, including Section 37 on Direct Procurement for Science, Technology, and Innovation",
+      "url": "https://www.gppb.gov.ph/wp-content/uploads/2026/05/IRR-of-RA-12009-1st-Edition.pdf",
+      "relevance": "Provides procurement modalities and conditions, including a narrowly framed direct route for qualifying R&D, commissioned pre-commercial goods/services, or qualified-startup goods. Applicability depends on the procuring entity's facts, requirements, funding, and documented legal determination; it does not create a general SaaS startup exemption."
+    },
+    {
+      "source": "Republic Act No. 12254 (E-Governance Act), especially Sections 3, 5, 8-10, and provisions on business continuity and government records/knowledge management",
+      "url": "https://lawphil.net/statutes/repacts/ra2025/ra_12254_2025.html",
+      "relevance": "Covers LGUs and promotes interoperable, secure, resilient, accessible, mobile-friendly government services; electronic transactions during disasters; government continuity planning; records lifecycle controls; alternative delivery modes for people without internet; and accountable collaboration with startups and private entities. It supports the service direction but does not certify this prototype as compliant or integrated."
+    },
+    {
+      "source": "OWASP Multi-Tenant Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Multi_Tenant_Security_Cheat_Sheet.html",
+      "relevance": "Engineering benchmark: derive tenant context from authenticated identity, validate ownership at the data-access layer, include tenant identity in every query/cache/storage path and audit event, isolate rate limits, and test cross-tenant access. It is expert guidance, not Philippine law."
+    },
+    {
+      "source": "NIST SP 800-34 Rev. 1, Contingency Planning Guide for Federal Information Systems",
+      "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final",
+      "relevance": "Technical benchmark for business-impact analysis, recovery priorities, alternate processing, backups, recovery procedures, and periodic exercises. It supports measurable RTO/RPO and restore testing but is United States federal guidance, not automatically binding on Philippine LGUs."
+    }
+  ],
+  "evidence_quality_and_caveats": {
+    "quality": "RA 10173, RA 9470, RA 12009, and RA 12254 are primary Philippine statutes. The DPA IRR, NPC Circular 2023-06, and RA 12009 IRR are primary regulatory/implementing authorities. OWASP and NIST are recognized technical benchmarks but are not Philippine legislation.",
+    "applicability": "The participating public office will ordinarily be the personal information controller when it determines why and how DRRM personal data are processed, while the startup will ordinarily be its personal information processor for hosting and support. Actual roles can vary by processing activity; if the startup independently determines a new purpose, it may acquire controller obligations for that activity. Procurement modality and contract terms require agency-specific legal and procurement review.",
+    "caveats": [
+      "RA 12009 permits several fit-for-purpose modalities, but a startup cannot assume that Direct Procurement for Science, Technology, and Innovation applies to an ordinary recurring hosted service.",
+      "A security control list does not establish compliance. Compliance requires implementation evidence, risk assessment, contracts, logs, tests, incident records, and accountable decisions by each organization.",
+      "Cloud uptime, encryption, and RBAC do not establish data accuracy, operational adoption, or improved disaster outcomes.",
+      "RTO, RPO, uptime, support response, retention periods, and export windows must be negotiated and empirically tested; no defensible project-specific values were found in the cited laws.",
+      "NPC registration, DPO, breach-notification, and data-sharing duties depend on the processing facts and current NPC rules; the paper should not make categorical compliance claims without a privacy impact assessment and legal review."
+    ]
+  },
+  "scope_inclusions": [
+    "A multi-organization hosted service in which provincial, city, municipal, barangay, or other authorized DRRM organizations are separate tenants with organization- and jurisdiction-bound users, records, dashboards, files, exports, and audit trails.",
+    "Configuration, onboarding, authentication, role assignment, tenant isolation, SitRep drafting/versioning/verification/approval, records search/export, audit logging, hosting, patches, backups, incident handling, technical support, offboarding, and provider-exit procedures.",
+    "A documented privacy-governance package: processing inventory, lawful-purpose mapping, data minimization, privacy notices, privacy impact assessment, controller-processor agreement, approved subprocessors/processing locations, security controls, data-subject request assistance, breach escalation, retention classifications, and audit rights.",
+    "Government procurement readiness: agency needs analysis, market scoping, technical and service-level requirements, total lifecycle cost, security/privacy qualifications, portability, performance monitoring, remedies, transition assistance, and procurement records required under RA 12009 and its IRR.",
+    "Continuity controls for the connected system of record: backup and restore, recovery priorities, RTO/RPO selected through business-impact analysis, alternate communications/manual operations, incident escalation, periodic exercises, and reconciliation of records created during outages.",
+    "Accessibility and constrained-connectivity evaluation for a responsive browser service, including low-bandwidth tests and preservation of radio, phone, SMS, and paper contingencies outside the platform."
+  ],
+  "scope_exclusions_and_dependencies": {
+    "exclusions": [
+      "No transfer of statutory DRRM authority, report verification, official approval, disclosure authority, records custody, procurement authority, or calamity-declaration authority from government to the startup or software.",
+      "No claim that generated reports automatically become official NDRRMC SitReps or are automatically accepted by national systems.",
+      "No native mobile application, offline synchronization, guaranteed operation during power/internet/telecommunications failure, emergency dispatch, hazard prediction, resource-allocation decision engine, or replacement of radio/telephone/paper contingency channels unless separately implemented and evaluated.",
+      "No claim of DPA, RA 9470, RA 12009, RA 12254, NDRRMC, ISO, OWASP, or NIST certification merely because controls are designed or a prototype passes functional tests.",
+      "No unilateral startup deletion of public records at customer exit; disposition remains subject to the controlling office's schedule and National Archives authority."
+    ],
+    "dependencies": [
+      "Each organization must designate accountable officials, validate users and jurisdiction assignments, define approval rules, classify records, establish retention/disposition authority, train staff, maintain contingency procedures, and fund connectivity/equipment.",
+      "Service operation depends on contracted hosting, DNS, identity/email or notification services, power and telecommunications, approved subprocessors, competent startup staffing, and sustainable financing.",
+      "Interoperability depends on published target schemas/APIs, stable organization and geographic identifiers, data-sharing authority, and agreement with receiving agencies; the project context provides no confirmed national API integration.",
+      "Any production deployment depends on agency procurement, privacy, cybersecurity, records-management, accessibility, and legal acceptance processes."
+    ]
+  },
+  "objective_requirements_and_metrics": [
+    {
+      "objective": "Demonstrate tenant and jurisdiction isolation across every data path.",
+      "measure": "An authorization matrix and automated negative tests must cover create/read/update/delete, approval, search, dashboard aggregation, direct-object access, file download, export, cache, and privileged support paths. Acceptance: zero unauthorized cross-tenant or cross-jurisdiction disclosures in the defined test suite; every denial and authorized override is logged."
+    },
+    {
+      "objective": "Establish auditable controller-processor and support governance before pilot processing.",
+      "measure": "Acceptance requires an approved responsibility matrix, processing inventory, PIA, signed processing terms containing all DPA IRR Section 44 elements, subprocessor register, processing locations, support-access procedure, incident contacts, audit assistance, exit/return provisions, and an LGU-approved retention/disposition mapping."
+    },
+    {
+      "objective": "Limit provider support access to demonstrated need.",
+      "measure": "For sampled support events, calculate logged-and-authorized rate = events with ticket, customer approval or documented emergency basis, named staff member, purpose, start/end time, actions, and review divided by all privileged support events. Acceptance target: 100%; standing production data access is disabled unless expressly approved and justified."
+    },
+    {
+      "objective": "Verify recoverability instead of claiming availability from architecture alone.",
+      "measure": "The customer sets RTO and RPO after business-impact analysis. Conduct at least one controlled restore and failover/tabletop exercise in the evaluation period; report achieved recovery time, recovered-data point, integrity checks, unresolved defects, and reconciliation procedure. Acceptance occurs only if the agreed RTO/RPO are met and critical records pass integrity checks."
+    },
+    {
+      "objective": "Demonstrate portable and accountable provider exit.",
+      "measure": "Export a representative tenant dataset, attachments, users/roles, audit history, provenance, versions, and retention metadata in documented non-proprietary or otherwise agreed formats; verify record counts, hashes for files, referential integrity, schema documentation, and successful customer access. Deletion occurs only after written customer authorization and records-law review, followed by evidence of deletion for data lawfully eligible for destruction."
+    },
+    {
+      "objective": "Evaluate adoption readiness without equating usability with institutional adoption.",
+      "measure": "Using representative DRRM roles and tasks, report task-completion rate, median completion time, error/correction rate, support requests, training completion, low-bandwidth completion, and participant-reported usability. Compare against the documented current workflow where feasible; define thresholds with the pilot organization before testing and report confidence intervals or raw denominators for small samples."
+    },
+    {
+      "objective": "Prepare a procurement-defensible service specification.",
+      "measure": "Produce a traceability matrix linking user need to functional/security/privacy/continuity requirement, acceptance test, service level, monitoring evidence, remedy, lifecycle cost element, portability term, and accountable party. Do not select a procurement modality in the paper; record it as an agency determination under RA 12009 and its IRR."
+    }
+  ],
+  "significance_mechanisms_and_beneficiaries": {
+    "beneficiaries": [
+      "Barangay and field reporters benefit from a consistent submission structure, visible status, and correction trail when connectivity and training are adequate.",
+      "Municipal, city, and provincial DRRM offices benefit from tenant-controlled consolidation, provenance, version history, and faster retrieval, subject to local verification and staffing.",
+      "Agency heads, DPOs, records officers, procurement personnel, auditors, and oversight bodies benefit from responsibility boundaries, access logs, lifecycle records, measurable service levels, and exit evidence.",
+      "Affected communities may benefit indirectly if higher-quality, timely, and traceable information improves human decision-making; this downstream outcome must be evaluated and must not be asserted from software performance alone.",
+      "The startup benefits from a reusable service model and clearer contractual responsibilities, but remains accountable for processor duties, security, support, continuity, and truthful performance claims."
+    ],
+    "causal_mechanisms": [
+      "Structured required fields plus explicit unknown/preliminary/verified states reduce ambiguity without fabricating unavailable observations.",
+      "Tenant-scoped authorization and audit trails reduce opportunities for unauthorized cross-organization access and make actions attributable.",
+      "Versioning and provenance allow consolidators to trace figures to local submissions and corrections.",
+      "Tested backups, alternate procedures, and export reduce dependence on one live platform and make recovery/provider transition more feasible.",
+      "Contractual allocation, monitoring evidence, and procurement acceptance tests convert broad accountability into inspectable obligations."
+    ],
+    "conditions_and_possible_harms": [
+      "Benefits depend on accurate field reporting, competent validation, usable workflows, connectivity, staffing, training, lawful data use, and continued contingency channels.",
+      "Centralization can amplify breach impact, tenant leakage, surveillance, re-identification, vendor lock-in, correlated outage, and dependence on a financially fragile provider.",
+      "Rigid required fields can encourage false precision or exclusion of localized impacts; the design must permit unknown values, narrative context, correction, and source qualification.",
+      "Digital-first operation may exclude low-connectivity communities and users with disabilities unless accessibility, low-bandwidth behavior, assisted channels, and alternate delivery are tested.",
+      "Evidence needed before outcome claims includes baseline-versus-pilot latency and error measures, isolation test results, privacy/security audit evidence, successful restores and exports, adoption/usability results, incident records, and independent confirmation that decision or coordination outcomes improved."
+    ]
+  },
+  "authority_and_responsibility_matrix": {
+    "participating_government_organization": [
+      "Determines lawful purpose, categories and minimum necessary data, authorized users, jurisdiction, verification workflow, official approval/submission, disclosure, records classification, retention/disposition, procurement, and whether and how system outputs inform public decisions.",
+      "Acts ordinarily as PIC for its DRRM processing; appoints accountable privacy/records/security officials; responds to data subjects; authorizes subprocessors, support access, exports, retention, and lawful disposition; and retains accountability for outsourced personal data."
+    ],
+    "startup_service_provider": [
+      "Acts ordinarily as PIP for hosted processing under documented instructions; operates hosting, deployment, patches, monitoring, backups, restore procedures, tenant isolation, technical support, incident detection/escalation, audit evidence, portability, and transition assistance.",
+      "May not validate or officially approve SitReps, determine a new data purpose without separately addressing controller obligations, disclose customer records, add subprocessors, move processing locations, retain data after termination, or destroy public records except as lawfully instructed and documented."
+    ],
+    "shared_or_contractually_coordinated": [
+      "Risk assessment, security testing, incident exercises, breach assessment and notification assistance, continuity tests, service-level review, vulnerability remediation, audit cooperation, change management, data-subject request handling, and exit rehearsal.",
+      "The contract should name decision rights, evidence deadlines, escalation routes, liability/remedies, subprocessor flow-down, audit rights, notification windows shorter than any applicable regulatory deadline, data location/transfer rules, intellectual-property/licensing terms, escrow or transition options where justified, and post-termination obligations."
+    ]
+  },
+  "data_lifecycle_and_interoperability": [
+    "Capture source organization, jurisdiction, reporter, event time, entry time, verification state, verifier/approver, source artifact, and lawful-purpose/retention classification for each record.",
+    "Use stable tenant, organization, jurisdiction, incident, report, person/entity, and version identifiers; preserve superseded versions, corrections, approvals, exports, and disclosures as append-only audit events where feasible.",
+    "Separate preliminary, verified, approved, terminal, and final states. A generated document must display provenance, version, status, and generation time and must not imply national acceptance.",
+    "Define documented schemas, field definitions, enumerations, validation rules, time zones, units, geographic reference/version, null-versus-zero semantics, attachment formats, API/export versioning, and migration rules. Interoperability is demonstrated only by a successful exchange with a defined receiver.",
+    "Apply retention by record class and legal authority, not one global timer. Legal holds and archival value override routine deletion. Maintain inventories and disposition evidence required by RA 9470.",
+    "Offboarding must provide a complete, integrity-checked export plus schema/data dictionary and adequate retrieval period; revoke access, rotate credentials, terminate integrations, preserve records the agency must retain, and securely delete only lawfully disposable provider copies after written authorization."
+  ],
+  "risk_continuity_and_inclusion": {
+    "risks": [
+      "Cross-tenant leakage through missing filters, insecure object references, dashboards, caches, search indexes, files, logs, backups, exports, jobs, and provider administration.",
+      "Excessive provider access, credential compromise, insecure subprocessors, ransomware, software supply-chain vulnerabilities, denial of service, accidental deletion, corrupted backups, and delayed breach escalation.",
+      "Provider insolvency or abandonment, price escalation, proprietary formats, loss of key staff, poor change control, untested restores, and unclear ownership/custody.",
+      "Power/network failure, low bandwidth, inaccessible design, device scarcity, language/literacy barriers, and overreliance on a connected platform during emergencies.",
+      "Re-identification and harm from combining granular location, health, casualty, displacement, and vulnerability data, even when direct identifiers are removed."
+    ],
+    "minimum_mitigations": [
+      "Fail-closed tenant authorization derived from authenticated identity; server-side ownership checks at the data layer; tenant-scoped database/cache/storage/queue keys; least privilege and MFA for privileged roles; tenant-aware audit logs; explicit, tested provider break-glass access; and automated cross-tenant negative tests.",
+      "Encryption in transit and at rest with documented key management; secure development and dependency patching; vulnerability management; centralized monitoring; incident runbooks; processor-to-controller escalation; evidence preservation; and exercises aligned with applicable NPC requirements.",
+      "Encrypted, access-controlled, logically isolated backups; defined RTO/RPO; restore tests; alternate processing/communications; outage reconciliation; capacity monitoring; customer notification; and post-incident review.",
+      "Contractual portability, documented formats/APIs, regular customer exports or exit rehearsals, subprocessor controls, service-level evidence, transition assistance, and records-law-compatible return/deletion.",
+      "Responsive accessible interface, keyboard and assistive-technology checks, low-bandwidth tests, plain language and explicit unknown values, assisted reporting, and maintained radio/telephone/SMS/paper contingencies.",
+      "Minimize collection and display; segregate sensitive details; aggregate public outputs; restrict exports; assess re-identification risk; log disclosure; and obtain accountable approval before broader sharing."
+    ]
+  },
+  "uncertain": []
+}

@@ -1,0 +1,288 @@
+{
+  "primary_sources": [
+    {
+      "source": "ISO/IEC 25012:2008, Data quality model",
+      "type": "International standard",
+      "url": "https://www.iso.org/standard/35736.html",
+      "relevance": "Defines a general model for structured-data quality, with fifteen characteristics viewed as inherent or system-dependent; ISO states that it can be used to set requirements, define measures, plan evaluations, and assess compliance. It supports evaluating report data independently from software quality."
+    },
+    {
+      "source": "ISO/IEC 25010:2023, Product quality model",
+      "type": "International standard",
+      "url": "https://www.iso.org/standard/78176.html",
+      "relevance": "Defines nine product-quality characteristics and subcharacteristics for specifying, measuring, and evaluating ICT and software products. It is a defensible organizing framework for functional suitability, performance efficiency, compatibility, interaction capability, reliability, security, maintainability, flexibility, and safety, but it does not prescribe project-specific thresholds."
+    },
+    {
+      "source": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+      "type": "Normative web standard (W3C Recommendation)",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "relevance": "Provides testable A, AA, and AAA success criteria. Level AA requires all A and AA criteria for complete pages and their responsive variations. Relevant reporting-workflow criteria include keyboard operation, visible and unobscured focus, target size, labels and instructions, error identification and suggestion, status messages, consistent help, redundant entry, and accessible authentication."
+    },
+    {
+      "source": "Republic Act No. 12254 (E-Governance Act), 2025, especially sections 16 and 19",
+      "type": "Philippine statute",
+      "url": "https://lawphil.net/statutes/repacts/ra2025/ra_12254_2025.html",
+      "relevance": "Requires government entities to use performance measures linking ICT to agency objectives, customer service, productivity, and relevant groups; undertake time-and-motion evaluation; make programs accessible and inclusive to persons with disabilities as far as practicable; preserve availability for people without internet access; and provide electronic or manual alternate delivery modes."
+    },
+    {
+      "source": "Republic Act No. 7277 (Magna Carta for Disabled Persons), as amended",
+      "type": "Philippine statute",
+      "url": "https://lawphil.net/statutes/repacts/ra1992/ra_7277_1992.html",
+      "relevance": "Prohibits disability-based exclusion in covered services and identifies reasonable modifications, auxiliary aids, removal of communication barriers, and readily achievable alternative methods as accessibility mechanisms. It supports inclusive design but does not by itself declare WCAG 2.2 the legally mandatory conformance level for this prototype."
+    },
+    {
+      "source": "Brooke (1996), SUS: A quick and dirty usability scale",
+      "type": "Original usability instrument",
+      "url": "https://hell.meiert.org/core/pdf/sus.pdf",
+      "relevance": "Introduces the ten-item System Usability Scale and its 0-100 scoring transformation for a global post-use assessment. SUS is a perceived-usability score, not a percentage, task-success measure, accessibility audit, or proof of operational effectiveness."
+    },
+    {
+      "source": "Bangor, Kortum, and Miller (2009), Determining What Individual SUS Scores Mean",
+      "type": "Published empirical benchmark study",
+      "url": "https://uxpajournal.org/wp-content/uploads/sites/7/pdf/JUS_Bangor_May2009.pdf",
+      "relevance": "Uses accumulated SUS observations to relate scores to adjective ratings and acceptability. It supports interpreting SUS relative to external distributions, but a universal pass/fail threshold should not replace a study-specific comparator, confidence interval, and participant/context description."
+    },
+    {
+      "source": "Chan et al. (2009), Data Quality for Situational Awareness during Mass-Casualty Events",
+      "type": "Original peer-reviewed field evaluation",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2655881/",
+      "relevance": "Compares electronic and paper patient tracking in a disaster exercise and reports that digital collection can increase available data and reduce latency while also introducing technical and workflow problems. It supports matched workflow comparison and warns against treating digitization as automatically reliable."
+    },
+    {
+      "source": "Jayawardene, Huggins, Prasanna, and Fakhruddin (2021), The role of data and information quality during disaster response decision-making",
+      "type": "Peer-reviewed systematic literature review",
+      "url": "https://doi.org/10.1016/j.pdisas.2021.100202",
+      "relevance": "Synthesizes disaster information-quality dimensions, including completeness, validity, reliability or credibility, accuracy, currency, accessibility, interpretability, and consistency. The breadth of dimensions shows why field completion alone is an inadequate quality proxy."
+    },
+    {
+      "source": "Seppanen and Virrantaus (2015), Shared situational awareness and information quality in disaster management",
+      "type": "Peer-reviewed original qualitative study",
+      "url": "https://doi.org/10.1016/j.ssci.2014.09.018",
+      "relevance": "Shows that information quality and shared situational awareness are contextual and tied to user needs and inter-organizational work. It supports role-specific scenario testing rather than a single undifferentiated quality score."
+    },
+    {
+      "source": "Yuan et al. (2023), Examining data imbalance in crowdsourced reports for improving flash flood situational awareness",
+      "type": "Peer-reviewed original empirical study",
+      "url": "https://doi.org/10.1016/j.ijdrr.2023.103825",
+      "relevance": "Compares 3-1-1 and Waze reports with FEMA damage data in two US floods and identifies sample, spatial, and demographic imbalance, including underrepresentation associated with minority populations and single-parent households. It demonstrates that more digital reports do not necessarily mean representative coverage."
+    },
+    {
+      "source": "UNDRR DesInventar Sendai methodology",
+      "type": "Intergovernmental disaster-loss methodology",
+      "url": "https://www.desinventar.net/",
+      "relevance": "Supports systematic, comparable, geographically disaggregated loss records and attention to small and medium events that aggregate reporting may overlook. It informs identifiers, disaggregation, provenance, and later reuse, but is not itself an acceptance test for a Philippine SitRep product."
+    }
+  ],
+  "evidence_quality_and_caveats": {
+    "strengths": [
+      "ISO and W3C are primary standards sources; Lawphil reproduces enacted Philippine statutes; the academic sources are original studies or a systematic review rather than vendor claims.",
+      "The evidence supports a multidimensional evaluation: software quality, data quality, accessibility, usability, workflow performance, and representational equity answer different questions and should not be collapsed into one score.",
+      "The statute directly supports measuring agency productivity and service performance and retaining alternate channels for people without internet access."
+    ],
+    "limitations": [
+      "The full text of ISO/IEC 25010 and ISO/IEC 25012 is copyrighted and paywalled; the paper may cite their official abstracts and licensed copies but should not claim that every characteristic was audited unless the researchers actually operationalize and test it.",
+      "The disaster-information studies differ in hazard, country, actor, and data source. US crowdsourcing findings establish a plausible bias mechanism, not an estimated bias magnitude for Philippine barangay reporting.",
+      "A prototype test with students or a convenience sample cannot establish LGU-wide usability, emergency performance, legal compliance, or benefit to vulnerable populations. Recruit actual role representatives where feasible and report sampling limits.",
+      "SUS measures perceived usability after use. It does not establish accessibility, data accuracy, latency reduction, adoption, resilience, or improved disaster decisions. A score of 68 is often described as near a historical average, not a universal legal or scientific pass mark.",
+      "WCAG conformance is page- and process-wide, includes responsive variations, and requires human as well as automated evaluation. Passing an automated scanner alone is not a defensible Level AA claim.",
+      "Scenario simulations measure performance under designed conditions. They do not establish performance during real disasters, especially under power, internet, staffing, or telecommunications failure.",
+      "Observed reporting speed may reflect training, familiarity, device, network, or scenario order. Counterbalance workflow order where practical, use the same source packet, define start and end events, and preserve raw timestamps.",
+      "Accuracy against a seeded answer key tests transcription and consolidation, not whether real field observations are true. Real-world validity remains dependent on trained reporters, verification, and source evidence.",
+      "No cited source establishes that this specific startup product reduces reporting errors by 32 percent, releases funds faster, eliminates data silos, or improves survival. Those claims require product-specific comparative evidence."
+    ],
+    "claims_not_established": [
+      "Official NDRRMC approval, certification, interoperability, or legal compliance merely because the system uses structured forms.",
+      "Causal improvement in response decisions, resource allocation, fund release, casualty reduction, or community resilience.",
+      "Universal accessibility or inclusion without testing with disabled users, low-connectivity users, different devices, languages, and roles.",
+      "Accuracy of user-entered observations or fairness of coverage solely from validation rules and mandatory fields."
+    ]
+  },
+  "scope_inclusions": [
+    "A connected, responsive, multi-organization web prototype for authorized DRRM organizations to create, edit, validate, approve, consolidate, search, version, export, and retain local incident reports and SitRep-supporting records.",
+    "Role-specific workflows for representative grassroots reporters, barangay validators, municipal or city consolidators, organization administrators, and read-only or oversight users where authorized.",
+    "Structured data-quality controls: stable organization, jurisdiction, incident, report, and version identifiers; required-format validation; explicit unknown/not-yet-verified values; source and observation timestamps; reporter attribution; verification state; reviewer notes; correction reason; and immutable audit events.",
+    "Configured test hazards and reporting stages sufficient to exercise Initial, Progress, Terminal, and Final report progression without claiming comprehensive support for every hazard or national template variation.",
+    "Evaluation of functional suitability, interaction capability/usability, performance efficiency, reliability under ordinary connected conditions, security controls, maintainability evidence, and portability/responsive behavior using selected ISO/IEC 25010 characteristics that are actually measured.",
+    "Evaluation of report-data completeness, validity, consistency, currency/timeliness, traceability, accessibility, and credibility/verification using selected ISO/IEC 25012-informed measures.",
+    "WCAG 2.2 Level AA evaluation across complete critical workflows and responsive variations, including keyboard-only and assistive-technology checks.",
+    "Matched scenario comparison between the prototype and the participating office's documented current workflow, using identical source packets and tasks.",
+    "Inclusion checks by geography and selected locally lawful, decision-relevant disaggregation variables, with missingness and reporting-rate gaps surfaced rather than interpreted automatically as absence of impact.",
+    "Startup service responsibilities relevant to evaluation: configuration, hosting, maintenance, security updates, incident support, tenant isolation testing, export, and service-exit evidence."
+  ],
+  "scope_exclusions_and_dependencies": {
+    "exclusions": [
+      "No autonomous verification of truth, prediction of hazards, dispatch of responders, declaration of a state of calamity, allocation or release of funds, or replacement of legally authorized human approval.",
+      "No claim that generated documents are official NDRRMC submissions unless the responsible government organization approves and submits them through an accepted channel.",
+      "No native mobile application, offline synchronization, SMS gateway, radio integration, guaranteed operation during connectivity or power loss, or replacement of manual and contingency channels.",
+      "No general claim of ISO certification, WCAG certification, statutory compliance, national interoperability, production readiness, impact reduction, or equity improvement from prototype evaluation alone.",
+      "No use of SUS as the sole measure of usability or of field completeness as the sole measure of information quality.",
+      "No aggregation of disability, sex, age, indigenous affiliation, health, or other sensitive data beyond a documented lawful purpose, minimum necessary granularity, and approved access controls."
+    ],
+    "dependencies_and_assumptions": [
+      "Each participating organization defines its official workflow, terminology, templates, roles, retention rules, lawful basis, validation authority, and submission channel.",
+      "Participants receive role-appropriate training; test devices and networks are recorded; seeded scenarios use equivalent information and complexity across comparator workflows.",
+      "Operational usefulness depends on reporter availability, observation quality, verification discipline, connectivity, power, governance, and continued contingency procedures.",
+      "Accessibility depends on the entire deployed page, content, document export, browser, assistive technology, and configuration—not only reusable components.",
+      "Cross-organization claims depend on testing multiple organizations; one pilot cannot demonstrate generalizability to all Philippine LGUs."
+    ]
+  },
+  "objective_requirements_and_metrics": [
+    {
+      "objective": "Implement traceable, versioned report handling",
+      "measures": [
+        "For every created and changed test report, verify presence of organization, jurisdiction, incident, report and version IDs; actor; source; observation, submission and review timestamps; verification state; and correction reason where applicable.",
+        "Acceptance rule: 100% of seeded create-review-correct-approve events appear in the audit export; no prior approved version is overwritten; every consolidated test value traces to a source report and version."
+      ]
+    },
+    {
+      "objective": "Measure data quality without equating completion with truth",
+      "measures": [
+        "Completeness rate = applicable populated fields / applicable required fields; report unknown, not-applicable, and missing separately.",
+        "Validity rate = values passing documented type, range, jurisdiction, and cross-field rules / values tested.",
+        "Seeded accuracy rate = correctly transcribed and consolidated answer-key values / answer-key values; separately count unsupported values and conflicting-source cases.",
+        "Consistency defect rate = contradictory values or broken cross-record relationships / records tested.",
+        "Currency = median and 90th-percentile minutes from observation time to system receipt and from receipt to approved consolidation.",
+        "Traceability rate = consolidated values with resolvable source, actor, time, and version / consolidated values sampled.",
+        "Acceptance thresholds must be set prospectively with the partner organization; use 100% for referential integrity and auditability, while empirical improvement claims require confidence intervals and comparison with baseline."
+      ]
+    },
+    {
+      "objective": "Compare workflow performance fairly",
+      "measures": [
+        "Use the same representative incident packet for the current workflow and prototype; tasks should include initial entry, correction, validation, consolidation, retrieval, and export.",
+        "Primary endpoints: end-to-end completion time, active staff time, task success, seeded transcription/consolidation errors, clarification contacts, and unresolved discrepancies.",
+        "Report median, interquartile range, paired difference, and confidence interval where sample size permits; record failures rather than excluding them. Counterbalance order or randomize participants when feasible.",
+        "Acceptance rule: claim improvement only for predeclared endpoints whose prototype result is better than the matched baseline without a worse critical-error or task-failure rate. Do not translate time saved into faster emergency response without operational evidence."
+      ]
+    },
+    {
+      "objective": "Evaluate usability with task evidence and SUS",
+      "measures": [
+        "After representative tasks, compute SUS using the published ten-item scoring method and report sample size, role, experience, median/mean, dispersion, and confidence interval.",
+        "Pair SUS with task completion, critical errors, assistance requests, and time on task. Predefine a local acceptance criterion, such as a lower confidence bound above the current-workflow SUS or a practically meaningful paired improvement.",
+        "Use external adjective or percentile benchmarks only for interpretation; do not call SUS a percentage or use 68 as a universal pass threshold."
+      ]
+    },
+    {
+      "objective": "Verify accessibility of critical workflows",
+      "measures": [
+        "Test all critical pages and responsive variations against WCAG 2.2 A and AA, including keyboard-only completion, focus visibility/order, reflow and zoom, names/roles/values, labels, errors, status updates, target sizes, redundant entry, and accessible authentication.",
+        "Run automated checks plus manual keyboard, screen-reader, zoom/reflow, contrast, and error-recovery tests; include representative disabled users where feasible.",
+        "Acceptance rule: zero known A or AA failures in the evaluated critical workflow before claiming WCAG 2.2 Level AA for that defined scope; publish pages, technologies, browsers, assistive technologies, date, and known limitations."
+      ]
+    },
+    {
+      "objective": "Detect exclusion and representation risks",
+      "measures": [
+        "Compare report counts, missingness, latency, and unresolved-status rates by barangay/geographic unit and approved disaggregation groups; calculate rate denominators where reliable population or event exposure data exists.",
+        "Test low-bandwidth/mobile workflows and document the proportion of role tasks impossible without connectivity; verify a documented alternate manual or electronic handoff rather than treating non-reporting as zero impact.",
+        "Acceptance rule: every dashboard distinguishes zero from unknown/no report; every disparity is flagged for review, not automatically imputed or treated as proof of bias; mitigation and residual risk are documented."
+      ]
+    },
+    {
+      "objective": "Test tenant isolation and ordinary-service resilience",
+      "measures": [
+        "Attempt cross-organization read, update, file, search, dashboard, and export access using authenticated test accounts; acceptance rule: zero unauthorized disclosures or modifications.",
+        "Measure success of backup restoration, audit-log preservation, organization-controlled export, and recovery in declared test conditions; report achieved recovery time and recovery point rather than promising untested availability.",
+        "Record performance at declared concurrent-user and record-volume scenarios; report median and 95th-percentile response time and failure rate without generalizing beyond the tested load."
+      ]
+    }
+  ],
+  "significance_mechanisms_and_beneficiaries": [
+    {
+      "beneficiary": "Grassroots and barangay reporters",
+      "mechanism": "Structured prompts, explicit unknown values, mobile-responsive entry, saved provenance, and visible correction status may reduce repeated clarification and loss of local observations.",
+      "conditions_and_harms": "Benefit depends on training, connectivity, usable local terminology, disability access, and non-punitive correction. Mandatory fields or poorly chosen categories may encourage fabricated values, suppress nuance, or exclude people who cannot use the web channel.",
+      "evidence_needed": "Role-based task success, error and clarification rates versus current workflow; accessibility results; low-bandwidth tests; qualitative feedback from actual reporters."
+    },
+    {
+      "beneficiary": "Barangay, municipal, city, and provincial validators and consolidators",
+      "mechanism": "Source-linked versions, review queues, validation states, and structured consolidation may make discrepancies visible and reduce transcription work.",
+      "conditions_and_harms": "Faster consolidation is useful only if source uncertainty remains visible. Automation may amplify a wrong value, produce false confidence, or shift workload to data entry.",
+      "evidence_needed": "Matched scenario measures of end-to-end time, active staff time, seeded errors, unresolved conflicts, and source-trace success."
+    },
+    {
+      "beneficiary": "Authorized decision-makers and partner agencies",
+      "mechanism": "Timely, attributable, geographically disaggregated information may improve the evidence available for situational awareness and coordination.",
+      "conditions_and_harms": "The system does not make decisions and must not imply that missing reports mean no need. Biased reporting coverage can divert attention from disconnected or vulnerable communities.",
+      "evidence_needed": "Decision-scenario studies comparing correct identification of priorities, uncertainty recognition, and source retrieval; operational outcome claims require prospective real-world evaluation."
+    },
+    {
+      "beneficiary": "Persons with disabilities, low-connectivity communities, and other underrepresented groups",
+      "mechanism": "Accessible interaction, disaggregated missingness monitoring, and retained alternate channels can reveal rather than erase gaps in reporting.",
+      "conditions_and_harms": "Collecting sensitive attributes can create privacy and re-identification risk, while a digital-only channel can deepen exclusion. Accessibility and alternate delivery require organizational procedures, not only interface code.",
+      "evidence_needed": "WCAG evaluation, tests with affected users, geographic and demographic coverage analysis using lawful minimum data, privacy review, and documented successful alternate-channel handoffs."
+    },
+    {
+      "beneficiary": "Participating government organizations and records officers",
+      "mechanism": "Auditability, version retention, controlled export, and measurable workflows may strengthen accountability, later assessment, and institutional learning.",
+      "conditions_and_harms": "Value depends on approved records schedules, custody rules, data quality governance, and usable exports. Vendor lock-in or incomplete exports can undermine public control.",
+      "evidence_needed": "Export/re-import inspection, retention and disposition tests, audit completeness, retrieval performance, and government acceptance of procedures."
+    },
+    {
+      "beneficiary": "The startup service provider",
+      "mechanism": "A repeatable evaluation protocol and transparent service boundaries may support credible procurement, product improvement, and cross-client comparison.",
+      "conditions_and_harms": "Commercial incentives can encourage overclaiming or selective metrics. Government authority, data custody, and approval must remain with the participating organization.",
+      "evidence_needed": "Independent or customer-witnessed testing, preregistered metrics where feasible, disclosed failures and sample limits, service-level evidence, and multi-organization replication before scalability claims."
+    }
+  ],
+  "authority_and_responsibility_matrix": {
+    "participating_government_organization": [
+      "Defines lawful purpose, required data, official terminology, validation roles, approval authority, submission channel, accessibility accommodations, and contingency procedures.",
+      "Owns operational judgments; verifies observations; approves official reports; decides disclosure; controls public-record custody, retention classification, export, and authorized disposition.",
+      "Approves evaluation scenarios, material error severity, acceptance thresholds, and which demographic or vulnerability variables are necessary and lawful."
+    ],
+    "startup_service_provider": [
+      "Implements configured workflows and data-quality controls; maintains hosting, security updates, tenant isolation, backup/restore, support, audit evidence, accessibility remediation, and complete usable exports under contract.",
+      "May enforce syntactic and configured logical validation but must label it accurately; it does not verify field truth, approve government reports, make emergency decisions, or confer official status.",
+      "Discloses tested scope, metrics, failures, subprocessors and dependencies; preserves raw evaluation evidence; avoids unsupported outcome and compliance claims."
+    ],
+    "shared_or_contractually_allocated": [
+      "Incident response, breach notification, recovery testing, accessibility testing, user training, change control, data-quality review, and exit rehearsal require named accountable parties, deadlines, and escalation paths.",
+      "Independent evaluators should receive de-identified or synthetic scenario data unless access to operational personal data is necessary, lawful, approved, and safeguarded."
+    ]
+  },
+  "data_lifecycle_and_interoperability": [
+    "Capture observation time separately from entry time; record reporter, source type, organization and jurisdiction; distinguish observed, estimated, reported-by-third-party, preliminary, verified, rejected, superseded, and unknown states.",
+    "Preserve append-only version lineage for material changes and approval events. A corrected report must link to the superseded version; dashboards and exports must reveal the as-of time and verification state.",
+    "Use stable, organization-scoped identifiers and documented code lists for geography, hazards, units, affected populations, infrastructure, and report stages; map fields to official partner templates rather than asserting national interoperability without conformance testing.",
+    "Exports should be documented, machine-readable, human-readable, complete with attachments and audit history where authorized, and testable before contract exit. Schema version, encoding, time zone, unit, null/unknown semantics, and checksums should accompany transfers.",
+    "Retain raw source records needed for traceability subject to lawful minimization, access, and retention rules. Aggregates must be reproducible from identified source versions, and corrections must propagate without erasing historical states.",
+    "Quality dashboards should show numerator, denominator, time window, organization/jurisdiction coverage, missingness, verification state, and last refresh; they must not collapse no report, zero impact, and not applicable into one value."
+  ],
+  "risk_continuity_and_inclusion": [
+    {
+      "risk": "Formally complete but false, stale, or untraceable reports",
+      "mitigation": "Separate syntactic validation from human verification; show source, observation time, state, reviewer, evidence and corrections; sample records against scenario truth and source documents."
+    },
+    {
+      "risk": "Underreporting from disconnected or vulnerable places",
+      "mitigation": "Retain radio, phone, paper, and authorized manual encoding paths; show missing/no-report explicitly; monitor geographic and group-level coverage and latency; never infer no impact from silence."
+    },
+    {
+      "risk": "Disability exclusion",
+      "mitigation": "Target WCAG 2.2 AA across complete critical workflows; combine automated and manual testing with disabled-user participation; ensure exported reports and support channels are accessible."
+    },
+    {
+      "risk": "Bias caused by categories, denominators, or aggregation",
+      "mitigation": "Co-design categories with authorized stakeholders; retain narrative/source evidence; publish metric definitions and denominators; examine missingness at appropriate geographic levels; require human review of disparities."
+    },
+    {
+      "risk": "Privacy or re-identification through small-area disaggregation",
+      "mitigation": "Collect only necessary attributes, restrict raw access, use minimum useful geography, suppress or combine small cells in broader disclosures, log exports, and conduct organization-approved privacy review."
+    },
+    {
+      "risk": "Connectivity, power, hosting, or provider failure",
+      "mitigation": "Document connected-operation limits, preserve alternate channels, test backup restoration and export, state achieved recovery metrics, and maintain an exit plan; do not promise offline availability that is not implemented."
+    },
+    {
+      "risk": "Cross-tenant leakage",
+      "mitigation": "Derive organization context from authenticated identity, enforce ownership at data access, and test every record, file, search, dashboard, and export path for unauthorized cross-organization access."
+    },
+    {
+      "risk": "Evaluation bias and inflated significance",
+      "mitigation": "Predeclare primary endpoints and acceptance rules; use matched scenarios and representative roles; preserve failures; report uncertainty and sampling limits; separate usability, workflow, data-quality, accessibility, and outcome claims."
+    }
+  ],
+  "uncertain": []
+}
