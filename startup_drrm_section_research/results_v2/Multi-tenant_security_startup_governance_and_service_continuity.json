@@ -1,0 +1,131 @@
+{
+  "evidence": {
+    "primary_sources": [
+      {
+        "source": "Republic Act No. 10173, Data Privacy Act of 2012",
+        "date": "2012-08-15",
+        "type": "Philippine statute",
+        "provisions": "Sections 20-21 require reasonable and appropriate organizational, physical, and technical safeguards and preserve the controller's accountability when processing is transferred to a third party; Sections 16-18 establish data-subject rights and portability; Sections 25-32 penalize unauthorized processing, negligent access, improper disposal, unauthorized access, concealment, and disclosure.",
+        "url": "https://privacy.gov.ph/data-privacy-act/"
+      },
+      {
+        "source": "Implementing Rules and Regulations of RA 10173",
+        "date": "2016-08-24",
+        "type": "binding implementing regulation",
+        "provisions": "Rules VI-XII require risk-proportionate security, access management, monitoring, vulnerability handling, encryption, resilience, timely restoration, regular testing, incident documentation, qualifying breach notification within 72 hours, processor safeguards, retention schedules, and secure disposal. Sections 30-33 add duties for government sensitive information and contractors.",
+        "url": "https://privacy.gov.ph/implementing-rules-regulations-data-privacy-act-2012/"
+      },
+      {
+        "source": "NPC Circular 16-01, Security of Personal Data in Government Agencies",
+        "date": "2016-09-09",
+        "type": "Philippine regulatory issuance",
+        "provisions": "Operationalizes security governance for government-held personal data and places compliance responsibility on agency heads; relevant when a public customer uses a private hosted service.",
+        "url": "https://privacy.gov.ph/npc-circular-16-01-security-of-personal-data-in-government-agencies/"
+      },
+      {
+        "source": "NIST SP 800-53 Rev. 5, Security and Privacy Controls for Information Systems and Organizations",
+        "date": "2020-09, updated 2025",
+        "type": "voluntary US government control catalog",
+        "provisions": "Control families relevant to the prototype include AC for least privilege and information-flow enforcement, AU for protected audit records, CP for backups and recovery, IA for account authentication, IR for incident handling, SC for boundary and transmission protection, SI for malicious-code and integrity controls, and SA/SR for provider and supply-chain governance.",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53r5"
+      },
+      {
+        "source": "NIST SP 800-34 Rev. 1, Contingency Planning Guide for Federal Information Systems",
+        "date": "2010-05, updated 2010-11",
+        "type": "voluntary US government guidance",
+        "provisions": "Defines business-impact analysis, maximum tolerable downtime, recovery time objective, recovery point objective, alternate processing/storage, backups, recovery strategies, testing, training, exercises, and plan maintenance.",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1"
+      },
+      {
+        "source": "OWASP API Security Top 10 2023, API1 and API4",
+        "date": "2023",
+        "type": "community security guidance",
+        "provisions": "API1 requires object-level authorization at every endpoint accepting an object identifier; API4 identifies unrestricted resource consumption and recommends limits on request size, records, uploads, operations, and execution resources.",
+        "url": "https://owasp.org/API-Security/editions/2023/en/0x00-header/"
+      },
+      {
+        "source": "CISA #StopRansomware Guide",
+        "date": "2023-09",
+        "type": "official operational guidance",
+        "provisions": "Recommends offline encrypted backups, regular availability and integrity testing in disaster-recovery scenarios, golden images, offline infrastructure templates, and incident-response preparation.",
+        "url": "https://www.cisa.gov/stopransomware/ransomware-guide"
+      }
+    ],
+    "legal_or_evidentiary_status": "RA 10173 and its IRR apply to Philippine government and private-sector processing within their jurisdiction. In a hosted arrangement, the public customer will ordinarily determine the lawful purposes and essential means and therefore act as personal information controller, while the startup acts as personal information processor to the extent it processes only on documented instructions; actual roles depend on the contract and conduct. Outsourcing does not transfer the controller's statutory accountability. NIST, OWASP, and CISA materials are not Philippine law and do not certify compliance; they are defensible design and evaluation references. Contractual service levels, RTOs, RPOs, portability, and transition duties become binding only when placed in an executed agreement.",
+    "evidence_limits_and_conflicts": "The sources establish duties and control practices, not that this prototype is secure, continuously available, legally compliant, or suitable for emergency operations. No source supplies a universal uptime, RTO, RPO, retention period, tenant count, or acceptable penetration-test result; these must follow a customer-approved impact and risk assessment. NIST publications target US federal contexts and require tailoring. OWASP describes common risk classes rather than measured prevalence in this system. ISO/IEC 27001, 27017, 27018 and 22301 may be relevant but their full normative text was not relied upon here. A startup claim of 'end-to-end encryption' would conflict with server-side processing unless keys and plaintext boundaries are precisely described. A DSA and a processor outsourcing agreement are legally distinct; NPC Advisory 2025-01 clarifies that a DSA is not automatically mandatory, while safeguards and lawful processing remain mandatory."
+  },
+  "chapter_one_integration": {
+    "objective_revisions": "Add security and continuity as cross-cutting acceptance conditions, not new user-facing modules. User and Organization Management should enforce tenant-scoped membership, least-privilege roles, administrator approval, account disabling, and support-access records. Disaster Reporting should validate tenant ownership on every create/read/update/delete action, restrict upload types and sizes, scan or quarantine files, preserve the original report, and tolerate interrupted submission without duplicate records. Verification should separate reporter and verifier permissions, record decisions and reasons, and prevent cross-tenant review. SitRep Generation should include only authorized, approved source records and label generated output as a draft until an authorized official approves it. Catalog should restrict configuration changes by tenant and retain change history. Dashboard should aggregate only the active tenant's authorized data and prevent small-cell or export disclosure. Evaluation should test horizontal and vertical authorization, malicious or oversized uploads, bulk exports, support impersonation, rate limits, backup restoration, RPO/RTO measurement, provider outage, and tenant-portable export.",
+    "scope_inclusions": "Include authenticated reporters, verifiers, tenant administrators, authorized approving officials, customer privacy/records officers, and narrowly authorized startup support operators. Cover tenant creation and suspension; membership and role lifecycle; report, attachment, verification, SitRep, catalog, dashboard and export authorization; immutable security-relevant event logging; incident escalation; encrypted transport and storage; upload limits and quarantine; per-tenant quotas and rate limits; backup, restore, recovery exercises; dependency inventory; scheduled maintenance and outage communication; customer-readable export; deletion/return at contract end; and documented controller-processor instructions. Service operations should identify hosting, storage, email/SMS, malware-scanning, observability, and backup providers as dependencies and record applicable subprocessors.",
+    "limitations_and_delimitations": "The student prototype is not a certified public-safety, records-management, cybersecurity, or business-continuity platform. It does not guarantee uninterrupted access during disasters, prevent every tenant-leakage or denial-of-service attack, replace agency identity governance, establish the legal basis for collection or disclosure, decide official retention schedules, or independently submit official reports. Backup existence is not proof of recoverability. Encryption does not protect data while legitimately decrypted for processing or against an overprivileged account. The study should not claim forensic-grade logs, immutable storage, geographically independent failover, 24/7 staffed response, cyber-insurance, source-code escrow, formal certification, or production SLA unless implemented and evidenced. Third-party outages, compromised customer devices, weak connectivity, incorrect role assignment, malicious insiders, and provider insolvency remain external or shared risks. Production onboarding requires a contract, privacy impact and security risk assessment, records schedule, incident contacts, dependency review, tested exit plan, and customer acceptance.",
+    "significance_causal_chains": [
+      "For a reporting organization: tenant checks and role controls -> unauthorized requests are rejected and logged -> administrators can limit access to their own records -> lower likelihood of cross-organization disclosure, provided roles are correct and tests cover every object path; harm remains possible through misconfiguration or application defects.",
+      "For verifiers and approving officials: provenance, version history, and approval gates -> the SitRep can be traced to authorized source records -> reviewers can correct or reject drafts -> improved accountability, provided officials actually review outputs; automation bias and stale inputs remain hazards.",
+      "For data subjects: minimization, retention, controlled exports, and incident procedures -> fewer unnecessary copies and a defined response path -> reduced exposure and better exercise of rights, provided the customer supplies a lawful basis and response staff; re-identification and secondary disclosure remain possible.",
+      "For customer continuity staff: tested backups plus declared RPO/RTO -> measured restoration evidence -> informed decision on whether the service fits a process -> reduced recovery uncertainty, not guaranteed availability; evidence requires timed exercises and data-loss measurement.",
+      "For the startup: subprocessor inventory, support controls, service metrics, portable export, and transition plan -> observable and contractible operations -> customers can assess and exit the service -> greater trust and reduced lock-in risk, provided the startup funds support and regularly tests recovery and export."
+    ],
+    "safe_claims_and_claims_to_avoid": {
+      "safe": [
+        "The prototype applies tenant and object authorization checks intended to restrict each organization to its authorized records; effectiveness will be evaluated through negative cross-tenant tests.",
+        "Recovery objectives will be proposed from an impact analysis and reported as measured test results, not guarantees.",
+        "The startup processes customer data under documented customer instructions, subject to the final allocation of controller and processor roles.",
+        "A portable export and documented deletion or return procedure reduce, but do not eliminate, provider lock-in.",
+        "Security controls support compliance but do not by themselves establish legal compliance."
+      ],
+      "avoid": [
+        "The system is unhackable, fully compliant, disaster-proof, ransomware-proof, or always available.",
+        "Multi-tenancy automatically isolates all customers.",
+        "Cloud hosting guarantees backup, continuity, or recovery.",
+        "Encryption ensures complete confidentiality in every processing state.",
+        "The startup assumes all privacy responsibility from the government customer.",
+        "A 99.9% uptime target proves the service is suitable for emergency operations."
+      ]
+    }
+  },
+  "system_and_governance": {
+    "authority_and_responsibility_matrix": [
+      {"action": "Define lawful purpose, data categories, retention, disclosure and official use", "accountable": "customer controller and its authorized privacy/records/operations officials", "startup_role": "implement documented instructions and disclose technical constraints"},
+      {"action": "Create tenant, appoint administrators and approve organization membership", "accountable": "customer-designated authority", "startup_role": "provide controlled provisioning; never infer official authority from self-registration"},
+      {"action": "Create a disaster report and upload evidence", "accountable": "authorized reporter for content", "startup_role": "validate authorization, size/type and preserve provenance"},
+      {"action": "Verify, reject, correct or supersede a report", "accountable": "customer-authorized verifier", "startup_role": "enforce separation of roles and record decision lineage"},
+      {"action": "Approve and officially submit a SitRep", "accountable": "customer-authorized official; external agency controls its receiving channel", "startup_role": "generate a traceable draft/export but not impersonate an official submitter"},
+      {"action": "Operate infrastructure, patch, back up, restore, monitor and manage subprocessors", "accountable": "startup under contract", "startup_role": "maintain evidence, notify incidents/outages, test recovery and support exit"},
+      {"action": "Privileged support access", "accountable": "startup security owner with customer authorization where practicable", "startup_role": "time-bound named access, MFA, least privilege, reason/ticket, logging, review and revocation; no shared support accounts"},
+      {"action": "Personal-data breach assessment and statutory notification", "accountable": "controller for notification; processor must promptly inform and assist under instructions", "startup_role": "preserve evidence, report facts and remediation without concealing or independently making unapproved public claims"}
+    ],
+    "workflow_lineage_and_data_lifecycle": "Use explicit states such as draft, submitted, under_verification, verified, rejected, corrected/superseded, included_in_draft_sitrep, approved_for_export, archived, and disposed. Every transition records stable tenant and record identifiers, actor, role, source organization, server timestamp, prior and new state, reason, and related version; attachments retain hash, scan status, uploader and source record. Corrections append a version and link to the superseded record rather than silently overwriting an approved fact. Conflicting reports remain separately attributable and are resolved by an authorized verifier; the system must not manufacture certainty. SitRep entries link to exact approved source versions and record generator, reviewer, approval and export events. Security logs must be access-controlled, integrity-protected, time-synchronized, retained according to policy, and avoid unnecessary sensitive payloads. At termination or schedule expiry, export in a documented machine-readable format, verify receipt, suspend access, delete or return active and backup copies according to an agreed timetable and legal holds, and issue evidence of disposition without claiming impossible instantaneous erasure from all backup media.",
+    "module_specific_requirements": {
+      "User and Organization Management": "Tenant scope must derive from trusted server-side membership, never a client-supplied tenant ID alone. Enforce MFA for administrators/support where feasible, least privilege, unique accounts, session revocation, join/leave workflow, disabled-account denial, periodic access review, and complete admin/support audit events.",
+      "Disaster Reporting": "Authorize each object and attachment action; validate structured fields; impose request, attachment, batch and storage limits; allowlist formats; rename stored objects; store outside executable web paths; scan/quarantine; protect downloads with authorization; use idempotency or duplicate detection for retries; retain source and timestamps.",
+      "Verification": "Restrict review to assigned tenant/area and authorized role; prevent self-approval where the customer requires separation; expose source, uncertainty, conflicts and version; capture reason for verify/reject/correct; make approved versions non-silent-editable.",
+      "SitRep Generation": "Query only tenant-scoped approved versions; disclose cutoff time and included sources; mark output draft until human approval; protect generation and download against bulk resource abuse; watermark or label status; record generation, approval, export and supersession.",
+      "Catalog": "Tenant-scope hazards, locations, thresholds and reference values; restrict edits to authorized administrators; validate identifiers; version changes and preserve effective dates so historical reports remain interpretable.",
+      "Dashboard": "Apply the same row/object authorization as source modules; use minimum necessary fields; suppress or coarsen small-group public views; bound date ranges and query cost; rate-limit exports; record who exported what, when and for which declared purpose."
+    },
+    "risk_controls_and_residual_limits": [
+      {"risk": "cross-tenant disclosure or modification", "controls": "server-side tenant scoping, per-object authorization, deny-by-default roles, database constraints where applicable, negative tests for guessed IDs and nested resources", "evidence": "automated matrix of tenant A/B read-write-export denials plus manual review", "residual": "a missed query, shared cache key, mis-scoped background job or administrator error can still leak data"},
+      {"risk": "malicious files", "controls": "allowlist, size limits, non-executable storage, random names, content inspection/scanning, quarantine and authorized downloads", "evidence": "benign, disallowed, oversized and standard antivirus-test-file cases", "residual": "zero-day payloads, scanner outage and harmful content in allowed formats remain"},
+      {"risk": "bulk exports and re-identification", "controls": "purpose-based authorization, minimum fields, step-up confirmation, row limits, audit, encrypted delivery and aggregation", "evidence": "role/export test matrix and small-cell review", "residual": "authorized recipients may redistribute data or combine it with external datasets"},
+      {"risk": "support-account abuse", "controls": "unique MFA accounts, just-in-time/time-bound access, approval, ticket reason, session audit, alerting and rapid revocation", "evidence": "quarterly access review and sampled session logs", "residual": "trusted insider or compromised privileged identity"},
+      {"risk": "ransomware or destructive error", "controls": "separate encrypted backups, least-privilege backup credentials, versioning/immutability where available, offline copy, restore exercises and clean rebuild material", "evidence": "timed restore with integrity and malware checks", "residual": "undetected corruption may enter backups; recovery can exceed objectives"},
+      {"risk": "denial of service and disaster-time traffic", "controls": "per-user/tenant quotas, bounded uploads/exports/queries, rate limiting, queues, monitoring, capacity alarms and customer offline fallback", "evidence": "load and abuse tests under declared environment", "residual": "large upstream or provider failures may exhaust startup resources"},
+      {"risk": "provider or subprocessor failure", "controls": "dependency inventory, contractual notice and security clauses, export, backup under startup/customer control where feasible, recovery/exit exercises and alternative communication procedure", "evidence": "tabletop provider-loss exercise", "residual": "simultaneous regional or financial failure can delay recovery; replacement may require procurement"}
+    ]
+  },
+  "evaluation_and_feasibility": {
+    "metrics_comparators_and_test_conditions": [
+      "Authorization isolation: prohibited operations rejected / all attempted prohibited operations, separately for read, create under another tenant, update, delete, verify, dashboard, attachment and export. Expected prototype acceptance is 100% for the enumerated cases; passing does not prove absence of undiscovered paths.",
+      "Recovery point achieved: timestamp of newest valid restored committed record minus failure cutoff; compare with customer-proposed RPO. Recovery time achieved: start of declared outage to verified restoration of the agreed minimum service; compare with proposed RTO. Record dataset size, backup age, region, dependency state and operator actions.",
+      "Restore integrity: valid expected records and attachments recovered / expected recovery-set records, plus hash and referential-integrity checks. Report omissions and corruptions, not only job success.",
+      "Availability: successful eligible service minutes / total measured eligible minutes, with maintenance and exclusions disclosed. A short prototype observation is not an SLA forecast.",
+      "Upload defense: blocked or quarantined unsafe test cases / supplied unsafe cases; include wrong extension/MIME, oversized, archive, malformed file and safe antivirus test string; never introduce live malware.",
+      "Resource-control effectiveness: rejected or throttled requests after declared per-role limits, queue latency and error rate under baseline and burst loads; test on named devices, browser, server size, network latency and concurrent users.",
+      "Portability: required entities and relationships successfully imported or independently verified / entities exported; measure generation time, schema documentation completeness and customer retrieval before termination.",
+      "Comparator: compare security and recovery tasks against the current manual/shared-file workflow and a prototype without the tested control only where safe. Use identical role scripts and seeded synthetic multi-tenant data; do not use live identifiable disaster reports in adversarial testing."
+    ],
+    "adoption_cost_and_service_dependencies": "Adoption requires customer role mapping, privacy and records review, administrator/verifier training, incident contacts, migration and data-quality work, accessibility testing, support procedures, and recurring access reviews. Startup costs include secure hosting, separate backups, monitoring, logging, malware scanning, transactional messaging, domain/TLS, vulnerability remediation, penetration testing, staff on-call coverage, recovery exercises, legal/privacy work, insurance where obtainable, and subprocessor management. The service agreement should define service scope, measurement point, maintenance, support hours, severity and response targets, incident/outage notice, backup frequency, tested RPO/RTO rather than aspirational numbers, subprocessor change notice, data location where material, security evidence, liability, termination, export format, deletion timetable, transition assistance, and fees. A student prototype has no evidence for 24/7 support or commercial pricing. Broader adoption depends on procurement authority, sustainable staffing and revenue, trustworthy providers, internet/power, customer offline procedures, and proof that export and restore work at representative scale.",
+    "generalization_and_future_evidence": "The design reasoning can apply to multiple organizations sharing one hosted reporting platform, but prototype results generalize only to the tested tenant count, roles, modules, dataset, devices, network and hosting configuration. It does not establish readiness for all Philippine LGUs, national agencies, classified information, health records, high-volume regional disasters, prolonged connectivity loss, or a different cloud stack. Production evidence should include an independent threat model and penetration test emphasizing tenant boundaries and APIs; software composition and secret-management review; privacy impact assessment; customer-approved controller/processor and records matrix; accessibility evaluation with users with disabilities; representative load/soak and disaster-time burst tests; repeated restore and region/provider-loss exercises; measured RPO/RTO and longer availability history; incident tabletop with the customer; subprocessor due diligence; export/import and termination rehearsal; and post-deployment audit of role errors, near misses, outages and support access. Market, cost-saving and public-safety claims additionally require multi-site longitudinal evidence and a credible comparator, not technical test results alone."
+  },
+  "uncertain": []
+}

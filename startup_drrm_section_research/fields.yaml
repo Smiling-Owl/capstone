@@ -2,34 +2,54 @@ categories:
   - name: "evidence"
     fields:
       - name: "primary_sources"
-        description: "Authoritative laws, regulations, government guidelines, standards, or original peer-reviewed studies with direct links and precise relevant provisions or findings."
+        description: "Primary laws, official government documents, standards, books, or original peer-reviewed studies with direct links, dates, precise provisions or findings, and source type."
         detail_level: detailed
-      - name: "evidence_quality_and_caveats"
-        description: "Source type, jurisdiction, applicability, limitations, conflicts, and claims the evidence does not establish."
+      - name: "legal_or_evidentiary_status"
+        description: "Jurisdiction, effective or publication status, mandatory versus advisory character, applicability, and whether a statement is a binding duty, recognized standard, empirical finding, or design inference."
         detail_level: detailed
-  - name: "paper_implications"
+      - name: "evidence_limits_and_conflicts"
+        description: "Uncertainty, conflicting evidence, population and context limits, inaccessible normative text, implementation dependencies, and claims the sources do not establish."
+        detail_level: detailed
+  - name: "chapter_one_integration"
     fields:
+      - name: "objective_revisions"
+        description: "Concrete module-based objective content for User and Organization Management, Disaster Reporting, Verification, SitRep Generation, Catalog, Dashboard, and evaluation, including what is implementable in a student prototype."
+        detail_level: detailed
       - name: "scope_inclusions"
-        description: "Functions, actors, records, organizational levels, hazards, stages, and service responsibilities that belong in scope."
+        description: "Actors, organization levels, hazards, report stages, functions, records, data, service operations, dependencies, and responsibilities that should be in scope."
         detail_level: detailed
-      - name: "scope_exclusions_and_dependencies"
-        description: "Explicit non-features, external dependencies, operating assumptions, legal limits, and non-claims."
+      - name: "limitations_and_delimitations"
+        description: "Explicit non-features, legal and authority boundaries, technical dependencies, prototype boundaries, external systems, unsupported outcomes, and generalization limits."
         detail_level: detailed
-      - name: "objective_requirements_and_metrics"
-        description: "Implementable objectives with measurable outputs, comparators, calculations, test conditions, and defensible acceptance rules."
+      - name: "significance_causal_chains"
+        description: "For each beneficiary, state system function, immediate output, operational use, plausible benefit, prerequisites, possible harms, and evidence required before claiming the benefit."
         detail_level: detailed
-      - name: "significance_mechanisms_and_beneficiaries"
-        description: "Beneficiaries, causal mechanism, conditional benefit, prerequisites, possible harms, and evidence required before claiming an outcome."
+      - name: "safe_claims_and_claims_to_avoid"
+        description: "Specific accurate sentences or claim patterns safe for the paper and specific overstatements or misleading formulations to avoid."
         detail_level: detailed
-  - name: "governance_and_design"
+  - name: "system_and_governance"
     fields:
       - name: "authority_and_responsibility_matrix"
-        description: "Government/customer versus startup authority for creation, verification, approval, disclosure, custody, support, security, export, retention, and disposition."
+        description: "Reporter, verifier, approver, customer administrator, records and privacy authority, startup personnel, official submitter, and external agency responsibilities for every relevant action."
         detail_level: detailed
-      - name: "data_lifecycle_and_interoperability"
-        description: "Provenance, classification, verification state, versioning, authenticity, identifiers, schemas, exchange, retention, and offboarding requirements."
+      - name: "workflow_lineage_and_data_lifecycle"
+        description: "States, transitions, source, timestamps, uncertainty, conflicts, versions, approval, correction, supersession, identifiers, classification, retention, archival, export, and disposition."
         detail_level: detailed
-      - name: "risk_continuity_and_inclusion"
-        description: "Privacy, security, tenant leakage, outages, provider failure, accessibility, connectivity exclusion, bias, re-identification, and mitigation requirements."
+      - name: "module_specific_requirements"
+        description: "Requirements allocated specifically to the six named system modules without introducing speculative modules or out-of-scope features."
+        detail_level: detailed
+      - name: "risk_controls_and_residual_limits"
+        description: "Privacy, security, tenant leakage, connectivity, accessibility, bias, provider failure, continuity, re-identification, automation bias, controls, test evidence, and residual risk."
+        detail_level: detailed
+  - name: "evaluation_and_feasibility"
+    fields:
+      - name: "metrics_comparators_and_test_conditions"
+        description: "Measurable outputs, numerator and denominator or operational definition, baseline comparator, task scenario, devices, network, roles, dataset, threshold rationale, and interpretation."
+        detail_level: detailed
+      - name: "adoption_cost_and_service_dependencies"
+        description: "Training, workflow fit, staffing, support, hosting, procurement, lifecycle cost, service levels, portability, provider exit, commercial evidence level, and conditions for broader adoption."
+        detail_level: detailed
+      - name: "generalization_and_future_evidence"
+        description: "Organizations, locations, hazards, users, deployment scales, and conditions covered or not covered plus evidence needed for production, policy, public-safety, economic, or market claims."
         detail_level: detailed
 uncertain: []

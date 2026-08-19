@@ -1,0 +1,119 @@
+{
+  "primary_sources": [
+    {
+      "source": "Republic Act No. 10173, Data Privacy Act of 2012",
+      "date": "2012-08-15",
+      "type": "Philippine statute",
+      "link": "https://lawphil.net/statutes/repacts/ra2012/ra_10173_2012.html",
+      "relevant_provisions": "Sections 3-4 define personal information processing and scope; Sections 11-13 require transparency, legitimate purpose, proportionality and a lawful criterion for personal or sensitive personal information; Section 16 establishes data-subject rights; Sections 20-21 impose security, processor-accountability, breach-notification and retention duties; Sections 25-34 penalize specified unauthorized processing, access, disposal, concealment and disclosure."
+    },
+    {
+      "source": "Implementing Rules and Regulations of Republic Act No. 10173",
+      "date": "2016-08-24",
+      "type": "Binding administrative rules",
+      "link": "https://privacy.gov.ph/implementing-rules-regulations-data-privacy-act-2012/",
+      "relevant_provisions": "Operationalizes lawful processing, privacy principles, data-subject rights, controller and processor accountability, organizational/physical/technical safeguards, breach response, subcontracting and data-sharing responsibilities."
+    },
+    {
+      "source": "NPC Circular No. 2023-06, Security of Personal Data in the Government and Private Sector",
+      "date": "2023-12-19; effective 2024-03-30",
+      "type": "Binding NPC issuance that repealed NPC Circular 16-01",
+      "link": "https://privacy.gov.ph/wp-content/uploads/2024/01/NPC-Circular-No.-2023-06-Security-of-Personal-Data-in-the-Government-and-the-Private-Sector.pdf",
+      "relevant_provisions": "Updates risk-based organizational, physical and technical security requirements for personal information controllers and processors, including governance, access management, business continuity, testing, incident management and processor oversight."
+    },
+    {
+      "source": "NPC Circular No. 16-03, Personal Data Breach Management",
+      "date": "2016-12-15",
+      "type": "Binding NPC issuance",
+      "link": "https://privacy.gov.ph/wp-content/uploads/2016/12/NPC-Circular-16-03-Personal-Data-Breach-Management.pdf",
+      "relevant_provisions": "Requires incident-response policies, breach documentation and, where the notification test is met, notification to the NPC and affected data subjects generally within 72 hours from knowledge; the controller remains responsible when processing is outsourced."
+    },
+    {
+      "source": "Republic Act No. 9470, National Archives of the Philippines Act of 2007",
+      "date": "2007-05-21",
+      "type": "Philippine statute",
+      "link": "https://lawphil.net/statutes/repacts/ra2007/ra_9470_2007.html",
+      "relevant_provisions": "Covers national and local public records, including electronic records; requires full and accurate government records, records schedules and authorized disposition; recognizes vital, protected and restricted-access records; regulates transfer to archival custody and public access. Sections 18-19 make disposition subject to National Archives authority rather than unilateral system deletion."
+    },
+    {
+      "source": "National Archives of the Philippines, Electronic Records Management Policy Primer",
+      "date": "2025",
+      "type": "Official records-management guidance",
+      "link": "https://nationalarchives.gov.ph/wp-content/uploads/2025/04/ERMP-PRIMER25.pdf",
+      "relevant_provisions": "Describes creation, capture, metadata, storage, access, preservation and disposition of electronic records. Appraisal and an Agency Records Disposition Schedule determine retention, transfer or authorized destruction; disposition is broader than deletion."
+    },
+    {
+      "source": "Republic Act No. 8792, Electronic Commerce Act of 2000",
+      "date": "2000-06-14",
+      "type": "Philippine statute",
+      "link": "https://lawphil.net/statutes/repacts/ra2000/ra_8792_2000.html",
+      "relevant_provisions": "Sections 6-13 recognize electronic documents and signatures and connect evidentiary weight to authenticity, integrity and reliable generation, storage and communication. Section 13 requires accessibility, accurate representation, originator/addressee identity and dispatch/receipt time for retained electronic records. Section 27 permits government electronic transactions under duly issued rules."
+    },
+    {
+      "source": "Supreme Court A.M. No. 01-7-01-SC, Rules on Electronic Evidence",
+      "date": "2001-07-17; effective 2001-08-01",
+      "type": "Binding procedural rules",
+      "link": "https://lawphil.net/courts/supreme/am/am_01-7-01_sc_2001.html",
+      "relevant_provisions": "Applies when electronic documents or data messages are offered in evidence and sets rules on authenticity, integrity, admissibility, evidentiary weight, electronic signatures and electronic testimony. A database entry or generated report is not self-proving merely because it is digital."
+    }
+  ],
+  "legal_or_evidentiary_status": "RA 10173 applies to the startup as a private-sector personal information controller when it determines purposes and means, and as a processor only when it processes solely on a customer's documented instructions. The government customer remains accountable for its statutory processing and public records; a contract cannot transfer away legal duties. RA 9470 directly governs government offices and LGUs and the public records created or received in their affairs. The startup must therefore preserve customer-directed record controls and must not claim archival or disposal authority. RA 8792 and the Rules on Electronic Evidence recognize electronic form but do not guarantee admissibility or truth: the proponent must establish authenticity and courts assess system reliability, origin and integrity. NPC circulars bind entities within their scope; the NAP primer explains implementation but cannot replace an approved government records-disposition schedule or agency/NAP authorization.",
+  "evidence_limits_and_conflicts": "Privacy and transparency are concurrent obligations, not categorical opposites. Government-record status does not make every field publicly disclosable, while the DPA does not create a blanket secrecy rule for all records. Disclosure requires a specific mandate, lawful criterion, purpose and field-level review; de-identification may fail in small disaster contexts where household, location, injury and assistance details can be recombined. RA 9470 governs public-record custody and disposition, whereas a startup's internal support records remain private business records subject to applicable contracts and law. The sources do not establish a universal retention period, a universal right to publish incident reports, that an audit log conclusively proves authorship, or that cloud storage alone meets evidentiary and archival requirements. Litigation, investigation, audit, complaint or preservation orders may suspend routine disposition; exact legal-hold authority and agency schedules require customer counsel/records-officer confirmation.",
+  "objective_revisions": "User and Organization Management: implement tenant-separated roles for reporter, verifier, approver and administrator, least privilege, access review, and logged support access. Disaster Reporting: capture structured facts, source attribution, event/record identifiers, creator and timestamps, classification, uncertainty and attachments without collecting unnecessary identifiers. Verification: preserve reviewer decision, reason, conflicts, corrections and immutable history rather than overwriting the submitted account. SitRep Generation: generate a versioned report from identified source-record versions, mark approval status and redact/restrict personal or sensitive fields for each audience. Catalog: retain searchable metadata, status, classification, retention/disposition status, holds and supersession links without treating search visibility as disclosure authority. Dashboard: show authorized aggregates and suppress or generalize small-cell/location views that can expose affected persons. Evaluation: test role enforcement, tenant isolation, traceability, redaction, export completeness, retention/hold behavior and recovery in defined scenarios.",
+  "scope_inclusions": "Include startup staff, customer administrators, LGU/office reporters, verifiers, approvers, records officers, privacy officers and authorized external recipients. Cover incident drafts, submitted reports, evidence attachments, verification decisions, approved and superseded SitReps, catalogs, dashboard aggregates, access/activity logs, exports, corrections, holds and disposition metadata. Cover classification at record and attachment level; lawful-purpose and minimum-necessary collection; controller-processor contract terms; documented support access; approved export; breach escalation; data-subject request routing; portability/return on contract exit; and handoff to the customer's records or archival custodian. The organization/customer configures authority, schedules, disclosure rules and official submission channels; the startup enforces configured controls and supplies evidence of operation.",
+  "limitations_and_delimitations": "The prototype is not a National Archives repository, court evidence vault, legal-hold management service, freedom-of-information decision engine, identity-proofing authority, emergency dispatch system or automatic public-warning publisher. It does not decide whether a report is an official government record, adjudicate privacy rights, certify a document as admissible, issue archival disposal authority, or replace agency records schedules and human approval. Public exports, external-agency filing and production cloud retention should remain simulated or administrator-controlled unless formal interfaces, contracts and authorities exist. Offline capture, forensic chain of custody, cryptographic long-term preservation, cross-border hosting, multi-region continuity and production breach notification require separate deployment evidence.",
+  "significance_causal_chains": [
+    "For reporters: structured source, time and uncertainty fields produce a more complete submission; verifiers can locate gaps faster; plausible benefit is less clarification work, conditional on training and connectivity; harm includes overcollection or false precision; test completion and correction rates against the current form.",
+    "For verifiers and approvers: preserved versions and reasons produce an inspectable decision trail; they can distinguish submitted, verified and approved claims; plausible benefit is accountable review, conditional on real use of role separation; harm is automation bias or rubber-stamping; test agreement, error detection and turnaround time.",
+    "For records/privacy officers: classification, hold, export and disposition metadata produce controllable lifecycle evidence; officers can apply schedules and respond to requests; plausible benefit is reduced unmanaged copying, conditional on approved policies; harm is premature deletion or excessive retention; test schedule, hold and export scenarios.",
+    "For affected residents: audience-specific minimization and access control reduce unnecessary exposure while permitting authorized operational use; plausible benefit is lower privacy risk, conditional on accurate classification and enforcement; test re-identification and unauthorized-access scenarios rather than claiming guaranteed privacy.",
+    "For customer organizations and the startup: tenant isolation, documented support access and exit export produce clearer accountability; organizations can supervise service use and change providers; plausible benefit is stronger operational governance, conditional on contracts, staffing and recovery tests; harms include vendor dependence and breach concentration."
+  ],
+  "safe_claims_and_claims_to_avoid": {
+    "safe": [
+      "The system is designed to preserve source, version, reviewer and approval metadata that may support authenticity and accountability; admissibility remains a legal determination.",
+      "Personal-data processing must have a lawful criterion and comply with transparency, legitimate purpose and proportionality; consent is not assumed to be the only or default basis.",
+      "Government customers retain responsibility for classifying, retaining, disclosing, transferring and disposing of their public records under applicable law and approved schedules.",
+      "Public-facing outputs use configured redaction or aggregation and require authorized approval before release."
+    ],
+    "avoid": [
+      "All disaster data are public records and may be published.",
+      "Consent makes any collection or disclosure lawful.",
+      "Blockchain, timestamps or audit logs make reports automatically admissible or tamper-proof.",
+      "The startup may delete government records when a subscription ends.",
+      "Anonymized dashboards guarantee that no person can be identified."
+    ]
+  },
+  "authority_and_responsibility_matrix": [
+    {"action": "Create/submit", "responsible": "Authorized reporter", "accountability": "Records source, facts, uncertainty and classification; submission does not equal verification."},
+    {"action": "Verify", "responsible": "Customer-designated verifier", "accountability": "Checks evidence, records conflicts and reason; cannot silently replace the original."},
+    {"action": "Approve/officially submit", "responsible": "Customer-designated approving or submitting officer", "accountability": "Determines official status, audience and external submission under mandate."},
+    {"action": "Configure access", "responsible": "Customer administrator under organization policy", "accountability": "Assigns least-privilege roles; privacy/records officers review sensitive and lifecycle rules."},
+    {"action": "Determine processing purpose and disclosure", "responsible": "Customer PIC; startup PIC only for its independent business processing", "accountability": "Documents legal basis, necessity, recipients and notices."},
+    {"action": "Operate hosted processing/support", "responsible": "Startup/PIP and authorized subprocessors", "accountability": "Follow documented instructions, secure processing, record support access, assist rights/breach duties and return/delete only as lawfully instructed."},
+    {"action": "Retain, hold, transfer or dispose public records", "responsible": "Customer agency head/records officer with NAP authority where required", "accountability": "Applies approved schedules and holds; startup executes authorized action and retains evidence."},
+    {"action": "Public release/export", "responsible": "Authorized customer disclosure officer", "accountability": "Reviews lawful authority, classification, redaction, purpose and recipient; startup supplies controlled export."}
+  ],
+  "workflow_lineage_and_data_lifecycle": "Use Draft -> Submitted -> Under Verification -> Verified/Returned/Disputed -> Approved -> Superseded/Closed states, with public release as a separate authorized event rather than a synonym for approval. Preserve stable incident and record IDs; actor, role and tenant; device/server event time with timezone; source/origin; ingestion time; field and attachment classification; uncertainty/conflict flags; parent version; hashes as integrity aids; reviewer and approval decision/reason; export recipient/purpose; correction and supersession links. Prevent destructive edits to submitted versions. Derive SitReps from pinned source versions and store the query/selection, template version and approval. Assign a customer-approved record series and retention trigger; freeze affected records under a documented hold; after expiry, obtain authorized disposition, log scope/method/approver and account for replicas/backups. Transfer archival records and metadata in usable formats to the proper custodian. Never use ordinary account deletion to bypass a hold, schedule or archival transfer.",
+  "module_specific_requirements": {
+    "User and Organization Management": "Tenant boundary, named roles, MFA where deployable, joiner-mover-leaver flow, periodic access review, time-limited support impersonation/access with customer approval and logs.",
+    "Disaster Reporting": "Minimum-necessary fields, source and event time, uncertainty, classification, attachment metadata, draft separation and immutable submitted version.",
+    "Verification": "Evidence links, independent reviewer identity, decision/reason, conflict flag, returned corrections and preserved before/after versions.",
+    "SitRep Generation": "Pinned inputs, version/template identity, generated-at time, approval watermark/status, audience-specific redaction and controlled export.",
+    "Catalog": "Record series, custodian, classification, retention trigger/date, hold, disposition/transfer status, version and supersession relationships.",
+    "Dashboard": "Authorization-aware aggregates, approved data only by default, small-cell/location suppression, freshness/source indicators and no drill-down beyond role permission."
+  },
+  "risk_controls_and_residual_limits": "Controls include tenant-scoped authorization checked server-side; deny-by-default object access; encryption in transit/at rest; secret separation; MFA for privileged roles; customer-approved, time-bounded support access; immutable/separately protected audit logs; malware/type/size checks for uploads; tested backups and restore; export authorization and watermark/manifest; retention and hold precedence; processor/subprocessor inventory; incident response and breach assessment; privacy impact assessment; accessible forms and status labels; and manual review of verification and disclosure. Test cross-tenant object IDs, cached links, exports, background jobs and logs. Residual risks include insider misuse, compromised customer accounts, inference from small geographic datasets, inaccurate field reports, clock drift, incomplete offline synchronization, cloud/subprocessor failure, customer misconfiguration and loss of evidence outside the system. Hashes detect some alteration but do not prove that input facts were true or identify the human without reliable identity and procedure.",
+  "metrics_comparators_and_test_conditions": [
+    "Authorization denial rate = prohibited cross-role/cross-tenant attempts blocked / prohibited attempts in a scripted matrix; target 100%, including direct object URLs, exports and background tasks.",
+    "Lineage completeness = approved SitRep assertions traceable to a source record version, actor and decision / assertions sampled; compare with the existing document workflow.",
+    "Correction preservation = submitted records whose original and correction reason remain retrievable / corrected submissions; target 100% in test data.",
+    "Disclosure leakage = prohibited direct or inferable personal fields disclosed / seeded prohibited fields across public export scenarios; target zero, including small-cell tests.",
+    "Lifecycle correctness = retention, hold, supersession, export, transfer and authorized-disposition scenarios producing expected state and evidence / scenarios run; target 100% before pilot.",
+    "Recovery point and time are measured in a staged restore using specified dataset size, service dependencies and network; do not claim continuity from backup creation alone.",
+    "Usability/task time should compare the same reporters, verifiers and scenarios against the current process; report median, errors, completion and assistance, not only satisfaction."
+  ],
+  "adoption_cost_and_service_dependencies": "Budget for privacy and records-policy mapping, data migration/quality review, role configuration, training, support, secure hosting, backup/restore, logging, vulnerability remediation, incident response, breach assistance, subprocessor management, archive/export storage and contract exit. Procurement must define controller/processor roles, processing instructions, hosting location, subprocessors, security evidence, incident notice, audit cooperation, data-subject and legal-hold assistance, availability/recovery objectives, ownership, export formats and verified return/deletion subject to public-record duties. Commercial feasibility cannot be inferred from prototype acceptance; validate willingness to procure, government acquisition rules, recurring operating cost, support workload and portability with actual target customers.",
+  "generalization_and_future_evidence": "The legal analysis is Philippine-specific and the prototype evidence can cover only the participating organization, configured roles, selected hazards, seeded records, devices and network conditions. It does not establish nationwide LGU compliance, court admissibility, NAP acceptance, universal disclosure policy, public-safety impact or startup market viability. Before production, obtain customer legal/privacy/records review; approved record series and schedules; data-sharing/processing agreements; privacy impact and threat assessments; penetration and tenant-isolation tests; accessibility evaluation; restore/failover and incident exercises; representative pilot results; archive/export interoperability confirmation; and independent review of actual disclosure datasets for re-identification risk.",
+  "uncertain": []
+}
