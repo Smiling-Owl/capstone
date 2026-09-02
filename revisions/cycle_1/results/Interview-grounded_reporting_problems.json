@@ -1,0 +1,298 @@
+{
+  "primary_sources": [
+    {
+      "source": "National Disaster Risk Reduction and Management Council, National Disaster Risk Reduction and Management Operations Center Standard Operating Procedures and Guidelines: 2024 Edition",
+      "date": "2024",
+      "type": "Official national government operating guideline",
+      "link": "https://ndrrmc.gov.ph/attachments/article/4125/NDRRMOC_SOPG_2024_EDITION.pdf",
+      "precise_support": "Page 45 identifies the NDRRMOC as the central repository, states that information is gathered from member agencies and regional councils/OCD offices, and requires verification and validation with relevant originating bodies before an official report is disseminated. Pages 52-55 distinguish initial, progress, terminal, cumulative situation, and final reports; page 53 requires later updates to be supported by source documentation. Page 63 identifies consolidated LDRRMC reports among official sources and organizes affected-population data by barangay, city or municipality, and province. These provisions corroborate multi-stage handoffs, provenance, consolidation, and verification requirements."
+    },
+    {
+      "source": "Republic Act No. 10121, Philippine Disaster Risk Reduction and Management Act of 2010",
+      "date": "2010-05-27",
+      "type": "Philippine statute",
+      "link": "https://ndrrmc.gov.ph/attachments/article/45/Republic_Act_10121.pdf",
+      "precise_support": "Sections 11 and 12 assign local DRRM councils and offices coordination, risk-assessment, operations-center, database, and information-dissemination functions, while Section 12(c)(7) requires local databases containing human-resource, equipment, directory, and critical-infrastructure information. The statute supports coordinated local information management but does not prescribe this project's software or prove that a particular local delay occurs."
+    },
+    {
+      "source": "National Privacy Commission, Republic Act No. 10173 (Data Privacy Act of 2012)",
+      "date": "2012-08-15",
+      "type": "Philippine statute reproduced by the responsible regulator",
+      "link": "https://privacy.gov.ph/data-privacy-act/",
+      "precise_support": "Sections 11, 20, 21, and 23 require proportional, secure, and accountable processing and controlled agency-personnel access to sensitive personal information. This corroborates the interviewee's caution about unrestricted sharing and supports role-based access and sanitized outputs rather than indiscriminate data availability."
+    },
+    {
+      "source": "National Privacy Commission Circular No. 16-01, Security of Personal Data in Government Agencies",
+      "date": "2016",
+      "type": "Official regulatory issuance",
+      "link": "https://privacy.gov.ph/npc-circular-16-01-security-of-personal-data-in-government-agencies/",
+      "precise_support": "Sections 5 and 6 require an inventory of repositories and media and controls protecting availability, integrity, and confidentiality. The circular supports governed central record management and access controls; it does not justify open access to all incident details."
+    },
+    {
+      "source": "DILG-LGRC CALABARZON, Operation L!STO Disaster Preparedness Manuals repository",
+      "date": "Current repository accessed 2026-08-23",
+      "type": "Official Department of the Interior and Local Government repository",
+      "link": "https://lgrc.calabarzon.dilg.gov.ph/ppa-1-drr-cca-activities/",
+      "precise_support": "The repository publishes official hazard-specific preparedness manuals and barangay DRRM planning and quality-assurance materials. It corroborates the existence of standardized local procedures and documentary evidence, but the available page does not establish how consistently Zamboanga City barangays implement them."
+    }
+  ],
+  "interview_traceability": [
+    {
+      "problem": "Communication delay",
+      "participant_role": "CDRRMO training-division staff member and Emergency Medical Services supervisor who also supports operations, warnings, technology initiatives, and report consolidation",
+      "timestamp": "36:27-38:21",
+      "exact_quotation_original": "Halimbawa yung barangay nilagay mo diyan gagawa sila ng report, kami pa yan ang tatawag minsan, minsan, pag sinasabi kong minsan mga 90% of the time or more than, nagpapadala pa yan kami ng tao, ma'am to verify. ... Ang nangyayari, kahit sa submission ng report, we had to call them.",
+      "english_translation": "For example, when a barangay is expected to prepare a report, we still have to call them; when I say sometimes, about 90% of the time or more, we even send personnel to verify. ... What happens is that even for report submission, we have to call them.",
+      "theme": "City staff must initiate follow-up communication before barangay reports arrive.",
+      "interpretation": "The observed handoff is barangay observation or report preparation to a city-office follow-up call, then submission or field verification. Dependence on calls adds a coordination step before consolidation and can delay the city office's situational picture.",
+      "corroborating_evidence": "The 2024 NDRRMOC SOPG requires information to move from originating councils and agencies through verification and validation before official reporting, making timely source-to-coordinator handoffs operationally important.",
+      "contrary_or_limiting_evidence": "The claimed '90% or more' frequency is one participant's estimate and was not checked against call logs, submission timestamps, barangay records, or additional interviewees. [uncertain]"
+    },
+    {
+      "problem": "Manual record-management delay",
+      "participant_role": "Same CDRRMO key informant",
+      "timestamp": "29:28-29:44 and 30:02-31:35",
+      "exact_quotation_original": "So kailangan niyo po manually iedit? Yes, kaya siya ganon kasimple lang. Pero kung may way na automatic yung generation, maganda sana. ... Sinubmit ko yung full, hiningi niya ito, pagkatapos nito, pinasummarize niya pa sa akin.",
+      "english_translation": "So you need to edit it manually? Yes, that is why it is very simple. But if there were a way to automate generation, that would be useful. ... I submitted the full version; after receiving it, he asked me to summarize it again.",
+      "theme": "Repeated manual editing and reformatting for different recipients",
+      "interpretation": "The handoff runs from collected incident inputs to a manually edited report, then to a full submission, followed by another manual executive summary. Re-entry and repeated condensation consume staff time and create opportunities for omission or inconsistent versions.",
+      "corroborating_evidence": "The NDRRMOC SOPG defines several report stages and contents, confirming that records evolve. It supports versioned reuse of verified data, although it does not require automated generation.",
+      "contrary_or_limiting_evidence": "The transcript provides no measured editing duration, error rate, or comparison with a digital workflow; therefore the magnitude of the delay is not established."
+    },
+    {
+      "problem": "Limited data sharing",
+      "participant_role": "Same CDRRMO key informant",
+      "timestamp": "1:03:44-1:07:08",
+      "exact_quotation_original": "Ibig sabihin, lahat ng alam ko should be shared. ... Unfortunately dito sa office natin, ganyan ang nangyayari. Like ang research and planning division, they don't know shit of what we do dito sa training. They don't know shit kung ano yung ginagawa namin dito sa operation. They don't know shit sa EMS. That's why they cannot effectively come up with situational report. ... Sa CDDRMO, yes. But even dito sa amin, ma'am, nililimit ko.",
+      "english_translation": "Everything I know should be shared. ... Unfortunately, in our office the research and planning division does not know what training, operations, and EMS do. That is why they cannot effectively prepare a situation report. ... Within the CDRRMO, access is possible, but even here I limit it.",
+      "theme": "Knowledge and records are fragmented across divisions while access must also be controlled.",
+      "interpretation": "The handoff runs from operational divisions to research and planning for documentation, then back to the informant for correction. Missing shared terminology and operational context causes repeated correction; however, privacy and approval requirements mean the remedy is governed sharing, not universal access.",
+      "corroborating_evidence": "RA 10121 assigns local database and information functions, while RA 10173 and NPC Circular 16-01 require controlled access, repository inventories, and integrity and confidentiality safeguards.",
+      "contrary_or_limiting_evidence": "The account does not inventory actual repositories, permissions, or documents and cannot establish that every division or user lacks needed access. The informant explicitly says records are centralized 'in a sense' because research should keep them."
+    },
+    {
+      "problem": "Inefficient verification",
+      "participant_role": "Same CDRRMO key informant",
+      "timestamp": "36:27-38:21 and 43:02-45:13",
+      "exact_quotation_original": "Most often than not, we even have to send people to verify which is not effective. ... Pero dahil sa kulang ang tao, iilan lang din ang capable ... apart from ako yung team lead, ako yung lead sa extrication, sa medical services, ako din naglead ng assessment.",
+      "english_translation": "More often than not, we even have to send people to verify, which is not effective. ... Because personnel are insufficient and only a few are capable ... besides being the team lead and leading extrication and medical services, I also led the assessment.",
+      "theme": "Field verification competes with response duties and depends on scarce qualified personnel.",
+      "interpretation": "The handoff is third-party or incomplete information to city follow-up, then dispatch of qualified personnel, assessment, and verified inclusion in the report. Dispatch is sometimes necessary for provenance, but staffing overlap can burden response personnel and slow validation.",
+      "corroborating_evidence": "The NDRRMOC SOPG explicitly requires verification and validation with relevant originating bodies before official reporting and requires supporting documentation for later reports; therefore verification cannot simply be removed.",
+      "contrary_or_limiting_evidence": "No dispatch times, staffing roster, verification backlog, or error outcomes were supplied. Field checking may be the correct safeguard when information is third-hand, so the bounded problem is inefficient routing and evidence capture, not verification itself."
+    }
+  ],
+  "evidence_limits": [
+    "The interview evidence comes from one key informant and reflects that participant's experience and judgments; it is not a representative survey of all 98 Zamboanga City barangays or all CDRRMO divisions.",
+    "The transcript contains no direct timestamp dataset for report receipt, verification completion, consolidation, approval, or dissemination. It establishes workflow friction but not a quantified delay reduction target.",
+    "The participant's estimate that follow-up or dispatch occurs '90% of the time or more' is [uncertain] because it was not corroborated with administrative records.",
+    "Official national sources establish required reporting, validation, database, privacy, and access-control practices. They do not independently prove that the reported local practices occur or identify their local frequency.",
+    "The transcript alternates between current practice, ideal practice, internal summaries, national submissions, and public releases. These are distinct artifacts and should not be treated as one report or one audience.",
+    "The evidence does not establish that automation will make reports legally valid, eliminate field verification, correct organizational knowledge gaps, guarantee adoption, or replace mayoral and authorized-office approval.",
+    "Operation L!STO materials are hazard-specific and implementation varies; the official repository confirms standards exist but does not by itself prove local compliance or noncompliance."
+  ],
+  "target_sections": [
+    "Chapter 1 — Statement of the Problem: replace the blended problem narrative with four separate subsections on communication delay, manual record-management delay, limited data sharing, and inefficient verification.",
+    "Chapter 1 — Purpose of the Study: connect each observed problem to a bounded record-management or coordination response without claiming that the system replaces official SitReps or human verification.",
+    "Chapter 1 — Specific Objectives: use measurable workflow outcomes that can later be tested with timestamps, version histories, access logs, and verification records.",
+    "Chapter 1 — Scope and Limitations: identify interview scope, users, report stages, privacy constraints, approval dependencies, and unmeasured baseline limitations. Exclude diagrams and diagram discussion."
+  ],
+  "proposed_revision_content": {
+    "statement_of_the_problem": [
+      {
+        "heading": "Communication delay",
+        "prose": "Incident information does not always move directly from the barangay to the city disaster office. The interviewed CDRRMO staff member explained that city personnel still have to call barangays for report submission and may dispatch personnel when the information needs confirmation (CDRRMO key-informant interview, 36:27-38:21). This creates an additional handoff between local observation, barangay reporting, city follow-up, and consolidation. The consequence is not merely slower messaging: until the source responds or evidence is obtained, city staff may lack a sufficiently supported entry for the evolving incident record. The NDRRMOC reporting framework likewise treats disaster information as inputs gathered from originating councils and agencies and subjected to verification and validation before official dissemination (NDRRMC, 2024, pp. 45, 52-55). The project therefore addresses traceable submission and follow-up status; it does not assume that a digital message is automatically verified."
+      },
+      {
+        "heading": "Manual record-management delay",
+        "prose": "The reporting burden continues after information is received. The interviewee confirmed that outputs are manually edited and described submitting a full report only to prepare another summarized version for decision makers (CDRRMO key-informant interview, 29:28-29:44; 30:02-31:35). The workflow therefore moves from source inputs to manual consolidation, recipient-specific editing, approval, and sometimes further condensation. Repeated handling can consume limited staff time, omit chronology or supporting detail, and produce multiple versions whose relationship is difficult to trace. Because national guidance distinguishes initial, progress, terminal, cumulative situation, and final reports, the appropriate response is to preserve reusable incident data, provenance, status, and version history while allowing authorized users to prepare audience-appropriate outputs (NDRRMC, 2024, pp. 52-55). The project does not claim that one automatically generated document will satisfy every official recipient."
+      },
+      {
+        "heading": "Limited data sharing",
+        "prose": "The interview also indicates a knowledge and record-sharing gap across office functions. Although research and planning is expected to facilitate documentation, the interviewee reported that the division lacks sufficient knowledge of training, operations, and EMS activities and that resulting drafts return for correction (CDRRMO key-informant interview, 1:03:44-1:06:54). This circular handoff can delay consolidation and introduce terminology or role errors. Yet wider sharing cannot mean unrestricted disclosure: the same participant described limiting access, and incident records may contain personal or sensitive information. Accordingly, the proposed system should provide a shared, role-governed incident record with source attribution and authorized views. This approach aligns local database and information functions under RA 10121 with the access, integrity, confidentiality, and accountability requirements of RA 10173 and NPC Circular 16-01."
+      },
+      {
+        "heading": "Inefficient verification",
+        "prose": "Verification is required, but the current routing described in the interview can be resource-intensive. When barangay or witness information is incomplete or indirect, the city office may call the source or send personnel to the field; the interviewee also reported that the few capable assessors hold concurrent operational, medical, extrication, and leadership duties (CDRRMO key-informant interview, 36:27-38:21; 43:02-45:13). The resulting sequence—receipt, follow-up, dispatch, assessment, documentation, and approval—can compete with response work. National guidance confirms that verification, validation, and source documentation are necessary before information becomes an official report (NDRRMC, 2024, pp. 45, 52-55). The bounded system purpose is therefore to make verification queues, source evidence, status, and reviewer actions visible; it is not to replace qualified assessment or mark unreviewed information as true."
+      }
+    ],
+    "purpose_of_the_study": "This study aims to design and evaluate a role-governed incident record management system for authorized barangay and Zamboanga City DRRM users. The system will support time-stamped submission, structured incident records, evidence attachment, controlled inter-unit access, status-based verification, correction history, and reusable summaries. Its purpose is to reduce avoidable follow-up and duplicate encoding while preserving human review, source provenance, privacy controls, official approval, and existing government reporting procedures."
+  },
+  "local_context_and_workflow": {
+    "actors": [
+      "Barangay officials or designated barangay DRRM personnel who originate or consolidate local observations",
+      "Witnesses, callers, responders, and 911 personnel who may supply first- or second-hand incident information",
+      "CDRRMO operations personnel who receive, coordinate, and act on information",
+      "RDANA or PDANA-capable personnel who assess conditions before, during, or after an event",
+      "CDRRMO research and planning personnel who should facilitate planning and documentation",
+      "The interviewed report consolidator or final technical arbiter, the CDRRMO head, the city mayor, and external recipients such as OCD, NDRRMC, and DILG"
+    ],
+    "current_handoffs": [
+      "Observation or incident call -> barangay, responder, or 911 record -> CDRRMO operations",
+      "Missing or delayed barangay submission -> CDRRMO follow-up call -> barangay response",
+      "Indirect, incomplete, or questionable information -> personnel dispatch -> field assessment and evidence -> verifier",
+      "Operational inputs from training, EMS, operations, and other units -> research and planning or the de facto consolidator -> correction and consolidation",
+      "Draft or internal summary -> technical review/signature -> office-head and mayoral approval where required -> OCD, NDRRMC, DILG, city leadership, or a sanitized public release"
+    ],
+    "channels_and_artifacts": [
+      "Telephone and 911 calls",
+      "Text messages and group chats, with confidentiality constraints",
+      "Photographs and other source documentation",
+      "Manual forms, internal summaries, incident command system forms, and national report templates",
+      "Computer-edited documents and recipient-specific executive summaries"
+    ],
+    "failure_points": [
+      "A submission does not arrive until city staff call the barangay.",
+      "The origin, time, and evidentiary status of information can be separated across calls, chats, photographs, and documents.",
+      "Qualified personnel are dispatched for verification while also performing response roles.",
+      "Operational knowledge is not consistently transferred to the documentation unit, causing correction loops.",
+      "Manual reformatting produces multiple versions for internal, national, congressional, and public audiences.",
+      "Broad access or publication can expose names, faces, health information, or other protected data."
+    ],
+    "fallback_practices": [
+      "Call the barangay or originating unit for missing information.",
+      "Dispatch personnel when information is third-hand or cannot otherwise be supported.",
+      "Ask on-scene personnel to take photographs and telephone the operations center, where staff can document events on a computer.",
+      "Manually correct drafts and prepare shorter recipient-specific summaries.",
+      "Restrict access and sanitize public-facing information pending authorized approval."
+    ]
+  },
+  "problem_root_cause_consequence": [
+    {
+      "problem": "Communication delay",
+      "observed_practice": "City staff call barangays for expected reports and may initiate a verification dispatch.",
+      "root_cause": "The handoff depends on active follow-up and lacks a shared, visible submission and acknowledgment state; the transcript also suggests uneven barangay reporting capability.",
+      "operational_consequence": "City consolidation waits for a response or supporting evidence, while staff spend time chasing submissions.",
+      "interview_evidence": "36:27-38:21",
+      "bounded_system_response": "Time-stamped submissions, receipt acknowledgment, missing-information flags, escalation status, and notifications to authorized responsible users. Do not promise continuous connectivity or automatic truth determination."
+    },
+    {
+      "problem": "Manual record-management delay",
+      "observed_practice": "The informant manually edits a simple output and repeatedly produces full and summarized forms for different recipients.",
+      "root_cause": "Incident facts and chronology are not consistently reused as structured, versioned data across outputs and audiences.",
+      "operational_consequence": "Duplicate encoding and condensation consume time and risk omitted details or inconsistent versions.",
+      "interview_evidence": "29:28-29:44; 30:02-31:35",
+      "bounded_system_response": "Maintain one versioned incident record and generate editable working summaries from selected verified fields. Official format compliance and final approval remain human responsibilities."
+    },
+    {
+      "problem": "Limited data sharing",
+      "observed_practice": "Research and planning receives inputs but reportedly lacks cross-division operational knowledge; drafts return to the informant for correction, and access is intentionally limited.",
+      "root_cause": "Fragmented knowledge, terminology, and records across units coexist with legitimate confidentiality restrictions.",
+      "operational_consequence": "Correction loops delay reporting and may introduce role or terminology errors, while indiscriminate sharing would create privacy risk.",
+      "interview_evidence": "1:03:44-1:07:08",
+      "bounded_system_response": "Provide role-based access, shared controlled vocabulary, source attribution, audit history, and sanitized views. Do not expose all data to all users."
+    },
+    {
+      "problem": "Inefficient verification",
+      "observed_practice": "The city calls sources or sends personnel to verify, while qualified assessors also hold operational duties.",
+      "root_cause": "Incomplete or third-hand inputs require additional evidence, and qualified verification capacity is limited.",
+      "operational_consequence": "Verification consumes personnel time, competes with response work, and can delay the transition from preliminary to supported information.",
+      "interview_evidence": "36:27-38:21; 43:02-45:13",
+      "bounded_system_response": "Capture source class, attachments, geotag or location when available, verifier assignment, reason for return, status, and decision time. Retain field assessment and authorized human validation."
+    }
+  ],
+  "title_and_terminology": {
+    "title_alternatives": [
+      "Incident Record Management and Verification System for Barangay and City DRRM Coordination in Zamboanga City",
+      "Role-Governed Disaster Incident Record System for Zamboanga City Barangay Coordination",
+      "Barangay-to-City Incident Record and Validation System for Zamboanga City DRRM"
+    ],
+    "definitions": {
+      "incident_record": "A time-stamped, source-attributed working record of an observed or reported event, its location, people or assets affected, actions, attachments, status, and corrections. It may contain preliminary information and is not automatically an official SitRep.",
+      "SitRep": "A situation report prepared for an authorized audience under applicable organizational and national procedures; it consolidates the situation, effects, actions, issues, and updates appropriate to its reporting stage.",
+      "reporting": "The controlled movement and documentation of incident information from an originating person or unit through consolidation, review, approval, and authorized dissemination.",
+      "validation": "A responsible unit's check that required fields, classifications, consistency, and supporting information meet the applicable reporting rules.",
+      "verification": "A qualified person's confirmation of a claim against the originating source, direct observation, or acceptable supporting evidence. Verification is a human accountability function supported, not replaced, by software.",
+      "coordination": "The assignment, acknowledgment, follow-up, and exchange of incident information and actions among barangay, city, assessment, documentation, and approving actors.",
+      "monitoring": "Tracking an incident record's time, status, updates, assignments, and unresolved information across its lifecycle.",
+      "record_management": "Controlled creation, classification, storage, retrieval, correction, versioning, retention, access, and disposition of incident records and their evidence."
+    }
+  },
+  "objective_acceptance_trace": [
+    {
+      "problem": "Communication delay",
+      "objective": "Enable authorized barangay users to submit and city users to acknowledge structured incident records with visible follow-up status.",
+      "module_or_function": "Submission, acknowledgment, notification, and escalation-status workflow",
+      "verification_artifact": "Audit log containing submission, receipt, request-for-information, and response timestamps",
+      "measurable_success_indicator": "During prototype tests, 100% of scripted submissions retain sender, recipient, timestamp, and status; compare median acknowledgment time with a documented baseline only after baseline data are collected.",
+      "dependency": "User accounts, connectivity or an approved degraded-mode procedure, responsible-user assignment, and notification availability",
+      "limitation": "Notifications cannot compel submission, guarantee network service, or establish incident truth."
+    },
+    {
+      "problem": "Manual record-management delay",
+      "objective": "Reuse one versioned incident record to prepare editable summaries without re-encoding common fields.",
+      "module_or_function": "Incident repository, version history, and summary export",
+      "verification_artifact": "Field-level comparison between the stored record, revision history, and generated test output",
+      "measurable_success_indicator": "In scripted tests, all mapped fields populate the output correctly and every correction records author, time, and prior value; compare preparation time with the current method after a timed baseline is obtained.",
+      "dependency": "Approved field mapping, templates, retention rules, and authorized reviewers",
+      "limitation": "Export does not confer official SitRep status and may still require manual narrative editing and signatures."
+    },
+    {
+      "problem": "Limited data sharing",
+      "objective": "Provide the minimum necessary incident information to each authorized role while protecting restricted personal data.",
+      "module_or_function": "Role-based access, shared terminology, sanitized view, and access audit",
+      "verification_artifact": "Role-permission matrix plus allowed-and-denied access test log",
+      "measurable_success_indicator": "All scripted authorized accesses succeed, all prohibited accesses fail, and each access is logged in the prototype test set.",
+      "dependency": "CDRRMO-approved roles, data classification, privacy impact assessment, and account administration",
+      "limitation": "Software access cannot by itself resolve organizational knowledge or training gaps."
+    },
+    {
+      "problem": "Inefficient verification",
+      "objective": "Make source, evidence, assignment, review status, and reasons for return traceable for every record requiring verification.",
+      "module_or_function": "Verification queue, evidence attachment, reviewer action, and status history",
+      "verification_artifact": "Scenario-test record showing source class, assigned verifier, evidence, decision, rationale, and timestamps",
+      "measurable_success_indicator": "In 100% of scripted verification scenarios, the system prevents an unreviewed record from being labeled verified and preserves the reviewer and decision history.",
+      "dependency": "Qualified reviewers, evidence standards, device access, and field-verification procedures",
+      "limitation": "The system cannot replace field assessment, authenticate every attachment, or decide factual validity autonomously."
+    }
+  ],
+  "scope_boundaries_and_nonclaims": {
+    "included": [
+      "Authorized barangay and Zamboanga City DRRM users participating in incident submission, consolidation, controlled sharing, verification, review, and monitoring",
+      "Structured incident facts, chronology, source, attachments, status, corrections, access history, and editable working summaries",
+      "Planned and unplanned incidents only where the participating office activates or uses the applicable reporting workflow",
+      "Prototype evaluation through scenario-based functional, permission, traceability, and timed workflow tests"
+    ],
+    "excluded_or_dependent": [
+      "Automatic declaration of an official NDRRMC or OCD SitRep",
+      "Replacement of RDANA, PDANA, incident command, qualified assessment, signatures, mayoral or office approval, or national submission rules",
+      "Unrestricted public access, publication of names or sensitive details, and sharing outside approved roles",
+      "Guaranteed interoperability with an NDRRMC API, because no integration requirement or accessible endpoint is established here",
+      "Guaranteed operation during network failure unless a separately approved offline or degraded-mode process is implemented",
+      "Citywide effectiveness, adoption, or quantified delay reduction before multi-user deployment and baseline/post-test evidence"
+    ],
+    "safe_claims": [
+      "The interview identifies follow-up calls, manual editing, correction loops, restricted sharing, and personnel-intensive verification as workflow frictions experienced by the participant.",
+      "The prototype can centralize scoped incident records, preserve provenance and versions, control access, and make verification status visible in tests.",
+      "The system can support preparation of working summaries while retaining human review and official procedures."
+    ],
+    "stronger_claims_to_avoid": [
+      "All barangays report late or inaccurately.",
+      "The current Zamboanga City process is legally noncompliant.",
+      "A centralized database should be accessible to everyone.",
+      "Automation eliminates errors, field visits, personnel shortages, or reporting delays.",
+      "A generated output is automatically an official SitRep or admissible evidence.",
+      "The system will improve disaster outcomes without operational evaluation."
+    ]
+  },
+  "recommended_citations": {
+    "placements": [
+      "After the description of progressive report stages and supported updates: (National Disaster Risk Reduction and Management Council [NDRRMC], 2024, pp. 52-55).",
+      "After the claim that national reporting gathers information from originating councils and agencies and verifies it before dissemination: (NDRRMC, 2024, p. 45).",
+      "After the description of local database and information-management duties: (Republic Act No. 10121, 2010, secs. 11-12).",
+      "After the requirement for role-governed access and secure processing: (Republic Act No. 10173, 2012, secs. 11, 20-23; National Privacy Commission, 2016, secs. 5-6).",
+      "Place transcript citations immediately after each local-practice claim using role and timestamp, for example: (CDRRMO key-informant interview, 36:27-38:21). Do not cite the interview to establish citywide prevalence."
+    ],
+    "compact_reference_list": [
+      "National Disaster Risk Reduction and Management Council. (2024). National Disaster Risk Reduction and Management Operations Center standard operating procedures and guidelines: 2024 edition. https://ndrrmc.gov.ph/attachments/article/4125/NDRRMOC_SOPG_2024_EDITION.pdf",
+      "National Privacy Commission. (2016). NPC Circular No. 16-01: Security of personal data in government agencies. https://privacy.gov.ph/npc-circular-16-01-security-of-personal-data-in-government-agencies/",
+      "Republic Act No. 10121. (2010). Philippine Disaster Risk Reduction and Management Act of 2010. https://ndrrmc.gov.ph/attachments/article/45/Republic_Act_10121.pdf",
+      "Republic Act No. 10173. (2012). Data Privacy Act of 2012. https://privacy.gov.ph/data-privacy-act/",
+      "Zamboanga City CDRRMO key-informant interview transcript. (n.d.). Unpublished capstone interview transcript, 29:28-31:35, 36:27-38:21, 43:02-45:13, and 1:03:44-1:07:08."
+    ]
+  },
+  "uncertain": [
+    "interview_traceability.communication_delay.frequency_estimate",
+    "evidence_limits.follow_up_frequency"
+  ]
+}

@@ -1,0 +1,49 @@
+%%{init: {"theme":"base","flowchart":{"curve":"linear","nodeSpacing":24,"rankSpacing":28},"themeVariables":{"primaryColor":"#ffffff","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","clusterBkg":"#f8fafc","clusterBorder":"#64748b","fontFamily":"Arial"}}}%%
+flowchart LR
+    subgraph SOURCE["Reporting Unit / Information Source"]
+        direction TB
+        M1(["Incident onset"])
+        M2["Provide preliminary\nincident information"]
+        M3["Provide clarification and\nsource documentation"]
+        M4["Provide material updates\non situation and actions"]
+        M1 --> M2
+    end
+
+    subgraph REVIEW["Authorized DRRM Review"]
+        direction TB
+        M5["Receive and review\nincident information"]
+        M6{"Correction or clarification\nrequired?"}
+        M7["Check supporting sources\nand document provenance"]
+        M8{"Response phase\ncontinuing?"}
+        M5 --> M6
+        M6 -- "No" --> M7 --> M8
+    end
+
+    subgraph REPORT["Report Development and Approval"]
+        direction TB
+        M9["Issue Initial Report"]
+        M10["Issue Progress Report(s)\nwith changes and actions"]
+        M11["Prepare cumulative SitRep(s),\nwhen applicable"]
+        M12["Issue Terminal Report at\nconclusion of response phase"]
+        M13["Prepare Final Report with outcomes,\nshortcomings, and recommendations"]
+        M9 --> M10 --> M11 --> M12 --> M13
+    end
+
+    subgraph RECORDS["Records / Official Dissemination"]
+        direction TB
+        M14["Preserve issued report,\nversion, and source documentation"]
+        M15["Disseminate through the\napplicable official process"]
+        M16(["Reporting lifecycle closed"])
+        M14 --> M15 --> M16
+    end
+
+    M2 --> M5
+    M6 -- "Yes" --> M3 --> M5
+    M7 --> M9
+    M8 -- "Yes" --> M4 --> M5
+    M8 -- "No" --> M12
+    M9 --> M14
+    M10 --> M14
+    M11 --> M14
+    M12 --> M14
+    M13 --> M14

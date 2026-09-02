@@ -1,0 +1,77 @@
+%%{init: {"theme":"base","flowchart":{"curve":"linear","nodeSpacing":22,"rankSpacing":26},"themeVariables":{"primaryColor":"#ffffff","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","clusterBkg":"#f8fafc","clusterBorder":"#64748b","fontFamily":"Arial"}}}%%
+flowchart LR
+    subgraph PUROK["Purok Reporter"]
+        direction TB
+        P1(["Incident observed"])
+        P2["Create report and attach\navailable source evidence"]
+        P3["Submit Purok Report"]
+        P4["Correct returned report"]
+        P1 --> P2 --> P3
+    end
+
+    subgraph SYS["DRRM-Owned System"]
+        direction TB
+        S1["Validate fields; record source,\ntime, jurisdiction, and version"]
+        S2{"Required data present?"}
+        S3["Return missing-field notice"]
+        S4["Preserve submitted version and\nnotify Barangay reviewer"]
+        S5["Preserve corrected version"]
+        S6["Preserve Barangay Report version\nand notify ZCDRRMO reviewer"]
+        S7["Assemble City SitRep draft from\neligible verified versions"]
+        S8["Preserve approval, sources,\ntemplate, and audit history"]
+        S9["Export approved City SitRep"]
+        S1 --> S2
+        S2 -- "No" --> S3
+        S2 -- "Yes" --> S4
+        S8 --> S9
+    end
+
+    subgraph BRGY["Barangay Reviewer / Reporter"]
+        direction TB
+        B1["Review Purok Report\nand source evidence"]
+        B2{"Barangay review decision"}
+        B3["Return with correction reason"]
+        B4(["Reject with recorded reason"])
+        B5["Accept eligible reports and prepare\nconsolidated Barangay Report"]
+        B6["Submit Barangay Report"]
+        B1 --> B2
+        B2 -- "Return" --> B3
+        B2 -- "Reject" --> B4
+        B2 -- "Accept" --> B5 --> B6
+    end
+
+    subgraph VERIFY["ZCDRRMO Reviewer / Verifier"]
+        direction TB
+        V1["Review Barangay Report,\nsource versions, and discrepancies"]
+        V2{"Verification decision"}
+        V3["Return with discrepancy\nor correction request"]
+        V4(["Reject with recorded reason"])
+        V5["Verify eligible\nBarangay Report version"]
+        V1 --> V2
+        V2 -- "Return" --> V3
+        V2 -- "Reject" --> V4
+        V2 -- "Verify" --> V5
+    end
+
+    subgraph APPROVE["ZCDRRMO Approver"]
+        direction TB
+        A1["Review City SitRep draft\nand source summary"]
+        A2{"Approval decision"}
+        A3["Return draft for revision"]
+        A4["Approve City SitRep"]
+        A5(["Submit exported report through\nthe applicable official process"])
+        A1 --> A2
+        A2 -- "Return" --> A3
+        A2 -- "Approve" --> A4
+    end
+
+    P3 --> S1
+    S3 --> P2
+    S4 --> B1
+    B3 --> P4 --> S5 --> B1
+    B6 --> S6 --> V1
+    V3 --> B5
+    V5 --> S7 --> A1
+    A3 --> S7
+    A4 --> S8
+    S9 --> A5

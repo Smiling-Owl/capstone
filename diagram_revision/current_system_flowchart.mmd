@@ -1,0 +1,29 @@
+%%{init: {"theme":"base","flowchart":{"curve":"linear","nodeSpacing":28,"rankSpacing":32},"themeVariables":{"primaryColor":"#ffffff","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","fontFamily":"Arial"}}}%%
+flowchart TB
+    C1(["Incident observed"]):::purok
+    C2{"Are people or areas affected?"}:::purok
+    C3["PUROK: Gather initial observations—\nlocation, time, effects, and urgent needs"]:::purok
+    C4["PUROK: Notify Barangay through\nexisting communication channels"]:::purok
+    C5["BARANGAY: Receive notification\nand check the incident"]:::barangay
+    C6["BARANGAY: Prepare initial report"]:::barangay
+    C7["BARANGAY: Send report through SMS, call,\nmessaging, email, or file"]:::barangay
+    C8["ZCDRRMO: Receive reports\nfrom Barangays"]:::city
+    C9{"Is information complete\nand internally consistent?"}:::city
+    C10["ZCDRRMO: Request clarification"]:::city
+    C11["BARANGAY: Gather updated affected-population,\ndamage, and response information"]:::barangay
+    C12["BARANGAY: Prepare and send updated report"]:::barangay
+    C13["ZCDRRMO: Manually consolidate messages,\ndocuments, shared drives, and spreadsheets"]:::city
+    C14["ZCDRRMO: Prepare City SitRep"]:::city
+    C15["ZCDRRMO: Review and submit City SitRep\nthrough the applicable official process"]:::city
+    C16(["Continue updates or close reporting"]):::city
+    CEND(["End / continue monitoring"])
+
+    C1 --> C2
+    C2 -- "No" --> CEND
+    C2 -- "Yes" --> C3 --> C4 --> C5 --> C6 --> C7 --> C8 --> C9
+    C9 -- "No" --> C10 --> C11 --> C12 --> C8
+    C9 -- "Yes" --> C13 --> C14 --> C15 --> C16
+
+    classDef purok fill:#eff6ff,stroke:#2563eb,color:#0f172a;
+    classDef barangay fill:#f0fdf4,stroke:#16a34a,color:#0f172a;
+    classDef city fill:#fff7ed,stroke:#ea580c,color:#0f172a;

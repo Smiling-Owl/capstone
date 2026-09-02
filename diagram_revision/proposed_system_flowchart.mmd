@@ -1,0 +1,49 @@
+%%{init: {"theme":"base","flowchart":{"curve":"linear","nodeSpacing":28,"rankSpacing":32},"themeVariables":{"primaryColor":"#ffffff","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","fontFamily":"Arial"}}}%%
+flowchart TB
+    P1(["Incident observed"]):::purok
+    P2["PUROK REPORTER: Create report and\nattach available source evidence"]:::purok
+    P3["PUROK REPORTER: Submit Purok Report"]:::purok
+    S1["SYSTEM: Validate required fields and record\nsource, time, incident, jurisdiction, and version"]:::system
+    S2{"Required submission\ndata present?"}:::system
+    S3["SYSTEM: Return draft with\nmissing-field notice"]:::system
+    S4["SYSTEM: Preserve submitted version and\nnotify assigned Barangay reviewer"]:::system
+    B1["BARANGAY REVIEWER: Review Purok Report\nand available source evidence"]:::barangay
+    B2{"Barangay review decision"}:::barangay
+    B3["Return with correction reason"]:::barangay
+    B4(["Reject with recorded reason"]):::barangay
+    P4["PUROK REPORTER: Correct report"]:::purok
+    S5["SYSTEM: Create and preserve\na new corrected version"]:::system
+    B5["BARANGAY REPORTER: Accept eligible reports\nand prepare consolidated Barangay Report"]:::barangay
+    B6["BARANGAY REPORTER: Submit Barangay Report"]:::barangay
+    S6["SYSTEM: Preserve Barangay Report version\nand notify ZCDRRMO reviewer"]:::system
+    V1["ZCDRRMO REVIEWER: Review Barangay Report,\nsource versions, and discrepancies"]:::city
+    V2{"ZCDRRMO verification decision"}:::city
+    V3["Return with discrepancy or\ncorrection request"]:::city
+    V4(["Reject with recorded reason"]):::city
+    V5["Verify eligible Barangay Report version"]:::city
+    S7["SYSTEM: Assemble City SitRep draft from\neligible verified Barangay Report versions"]:::system
+    A1["ZCDRRMO APPROVER: Review SitRep draft\nand source-report summary"]:::approve
+    A2{"Approval decision"}:::approve
+    A3["Return SitRep draft for revision"]:::approve
+    A4["Approve City SitRep"]:::approve
+    S8["SYSTEM: Preserve approved version, sources,\ntemplate, approval, and audit history"]:::system
+    S9["SYSTEM: Export approved City SitRep"]:::system
+    A5(["DRRM: Submit exported report through\nthe applicable official process"]):::approve
+
+    P1 --> P2 --> P3 --> S1 --> S2
+    S2 -- "No" --> S3 --> P2
+    S2 -- "Yes" --> S4 --> B1 --> B2
+    B2 -- "Return" --> B3 --> P4 --> S5 --> B1
+    B2 -- "Reject" --> B4
+    B2 -- "Accept" --> B5 --> B6 --> S6 --> V1 --> V2
+    V2 -- "Return" --> V3 --> B5
+    V2 -- "Reject" --> V4
+    V2 -- "Verify" --> V5 --> S7 --> A1 --> A2
+    A2 -- "Return" --> A3 --> S7
+    A2 -- "Approve" --> A4 --> S8 --> S9 --> A5
+
+    classDef purok fill:#eff6ff,stroke:#2563eb,color:#0f172a;
+    classDef barangay fill:#f0fdf4,stroke:#16a34a,color:#0f172a;
+    classDef city fill:#fff7ed,stroke:#ea580c,color:#0f172a;
+    classDef approve fill:#fdf4ff,stroke:#a21caf,color:#0f172a;
+    classDef system fill:#f8fafc,stroke:#475569,color:#0f172a;

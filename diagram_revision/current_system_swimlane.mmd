@@ -1,0 +1,42 @@
+%%{init: {"theme":"base","flowchart":{"curve":"linear","nodeSpacing":24,"rankSpacing":28},"themeVariables":{"primaryColor":"#ffffff","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","clusterBkg":"#f8fafc","clusterBorder":"#64748b","fontFamily":"Arial"}}}%%
+flowchart LR
+    subgraph PUROK["Purok Leaders"]
+        direction TB
+        C1(["Incident observed"])
+        C2{"People or areas affected?"}
+        C3["Gather location, time,\neffects, and urgent needs"]
+        C4["Notify Barangay through\nexisting channels"]
+        CE(["Continue monitoring"])
+        C1 --> C2
+        C2 -- "No" --> CE
+        C2 -- "Yes" --> C3 --> C4
+    end
+
+    subgraph BRGY["Barangay"]
+        direction TB
+        C5["Receive Purok notification"]
+        C6["Check incident and\nprepare initial report"]
+        C7["Send report through SMS, call,\nmessaging, email, or file"]
+        C8["Gather affected-population,\ndamage, and response updates"]
+        C9["Prepare and send\nupdated report"]
+        C5 --> C6 --> C7 --> C8 --> C9
+    end
+
+    subgraph CITY["ZCDRRMO Operations"]
+        direction TB
+        C10["Receive Barangay reports"]
+        C11{"Information complete\nand consistent?"}
+        C12["Request clarification"]
+        C13["Manually consolidate messages,\ndocuments, drives, and spreadsheets"]
+        C14["Prepare City SitRep"]
+        C15["Review and submit through\nthe applicable official process"]
+        C16(["Continue updates or close reporting"])
+        C10 --> C11
+        C11 -- "No" --> C12
+        C11 -- "Yes" --> C13 --> C14 --> C15 --> C16
+    end
+
+    C4 --> C5
+    C7 --> C10
+    C12 -- "Clarification request" --> C8
+    C9 --> C10

@@ -1,0 +1,242 @@
+{
+  "primary_sources": [
+    {
+      "source": "Republic Act No. 10121 (2010), Sections 11-12",
+      "type": "Philippine statute",
+      "link": "https://lawphil.net/statutes/repacts/ra2010/ra_10121_2010.html",
+      "supported_claim": "Local DRRM bodies have jurisdiction-bound duties for monitoring, consolidating risk information, maintaining databases, coordinating activities, and operating emergency operations centers; the law does not prescribe this particular platform."
+    },
+    {
+      "source": "NDRRM Operations Center Standard Operating Procedures and Guidelines (2024), pp. 52-55 and 63",
+      "type": "Official national operational guideline",
+      "link": "https://ndrrmc.gov.ph/",
+      "supported_claim": "Disaster reporting progresses through initial, progress, terminal, and final reports; cumulative SitReps require reporting periods, prevailing conditions, actions, effects, issues, recommendations, geographic disaggregation, and attributable sources."
+    },
+    {
+      "source": "Republic Act No. 12254 (2025), E-Governance Act",
+      "type": "Philippine statute",
+      "link": "https://lawphil.net/statutes/repacts/ra2025/ra_12254_2025.html",
+      "supported_claim": "Government digital processes should address interoperability, security, continuity, accessibility, electronic transactions, and records management; this does not prove the prototype is compliant or nationally integrated."
+    },
+    {
+      "source": "Republic Act No. 10173 (2012) and its Implementing Rules and Regulations (2016)",
+      "type": "Philippine privacy law and official regulation",
+      "link": "https://privacy.gov.ph/data-privacy-act/",
+      "supported_claim": "Organization-scoped access, purpose limitation, proportionality, security safeguards, and accountable outsourced processing are required when personal data is handled."
+    },
+    {
+      "source": "Republic Act No. 9470 (2007), National Archives of the Philippines Act",
+      "type": "Philippine statute",
+      "link": "https://lawphil.net/statutes/repacts/ra2007/ra_9470_2007.html",
+      "supported_claim": "Public records require inventory, retention and disposition controls, preservation, and authorized disposal; a vendor cannot treat offboarding as automatic deletion."
+    }
+  ],
+  "interview_traceability": [
+    {
+      "participant_role": "Zamboanga City DRRM practitioner; training division member, EMS supervisor, and technology focal person",
+      "quotation": "Sometimes, when we talk about ninety percent of the time or more, we still send people to verify.",
+      "timestamp": "36:27-38:21",
+      "theme": "Verification burden and weak barangay-to-city handoff",
+      "interpretation": "Submitted information commonly requires follow-up calls or field verification, supporting a review queue and explicit verification decisions.",
+      "corroborating_evidence": "The same participant described multiple information sources at 57:18-58:25 and staff shortages at 43:02-45:13.",
+      "contrary_or_limiting_evidence": "This is one practitioner account and the stated frequency was not independently measured."
+    },
+    {
+      "participant_role": "Zamboanga City DRRM practitioner and SitRep consolidator",
+      "quotation": "Yes, if there is a way for automatic generation, that would be good. I have not looked into that yet.",
+      "timestamp": "29:22-29:44",
+      "theme": "Manual consolidation",
+      "interpretation": "Draft assembly may reduce repetitive transcription, but human review remains necessary.",
+      "corroborating_evidence": "At 19:34-22:41 the participant described editing and revising hundreds of SitReps to fit the expected template.",
+      "contrary_or_limiting_evidence": "The interview does not establish a measured time saving or prove that automation improves accuracy."
+    },
+    {
+      "participant_role": "Zamboanga City DRRM practitioner and records contributor",
+      "quotation": "Update. But you should not remove the old one you submitted. You only combine it.",
+      "timestamp": "55:18-56:23",
+      "theme": "Version preservation",
+      "interpretation": "The system should preserve prior submissions and link later updates rather than overwrite reviewed records.",
+      "corroborating_evidence": "The 2024 NDRRMOC reporting lifecycle distinguishes successive report stages and cumulative updates.",
+      "contrary_or_limiting_evidence": "The exact implementation and retention period require organization policy and legal review."
+    },
+    {
+      "participant_role": "Zamboanga City DRRM practitioner and SitRep consolidator",
+      "quotation": "Centralized in a sense; research should keep [the reports]. The origins are not only the research and planning division.",
+      "timestamp": "1:03:21-1:06:54",
+      "theme": "Distributed sources and record custody",
+      "interpretation": "A shared record system must accept inputs from several functions while preserving custodial responsibility and access limits.",
+      "corroborating_evidence": "At 1:06:54-1:07:35 the participant stated that access is limited even within the office.",
+      "contrary_or_limiting_evidence": "The interview reflects current Zamboanga City practice and does not establish a universal workflow for all DRRM organizations."
+    }
+  ],
+  "evidence_limits": [
+    "The interview evidence comes principally from one office and cannot establish prevalence across Philippine LGUs.",
+    "Statutes and national guidance establish duties and constraints, not that this prototype will improve response time, decision quality, funding release, or public-safety outcomes.",
+    "The precise template configuration, approval chain, retention schedule, privacy classification, and acceptable performance thresholds remain organization-dependent.",
+    "A connected prototype cannot establish reliability during power, internet, hosting, or telecommunications failure without tested fallback arrangements.",
+    "Usability and technical test results do not establish procurement eligibility, commercial viability, nationwide suitability, or production readiness."
+  ],
+  "target_sections": [
+    "Chapter 1 title page and title references",
+    "Section 1.1 Project Context: intervention framing and operational gap",
+    "Section 1.3 General Objective",
+    "Section 1.3 Specific Objectives",
+    "Scope and Limitations: included functions, dependencies, exclusions, and non-claims",
+    "Definition of Terms: incident record, SitRep, validation, verification, coordination, monitoring, and record management"
+  ],
+  "proposed_revision_content": {
+    "recommended_title": "A Role-Based Disaster Incident Reporting and Record Management System for Participating DRRM Organizations",
+    "title_alternatives": [
+      "A Multi-Organization Disaster Incident Reporting, Verification, and Record Management Platform",
+      "A Traceable Disaster Information Workflow and Record Management System for Local DRRM Organizations",
+      "A Responsive Web-Based Disaster Incident and Situation Information Management System"
+    ],
+    "general_objective": "To design, develop, and evaluate a responsive, role-based web system that enables participating DRRM organizations to capture, verify, consolidate, retrieve, and monitor traceable disaster incident records while preserving organization-scoped authority, access, and record history.",
+    "specific_objectives": [
+      "Develop organization and user management that separates each participating organization's users, jurisdictions, roles, configurations, and records and logs security-relevant changes.",
+      "Develop structured incident reporting that records source, place, occurrence and submission times, hazard, impacts, needs, actions, attachments, uncertainty, and submission state, with validation and possible-duplicate checks.",
+      "Develop human-led verification that supports triage, source and version comparison, clarification, duplicate and conflict flags, reasoned decisions, and preservation of submitted and corrected versions.",
+      "Develop controlled SitRep drafting that consolidates only eligible organization and jurisdiction records, identifies the reporting period and unresolved discrepancies, and traces sampled values to source records and verification decisions.",
+      "Develop a searchable record catalog that preserves incident and SitRep versions, relationships, classifications, audit events, and organization-controlled export.",
+      "Develop role-scoped dashboards showing provisional and verified values, status, coverage, and processing time with disclosed filters, update time, missing data, and drill-down to permitted records.",
+      "Evaluate the modules with scripted functional, integration, organization-isolation, accessibility, recovery, and role-based user tests, reporting each measure with its numerator, denominator, task conditions, failures, and sample characteristics."
+    ],
+    "transition": "These objectives address the observed fragmentation, repeated clarification, manual consolidation, limited access, and version-preservation needs without treating document generation as the system's primary contribution or claiming that software independently verifies facts or improves emergency outcomes."
+  },
+  "local_context_and_workflow": {
+    "location": "Zamboanga City, with a configurable multi-organization design for participating provincial, city, municipal, barangay, or other authorized DRRM organizations.",
+    "hazards": ["Flood", "Typhoon", "Fire"],
+    "actors": ["Authorized field or barangay reporter", "Organization reviewer or verifier", "Organization approver", "Organization viewer", "Organization administrator", "Startup platform administrator"],
+    "stages": ["Create or save initial observation", "Submit and acknowledge", "Triage and inspect", "Request clarification or correction", "Record verification decision", "Consolidate eligible versions into a draft SitRep", "Human review and approval", "Retrieve, export, correct, or supersede while preserving history"],
+    "channels_and_handoffs": "Current inputs may arrive through calls, text, messaging, photographs, radio, field personnel, and office records. The bounded implementation provides a connected web workflow and system of record; existing telephone, radio, paper, and other contingency channels remain necessary during outages.",
+    "failure_points": ["Unstructured or incomplete reports", "Repeated calls and field verification", "Conflicting or duplicate values", "Manual re-entry during consolidation", "Unclear provenance", "Overwritten updates", "Role overload", "Connectivity or power interruption"],
+    "fallback_practice": "Record an interrupted submission as failed or requiring reconciliation, prevent silent duplicate creation, and allow authorized staff to encode information received through approved contingency channels once connectivity returns."
+  },
+  "problem_root_cause_consequence": [
+    {
+      "problem": "Fragmented incident intake",
+      "observed_practice": "Information arrives from multiple divisions and channels and often requires follow-up.",
+      "root_cause": "No shared structured intake and status trail across contributing actors.",
+      "operational_consequence": "Repeated clarification, re-entry, uncertain provenance, and delayed consolidation.",
+      "interview_evidence": "36:27-38:21 and 57:18-58:25",
+      "bounded_system_response": "Structured submissions with stable identifiers, source and time metadata, acknowledgement states, validation, and duplicate flags."
+    },
+    {
+      "problem": "Verification bottleneck",
+      "observed_practice": "Staff call barangays or dispatch personnel to confirm reports while also holding other operational roles.",
+      "root_cause": "Incomplete evidence, inconsistent source quality, and limited dedicated verification personnel.",
+      "operational_consequence": "High workload and slower resolution of uncertain or conflicting records.",
+      "interview_evidence": "36:27-38:21 and 43:02-45:13",
+      "bounded_system_response": "A human-led review queue with comparison, clarification, conflict flags, reasoned decisions, and version history; no automated truth determination."
+    },
+    {
+      "problem": "Manual SitRep consolidation",
+      "observed_practice": "A consolidator edits source material into different detailed and summarized outputs.",
+      "root_cause": "Source information and report categories are not consistently structured or linked.",
+      "operational_consequence": "Repetitive transcription and difficulty tracing consolidated values.",
+      "interview_evidence": "19:34-22:41 and 29:22-31:35",
+      "bounded_system_response": "Assemble a reviewable draft from eligible versions and retain source links; approval and external submission remain human and organizational acts."
+    },
+    {
+      "problem": "Weak version and custody control",
+      "observed_practice": "Reports originate in several functions, access is limited, and updates should not erase earlier submissions.",
+      "root_cause": "Distributed custody without a consistent version, authorization, and audit model.",
+      "operational_consequence": "Loss of historical context, ambiguous responsibility, or unauthorized disclosure.",
+      "interview_evidence": "55:18-56:23 and 1:03:21-1:07:35",
+      "bounded_system_response": "Organization-scoped access, immutable material history, searchable records, retention metadata, audit events, and controlled export."
+    }
+  ],
+  "title_and_terminology": {
+    "title_rationale": "The recommended title foregrounds the enduring functions—incident reporting and record management—while leaving SitRep drafting as one module and avoiding an unsupported national or official-report claim.",
+    "incident_record": "A time-stamped, source-attributed digital record of an observation, impact, need, action, or update associated with an incident; it is not necessarily verified or official.",
+    "SitRep": "A cumulative situation report for a defined operational or reporting period that summarizes the prevailing situation, actions, effects, issues, and recommendations from eligible sources; system generation produces a draft until authorized approval.",
+    "reporting": "The capture and submission of observations or updates by an identified source.",
+    "validation": "Automated or procedural checks for required fields, format, range, consistency, and possible duplication; validation does not establish factual truth.",
+    "verification": "A documented human assessment of a report against sources or evidence by personnel authorized by the participating organization.",
+    "coordination": "The exchange and alignment of information and responsibilities among authorized actors; the platform supports but does not exercise command authority.",
+    "monitoring": "Role-scoped viewing of recorded status, coverage, timing, and values; it is not forecasting or automatic decision-making.",
+    "record_management": "Controlled creation, classification, access, versioning, retrieval, retention, export, preservation, and authorized disposition of records and their metadata."
+  },
+  "objective_acceptance_trace": [
+    {
+      "problem": "Cross-organization disclosure and unclear authority",
+      "objective": "Organization and user management",
+      "module_or_function": "Tenant, jurisdiction, role, and support-access controls",
+      "verification_artifact": "Two-organization access-control test log and audit trail",
+      "measurable_success_indicator": "All scripted permitted actions succeed and all scripted cross-organization or unauthorized actions are blocked and logged.",
+      "dependency": "Correct identity, role, organization, and jurisdiction configuration",
+      "limitation": "Testing does not prove resistance to every attack or production compliance."
+    },
+    {
+      "problem": "Incomplete, inconsistent, duplicate, or interrupted submissions",
+      "objective": "Structured incident reporting",
+      "module_or_function": "Forms, explicit unknown states, validation, stable IDs, and submission acknowledgement",
+      "verification_artifact": "Seeded valid, incomplete, conflicting, duplicate, and interrupted-report test set",
+      "measurable_success_indicator": "Report applicable-field completeness, valid-value rate, duplicate-warning result, and permitted state-transition success are reported separately with numerators and denominators.",
+      "dependency": "Agreed field definitions and realistic test records",
+      "limitation": "Form completeness does not establish factual accuracy."
+    },
+    {
+      "problem": "Costly clarification and verification",
+      "objective": "Human-led verification",
+      "module_or_function": "Review queue, source/version comparison, clarification, conflict flags, and reasoned decisions",
+      "verification_artifact": "Workflow log for seeded conflicting, corrected, late, and rejected records",
+      "measurable_success_indicator": "Every scripted decision records actor, time, reason, evidence reference, and preserved prior version; verification turnaround is measured.",
+      "dependency": "Authorized reviewers and evidence available for the scenario",
+      "limitation": "The system cannot determine truth or replace professional judgment."
+    },
+    {
+      "problem": "Manual consolidation and weak provenance",
+      "objective": "Controlled SitRep drafting",
+      "module_or_function": "Eligibility filtering, aggregation, source links, versioning, and approval state",
+      "verification_artifact": "Expected-versus-generated SitRep dataset and source-traceability matrix",
+      "measurable_success_indicator": "Report exact aggregation accuracy and the proportion of sampled consolidated values traceable to an eligible source and verification decision.",
+      "dependency": "Configured categories, reporting period, jurisdiction, and eligibility rules",
+      "limitation": "A generated draft is not automatically an official NDRRMC issuance or external submission."
+    },
+    {
+      "problem": "Scattered records and overwritten updates",
+      "objective": "Searchable record catalog",
+      "module_or_function": "Search, compare, supersede, audit, retention metadata, and export",
+      "verification_artifact": "Retrieval, version-preservation, backup-restore, and customer-export test results",
+      "measurable_success_indicator": "Scripted records and versions are retrieved accurately; restoration result and export completeness are reported with missing items identified.",
+      "dependency": "Backup, retention, classification, and export configuration",
+      "limitation": "Retention and disposition remain subject to the responsible public office's approved policy and law."
+    },
+    {
+      "problem": "Status and coverage are difficult to interpret",
+      "objective": "Role-scoped dashboard",
+      "module_or_function": "Summaries, disclosed filters and periods, missing-data labels, accessible alternatives, and drill-down",
+      "verification_artifact": "Expected-versus-displayed values and WCAG 2.2 test results",
+      "measurable_success_indicator": "Displayed values match the scripted dataset; each chart has a textual or tabular equivalent; accessibility results list applicable criteria and failures.",
+      "dependency": "Correct source data, filters, permissions, and browser support",
+      "limitation": "Dashboard values reflect recorded data and do not prove absence of unreported impacts or support forecasting."
+    }
+  ],
+  "scope_boundaries_and_nonclaims": {
+    "included": "A responsive web application for participating DRRM organizations, covering configured users and jurisdictions, floods, typhoons, and fires, structured incident records, human verification, draft SitRep consolidation, catalog and version management, export, audit history, and role-scoped dashboards.",
+    "excluded": ["Native mobile application", "Full offline synchronization", "SMS or radio integration", "Predictive analytics", "Automated public warning", "Emergency dispatch", "Independent truth determination", "Live national-government system integration", "Automatic official publication or external submission"],
+    "dependencies": ["Compatible device and browser", "Electricity", "Internet and hosting availability", "Trained and authorized personnel", "Organization-approved roles, workflow, templates, retention, and privacy rules", "Existing outage contingency procedures"],
+    "safe_claims": ["The prototype structures and traces recorded incident information.", "It can assemble a reviewable local SitRep draft from eligible records.", "It can enforce tested role and organization boundaries under declared test conditions.", "It can report measured task, data-quality, workflow, recovery, accessibility, and isolation results."],
+    "claims_to_avoid": ["Guarantees real-time or uninterrupted reporting", "Automatically verifies truth", "Produces an official national SitRep by generation alone", "Ensures legal or standards compliance", "Eliminates reporting delays or errors", "Improves emergency decisions or public-safety outcomes", "Accelerates funding release", "Is procurement-ready, commercially viable, nationwide-ready, or production-ready"]
+  },
+  "recommended_citations": {
+    "placements": [
+      "After the sentence establishing local DRRM monitoring, consolidation, coordination, and database duties: (Republic Act No. 10121, 2010, secs. 11-12).",
+      "After the paragraph defining progressive report stages and cumulative SitRep content: (NDRRMC, 2024, pp. 52-55).",
+      "After the requirement for geographic disaggregation and source attribution: (NDRRMC, 2024, p. 63).",
+      "After organization-scoped privacy and outsourced-processing boundaries: (Republic Act No. 10173, 2012; National Privacy Commission, 2016).",
+      "After retention, custody, export, and lawful-disposition boundaries: (Republic Act No. 9470, 2007).",
+      "After accessibility, continuity, records-management, and non-integration qualifications: (Republic Act No. 12254, 2025)."
+    ],
+    "compact_references": [
+      "National Disaster Risk Reduction and Management Council. (2024). NDRRM Operations Center Standard Operating Procedures and Guidelines.",
+      "National Privacy Commission. (2016). Implementing Rules and Regulations of Republic Act No. 10173.",
+      "Republic Act No. 9470. (2007). National Archives of the Philippines Act of 2007.",
+      "Republic Act No. 10121. (2010). Philippine Disaster Risk Reduction and Management Act of 2010.",
+      "Republic Act No. 10173. (2012). Data Privacy Act of 2012.",
+      "Republic Act No. 12254. (2025). E-Governance Act."
+    ]
+  },
+  "uncertain": []
+}

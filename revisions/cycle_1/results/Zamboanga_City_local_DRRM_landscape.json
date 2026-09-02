@@ -1,0 +1,234 @@
+{
+  "primary_sources": [
+    {
+      "source": "Republic Act No. 10121, Philippine Disaster Risk Reduction and Management Act of 2010",
+      "date": "2010-05-27",
+      "type": "National law",
+      "url": "https://lawphil.net/statutes/repacts/ra2010/ra_10121_2010.html",
+      "supported_claims": "Sections 11-12 establish local DRRM councils, an LDRRMO in each province, city, and municipality, and a BDRRMC in every barangay. Local offices and committees coordinate programs, consolidate risk information, maintain maps and resource databases, operate early-warning and operations-center functions, monitor disasters, mobilize partners, and respond and recover within their jurisdiction."
+    },
+    {
+      "source": "DILG Memorandum Circular No. 2010-143, Local Disaster Risk Reduction and Management Councils",
+      "date": "2010-12-09",
+      "type": "National administrative issuance",
+      "url": "https://downloads.caraga.dilg.gov.ph/Disaster%20Preparedness/DILG%20Issuances%20on%20DRRM%20and%20CCA/DILG-Memo_Circular-2010-143.pdf",
+      "supported_claims": "Restates that the Barangay Development Council exercises barangay LDRRM Council powers, the BDRRMC is a regular committee under the Punong Barangay, and the DRRMO/BDRRMC performs risk assessment, warning, monitoring, coordination, operations-center, database, response, recovery, planning, and reporting functions."
+    },
+    {
+      "source": "DILG Memorandum Circular No. 2025-035 / Listo si KAP implementation summary",
+      "date": "2025",
+      "type": "Current national administrative framework summarized by DILG",
+      "url": "https://region6.dilg.gov.ph/dilg-rolls-out-listo-si-kap-to-strengthen-barangay-disaster-preparedness/",
+      "supported_claims": "Clarifies the current barangay arrangement: the Barangay Development Council acts as the LDRRM Council and approves the Barangay DRRM Plan and recommends emergency measures; the BDRRMC functions as the local implementing office. Preparedness duties include drills, equipment and supply readiness, and infrastructure audit; response includes activating operations centers, evacuation-site management, and search-and-rescue coordination; post-disaster work includes damage assessment and rehabilitation support."
+    },
+    {
+      "source": "Zamboanga City Government, Office of the City Disaster Risk Reduction and Management",
+      "date": "Current web page accessed 2026-08-23; underlying ordinances dated 2013 and 2014",
+      "type": "Official local-government office profile and service charter",
+      "url": "https://zamboangacity.gov.ph/office-of-the-city-disaster-risk-deduction-management/",
+      "supported_claims": "City Ordinance No. 419 established ZCDRRMO and BDRRMCs in every city barangay; Ordinance No. 433 reorganized the office. The current structure lists Administration and Training, Research and Planning, and Operations and Warning. The office describes barangay training, risk-information consolidation, database and risk-map maintenance, council-secretariat work, planning and fund-utilization reports, multi-hazard warning, continuous monitoring, emergency response, and coordination through radio, landline, mass media, and other communications technology."
+    },
+    {
+      "source": "DSWD DROMIC, Effects of Southwest Monsoon and Low Pressure Area beginning 6 June 2025",
+      "date": "2025-07-09",
+      "type": "Official national disaster situation-report series",
+      "url": "https://dromic.dswd.gov.ph/flooding-incidents-in-zamboanga-city-07-june-2025/",
+      "supported_claims": "Documents a progressive reporting series that began as flooding incidents in Zamboanga City and was updated through at least 18 reports as the event scope and information changed, illustrating the need for timestamps, versions, coverage, correction, and traceability."
+    },
+    {
+      "source": "DOST, Zamboanga adopts REDAS",
+      "date": "2025-09-25",
+      "type": "Official national-government technology and local-adoption report",
+      "url": "https://www.dost.gov.ph/knowledge-resources/news/86-2025-news/4186-zamboanga-adopts-dost-s-rapid-damage-assessment-tool-to-boost-disaster-preparedness-of-communities.html",
+      "supported_claims": "Zamboanga City formally adopted REDAS in 2025. The source identifies drought and flooding as common regional disasters and notes that REDAS includes earthquake, tsunami, flood, storm-surge, and rain-induced-landslide hazard information."
+    },
+    {
+      "source": "Philippine Information Agency, Zambo ramps up flood preparedness through community-first innovations",
+      "date": "2025-07-14",
+      "type": "Government news report quoting Zamboanga CDRRMO",
+      "url": "https://pia.gov.ph/news/zambo-ramps-up-flood-preparedness-through-community-first-innovations/",
+      "supported_claims": "Reports that vulnerable city barangays remain exposed to flooding and that CDRRMO was pursuing community preparedness, drainage planning, and possible relocation for repeatedly affected communities."
+    }
+  ],
+  "interview_traceability": "[uncertain] No interview transcript, participant list, quotation, or timestamp was supplied for this research object. Consequently, no local reporting channel, delay, duplicate record, verification practice, or user difficulty should be attributed to an interview participant here. Chapter 1 should insert only transcript-verified evidence using: participant role; exact quotation; timestamp/page; theme; bounded interpretation; supporting official or documentary evidence; and contrary or limiting evidence.",
+  "evidence_limits": [
+    "RA 10121 and DILG issuances establish duties but do not prove how consistently each of Zamboanga City's barangays performs them in practice.",
+    "The ZCDRRMO web page is an official service description, not a time-and-motion study of actual incident-report handoffs, verification delays, or data quality.",
+    "The current city page contains an internal dating inconsistency for Ordinance No. 433 (approval described as 2014 while the service pledge calls it series 2016); the ordinance text should be obtained before citing its exact series year.",
+    "DOST's statement that drought and flooding are common refers to Region IX; it supports regional context but not a ranked city-specific hazard frequency.",
+    "PIA confirms continuing flood exposure but does not quantify all exposed barangays or establish causation from sea-level rise or weather shifts.",
+    "DROMIC demonstrates progressive external reporting for a 2025 event but does not by itself reveal the internal ZCDRRMO-barangay workflow or the software used.",
+    "No source reviewed establishes that a privately operated platform can verify facts, approve evacuation, issue official warnings, declare a calamity, or submit an official government SitRep without authorized human action."
+  ],
+  "target_sections": [
+    "Chapter 1: Project Context / Background of the Study",
+    "Chapter 1: Statement of the Problem",
+    "Chapter 1: General and Specific Objectives",
+    "Chapter 1: Scope and Limitations",
+    "Chapter 1: Definition of Terms"
+  ],
+  "proposed_revision_content": "Zamboanga City's disaster-risk governance operates through linked barangay and city institutions. Republic Act No. 10121 requires a Barangay Disaster Risk Reduction and Management Committee in every barangay and a permanent local DRRM office at city level. DILG's current Listo si KAP framework distinguishes the Barangay Development Council's policy and approval role from the BDRRMC's implementing role: barangays prepare and execute local DRRM measures, conduct drills, maintain readiness, activate local operations, manage evacuation sites, coordinate rescue, and assist damage assessment and recovery. At city level, ZCDRRMO consolidates disaster-risk information, maintains risk and resource records, supports planning, operates warning and monitoring functions, coordinates responders and partner organizations, and serves as secretariat and executive arm of the City DRRM Council. Zamboanga City established these arrangements locally through Ordinance No. 419 and later reorganized ZCDRRMO through Ordinance No. 433.\n\nThis institutional chain matters because incident information develops over time and crosses jurisdictional and organizational boundaries. The 2025 DSWD DROMIC series for flooding that began in Zamboanga City progressed through repeated reports as conditions and coverage changed. A local reporting system should therefore preserve the source barangay or organization, observation and submission times, reporting period, verification state, correction history, and relationship between an incident record and later consolidated outputs. It can support authorized reporters, reviewers, and approvers, but it cannot replace the statutory authority of the BDRRMC, ZCDRRMO, the City DRRM Council, or national agencies.\n\nThe local hazard context is multi-hazard. Recent government materials identify recurrent flooding in vulnerable Zamboanga City barangays, while the city's 2025 adoption of REDAS adds official capacity for considering earthquake shaking, liquefaction, landslide, tsunami, flood, storm surge, and rain-induced-landslide information. The proposed project should present floods, typhoons or severe weather, and fires only as its selected prototype cases, not as a complete ranking of city risks. Its bounded contribution is structured capture, review, traceable consolidation, and record retrieval under locally approved roles and procedures.",
+  "local_context_and_workflow": {
+    "hazards": [
+      "Flooding is a documented continuing threat in vulnerable Zamboanga City barangays and produced repeated official situation reports in June-July 2025.",
+      "Drought is identified by DOST as a common Region IX hazard and Zamboanga City experienced an El Nino-related state of calamity that was lifted in July 2024.",
+      "Earthquake shaking, liquefaction, landslide, tsunami, storm surge, and rain-induced landslide are relevant planning hazards represented in the REDAS capability adopted by the city in 2025.",
+      "Fire and other human-induced emergencies fall within the response services published by ZCDRRMO."
+    ],
+    "institutions_and_actors": [
+      "Barangay Development Council acting as the barangay LDRRM Council: approves and monitors the barangay plan and recommends emergency measures.",
+      "BDRRMC under the Punong Barangay: implements local DRRM programs, preparedness, operations-center activation, evacuation management, rescue coordination, damage assessment, and recovery support.",
+      "ZCDRRMO: city executive and technical office with Administration and Training, Research and Planning, and Operations and Warning functions.",
+      "City DRRM Council chaired by the local chief executive: policy, plan, coordination, evaluation, and evacuation-recommendation functions, supported by ZCDRRMO as secretariat and executive arm.",
+      "City offices and external partners: social welfare, health, engineering, police, fire, armed forces, Coast Guard where applicable, civil society, private sector, volunteers, OCD, DILG, DSWD, PAGASA, PHIVOLCS, and neighboring LGUs, according to mandate and incident need."
+    ],
+    "reporting_stages_and_handoffs": [
+      "Field or community observations are captured within the responsible barangay or authorized responding organization.",
+      "[uncertain] An authorized barangay reporter reviews and sends incident details to the city operations/coordination function through locally designated channels; the exact Zamboanga City routing, form, and approval sequence require interview or procedure evidence.",
+      "City staff receive, timestamp, classify, check scope and completeness, seek clarification, and corroborate consequential claims before using eligible information in a local consolidated report.",
+      "Corrections and later observations update the record without erasing earlier submitted versions; each consolidated output states its reporting period and cut-off.",
+      "Authorized city officials approve any official local output and transmit it through the government-prescribed channel; national or sectoral agencies may further consolidate it."
+    ],
+    "information_channels": [
+      "The official ZCDRRMO service page expressly identifies radio, landline, mass media, and communication technologies, particularly for rural communities, and publishes telephone/mobile hotlines.",
+      "[uncertain] SMS, messaging applications, email, paper forms, spreadsheets, or face-to-face relay may be used locally, but their actual role and precedence were not established by the reviewed official sources.",
+      "A web system should be an additional controlled record channel; fallback channel reports need later reconciliation with source, receipt time, actor, and duplicate checks."
+    ],
+    "failure_points_and_fallbacks": [
+      "Possible failure points are incomplete early observations, inconsistent place or unit names, conflicting estimates, duplicate relay through multiple channels, unclear verification status, delayed connectivity, and manual copying into consolidated reports; these are risk-informed design concerns, not confirmed local findings.",
+      "Fallbacks should preserve existing authorized radio and telephone reporting, allow provisional or unknown values, record the receiving officer and time, and reconcile later into one versioned incident history.",
+      "The platform must not delay urgent rescue or warning while waiting for complete fields or internet access."
+    ]
+  },
+  "problem_root_cause_consequence": [
+    {
+      "problem": "Incident information changes during an event.",
+      "observed_practice": "The 2025 DROMIC event page published a sequence of at least 18 reports and changed the event title/coverage as the situation developed.",
+      "root_cause": "Disaster effects and response data are initially incomplete and are updated as field reports arrive.",
+      "operational_consequence": "Unversioned consolidation can obscure which figures were known at a particular cut-off and which report corrected an earlier one.",
+      "interview_evidence": "[uncertain] None supplied.",
+      "bounded_system_response": "Store stable identifiers, observation/receipt/submission times, explicit provisional status, immutable submitted versions, correction and supersession links, and output cut-off times."
+    },
+    {
+      "problem": "Information must cross barangay, city, and partner boundaries while authority remains distributed.",
+      "observed_practice": "Law and local service materials assign local implementation to BDRRMCs and citywide consolidation, warning, monitoring, planning, and coordination to ZCDRRMO and the City DRRM Council.",
+      "root_cause": "Different institutions have jurisdiction-specific facts, technical roles, and legal approval powers.",
+      "operational_consequence": "A record can be misread as verified or official if source organization, reviewer, approval state, and recipient are not explicit.",
+      "interview_evidence": "[uncertain] None supplied.",
+      "bounded_system_response": "Use organization-scoped roles and show source, jurisdiction, status, reviewer rationale, approval, and export/transmission events; retain human authority."
+    },
+    {
+      "problem": "Communications may be diverse or disrupted.",
+      "observed_practice": "The legal mandate and ZCDRRMO service description require diverse communication, including radio and landline, and continuous monitoring.",
+      "root_cause": "Geographic reach, rural connectivity, hazard damage, and channel availability vary.",
+      "operational_consequence": "Information may arrive late or through multiple routes, creating gaps or duplicates.",
+      "interview_evidence": "[uncertain] No local frequency, outage, or duplicate-rate evidence was supplied.",
+      "bounded_system_response": "Record the original channel and receipt time, allow later entry of fallback reports, use idempotent submission/possible-duplicate flags, and keep radio/telephone procedures outside the platform available."
+    }
+  ],
+  "title_and_terminology": {
+    "title_alternatives": [
+      "Online Local Disaster Situation Report Preparation and Record Management System",
+      "Role-Based Disaster Incident Reporting, Verification, and Situation Report Support System",
+      "Multi-Organization Local DRRM Incident Record and Situation Report Support Platform"
+    ],
+    "definitions": {
+      "incident_record": "A versioned record of reported observations, effects, needs, and actions for an event; it may be incomplete, provisional, disputed, corrected, or verified and is not automatically an official SitRep.",
+      "SitRep": "A time-bounded, cumulative situation report prepared from identified sources to communicate the prevailing situation, effects, preparedness and response actions, issues, and recommendations; official status depends on authorized review, approval, and issuance.",
+      "reporting": "The capture and transmission of attributed incident information from an authorized source to a designated recipient.",
+      "validation": "Automated or human checking that data satisfy required format, domain, range, completeness, and consistency rules; validation alone does not establish factual truth.",
+      "verification": "An authorized human assessment of a claim against its source, context, corroboration, and applicable procedure, with the decision and rationale recorded.",
+      "coordination": "The authorized alignment of information, responsibilities, actions, and resources among barangay, city, and partner bodies; it is broader than exchanging records.",
+      "monitoring": "Continuous observation and updating of hazards, impacts, needs, actions, and resource conditions over time.",
+      "record_management": "Controlled creation, classification, access, versioning, retention, retrieval, export, archival transfer, and authorized disposition of records and their metadata."
+    }
+  },
+  "objective_acceptance_trace": [
+    {
+      "problem": "Source and authority can be lost during cross-organizational reporting.",
+      "objective": "Provide organization-scoped users and roles for reporting, review, verification, approval, and viewing.",
+      "module_or_function": "User and Organization Management",
+      "verification_artifact": "Role-permission matrix and cross-organization access test log",
+      "success_indicator": "All seeded permitted actions succeed and all seeded unauthorized or cross-organization actions are denied.",
+      "dependency": "Customer-approved role and jurisdiction mapping.",
+      "limitation": "Software authorization does not confer statutory authority."
+    },
+    {
+      "problem": "Early and fallback-channel reports may be incomplete, late, or duplicated.",
+      "objective": "Capture structured, attributed, time-stamped, provisional and reconciled incident records.",
+      "module_or_function": "Disaster Reporting",
+      "verification_artifact": "Scenario dataset covering incomplete, duplicate, late, corrected, and fallback-channel reports",
+      "success_indicator": "100% of required applicable fields and source/time metadata are retained; duplicates are flagged without deleting distinct reports.",
+      "dependency": "Locally approved fields, place codes, units, and fallback procedure.",
+      "limitation": "Completeness and duplicate flags do not prove factual accuracy."
+    },
+    {
+      "problem": "Changing or conflicting claims can enter consolidation without visible review.",
+      "objective": "Record human verification decisions, reasons, conflicts, corrections, and source versions.",
+      "module_or_function": "Disaster Report Verification",
+      "verification_artifact": "Expert-labeled verification scenarios and audit-history export",
+      "success_indicator": "Every decision is attributable to actor, role, time, source version, outcome, and rationale; no submitted history is overwritten.",
+      "dependency": "Authorized trained reviewers and corroborating sources.",
+      "limitation": "The system assists but does not autonomously determine truth."
+    },
+    {
+      "problem": "Progressive reports require reproducible cut-offs and lineage.",
+      "objective": "Generate a reviewable local SitRep draft from eligible pinned record versions.",
+      "module_or_function": "SitRep Generation and Catalog",
+      "verification_artifact": "Expected-output comparison and source-lineage report",
+      "success_indicator": "Generated totals match the approved test snapshot and every sampled assertion links to its included source version; critical lineage target is 100%.",
+      "dependency": "Approved template, eligibility rules, reporting period, and authorized approver.",
+      "limitation": "Generated output is not an official NDRRMC or city issuance until authorized approval and transmission."
+    }
+  ],
+  "scope_boundaries_and_nonclaims": {
+    "included": [
+      "Authorized barangay and participating DRRM-organization reporters, reviewers, verifiers, approvers, administrators, and viewers.",
+      "Structured incident records, source and time metadata, verification history, SitRep draft generation, catalog/retrieval, permitted dashboards, and controlled export.",
+      "Selected prototype scenarios for floods, typhoon or severe-weather effects, and fires in participating jurisdictions.",
+      "Reconciliation of reports received through authorized fallback channels."
+    ],
+    "excluded_or_dependent": [
+      "Emergency dispatch, autonomous rescue decisions, hazard forecasting, sensor networks, resource allocation, public warning issuance, forced evacuation decisions, calamity declaration, and automatic official submission.",
+      "Live integration with ZCDRRMO, NDRRMC, OCD, DILG, DSWD, PAGASA, PHIVOLCS, or REDAS unless separately authorized, specified, implemented, and tested.",
+      "Guarantees of uninterrupted service during power, device, server, or telecommunications failure.",
+      "Citywide or nationwide effectiveness claims without an operational pilot and representative evidence."
+    ],
+    "safe_claims": [
+      "The prototype supports structured reporting, human review, traceable consolidation, and record retrieval.",
+      "The design aligns selected functions with documented local DRRM responsibilities while preserving government authority.",
+      "Evaluation results apply only to the users, scenarios, hazards, data, devices, and network conditions tested."
+    ],
+    "claims_to_avoid": [
+      "The platform is the single source of truth or independently verifies disaster facts.",
+      "The platform replaces BDRRMC, ZCDRRMO, the City DRRM Council, or national reporting systems.",
+      "A generated document automatically becomes an official SitRep, triggers funds, or authorizes government action.",
+      "All Zamboanga barangays currently use a specific manual or messaging workflow without direct local evidence."
+    ]
+  },
+  "recommended_citations": {
+    "placements": [
+      "After the paragraph defining city and barangay statutory roles: (Republic Act No. 10121, 2010; DILG Memorandum Circular No. 2010-143, 2010).",
+      "After the paragraph explaining current barangay council/committee duties: (DILG, 2025).",
+      "After the paragraph describing ZCDRRMO's local establishment, structure, and services: (City Government of Zamboanga, n.d.).",
+      "After the claim that local disaster information is progressive and revised across reporting periods: (DSWD DROMIC, 2025).",
+      "After the current flood-risk and preparedness paragraph: (Philippine Information Agency, 2025).",
+      "After the multi-hazard/REDAS adoption paragraph: (Department of Science and Technology, 2025)."
+    ],
+    "compact_reference_list": [
+      "City Government of Zamboanga. (n.d.). Office of the City Disaster Risk Reduction and Management. https://zamboangacity.gov.ph/office-of-the-city-disaster-risk-deduction-management/",
+      "Department of the Interior and Local Government. (2010, December 9). Memorandum Circular No. 2010-143: Local Disaster Risk Reduction and Management Councils. https://downloads.caraga.dilg.gov.ph/Disaster%20Preparedness/DILG%20Issuances%20on%20DRRM%20and%20CCA/DILG-Memo_Circular-2010-143.pdf",
+      "Department of the Interior and Local Government. (2025). Listo si KAP barangay disaster preparedness framework / Memorandum Circular No. 2025-035. https://region6.dilg.gov.ph/dilg-rolls-out-listo-si-kap-to-strengthen-barangay-disaster-preparedness/",
+      "Department of Science and Technology. (2025, September 25). Zamboanga adopts DOST's rapid damage assessment tool to boost disaster preparedness of communities. https://www.dost.gov.ph/knowledge-resources/news/86-2025-news/4186-zamboanga-adopts-dost-s-rapid-damage-assessment-tool-to-boost-disaster-preparedness-of-communities.html",
+      "Department of Social Welfare and Development, DROMIC. (2025). Effects of Southwest Monsoon and Low Pressure Area beginning 6 June 2025. https://dromic.dswd.gov.ph/flooding-incidents-in-zamboanga-city-07-june-2025/",
+      "Philippine Information Agency. (2025, July 14). Zambo ramps up flood preparedness through community-first innovations. https://pia.gov.ph/news/zambo-ramps-up-flood-preparedness-through-community-first-innovations/",
+      "Republic of the Philippines. (2010). Republic Act No. 10121. https://lawphil.net/statutes/repacts/ra2010/ra_10121_2010.html"
+    ]
+  },
+  "uncertain": [
+    "interview_traceability",
+    "local_context_and_workflow.reporting_stages_and_handoffs",
+    "local_context_and_workflow.information_channels",
+    "problem_root_cause_consequence.interview_evidence"
+  ]
+}

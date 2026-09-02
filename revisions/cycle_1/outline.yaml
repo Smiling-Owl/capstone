@@ -1,0 +1,16 @@
+topic: "Adviser-directed Chapter 1 revisions for the Zamboanga City barangay disaster situation record management system"
+items:
+  - name: "Zamboanga City local DRRM landscape"
+    category: "Project Context"
+    description: "Establish the local institutional, hazard, coordination, and reporting context; identify current barangay and city DRRM roles; connect official mandates and current local conditions to the project without discussing diagrams."
+  - name: "Interview-grounded reporting problems"
+    category: "Statement of the Problem and Purpose"
+    description: "Develop separate evidence-based discussions of communication delay, manual record-management delay, limited data sharing, and inefficient verification using verbatim transcript excerpts, workflow handoffs, consequences, and corroborating primary sources."
+  - name: "Title and concise objective alignment"
+    category: "Title and Objectives"
+    description: "Develop title alternatives that do not foreground report generation and concise, specific general and module-level objectives mapped to established problems, implementation scope, measurable evaluation, and defensible non-claims."
+execution:
+  batch_size: 3
+  items_per_agent: 1
+  output_dir: "revisions/cycle_1/results"
+

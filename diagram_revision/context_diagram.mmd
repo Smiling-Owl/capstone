@@ -1,0 +1,26 @@
+flowchart LR
+    P["Purok Reporter"]
+    B["Barangay Reviewer / Reporter"]
+    V["ZCDRRMO Reviewer / Verifier"]
+    A["ZCDRRMO Approver"]
+    SA["DRRM System Administrator"]
+    VW["Authorized DRRM Viewer"]
+    S(["Disaster Situation Record Management\nand Situation Report Generation System"])
+
+    P -- "Credentials; Purok report; corrected report" --> S
+    S -- "Authentication result; report status; correction request; notification" --> P
+
+    B -- "Credentials; review decision; Barangay report; corrected report" --> S
+    S -- "Authentication result; assigned Purok reports; report status; correction request; notification" --> B
+
+    V -- "Credentials; verification decision; reconciliation details" --> S
+    S -- "Authentication result; Barangay reports; discrepancies; notification" --> V
+
+    A -- "Credentials; SitRep review and approval decision" --> S
+    S -- "Authentication result; SitRep draft; source summary; notification" --> A
+
+    SA -- "Credentials; user, role, jurisdiction, and system configuration" --> S
+    S -- "Authentication result; configuration status; audit information" --> SA
+
+    VW -- "Credentials; search, filter, and dashboard request" --> S
+    S -- "Authentication result; authorized reports; dashboard and analytics data" --> VW

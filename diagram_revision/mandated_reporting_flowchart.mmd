@@ -1,0 +1,27 @@
+%%{init: {"theme":"base","flowchart":{"curve":"linear","nodeSpacing":28,"rankSpacing":32},"themeVariables":{"primaryColor":"#ffffff","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","fontFamily":"Arial"}}}%%
+flowchart TB
+    M1(["Incident onset"])
+    M2["Issue Initial Report with\npreliminary incident information"]
+    M3["Identify source, time, location,\nknown impacts, and actions taken"]
+    M4["Human DRRM review and\nsource-document checking"]
+    M5{"Is correction or\nclarification required?"}
+    M6["Obtain clarification or\nsupporting documentation"]
+    M7{"Is the incident or\nresponse phase continuing?"}
+    M8["Issue Progress Report with\nchanges, current situation, and actions"]
+    M9{"Are further material\nupdates required?"}
+    M10["Issue Terminal Report at the\nconclusion of the response process/phase"]
+    M11["Consolidate prevailing situation,\nactions, effects, issues, and recommendations"]
+    M12["Issue cumulative SitRep(s),\nwhen applicable"]
+    M13["Prepare Final Report with final\noutcomes, shortcomings, and recommendations"]
+    M14(["Preserve reports and source documentation"])
+
+    M1 --> M2 --> M3 --> M4 --> M5
+    M5 -- "Yes" --> M6 --> M4
+    M5 -- "No" --> M7
+    M7 -- "Yes" --> M8 --> M11 --> M12 --> M9
+    M9 -- "Yes" --> M4
+    M9 -- "No" --> M10
+    M7 -- "No / localized event concludes" --> M10
+    M3 -. "may feed cumulative reporting" .-> M11
+    M10 --> M13 --> M14
+    M12 -. "preserve each issued version" .-> M14

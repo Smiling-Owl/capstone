@@ -1,0 +1,82 @@
+flowchart LR
+    P["Purok Reporter"]
+    B["Barangay Reviewer / Reporter"]
+    V["ZCDRRMO Reviewer / Verifier"]
+    A["ZCDRRMO Approver"]
+    SA["DRRM System Administrator"]
+    VW["Authorized DRRM Viewer"]
+
+    P1(["1.0 Manage Users, Roles,\nand Jurisdictions"])
+    P2(["2.0 Authenticate and\nAuthorize Access"])
+    P3(["3.0 Capture and Version\nPurok Reports"])
+    P4(["4.0 Review and Consolidate\nBarangay Reports"])
+    P5(["5.0 Verify and Reconcile\nBarangay Reports"])
+    P6(["6.0 Generate, Review, and\nApprove City SitReps"])
+    P7(["7.0 Search Records and\nProduce Analytics"])
+
+    D1[("D1 Users, Roles, and Assignments")]
+    D2[("D2 Organizations and Jurisdictions")]
+    D3[("D3 Incidents and Hazards")]
+    D4[("D4 Report Versions")]
+    D5[("D5 Review and Verification Decisions")]
+    D6[("D6 SitRep Versions and Approvals")]
+    D7[("D7 Attachments and Source Evidence")]
+    D8[("D8 Audit Events")]
+
+    SA -- "User, role, jurisdiction, and system configuration" --> P1
+    P1 -- "Account and configuration status" --> SA
+    P1 <--> D1
+    P1 <--> D2
+
+    P -- "Credentials" --> P2
+    B -- "Credentials" --> P2
+    V -- "Credentials" --> P2
+    A -- "Credentials" --> P2
+    SA -- "Credentials" --> P2
+    VW -- "Credentials" --> P2
+    P2 -- "Authentication result" --> P
+    P2 -- "Authentication result" --> B
+    P2 -- "Authentication result" --> V
+    P2 -- "Authentication result" --> A
+    P2 -- "Authentication result" --> SA
+    P2 -- "Authentication result" --> VW
+    P2 <--> D1
+    P2 --> D8
+
+    P -- "Purok report or corrected report" --> P3
+    P3 -- "Report status and notification" --> P
+    P3 <--> D3
+    P3 <--> D4
+    P3 <--> D7
+    P3 --> D8
+
+    D4 --> P4
+    P4 -- "Assigned Purok reports" --> B
+    B -- "Review decision and Barangay report" --> P4
+    P4 -- "Correction request, report status, and notification" --> B
+    P4 -- "Correction request and notification" --> P
+    P4 <--> D4
+    P4 <--> D5
+    P4 --> D8
+
+    D4 --> P5
+    V -- "Verification decision and reconciliation details" --> P5
+    P5 -- "Barangay reports, discrepancies, and notification" --> V
+    P5 -- "Correction request, report status, and notification" --> B
+    P5 <--> D5
+    P5 --> D8
+
+    D4 --> P6
+    D5 --> P6
+    A -- "SitRep review and approval decision" --> P6
+    P6 -- "SitRep draft, source summary, and notification" --> A
+    P6 <--> D6
+    P6 --> D8
+
+    VW -- "Search, filter, and dashboard request" --> P7
+    P7 -- "Authorized reports and dashboard data" --> VW
+    D3 --> P7
+    D4 --> P7
+    D5 --> P7
+    D6 --> P7
+    P7 --> D8

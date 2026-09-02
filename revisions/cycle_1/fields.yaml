@@ -1,0 +1,39 @@
+categories:
+  - name: "evidence"
+    fields:
+      - name: "primary_sources"
+        description: "Current official laws, issuances, government publications, local government materials, and original studies with direct links, dates, precise supported claims, and source type."
+        detail_level: detailed
+      - name: "interview_traceability"
+        description: "Participant role, exact quotation, transcript timestamp, theme, interpretation, corroborating evidence, and any contrary or limiting evidence."
+        detail_level: detailed
+      - name: "evidence_limits"
+        description: "Uncertainty, age, jurisdiction, implementation limits, conflicts, and claims that the evidence does not establish."
+        detail_level: detailed
+  - name: "revision_integration"
+    fields:
+      - name: "target_sections"
+        description: "Chapter 1 sections and subsections that require revision, excluding all diagrams, figure captions, figure numbering, and diagram discussions."
+        detail_level: brief
+      - name: "proposed_revision_content"
+        description: "Publication-ready English prose or concise alternatives for the targeted section, with natural transitions and citation placement."
+        detail_level: detailed
+      - name: "local_context_and_workflow"
+        description: "Zamboanga City hazards, institutions, actors, reporting stages, handoffs, information channels, failure points, and fallback practices relevant to the revision."
+        detail_level: detailed
+      - name: "problem_root_cause_consequence"
+        description: "For each problem, distinguish observed practice, root cause, operational consequence, interview evidence, and the bounded system response."
+        detail_level: detailed
+      - name: "title_and_terminology"
+        description: "Accurate title alternatives and definitions for incident record, SitRep, reporting, validation, verification, coordination, monitoring, and record management."
+        detail_level: moderate
+      - name: "objective_acceptance_trace"
+        description: "Problem-to-objective mapping, module or function, verification artifact, measurable success indicator, dependency, and limitation."
+        detail_level: detailed
+      - name: "scope_boundaries_and_nonclaims"
+        description: "Included users, data, locations, hazards and functions; exclusions and dependencies; safe claims and stronger claims to avoid."
+        detail_level: detailed
+      - name: "recommended_citations"
+        description: "Suggested in-text citation placements and a compact reference list sufficient for the proposed revisions."
+        detail_level: detailed
+uncertain: []
