@@ -1,0 +1,170 @@
+{
+  "technical_issue": "The revised Scope and Limitations must state what the prototype actually automates, where and under what conditions it operates, and where software assistance ends. In particular, it must not equate field validation rules with factual verification, generated SitRep content with an approved official report, mapped coordinates with confirmed ground truth, a dashboard with emergency command authority, or a demonstrated prototype with a production service. It must also identify which integrations, operating conditions, quality levels, and scale claims are included and which remain unimplemented or untested.",
+  "minimum_architecture_claim": {
+    "current_documented_stack": "The project documents select a responsive React and Tailwind CSS browser interface, a Laravel and PHP server application, and a MySQL operational database, served through HTTPS and deployable behind Apache or comparable cloud infrastructure. This is a client-server web application, not a standalone desktop program or native mobile application.",
+    "safe_thesis_level": "State the architecture by responsibility rather than promising infrastructure that has not been built: a browser presentation layer sends authenticated HTTPS requests to a server-side application that applies workflow, validation, authorization, tenant, aggregation, export, and audit rules; a relational database stores organization-scoped records and their versions; configured storage holds authorized attachments and exports. State exact runtime versions, operating system, worker services, storage provider, and server capacity only after the repository lockfiles and tested deployment environment establish them.",
+    "request_flow": "A user opens the service in a supported browser, signs in, and performs a permitted task. The server authenticates the session, checks organization, jurisdiction, role, workflow state, and record ownership, validates the request, commits the resulting data and audit event transactionally where practical, and returns an explicit success or failure status. Any queue, schedule, notification, map, export, or external call should be named only if implemented and tested.",
+    "non_claims": "Calling the design configurable or multi-organization does not by itself prove secure multi-tenancy, horizontal scalability, high availability, disaster recovery, or compatibility with every DRRM workflow. Those properties require implementation and declared evidence."
+  },
+  "runtime_and_deployment_requirements": {
+    "development": "Developers may run the selected stack on a local development machine using the repository-defined PHP, Composer, Node/npm, database, and optional container or XAMPP setup. Development mode and sample credentials must not be described as operational deployment.",
+    "prototype_evaluation": "The evaluable prototype may run on a controlled local network or hosted test server. Participants use supported desktop browsers for administration and supported mobile browsers for field reporting. If browser geolocation is evaluated, the test site must be a secure context such as HTTPS and the participant must grant permission. The evaluation report must identify the server configuration, software versions, browser and device versions, network conditions, dataset, number of users, and test period.",
+    "pilot": "A limited pilot requires an identified operator, HTTPS certificate, protected production configuration, organization onboarding, access review, monitored application and database services, backup and restore procedure, incident contacts, maintenance procedure, and user training. A pilot remains bounded by its participating organizations, workflows, devices, network conditions, and service period.",
+    "production": "Production readiness is outside the prototype claim until deployment review, privacy and security controls, tenant-isolation tests, backup restoration, operational monitoring, support ownership, accessibility evaluation, capacity and performance tests, and customer acceptance have been completed. No uptime, response-time, recovery-time, recovery-point, or concurrent-user commitment should appear without a measured target, test method, and accountable operator.",
+    "client_requirements": "Users need an internet-capable smartphone, tablet, laptop, or desktop; a supported, current browser with JavaScript, cookies or the selected session mechanism, and HTTPS; sufficient screen and input access for the assigned workflow; and permission for optional device features such as geolocation or camera/file upload. No app-store installation is required because the current deliverable is web based.",
+    "server_requirements": "The host must provide versions of PHP and extensions compatible with the selected Laravel release and lockfile, a compatible MySQL release, a web server configured to expose only the public application entry point, TLS termination, writable application storage where required, protected secrets, scheduled backup, logs, and enough CPU, memory, storage, and network capacity for the tested workload. Exact sizing remains a result of measurement rather than a thesis assumption."
+  },
+  "installation_and_operation": {
+    "configuration": "Use repository lockfiles to install server and frontend dependencies. Configure deployment-specific secrets and settings outside source control, including application URL, encryption key, database connection, session configuration, mail or notification provider only if implemented, map provider only if used, storage, logging, and organization setup. Production debug output must be disabled.",
+    "database_setup": "Create a dedicated database and least-privilege application account, run version-controlled migrations, and seed only controlled reference data and initial administrative provisioning. Demo data must be labeled and kept out of operational records.",
+    "startup": "Build the frontend assets, start or reload the web and PHP application services, verify database and storage connectivity, and start supervised queue workers or scheduled jobs only when the implemented features require them. Exact commands belong in the implementation or deployment manual because they depend on the selected Laravel version, package scripts, and host.",
+    "normal_operation": "A normal operation consists of an authenticated request, server-side organization and role authorization, validation, database write or read, audit event, and an explicit response. SitRep generation should use identified, versioned source records and create a reviewable output. It should not silently publish or transmit the output to an external authority.",
+    "health_and_restart": "Monitor an application health endpoint plus database, storage, worker, certificate, disk, and external-service status as applicable. A framework health response only proves that its configured checks passed at that moment. After deployment or failure, reload long-running workers, verify migrations, run a smoke test for login and core reporting, and confirm that no queued or retried operation duplicated a submission.",
+    "maintenance": "Apply dependency and operating-system updates through a tested release process, review logs without exposing personal data, rotate secrets, test exports and backups, restore a backup periodically, review user and support access, and preserve audit and record-retention requirements during updates."
+  },
+  "dependencies_and_failure_conditions": {
+    "essential_dependencies": [
+      "Electricity for client devices, local network equipment, and hosting infrastructure",
+      "Working internet or permitted local network connectivity between browser and server",
+      "DNS and valid HTTPS for a public deployment, especially when browser geolocation is used",
+      "A compatible browser, functioning device storage and permissions, and trained authorized users",
+      "Available application, database, file storage, and backup services",
+      "Current organization, jurisdiction, role, workflow, and report-template configuration",
+      "Human reporters, verifiers, approvers, administrators, records custodians, and technical operators"
+    ],
+    "submission_failure": "A weak or interrupted connection may delay a request, time it out, or leave the user uncertain whether it was received. The interface should retain unfinished input where practical, display server acknowledgement, prevent blind duplicate resubmission, and provide a safe retry path. The current scope does not guarantee offline synchronization or real-time delivery.",
+    "geolocation_failure": "Device location is optional supporting metadata unless a validated requirement makes it mandatory. The browser may deny permission, time out, return a cached or low-accuracy reading, or return a coordinate that is not the device's actual location. Store capture time and reported accuracy, allow authorized manual correction or location selection, and never treat a coordinate alone as proof of the incident location.",
+    "mapping_failure": "If the interface uses OpenStreetMap standard tiles, tile display depends on a third-party best-effort service with no service-level guarantee; offline prefetch is prohibited by its policy. A missing basemap must not corrupt reports or erase stored coordinates. Operational or offline mapping requires a contracted provider or self-hosted tiles, licensing and attribution compliance, privacy review, caching rules, monitoring, and separate capacity evidence.",
+    "external_service_failure": "Email, push notification, file scanning, maps, geocoding, or other external calls can be delayed, rate-limited, changed, blocked, or unavailable. The system must expose delivery or failure status and keep the authoritative workflow state in its own database. An unacknowledged notification must not be represented as received, and an external-service failure must not silently approve, reject, or publish a record.",
+    "organizational_failure": "Incorrect accounts, stale role assignments, misconfigured jurisdiction routes, unavailable approvers, inconsistent terminology, or poor source data can produce delayed or incorrect outputs even when the software is functioning. These are operational dependencies that software cannot eliminate."
+  },
+  "security_privacy_and_tenancy": {
+    "authorization": "All record, attachment, search, dashboard, export, background-job, and audit access must be checked on the server using authenticated organization, jurisdiction, role, workflow state, and object ownership. Interface hiding is not authorization. Deny by default and test direct object identifiers, exports, cached links, background actions, and cross-organization queries.",
+    "organization_separation": "Every organization-owned record needs a server-controlled organization identifier and, where relevant, a jurisdiction identifier. The application and database access paths must constrain reads and writes by those identifiers. The thesis may claim multi-organization capability only for the tested isolation paths, not formal multi-tenant certification.",
+    "transport_and_storage": "Use HTTPS in hosted environments, protected credentials and secrets, password hashing and secure session handling, database constraints, safe query mechanisms, output escaping, upload type and size controls, and appropriately protected database, attachment, export, backup, and audit storage. Encryption and hashing do not establish the truth of submitted facts.",
+    "privacy": "Location, identities, affected-person details, attachments, and usage logs can be personal or sensitive in context. Collection must be necessary for a declared purpose, access and disclosure must be limited, retention and correction routes must be defined, and the accountable personal information controller or processor relationship must be documented. The prototype must not claim legal compliance merely because technical controls exist.",
+    "support_access": "Platform support personnel should not perform customer verification, approval, or official submission. Any exceptional access to customer data should be customer-authorized, time-bounded, least-privilege, logged, reviewable, and revoked after the support task.",
+    "audit_limit": "Audit events support traceability but do not by themselves prove identity, factual accuracy, legal admissibility, or immutability. Their evidentiary weight depends on account assurance, clock and system integrity, access controls, retention, and documented procedure."
+  },
+  "data_records_and_recovery": {
+    "provenance_and_versions": "Preserve stable record identifiers, source organization and jurisdiction, reporter and reviewer identities and roles, observation and submission times, source channel, uncertainty status, verification decision and reason, attachment references, and parent, correction, or supersession relationships. Material edits to submitted or approved information should create a traceable version rather than overwrite history.",
+    "sitrep_lineage": "A generated SitRep should record the selected source-record versions, reporting cut-off or as-of time, template and workflow version, generation time, generator, approval state, later amendments, and export history. Regeneration should use the pinned snapshot rather than whichever records happen to be current later.",
+    "retention_and_export": "The participating organization or lawful records custodian determines official retention, disclosure, hold, export, amendment, and disposition rules. Account deactivation must not remove authorship or approval history. Exports should preserve enough metadata to interpret and trace the records and must not be described as direct official filing unless an authorized channel is implemented.",
+    "backup_and_restore": "Back up the database and authorized file storage using an operator-approved schedule, protect backup credentials and copies, and run restoration tests. A successful backup job is not evidence that recovery works. Recovery-point and recovery-time objectives remain unclaimed until the operator defines them and timed restore exercises verify them.",
+    "failure_reconciliation": "After a timeout, worker restart, import, or restore, reconcile transaction status, queued work, notification status, generated exports, and attachment availability. Use stable request or record identifiers where implemented to identify duplicates and incomplete operations."
+  },
+  "operator_and_owner": {
+    "platform_operator": "The startup or designated technical host deploys and updates the application, configures infrastructure, protects secrets, monitors availability, performs backups and restore tests, handles technical incidents, administers approved support access, and supplies export or offboarding assistance under the service agreement.",
+    "organization_administrator": "Each DRRM organization appoints an administrator who controls its users, role and jurisdiction assignments, local configuration, account lifecycle, and access reviews. This role does not receive authority merely from the software; appointment follows the organization's rules.",
+    "authorized_drrm_personnel": "Reporters provide observations; reviewers or verifiers examine evidence and resolve conflicts; approvers authorize the SitRep or other official output; records and privacy personnel control disclosure, retention, correction, and authorized disposition. The responsible council or office retains disaster-management and official communication authority under its governing procedures.",
+    "shared_responsibility_limit": "Hosting the platform does not transfer government decision authority or records ownership to the startup. Conversely, customer authority does not remove the technical operator's responsibility for the security and reliability controls it has agreed to provide."
+  },
+  "human_decision_boundary": {
+    "automated_validation": "The system may check required structure, data type, permitted codes, numeric range, date order, field consistency, jurisdiction membership, workflow state, and possible duplication. Passing those checks means that no configured rule failed; it does not prove that an incident occurred, that a person or damage count is correct, or that evidence is authentic.",
+    "duplicate_and_conflict_support": "Similarity or conflict rules may rank or flag records for review. They must not automatically merge independent observations, delete one account, or choose an authoritative source unless an explicitly approved deterministic rule covers that case. An authorized reviewer records the resolution and reason.",
+    "sitrep_assembly": "The system may consolidate verified or otherwise explicitly eligible record versions into a configured SitRep structure, calculate defined totals, and produce a draft or review copy. An authorized person must review source eligibility, definitions, cut-off, unresolved uncertainty, aggregates, narrative, and attachments before approval. Generation, approval, external submission, public release, and later amendment are separate auditable events.",
+    "location_and_map": "Browser geolocation supplies device-associated coordinates and an accuracy estimate, not confirmed incident ground truth. A heatmap or marker layer visualizes stored data and inherits its incompleteness, uncertainty, duplicate, timing, and scale limitations. It is not a PAGASA or PHIVOLCS hazard product, risk model, forecast, route planner, evacuation order, or dispatch recommendation.",
+    "dashboard_and_escalation": "Dashboard totals and automated priority or escalation indicators are decision support based on configured rules and available records. They do not declare a state of calamity, activate an emergency operations center, dispatch responders, allocate funds, issue public warnings, or replace the judgment and legal authority of the LDRRMC, LDRRMO, local chief executive, OCD, NDRRMC, or another competent authority.",
+    "identity": "Registration fields and document uploads can support an administrator's review, but the system does not independently establish a person's legal identity, public office, or authority. Account activation remains an authorized organizational decision."
+  },
+  "explicit_exclusions": {
+    "hazard_scope": "[uncertain] The current generalized draft conflicts internally: one paragraph includes floods, typhoons, earthquakes, and fires, while its limitation paragraph excludes earthquakes and limits the prototype to floods, typhoons, and fires. Resolve this list once and use it consistently. No other hazard support should be claimed without requirements analysis, controlled terms, workflows, reference data, and tests.",
+    "functional_exclusions": [
+      "Native mobile applications and app-store distribution",
+      "Guaranteed offline capture, map availability, synchronization, or conflict-free resubmission",
+      "SMS, radio, satellite, or public-alert fallback",
+      "Emergency dispatch, responder tracking, resource deployment, evacuation orders, and public warning issuance",
+      "Hazard sensing, weather or seismic forecasting, predictive analytics, automated risk assessment, and casualty or damage prediction",
+      "Automatic identity proofing or appointment of government officials",
+      "Automatic factual verification, authoritative source selection, approval, or publication",
+      "Direct filing or data exchange with OCD, NDRRMC, DILG, DSWD, PAGASA, PHIVOLCS, police, fire, health, or other agency systems unless a specific authorized interface is implemented and tested",
+      "Nationwide GIS, authoritative hazard maps, guaranteed geocoding accuracy, or offline basemap packages",
+      "Unrestricted customer-specific code or support for every local workflow and terminology"
+    ],
+    "quality_and_scale_exclusions": "The prototype does not guarantee factual accuracy, completeness of field reports, legal validity, regulatory certification, accessibility conformance, cybersecurity, zero data loss, uninterrupted availability, a fixed response time, a concurrent-user capacity, or a recovery objective beyond the exact controls and conditions tested. It also does not demonstrate national scale, 24/7 production readiness, interoperability, procurement readiness, or effectiveness during damaged infrastructure and real emergency stress.",
+    "outcome_exclusions": "Do not claim that the system itself saves lives, shortens official response, ensures compliance, eliminates duplicate data, prevents all unauthorized access, or produces official NDRRMC reports. The study may report measured task and quality outcomes from its declared sample and scenarios, with limitations."
+  },
+  "evaluation_evidence": {
+    "claim_rule": "Every technical claim should name the tested version, environment, input or workload, procedure, metric, result, and known exclusions. A result is limited to those conditions. Use terms such as observed, measured, or passed the declared test rather than fast, scalable, secure, reliable, real time, or production ready without supporting evidence.",
+    "functional_tests": [
+      "Trace one incident through draft, submit, return, correction, verification, SitRep selection, generation, approval, amendment, catalog, export, and audit history",
+      "Seed incomplete, unknown, provisional, disputed, duplicate, conflicting, late, and corrected reports and verify that the system preserves their meaning",
+      "Compare generated aggregates and every sampled SitRep assertion with a fixed, independently prepared reference dataset and pinned source versions",
+      "Test failed submissions, duplicate retries, stale updates, worker restarts, unavailable notifications, missing map tiles, denied geolocation, and invalid files"
+    ],
+    "security_and_privacy_tests": [
+      "Create at least two organizations and multiple jurisdictions and roles; attempt unauthorized view, list, search, edit, approve, download, export, attachment, dashboard, audit, cached-link, and background-job access",
+      "Test server-side authorization directly rather than only inspecting hidden interface controls",
+      "Inspect logging and error responses for personal data, credentials, secrets, and cross-tenant metadata",
+      "Review location consent, purpose, access, retention, export, and correction behavior",
+      "Record the limits of automated vulnerability scans and distinguish them from a professional penetration test"
+    ],
+    "performance_and_capacity": "Measure response-time distributions for named operations under a declared dataset, attachment profile, server specification, network profile, concurrency level, warm-up, duration, and repetitions. Report median and a tail percentile plus errors and throughput where appropriate. A single-user stopwatch result does not establish capacity. Increase workload until the acceptance threshold fails if a capacity claim is required.",
+    "availability_and_recovery": "For a bounded evaluation period, record observation interval, planned maintenance, outage definition, measured downtime, and monitoring coverage. Test backup restoration into an isolated environment; record backup age, data and files recovered, time to restore, integrity checks, and unrecovered items. Do not extrapolate a short test into an annual uptime guarantee.",
+    "browser_device_and_network": "Publish the supported browser and device matrix actually tested. Include the administrative desktop flow and field-reporter mobile flow, narrow viewports and touch input, permitted and denied geolocation, interrupted and slow connections, and attachment limits. State that untested browsers, operating systems, devices, assistive technologies, and networks are outside the result.",
+    "mapping_and_location": "Test coordinate capture against known reference points under documented device, indoor or outdoor, permission, accuracy, and network conditions; report error rather than claiming GPS accuracy generally. Verify manual selection or correction, displayed accuracy and timestamp, coordinate persistence when tiles fail, map attribution, provider policy, and failure messaging.",
+    "accessibility": "Evaluate complete representative processes against selected WCAG 2.2 Level A and AA criteria using automated checks and human keyboard, screen-reader, zoom, contrast, label, focus, error, and status-message evaluation. Do not claim full conformance from an automated scanner alone.",
+    "acceptance_examples": "Acceptance criteria should be explicit, such as zero successful cross-organization access attempts in the declared suite; exact aggregate agreement with the seeded reference dataset; successful restore of all records and attachments covered by the restore test; no unresolved critical data-integrity defect; and completion of named core tasks on every supported browser. Thresholds for response time, concurrent users, availability, recovery, accessibility, and upload size must be selected before testing and justified by the intended deployment."
+  },
+  "recommended_thesis_wording": "Technically, the proposed system is a responsive client-server web application. The project documents specify a React and Tailwind CSS browser interface, a Laravel/PHP server application, and a MySQL database, delivered through HTTPS on Apache or comparable hosted infrastructure. Authorized users access the system through supported desktop or mobile browsers; no native mobile installation is included. In development it may run on a local configured environment, while prototype evaluation may use a controlled local or hosted test server. An operational pilot would additionally require production configuration, HTTPS, monitored hosting, protected storage, organization onboarding, backups with restoration tests, incident and maintenance procedures, and assigned technical and records owners. Exact software versions, server capacity, concurrent-user limits, response times, availability, and recovery objectives will be reported only for the environment and tests actually completed. The system applies server-side organization, jurisdiction, role, and workflow controls; records submissions and their versions; performs structural and consistency validation; flags possible duplicate or conflicting entries; consolidates eligible source-record versions into a reviewable SitRep; stores approved versions; and presents authorized summaries and map views where implemented. These functions support, but do not replace, authorized personnel. Automated checks do not establish factual accuracy, duplicate flags do not determine the authoritative source, browser geolocation does not prove an incident location, map and dashboard displays are not hazard forecasts or dispatch instructions, and a generated SitRep does not become an official submission until the designated organization reviews, approves, and transmits it through its authorized channel. The prototype depends on electricity, connectivity, compatible browsers, server and database availability, correct organizational configuration, and trained personnel. It does not guarantee offline synchronization, third-party map availability, public alerts, SMS fallback, emergency dispatch, predictive analytics, automatic identity proofing, or direct integration with national or other agency systems. Any such integration requires documented authority, interface specifications, security and privacy review, failure handling, and separate testing. Findings are limited to the declared users, scenarios, devices, browsers, network conditions, dataset, server configuration, workload, and evaluation period and do not by themselves establish national scalability, legal compliance, 24/7 production readiness, or improved emergency outcomes.",
+  "authoritative_sources": [
+    {
+      "source": "Republic Act No. 10121, Philippine Disaster Risk Reduction and Management Act of 2010",
+      "url": "https://lawphil.net/statutes/repacts/ra2010/ra_10121_2010.html",
+      "supported_proposition": "Assigns DRRM direction, coordination, monitoring, information consolidation, risk mapping, response, warning, and related decisions to councils, offices, and authorized officials. This supports keeping official operational authority with human institutions rather than the software or platform operator."
+    },
+    {
+      "source": "NDRRM Operations Center Standard Operating Procedures and Guidelines, 2024 Edition",
+      "url": "https://ndrrmc.gov.ph/attachments/article/4125/NDRRMOC_SOPG_2024_EDITION.pdf",
+      "supported_proposition": "Provides the official protocol context for incident and situation monitoring, coordination, information management, and SitRep practice. System templates and workflow claims should be checked against the controlled official edition used by the participating organization."
+    },
+    {
+      "source": "Philippine Statistics Authority, Component 4: Extreme Events and Disasters",
+      "url": "https://psa.gov.ph/statistics/environment-statistics/highlights/component-4-extreme-events-and-disaster",
+      "supported_proposition": "Officially distinguishes incident reports from Situational Reports and describes a SitRep as an operational coordination document containing current effects, needs, response, gaps, developments, challenges, and actions. This supports treating SitRep assembly as structured operational reporting rather than automatic factual certification."
+    },
+    {
+      "source": "Republic Act No. 10173, Data Privacy Act of 2012, National Privacy Commission",
+      "url": "https://privacy.gov.ph/data-privacy-act/",
+      "supported_proposition": "Requires reasonable organizational, physical, and technical security; accountability for processors and transfers; information about processing and automated access; correction rights; and safeguards for sensitive information. This supports purpose-limited location and personal-data handling, assigned accountability, and restrained compliance claims."
+    },
+    {
+      "source": "W3C Geolocation",
+      "url": "https://www.w3.org/TR/geolocation/",
+      "supported_proposition": "States that the API provides device-associated location, gives no guarantee that it is the device's actual location, exposes an accuracy value, requires user permission, and is restricted to secure contexts. This supports HTTPS, consent, accuracy metadata, manual correction, and the rule that geolocation is not factual verification."
+    },
+    {
+      "source": "OpenStreetMap Foundation Tile Usage Policy",
+      "url": "https://operations.osmfoundation.org/policies/tiles/",
+      "supported_proposition": "States that standard tiles are best effort with no service-level guarantee, require attribution and compliant caching, can be blocked, and cannot be bulk-downloaded for offline use. This supports separating core records from basemap availability and excluding guaranteed or offline mapping without another provider or self-hosting."
+    },
+    {
+      "source": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "supported_proposition": "States that client-side checks must not decide access and authorization must be enforced server-side; it also recommends secure failure handling and logging. This supports organization and jurisdiction enforcement on every server-side resource path."
+    },
+    {
+      "source": "Laravel Deployment documentation",
+      "url": "https://laravel.com/docs/deployment",
+      "supported_proposition": "Documents version-specific server requirements, public entry-point configuration, production debug restrictions, long-running service reload, writable storage requirements, optimization, and a health route. This supports a deployment description tied to the selected framework version and repository rather than invented universal commands."
+    },
+    {
+      "source": "MySQL Backup and Recovery Strategy",
+      "url": "https://dev.mysql.com/doc/mysql/en/backup-strategy-example.html",
+      "supported_proposition": "Describes backup and recovery planning for operating-system, power, filesystem, and hardware failures. This supports explicit backup and restoration procedures while avoiding an unsupported recovery guarantee."
+    },
+    {
+      "source": "ISO/IEC 25010:2023 Product Quality Model",
+      "url": "https://www.iso.org/standard/78176.html",
+      "supported_proposition": "Defines a quality model for specifying, measuring, evaluating, testing, and setting acceptance criteria for ICT and software products. This supports making performance, reliability, security, and other quality claims measurable and condition-specific."
+    },
+    {
+      "source": "W3C Web Content Accessibility Guidelines 2.2",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "supported_proposition": "Provides testable accessibility success criteria and explicitly describes accessibility evaluation as a combination of automated testing and human evaluation. This supports a declared browser, process, and human-test scope instead of a scanner-only conformance claim."
+    }
+  ],
+  "uncertain": [
+    "explicit_exclusions.hazard_scope"
+  ]
+}

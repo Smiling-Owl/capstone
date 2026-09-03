@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRRM Desk | Organization operations</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="admin">
+  <a class="skip-link" href="#main">Skip to operations</a>
+  <header class="global-header">
+    <nav class="global-nav" aria-label="Primary navigation">
+      <a class="wordmark" href="index.html">DRRM Desk</a>
+      <div class="nav-links"><a href="#map-area" aria-current="page">Overview</a><a href="#queue">Reports</a><a href="#sitrep">SitReps</a><a href="#people">People</a></div>
+      <a class="role-link" href="reporter.html">Reporter view</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="admin-hero content-width">
+      <div><p class="overline">Zamboanga City DRRMO</p><h1>City operations.<br>One clear view.</h1><p class="hero-copy">Multi-incident monitoring for 29 August 2026. Values marked provisional still require human verification.</p></div>
+      <div class="hero-actions"><span><i class="live-dot" aria-hidden="true"></i>Updated 10:42 AM</span><button class="text-button" type="button" id="reset-demo">Reset sample data</button></div>
+    </section>
+
+    <section class="numbers content-width" aria-label="Operational summary">
+      <article><strong id="active-count">12</strong><span>Active incidents</span><small>8 verified, 4 provisional</small></article>
+      <article><strong id="review-count">7</strong><span>Awaiting review</span><small id="priority-summary">2 need immediate attention</small></article>
+      <article><strong>1,284</strong><span>Affected families</span><small>Verified sources only</small></article>
+      <article><strong id="coverage-percent">74%</strong><span>Source coverage</span><small id="coverage-copy">37 of 50 barangays</small></article>
+    </section>
+
+    <section class="map-feature" id="map-area" aria-labelledby="map-title">
+      <div class="content-width section-intro">
+        <div><h2 id="map-title">Where reports need attention.</h2><p>A live geographic view of flood, fire, and typhoon reports submitted across the city.</p></div>
+        <div class="filter-group" aria-label="Map hazard filter"><button type="button" aria-pressed="true" data-map-filter="All">All</button><button type="button" aria-pressed="false" data-map-filter="Flood">Flood</button><button type="button" aria-pressed="false" data-map-filter="Fire">Fire</button><button type="button" aria-pressed="false" data-map-filter="Typhoon">Typhoon</button></div>
+      </div>
+      <div class="map-stage">
+        <div id="incident-map" aria-label="Interactive map of incident reports in Zamboanga City"></div>
+        <aside class="map-inspector" aria-live="polite"><span id="map-status">Immediate attention</span><h3 id="map-place">Tetuan, Purok 6</h3><p id="map-detail">42 affected families. One injury reported.</p><a href="#queue">Open source report</a></aside>
+        <div class="map-key" aria-label="Map legend"><span><i class="critical-key"></i>Immediate</span><span><i class="review-key"></i>Review</span><span><i class="monitor-key"></i>Monitor</span></div>
+      </div>
+    </section>
+
+    <section class="action-layout content-width">
+      <section class="priority-section" id="alerts" aria-labelledby="alerts-title">
+        <header><p class="overline">Escalation</p><h2 id="alerts-title">Two reports moved to the front.</h2><p>Casualties and evacuation requests notify only the roles assigned by the organization.</p></header>
+        <div id="alert-list" class="priority-list">
+          <article class="priority-item" data-alert-id="INC-2026-084"><div><span>INC-2026-084</span><h3>Casualty reported in Tetuan</h3><p>Reviewer and duty officer notified by SMS and push.</p></div><button class="plain-action acknowledge" type="button">Acknowledge</button></article>
+          <article class="priority-item" data-alert-id="INC-2026-083"><div><span>INC-2026-083</span><h3>Evacuation requested in Canelar</h3><p>Reviewer and operations chief notified by push.</p></div><button class="plain-action acknowledge" type="button">Acknowledge</button></article>
+        </div>
+      </section>
+
+      <section class="sitrep-feature" id="sitrep" aria-labelledby="sitrep-title">
+        <p class="overline">SitRep No. 04</p><h2 id="sitrep-title">Structured for review.<br>Traceable to every source.</h2><p>The local 2024 mapping separates verified totals from provisional field values before approval.</p>
+        <dl><div><dt>Verified</dt><dd>31</dd></div><div><dt>Under review</dt><dd id="review-sources">6</dd></div><div><dt>Not received</dt><dd>13</dd></div></dl>
+        <button class="primary-button" type="button" data-open="sitrep-dialog">Review generated draft</button>
+      </section>
+    </section>
+
+    <section class="records-section content-width" id="queue" aria-labelledby="queue-title">
+      <header class="records-heading"><div><h2 id="queue-title">Incoming reports</h2><p>Every value keeps its source, transmission method, and verification state.</p></div><label>Show <select id="queue-filter"><option>All hazards</option><option>Flood</option><option>Fire</option><option>Typhoon</option></select></label></header>
+      <div class="table-scroll"><table><thead><tr><th>Report</th><th>Location</th><th>Hazard</th><th>Source</th><th>State</th></tr></thead><tbody id="queue-body"><tr data-hazard="Flood"><td>INC-2026-084</td><td>Tetuan, Purok 6</td><td>Flood</td><td>Barangay DRRM</td><td><span class="state urgent-state">Immediate</span></td></tr><tr data-hazard="Fire"><td>INC-2026-083</td><td>Canelar, Zone 2</td><td>Fire</td><td>Field reporter</td><td><span class="state urgent-state">Immediate</span></td></tr><tr data-hazard="Flood"><td>INC-2026-081</td><td>Tugbungan</td><td>Flood</td><td>Barangay DRRM</td><td><span class="state review-state">Under review</span></td></tr><tr data-hazard="Typhoon"><td>INC-2026-079</td><td>San Roque</td><td>Typhoon</td><td>Operations desk</td><td><span class="state verified-state">Verified</span></td></tr></tbody></table></div>
+    </section>
+
+    <section class="admin-footer-grid content-width" id="people">
+      <div><h2>People and access</h2><p>Organization roles define who reports, verifies, approves, and views each record.</p><button class="text-button" type="button" id="invite-user">Invite a team member</button></div>
+      <div class="people-list"><p><strong>Joel Reyes</strong><span>Verifier, city-wide</span></p><p><strong>Ana Lim</strong><span>Field reporter, Tetuan</span></p><p><strong>Ramon Villanueva</strong><span>SitRep approver</span></p></div>
+      <div id="activity"><h2>Recent activity</h2><ol id="activity-list"><li><strong>INC-2026-077 verified</strong><span>Joel Reyes, 10:36 AM</span></li><li><strong>INC-2026-076 returned</strong><span>Missing source note, 10:21 AM</span></li><li><strong>SitRep No. 03 approved</strong><span>Ramon Villanueva, 9:58 AM</span></li></ol></div>
+    </section>
+  </main>
+
+  <dialog id="sitrep-dialog" aria-labelledby="sitrep-dialog-title"><div class="dialog-header"><div><span>Generated from eligible records</span><h2 id="sitrep-dialog-title">Local SitRep No. 04</h2></div><button class="text-button" type="button" data-close>Close</button></div><div id="sitrep-result" class="dialog-content"><div class="skeleton" aria-label="Generating draft"><i></i><i></i><i></i></div></div><div class="dialog-footer"><button class="secondary-button" type="button" data-close>Keep editing</button><button class="primary-button" type="button" id="approve-draft" disabled>Mark ready for approval</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
