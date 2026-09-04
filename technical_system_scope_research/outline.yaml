@@ -1,0 +1,15 @@
+topic: "Technical scope, deployment environment, operation, and limitations of a responsive web-based disaster situation report generation and record management system"
+items:
+  - name: "Runtime deployment and client access"
+    category: "Execution environment"
+    description: "Research implementation-neutral wording for where a responsive web system can run, how clients access it, required hosted components, HTTPS, supported browsers and devices, deployment profiles, startup and maintenance responsibilities, and accessibility or compatibility limits."
+  - name: "Data security records and continuity"
+    category: "Technical safeguards and operations"
+    description: "Research implementation-neutral wording for persistent storage, attachments, backups, restoration, audit events, role and organization isolation, privacy, electronic-record lifecycle, monitoring, maintenance, connectivity loss, and approved contingency procedures."
+  - name: "Workflow integrations and prototype boundaries"
+    category: "Functional and evaluation limits"
+    description: "Research wording that distinguishes automated validation and SitRep assembly from factual verification and official decisions; bounds geolocation, mapping, external services, agency integrations, capacity, response time, availability, production readiness, and claims supported only by declared tests."
+execution:
+  batch_size: 3
+  items_per_agent: 1
+  output_dir: "technical_system_scope_research/results"
