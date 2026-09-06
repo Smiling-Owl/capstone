@@ -1,0 +1,1160 @@
+Project disaster_situation_management_system {
+  database_type: 'PostgreSQL'
+  Note: 'Academic logical ERD in Crow Foot relational notation for the complete Purok, Barangay, and DRRM workflow. Account, CDRA Profile, and Incident Report use supertype-subtype structures. Dashboard and history screens are views over versioned records, not duplicate entities.'
+}
+
+Enum unit_type {
+  city
+  barangay
+  purok
+}
+
+Enum account_status {
+  invited
+  active
+  suspended
+  disabled
+}
+
+Enum account_type {
+  purok
+  barangay
+  drrm
+}
+
+Enum assignment_status {
+  active
+  ended
+}
+
+Enum profile_level {
+  purok
+  barangay
+}
+
+Enum reporting_level {
+  purok
+  barangay
+}
+
+Enum verification_level {
+  barangay
+  drrm
+}
+
+Enum source_quality {
+  first_hand
+  second_hand
+}
+
+Enum version_status {
+  draft
+  submitted
+  under_review
+  correction_requested
+  verified
+  rejected
+  approved
+  released
+  superseded
+}
+
+Enum verification_decision {
+  verified
+  correction_requested
+  rejected
+}
+
+Enum report_type {
+  initial
+  progress
+  terminal
+  final
+}
+
+Enum observation_state {
+  reported_zero
+  unknown
+  not_applicable
+  provisional
+  verified
+  disputed
+}
+
+Enum source_type {
+  direct_observation
+  interview
+  official_document
+  sensor
+  map
+  other
+}
+
+Enum privacy_classification {
+  public
+  internal
+  restricted
+  confidential
+}
+
+Enum source_disposition {
+  included
+  excluded
+}
+
+Enum sitrep_decision_stage {
+  review
+  approval
+}
+
+Enum sitrep_decision {
+  approved
+  returned
+  rejected
+}
+
+Enum export_format {
+  pdf
+  docx
+}
+
+Enum artifact_kind {
+  draft
+  approved
+  released
+}
+
+Enum notification_status {
+  unread
+  read
+  dismissed
+}
+
+Table core.tenant {
+  tenant_id uuid [pk]
+  tenant_code varchar(40) [not null, unique]
+  name varchar(200) [not null]
+  is_active boolean [not null, default: true]
+  created_at timestamptz [not null, default: `now()`]
+}
+
+Table core.organization_unit {
+  unit_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  parent_unit_id uuid [ref: > core.organization_unit.unit_id]
+  unit_code varchar(60) [not null]
+  unit_type unit_type [not null]
+  name varchar(200) [not null]
+  boundary_geojson jsonb
+  is_active boolean [not null, default: true]
+  created_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (tenant_id, unit_code) [unique]
+    (tenant_id, parent_unit_id, name) [unique]
+  }
+}
+
+// Total, disjoint supertype: every Account has exactly one subtype below.
+Table core.account {
+  account_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  account_type account_type [not null]
+  created_by_account_id uuid [ref: > core.account.account_id]
+  username varchar(100) [not null]
+  full_name varchar(200) [not null]
+  personnel_identifier varchar(80)
+  designation varchar(120) [not null]
+  official_email varchar(320)
+  official_mobile varchar(40)
+  authority_reference varchar(200)
+  status account_status [not null, default: 'invited']
+  created_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (tenant_id, username) [unique]
+  }
+}
+
+Table core.purok_account {
+  account_id uuid [pk, ref: - core.account.account_id]
+  purok_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  receiving_barangay_id uuid [not null, ref: > core.organization_unit.unit_id]
+}
+
+Table core.barangay_account {
+  account_id uuid [pk, ref: - core.account.account_id]
+  barangay_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  receiving_drrm_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+}
+
+Table core.drrm_account {
+  account_id uuid [pk, ref: - core.account.account_id]
+  drrm_unit_id uuid [not null, ref: > core.organization_unit.unit_id, note: 'The supervising city unit acting as DRRM']
+}
+
+Table core.role {
+  role_id uuid [pk]
+  role_code varchar(80) [not null, unique]
+  role_name varchar(120) [not null]
+  description text
+}
+
+Table core.permission {
+  permission_id uuid [pk]
+  permission_code varchar(120) [not null, unique]
+  description text [not null]
+}
+
+Table core.role_permission {
+  role_id uuid [not null, ref: > core.role.role_id]
+  permission_id uuid [not null, ref: > core.permission.permission_id]
+
+  indexes {
+    (role_id, permission_id) [pk]
+  }
+}
+
+Table core.account_role_assignment {
+  assignment_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  account_id uuid [not null, ref: > core.account.account_id]
+  role_id uuid [not null, ref: > core.role.role_id]
+  assigned_by_account_id uuid [not null, ref: > core.account.account_id]
+  status assignment_status [not null, default: 'active']
+  valid_from timestamptz [not null, default: `now()`]
+  valid_until timestamptz
+
+  indexes {
+    (tenant_id, account_id, role_id, valid_from) [unique]
+  }
+}
+
+Table core.reporting_schedule {
+  schedule_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  unit_id uuid [ref: > core.organization_unit.unit_id]
+  schedule_kind varchar(60) [not null, note: 'Monthly profile, report cutoff, or SitRep cycle']
+  timezone varchar(80) [not null, default: 'Asia/Manila']
+  recurrence_rule varchar(300)
+  cutoff_time time
+  starts_on date [not null]
+  ends_on date
+  is_active boolean [not null, default: true]
+}
+
+Table core.notification {
+  notification_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  account_id uuid [not null, ref: > core.account.account_id]
+  notification_type varchar(80) [not null]
+  subject_type varchar(80) [not null]
+  subject_id uuid [not null]
+  title varchar(200) [not null]
+  message text [not null]
+  status notification_status [not null, default: 'unread']
+  created_at timestamptz [not null, default: `now()`]
+  read_at timestamptz
+}
+
+Table source.information_source {
+  source_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  source_type source_type [not null]
+  source_quality source_quality [not null]
+  origin_unit_id uuid [ref: > core.organization_unit.unit_id]
+  person_or_document_name varchar(250) [not null]
+  organization_name varchar(200)
+  reference_number varchar(120)
+  observed_at timestamptz
+  received_at timestamptz
+  confidentiality_level privacy_classification [not null, default: 'internal']
+  reliability_note text
+}
+
+Table source.evidence {
+  evidence_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  source_id uuid [not null, ref: > source.information_source.source_id]
+  evidence_type varchar(60) [not null]
+  storage_key varchar(500) [not null, unique]
+  original_filename varchar(255) [not null]
+  mime_type varchar(120) [not null]
+  byte_size bigint [not null]
+  sha256_hash char(64) [not null]
+  captured_at timestamptz
+  latitude decimal(10,7)
+  longitude decimal(10,7)
+  caption text
+  privacy_classification privacy_classification [not null, default: 'internal']
+  uploaded_by_account_id uuid [not null, ref: > core.account.account_id]
+  uploaded_at timestamptz [not null, default: `now()`]
+}
+
+Table hazard.hazard_type {
+  hazard_type_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  parent_hazard_type_id uuid [ref: > hazard.hazard_type.hazard_type_id]
+  hazard_code varchar(60) [not null]
+  name varchar(160) [not null]
+  category varchar(100) [not null]
+  measurement_unit varchar(40)
+  is_active boolean [not null, default: true]
+
+  indexes {
+    (tenant_id, hazard_code) [unique]
+  }
+}
+
+// DRRM-configured fields allow hazard-specific forms without changing the schema.
+Table hazard.hazard_field_definition {
+  field_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  field_code varchar(80) [not null]
+  section_code varchar(80) [not null]
+  label varchar(160) [not null]
+  data_type varchar(30) [not null, note: 'number, text, boolean, date, time, select, or multiselect']
+  unit varchar(40)
+  help_text text
+  is_active boolean [not null, default: true]
+
+  indexes {
+    (tenant_id, field_code) [unique]
+  }
+}
+
+Table hazard.hazard_field_option {
+  option_id uuid [pk]
+  field_id uuid [not null, ref: > hazard.hazard_field_definition.field_id]
+  option_value varchar(100) [not null]
+  option_label varchar(160) [not null]
+  display_order int [not null]
+
+  indexes {
+    (field_id, option_value) [unique]
+  }
+}
+
+Table hazard.hazard_type_field {
+  hazard_type_id uuid [not null, ref: > hazard.hazard_type.hazard_type_id]
+  field_id uuid [not null, ref: > hazard.hazard_field_definition.field_id]
+  is_required boolean [not null, default: false]
+  display_order int [not null]
+
+  indexes {
+    (hazard_type_id, field_id) [pk]
+  }
+}
+
+Table hazard.hazard_event {
+  hazard_event_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  hazard_type_id uuid [not null, ref: > hazard.hazard_type.hazard_type_id]
+  origin_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  created_by_account_id uuid [not null, ref: > core.account.account_id]
+  reference_no varchar(80) [not null]
+  created_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (tenant_id, reference_no) [unique]
+  }
+}
+
+Table hazard.hazard_event_version {
+  hazard_version_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  hazard_event_id uuid [not null, ref: > hazard.hazard_event.hazard_event_id]
+  parent_version_id uuid [ref: > hazard.hazard_event_version.hazard_version_id]
+  version_no int [not null]
+  title varchar(200) [not null]
+  description text [not null]
+  location_text varchar(300) [not null]
+  geometry_geojson jsonb
+  assessment_at timestamptz [not null]
+  onset_at timestamptz
+  observed_or_forecast varchar(20) [not null]
+  intensity_value decimal(18,4)
+  intensity_unit varchar(40)
+  severity_level varchar(60)
+  frequency varchar(80)
+  probability decimal(7,4)
+  current_status varchar(60) [not null]
+  confidence_level varchar(40)
+  record_status version_status [not null, default: 'draft']
+  prepared_by_account_id uuid [not null, ref: > core.account.account_id]
+  submitted_at timestamptz
+
+  indexes {
+    (tenant_id, hazard_event_id, version_no) [unique]
+  }
+}
+
+Table hazard.hazard_field_value {
+  value_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  hazard_version_id uuid [not null, ref: > hazard.hazard_event_version.hazard_version_id]
+  field_id uuid [not null, ref: > hazard.hazard_field_definition.field_id]
+  number_value decimal(20,6)
+  text_value text
+  boolean_value boolean
+  date_value date
+  json_value jsonb
+  observation_state observation_state [not null, default: 'provisional']
+  source_id uuid [ref: > source.information_source.source_id]
+
+  indexes {
+    (hazard_version_id, field_id) [unique]
+  }
+}
+
+Table hazard.hazard_exposure {
+  hazard_exposure_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  hazard_version_id uuid [not null, ref: > hazard.hazard_event_version.hazard_version_id]
+  unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  exposure_category varchar(80) [not null]
+  asset_or_area_name varchar(200)
+  estimated_quantity decimal(18,3)
+  quantity_unit varchar(40)
+  observation_state observation_state [not null]
+  notes text
+}
+
+Table hazard.hazard_capacity {
+  hazard_capacity_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  hazard_version_id uuid [not null, ref: > hazard.hazard_event_version.hazard_version_id]
+  capacity_type varchar(80) [not null]
+  description text [not null]
+  responsible_unit_id uuid [ref: > core.organization_unit.unit_id]
+  quantity decimal(18,3)
+  quantity_unit varchar(40)
+  capacity_gap text
+}
+
+Table hazard.hazard_verification {
+  hazard_verification_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  hazard_version_id uuid [not null, ref: > hazard.hazard_event_version.hazard_version_id]
+  reviewer_account_id uuid [not null, ref: > core.account.account_id]
+  reviewer_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  decision verification_decision [not null]
+  reason text
+  correction_request text
+  accepted_limitations text
+  decided_at timestamptz [not null, default: `now()`]
+}
+
+Table hazard.hazard_version_evidence {
+  hazard_version_id uuid [not null, ref: > hazard.hazard_event_version.hazard_version_id]
+  evidence_id uuid [not null, ref: > source.evidence.evidence_id]
+  purpose varchar(120)
+
+  indexes {
+    (hazard_version_id, evidence_id) [pk]
+  }
+}
+
+Table profile.cdra_profile {
+  profile_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  profile_level profile_level [not null]
+  period_start date [not null]
+  period_end date [not null]
+  created_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (tenant_id, unit_id, profile_level, period_start, period_end) [unique]
+  }
+}
+
+Table profile.purok_profile {
+  profile_id uuid [pk, ref: - profile.cdra_profile.profile_id]
+  receiving_barangay_id uuid [not null, ref: > core.organization_unit.unit_id]
+}
+
+Table profile.barangay_profile {
+  profile_id uuid [pk, ref: - profile.cdra_profile.profile_id]
+  receiving_drrm_unit_id uuid [not null, ref: > core.organization_unit.unit_id, note: 'The supervising city unit acting as DRRM']
+}
+
+Table profile.cdra_profile_version {
+  profile_version_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_id uuid [not null, ref: > profile.cdra_profile.profile_id]
+  parent_version_id uuid [ref: > profile.cdra_profile_version.profile_version_id]
+  version_no int [not null]
+  as_of_date date [not null]
+  status version_status [not null, default: 'draft']
+  draft_owner_account_id uuid [not null, ref: > core.account.account_id]
+  prepared_by_account_id uuid [not null, ref: > core.account.account_id]
+  submitted_at timestamptz
+  data_gap_notes text
+  limitations text
+
+  indexes {
+    (tenant_id, profile_id, version_no) [unique]
+  }
+}
+
+Table profile.barangay_profile_coverage {
+  coverage_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  barangay_profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  purok_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  source_purok_version_id uuid [ref: > profile.cdra_profile_version.profile_version_id]
+  disposition source_disposition [not null]
+  gap_or_exclusion_reason text
+  reconciliation_notes text
+
+  indexes {
+    (barangay_profile_version_id, purok_unit_id) [unique]
+  }
+}
+
+Table profile.profile_population_summary {
+  profile_version_id uuid [pk, ref: - profile.cdra_profile_version.profile_version_id]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  household_count int [not null]
+  total_population int [not null]
+  population_as_of_date date [not null]
+  observation_state observation_state [not null]
+}
+
+Table profile.profile_demographic_count {
+  demographic_count_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  sex_code varchar(30) [not null]
+  age_group_code varchar(30) [not null]
+  population_count int [not null]
+  observation_state observation_state [not null]
+
+  indexes {
+    (profile_version_id, sex_code, age_group_code) [unique]
+  }
+}
+
+Table profile.profile_vulnerable_group_count {
+  vulnerable_count_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  group_type_code varchar(60) [not null]
+  population_count int [not null]
+  observation_state observation_state [not null]
+  notes text
+
+  indexes {
+    (profile_version_id, group_type_code) [unique]
+  }
+}
+
+Table profile.profile_housing_count {
+  housing_count_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  construction_type varchar(80) [not null]
+  tenure_type varchar(80)
+  condition varchar(60) [not null]
+  unit_count int [not null]
+  observation_state observation_state [not null]
+}
+
+Table profile.critical_asset {
+  asset_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  asset_type_code varchar(60) [not null]
+  asset_name varchar(200) [not null]
+  location_geojson jsonb [not null]
+  owner_or_operator varchar(200)
+  design_capacity decimal(18,3)
+  capacity_unit varchar(40)
+  is_active boolean [not null, default: true]
+}
+
+Table profile.profile_exposure_item {
+  exposure_item_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  hazard_type_id uuid [ref: > hazard.hazard_type.hazard_type_id]
+  exposure_type_code varchar(60) [not null]
+  item_name varchar(200) [not null]
+  quantity decimal(18,3)
+  quantity_unit varchar(40)
+  location_geojson jsonb
+  estimated_value decimal(18,2)
+  notes text
+  observation_state observation_state [not null]
+}
+
+Table profile.profile_asset_assessment {
+  asset_assessment_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  asset_id uuid [not null, ref: > profile.critical_asset.asset_id]
+  hazard_type_id uuid [not null, ref: > hazard.hazard_type.hazard_type_id]
+  condition varchar(60) [not null]
+  exposure_level varchar(60) [not null]
+  vulnerability_notes text
+  available_capacity decimal(18,3)
+  capacity_unit varchar(40)
+
+  indexes {
+    (profile_version_id, asset_id, hazard_type_id) [unique]
+  }
+}
+
+Table profile.profile_capacity_resource {
+  capacity_resource_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  capacity_type_code varchar(60) [not null]
+  resource_name varchar(200) [not null]
+  quantity decimal(18,3)
+  quantity_unit varchar(40)
+  location_geojson jsonb
+  responsible_unit_id uuid [ref: > core.organization_unit.unit_id]
+  availability varchar(60) [not null]
+  condition varchar(60)
+  observation_state observation_state [not null]
+}
+
+Table profile.profile_hazard_assessment {
+  assessment_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  hazard_type_id uuid [not null, ref: > hazard.hazard_type.hazard_type_id]
+  likelihood_score decimal(8,3)
+  consequence_score decimal(8,3)
+  vulnerability_score decimal(8,3)
+  capacity_score decimal(8,3)
+  risk_score decimal(8,3)
+  risk_class varchar(60)
+  methodology varchar(160) [not null]
+  assumptions text
+  recommended_priority int
+
+  indexes {
+    (profile_version_id, hazard_type_id) [unique]
+  }
+}
+
+Table profile.profile_verification {
+  verification_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  reviewer_account_id uuid [not null, ref: > core.account.account_id]
+  reviewer_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  decision verification_decision [not null]
+  decision_reason text
+  accepted_limitations text
+  reviewed_at timestamptz [not null, default: `now()`]
+}
+
+Table profile.profile_verification_finding {
+  finding_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  verification_id uuid [not null, ref: > profile.profile_verification.verification_id]
+  resolved_by_version_id uuid [ref: > profile.cdra_profile_version.profile_version_id]
+  section_code varchar(80) [not null]
+  field_reference varchar(120)
+  finding_type varchar(60) [not null]
+  severity varchar(30) [not null]
+  description text [not null]
+  correction_required boolean [not null, default: true]
+}
+
+Table profile.profile_evidence_link {
+  profile_version_id uuid [not null, ref: > profile.cdra_profile_version.profile_version_id]
+  evidence_id uuid [not null, ref: > source.evidence.evidence_id]
+  section_code varchar(80) [not null]
+  notes text
+
+  indexes {
+    (profile_version_id, evidence_id, section_code) [pk]
+  }
+}
+
+Table incident.incident_type {
+  incident_type_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  incident_type_code varchar(60) [not null]
+  name varchar(160) [not null]
+  is_active boolean [not null, default: true]
+
+  indexes {
+    (tenant_id, incident_type_code) [unique]
+  }
+}
+
+Table incident.incident {
+  incident_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  reference_no varchar(80) [not null]
+  incident_type_id uuid [not null, ref: > incident.incident_type.incident_type_id]
+  origin_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  title varchar(200) [not null]
+  occurrence_at timestamptz
+  discovered_at timestamptz
+  location_text varchar(300) [not null]
+  landmark varchar(200) [not null]
+  geometry_geojson jsonb
+  status varchar(60) [not null]
+  suspected_cause text
+
+  indexes {
+    (tenant_id, reference_no) [unique]
+  }
+}
+
+Table incident.incident_hazard {
+  incident_id uuid [not null, ref: > incident.incident.incident_id]
+  hazard_version_id uuid [not null, ref: > hazard.hazard_event_version.hazard_version_id]
+  relationship_type varchar(60) [not null]
+
+  indexes {
+    (incident_id, hazard_version_id) [pk]
+  }
+}
+
+Table incident.incident_report {
+  incident_report_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  incident_id uuid [not null, ref: > incident.incident.incident_id]
+  reporting_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  created_by_account_id uuid [not null, ref: > core.account.account_id]
+  reporting_level reporting_level [not null]
+  created_at timestamptz [not null, default: `now()`]
+}
+
+Table incident.purok_incident_report {
+  incident_report_id uuid [pk, ref: - incident.incident_report.incident_report_id]
+  receiving_barangay_id uuid [not null, ref: > core.organization_unit.unit_id]
+}
+
+Table incident.barangay_incident_report {
+  incident_report_id uuid [pk, ref: - incident.incident_report.incident_report_id]
+  receiving_drrm_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+}
+
+Table incident.incident_report_version {
+  report_version_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  incident_report_id uuid [not null, ref: > incident.incident_report.incident_report_id]
+  parent_version_id uuid [ref: > incident.incident_report_version.report_version_id]
+  version_no int [not null]
+  report_type report_type [not null]
+  operational_period_start timestamptz
+  operational_period_end timestamptz
+  as_of_at timestamptz [not null]
+  situation_narrative text [not null]
+  continuing_threat text
+  assumptions_limitations text
+  record_status version_status [not null, default: 'draft']
+  draft_owner_account_id uuid [not null, ref: > core.account.account_id]
+  prepared_by_account_id uuid [not null, ref: > core.account.account_id]
+  submission_idempotency_key uuid [not null]
+  submitted_at timestamptz
+
+  indexes {
+    (tenant_id, incident_report_id, version_no) [unique]
+    (tenant_id, submission_idempotency_key) [unique]
+  }
+}
+
+Table incident.barangay_report_source {
+  barangay_report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  purok_report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  disposition source_disposition [not null]
+  exclusion_reason text
+  source_as_of_at timestamptz [not null]
+  source_limitations text
+
+  indexes {
+    (barangay_report_version_id, purok_report_version_id) [pk]
+  }
+}
+
+Table incident.report_chronology_entry {
+  chronology_entry_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  source_id uuid [ref: > source.information_source.source_id]
+  occurred_at timestamptz [not null]
+  entry_type varchar(60) [not null]
+  description text [not null]
+  sequence_no int [not null]
+}
+
+Table incident.report_fact {
+  report_fact_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  source_id uuid [ref: > source.information_source.source_id]
+  fact_kind varchar(60) [not null]
+  observed_at timestamptz
+  observation_state observation_state [not null]
+  notes text
+}
+
+Table incident.population_fact {
+  report_fact_id uuid [pk, ref: - incident.report_fact.report_fact_id]
+  category varchar(60) [not null]
+  family_count int
+  person_count int
+  evacuation_center_name varchar(200)
+  is_cumulative boolean [not null, default: false]
+}
+
+Table incident.casualty_fact {
+  report_fact_id uuid [pk, ref: - incident.report_fact.report_fact_id]
+  casualty_category varchar(40) [not null, note: 'Dead, injured, or missing; aggregate counts only']
+  person_count int [not null]
+}
+
+Table incident.damage_fact {
+  report_fact_id uuid [pk, ref: - incident.report_fact.report_fact_id]
+  damage_category varchar(80) [not null]
+  asset_or_facility_name varchar(200)
+  damage_level varchar(40) [not null]
+  quantity decimal(18,3)
+  quantity_unit varchar(40)
+  estimated_cost decimal(18,2)
+  currency char(3) [default: 'PHP']
+}
+
+Table incident.service_disruption_fact {
+  report_fact_id uuid [pk, ref: - incident.report_fact.report_fact_id]
+  service_type varchar(60) [not null]
+  disruption_started_at timestamptz
+  restoration_at timestamptz
+  service_status varchar(60) [not null]
+  affected_area text
+}
+
+Table incident.report_action {
+  report_action_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  action_type varchar(80) [not null]
+  description text [not null]
+  responsible_organization varchar(200) [not null]
+  started_at timestamptz
+  completed_at timestamptz
+  status varchar(60) [not null]
+  result text
+}
+
+Table incident.report_assistance {
+  report_assistance_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  recipient_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  assistance_type varchar(80) [not null]
+  provider varchar(200) [not null]
+  quantity decimal(18,3)
+  quantity_unit varchar(40)
+  provided_at timestamptz
+  status varchar(60) [not null]
+}
+
+Table incident.report_need {
+  report_need_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  need_type varchar(80) [not null]
+  description text [not null]
+  quantity decimal(18,3)
+  quantity_unit varchar(40)
+  priority varchar(30) [not null]
+  requested_from varchar(200)
+  status varchar(60) [not null]
+  notes text
+}
+
+Table incident.report_reconciliation {
+  reconciliation_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  barangay_report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  field_or_category varchar(120) [not null]
+  discrepancy_description text [not null]
+  resolved_value jsonb [not null]
+  method varchar(80) [not null]
+  reason text [not null]
+  resolved_by_account_id uuid [not null, ref: > core.account.account_id]
+  resolved_at timestamptz [not null]
+  status varchar(40) [not null]
+}
+
+Table incident.report_verification {
+  report_verification_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  reviewer_account_id uuid [not null, ref: > core.account.account_id]
+  reviewer_unit_id uuid [not null, ref: > core.organization_unit.unit_id]
+  verification_stage verification_level [not null]
+  decision verification_decision [not null]
+  reason text
+  accepted_limitations text
+  eligible_for_consolidation boolean [not null, default: false]
+  eligible_for_sitrep boolean [not null, default: false]
+  decided_at timestamptz [not null, default: `now()`]
+}
+
+Table incident.verification_finding {
+  finding_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  report_verification_id uuid [not null, ref: > incident.report_verification.report_verification_id]
+  resolved_in_version_id uuid [ref: > incident.incident_report_version.report_version_id]
+  finding_type varchar(60) [not null]
+  field_or_section varchar(120)
+  description text [not null]
+  correction_required boolean [not null, default: true]
+  severity varchar(30) [not null]
+  is_resolved boolean [not null, default: false]
+}
+
+Table incident.report_version_evidence {
+  report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  evidence_id uuid [not null, ref: > source.evidence.evidence_id]
+  purpose varchar(120)
+
+  indexes {
+    (report_version_id, evidence_id) [pk]
+  }
+}
+
+Table sitrep.sitrep_template {
+  template_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  template_code varchar(60) [not null]
+  name varchar(160) [not null]
+  is_active boolean [not null, default: true]
+
+  indexes {
+    (tenant_id, template_code) [unique]
+  }
+}
+
+Table sitrep.sitrep_template_version {
+  template_version_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  template_id uuid [not null, ref: > sitrep.sitrep_template.template_id]
+  version_no int [not null]
+  effective_from date [not null]
+  effective_until date
+  created_by_account_id uuid [not null, ref: > core.account.account_id]
+  created_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (tenant_id, template_id, version_no) [unique]
+  }
+}
+
+Table sitrep.sitrep_template_section {
+  template_section_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  template_version_id uuid [not null, ref: > sitrep.sitrep_template_version.template_version_id]
+  section_code varchar(80) [not null]
+  heading varchar(200) [not null]
+  display_order int [not null]
+  is_required boolean [not null, default: true]
+  guidance_text text
+
+  indexes {
+    (template_version_id, section_code) [unique]
+  }
+}
+
+Table sitrep.situation_report {
+  situation_report_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  incident_id uuid [not null, ref: > incident.incident.incident_id]
+  jurisdiction_id uuid [not null, ref: > core.organization_unit.unit_id]
+  template_version_id uuid [not null, ref: > sitrep.sitrep_template_version.template_version_id]
+  created_by_account_id uuid [not null, ref: > core.account.account_id]
+  report_number varchar(80) [not null]
+  report_type report_type [not null]
+  title varchar(250) [not null]
+  created_at timestamptz [not null, default: `now()`]
+  archived_at timestamptz
+
+  indexes {
+    (tenant_id, jurisdiction_id, report_number) [unique]
+  }
+}
+
+Table sitrep.situation_report_version {
+  sitrep_version_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  situation_report_id uuid [not null, ref: > sitrep.situation_report.situation_report_id]
+  parent_version_id uuid [ref: > sitrep.situation_report_version.sitrep_version_id]
+  version_no int [not null]
+  status version_status [not null, default: 'draft']
+  operational_period_start timestamptz
+  operational_period_end timestamptz
+  as_of_at timestamptz [not null]
+  change_summary text
+  prepared_by_account_id uuid [not null, ref: > core.account.account_id]
+  prepared_at timestamptz [not null, default: `now()`]
+  content_hash char(64)
+
+  indexes {
+    (tenant_id, situation_report_id, version_no) [unique]
+  }
+}
+
+Table sitrep.situation_report_section {
+  section_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  sitrep_version_id uuid [not null, ref: > sitrep.situation_report_version.sitrep_version_id]
+  template_section_id uuid [not null, ref: > sitrep.sitrep_template_section.template_section_id]
+  section_code varchar(80) [not null]
+  sequence_no int [not null]
+  heading varchar(200) [not null]
+  content_text text [not null]
+  section_hash char(64)
+
+  indexes {
+    (sitrep_version_id, section_code) [unique]
+  }
+}
+
+Table sitrep.situation_report_source_snapshot {
+  source_snapshot_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  sitrep_version_id uuid [not null, unique, ref: - sitrep.situation_report_version.sitrep_version_id]
+  cutoff_at timestamptz [not null]
+  frozen_at timestamptz [not null]
+  frozen_by_account_id uuid [not null, ref: > core.account.account_id]
+  snapshot_hash char(64) [not null]
+  limitations_note text
+}
+
+Table sitrep.snapshot_barangay_report {
+  source_snapshot_id uuid [not null, ref: > sitrep.situation_report_source_snapshot.source_snapshot_id]
+  barangay_report_version_id uuid [not null, ref: > incident.incident_report_version.report_version_id]
+  disposition source_disposition [not null]
+  reason text
+  reconciliation_note text
+  added_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (source_snapshot_id, barangay_report_version_id) [pk]
+  }
+}
+
+Table sitrep.snapshot_hazard_event {
+  source_snapshot_id uuid [not null, ref: > sitrep.situation_report_source_snapshot.source_snapshot_id]
+  hazard_version_id uuid [not null, ref: > hazard.hazard_event_version.hazard_version_id]
+  disposition source_disposition [not null]
+  reason text
+  added_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (source_snapshot_id, hazard_version_id) [pk]
+  }
+}
+
+Table sitrep.sitrep_value_override {
+  override_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  sitrep_version_id uuid [not null, ref: > sitrep.situation_report_version.sitrep_version_id]
+  field_reference varchar(160) [not null]
+  derived_value jsonb [not null]
+  override_value jsonb [not null]
+  justification text [not null]
+  overridden_by_account_id uuid [not null, ref: > core.account.account_id]
+  overridden_at timestamptz [not null, default: `now()`]
+}
+
+Table sitrep.situation_report_decision {
+  decision_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  sitrep_version_id uuid [not null, ref: > sitrep.situation_report_version.sitrep_version_id]
+  decided_by_account_id uuid [not null, ref: > core.account.account_id]
+  supersedes_decision_id uuid [ref: > sitrep.situation_report_decision.decision_id]
+  stage sitrep_decision_stage [not null]
+  decision sitrep_decision [not null]
+  comments text
+  decided_at timestamptz [not null, default: `now()`]
+}
+
+Table sitrep.sitrep_signatory {
+  signatory_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  sitrep_version_id uuid [not null, ref: > sitrep.situation_report_version.sitrep_version_id]
+  account_id uuid [not null, ref: > core.account.account_id]
+  signatory_role varchar(80) [not null]
+  display_name varchar(200) [not null]
+  designation varchar(160) [not null]
+  sequence_no int [not null]
+
+  indexes {
+    (sitrep_version_id, account_id, signatory_role) [unique]
+  }
+}
+
+Table sitrep.situation_report_release {
+  release_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  sitrep_version_id uuid [not null, unique, ref: - sitrep.situation_report_version.sitrep_version_id]
+  released_by_account_id uuid [not null, ref: > core.account.account_id]
+  released_at timestamptz [not null, default: `now()`]
+  release_note text
+  release_hash char(64) [not null]
+}
+
+Table sitrep.situation_report_export {
+  export_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  sitrep_version_id uuid [not null, ref: > sitrep.situation_report_version.sitrep_version_id]
+  release_id uuid [ref: > sitrep.situation_report_release.release_id]
+  export_format export_format [not null]
+  artifact_kind artifact_kind [not null]
+  storage_key varchar(500) [not null, unique]
+  filename varchar(255) [not null]
+  mime_type varchar(120) [not null]
+  byte_size bigint [not null]
+  sha256_hash char(64) [not null]
+  is_watermarked boolean [not null]
+  generated_by_account_id uuid [not null, ref: > core.account.account_id]
+  generated_at timestamptz [not null, default: `now()`]
+}
+
+Table audit.audit_event {
+  audit_event_id uuid [pk]
+  tenant_id uuid [not null, ref: > core.tenant.tenant_id]
+  actor_account_id uuid [ref: > core.account.account_id]
+  action_code varchar(100) [not null]
+  entity_type varchar(100) [not null]
+  entity_id uuid [not null, note: 'Logical subject reference; intentionally not a polymorphic foreign key']
+  occurred_at timestamptz [not null, default: `now()`]
+  reason text
+  request_id varchar(120)
+  prior_state_hash char(64)
+  new_state_hash char(64)
+  metadata_json jsonb
+}
+
+// Database constraints/triggers to add during physical implementation:
+// 1. Tenant IDs must match across every relationship.
+// 2. Purok/Barangay subtype and unit types must match the parent level.
+// 3. Submitted, verified, approved, and released versions are immutable.
+// 4. Correction creates a parent-linked version; no reviewer edits submitted facts.
+// 5. Only verified, cutoff-eligible Purok reports feed Barangay reports.
+// 6. Only verified, cutoff-eligible Barangay reports feed a SitRep snapshot.
+// 7. Returned/rejected decisions and excluded sources require a reason.
+// 8. Hazard verification enforces Purok-to-Barangay, Barangay-to-DRRM, and DRRM maker-checker separation.
+// 9. Counts, quantities, estimated costs, and byte sizes cannot be negative.
+// 10. Monthly profile periods must be complete calendar months.
+// 11. The dashboard and history catalogs are views over these immutable records.
+// 12. Account specialization is total and disjoint: exactly one subtype row per Account.
+// 13. Supabase auth.users maps one-to-one to Account during physical implementation; it is omitted from this academic logical ERD.
+// 14. CDRA Profile and Incident Report specializations are total and disjoint by their level discriminators.
+// 15. Report Fact specializations are disjoint; every typed impact fact uses exactly one subtype.

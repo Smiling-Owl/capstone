@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#244b68" stroke-width="1.7"/>
+    </marker>
+    <style>
+      .title{font:700 38px Inter,Arial,sans-serif;fill:#0e1a2f}
+      .sub{font:400 17px Inter,Arial,sans-serif;fill:#526074}
+      .entity{fill:#e8f3fb;stroke:#133d5a;stroke-width:2}
+      .entityText{font:700 16px Inter,Arial,sans-serif;fill:#133d5a;text-anchor:middle}
+      .process{fill:#fdfefe;stroke:#1c557e;stroke-width:2}
+      .processRule{stroke:#9fb9cc;stroke-width:1}
+      .pid{font:700 14px Inter,Arial,sans-serif;fill:#1c557e}
+      .pname{font:600 16px Inter,Arial,sans-serif;fill:#0e1a2f;text-anchor:middle}
+      .store{fill:#f5fafd;stroke:#293f50;stroke-width:2}
+      .sid{font:700 13px Inter,Arial,sans-serif;fill:#15334a}
+      .sname{font:400 13px Inter,Arial,sans-serif;fill:#15334a}
+      .flow{fill:none;stroke:#244b68;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .pair{fill:none;stroke:#244b68;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-start:url(#arrow);marker-end:url(#arrow)}
+      .flowLabel{font:600 12px Inter,Arial,sans-serif;fill:#183a52}
+      .labelBg{fill:#fff;opacity:.94}
+      .note{font:400 12px Inter,Arial,sans-serif;fill:#576779}
+      .lane{fill:#f7fafc;stroke:#d7e0e7;stroke-width:1}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1200" fill="#f7fafc"/>
+  <text class="title" x="48" y="56">Level 0 Data Flow Diagram</text>
+  <text class="sub" x="48" y="88">Disaster Situation Record Management and Situation Report Generation System · mandate-aligned Gane–Sarson notation</text>
+  <rect x="40" y="115" width="1840" height="1035" rx="14" fill="#fff" stroke="#d7e0e7"/>
+
+  <rect class="lane" x="285" y="145" width="1150" height="250" rx="10"/>
+  <text class="note" x="305" y="170">ACCESS, ACCOUNT AUTHORITY, AND CDRA BASELINE</text>
+  <rect class="lane" x="285" y="410" width="1150" height="255" rx="10"/>
+  <text class="note" x="305" y="435">BOTTOM-UP INCIDENT REPORTING, REVIEW, AND VERIFICATION</text>
+  <rect class="lane" x="645" y="685" width="790" height="260" rx="10"/>
+  <text class="note" x="665" y="710">SITREP OUTPUT, RECORD RETRIEVAL, AND ACCOUNTABILITY</text>
+
+  <!-- Confirmed external entities -->
+  <g id="entity-purok">
+    <rect class="entity" x="70" y="455" width="210" height="72"/>
+    <text class="entityText" x="175" y="497">PUROK USER</text>
+  </g>
+  <g id="entity-barangay">
+    <rect class="entity" x="70" y="770" width="210" height="72"/>
+    <text class="entityText" x="175" y="812">BARANGAY USER</text>
+  </g>
+  <g id="entity-drrm">
+    <rect class="entity" x="1640" y="455" width="210" height="72"/>
+    <text class="entityText" x="1745" y="487">DRRM</text>
+    <text class="entityText" x="1745" y="507">ADMINISTRATOR</text>
+  </g>
+
+  <!-- Gane–Sarson processes -->
+  <g id="process-1">
+    <rect class="process" x="310" y="185" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="310" y1="220" x2="610" y2="220"/>
+    <text class="pid" x="324" y="209">1.0</text>
+    <text class="pname" x="460" y="249">Manage Users, Roles,</text>
+    <text class="pname" x="460" y="270">and Jurisdictions</text>
+  </g>
+  <g id="process-2">
+    <rect class="process" x="710" y="185" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="710" y1="220" x2="1010" y2="220"/>
+    <text class="pid" x="724" y="209">2.0</text>
+    <text class="pname" x="860" y="249">Authenticate and</text>
+    <text class="pname" x="860" y="270">Authorize Access</text>
+  </g>
+  <g id="process-3">
+    <rect class="process" x="1110" y="185" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="1110" y1="220" x2="1410" y2="220"/>
+    <text class="pid" x="1124" y="209">3.0</text>
+    <text class="pname" x="1260" y="247">Maintain and Verify CDRA</text>
+    <text class="pname" x="1260" y="268">Baseline Profiles</text>
+  </g>
+  <g id="process-4">
+    <rect class="process" x="330" y="460" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="330" y1="495" x2="630" y2="495"/>
+    <text class="pid" x="344" y="484">4.0</text>
+    <text class="pname" x="480" y="524">Capture and Version</text>
+    <text class="pname" x="480" y="545">Purok Reports</text>
+  </g>
+  <g id="process-5">
+    <rect class="process" x="690" y="460" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="690" y1="495" x2="990" y2="495"/>
+    <text class="pid" x="704" y="484">5.0</text>
+    <text class="pname" x="840" y="524">Review and Consolidate</text>
+    <text class="pname" x="840" y="545">Barangay Reports</text>
+  </g>
+  <g id="process-6">
+    <rect class="process" x="1050" y="460" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="1050" y1="495" x2="1350" y2="495"/>
+    <text class="pid" x="1064" y="484">6.0</text>
+    <text class="pname" x="1200" y="524">Verify and Reconcile</text>
+    <text class="pname" x="1200" y="545">Barangay Reports</text>
+  </g>
+  <g id="process-8">
+    <rect class="process" x="690" y="735" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="690" y1="770" x2="990" y2="770"/>
+    <text class="pid" x="704" y="759">8.0</text>
+    <text class="pname" x="840" y="799">Search Records and</text>
+    <text class="pname" x="840" y="820">Produce Analytics</text>
+  </g>
+  <g id="process-7">
+    <rect class="process" x="1050" y="735" width="300" height="105" rx="15"/>
+    <line class="processRule" x1="1050" y1="770" x2="1350" y2="770"/>
+    <text class="pid" x="1064" y="759">7.0</text>
+    <text class="pname" x="1200" y="797">Generate, Review, and</text>
+    <text class="pname" x="1200" y="818">Approve City SitReps</text>
+  </g>
+
+  <!-- Gane–Sarson open-ended data stores -->
+  <g id="store-d2">
+    <path class="store" d="M310 315 H610 M310 375 H610 M310 315 V375 M352 315 V375"/>
+    <text class="sid" x="320" y="351">D2</text><text class="sname" x="365" y="343">Organizations and</text><text class="sname" x="365" y="360">Jurisdictions</text>
+  </g>
+  <g id="store-d1">
+    <path class="store" d="M710 315 H1010 M710 375 H1010 M710 315 V375 M752 315 V375"/>
+    <text class="sid" x="720" y="351">D1</text><text class="sname" x="765" y="343">Users, Roles, and</text><text class="sname" x="765" y="360">Assignments</text>
+  </g>
+  <g id="store-d3">
+    <path class="store" d="M1110 315 H1410 M1110 375 H1410 M1110 315 V375 M1152 315 V375"/>
+    <text class="sid" x="1120" y="351">D3</text><text class="sname" x="1165" y="343">CDRA Baseline Profile</text><text class="sname" x="1165" y="360">Versions</text>
+  </g>
+  <g id="store-d8">
+    <path class="store" d="M1470 315 H1810 M1470 375 H1810 M1470 315 V375 M1512 315 V375"/>
+    <text class="sid" x="1480" y="351">D8</text><text class="sname" x="1525" y="343">Attachments and Source</text><text class="sname" x="1525" y="360">Evidence</text>
+  </g>
+  <g id="store-d4">
+    <path class="store" d="M330 590 H630 M330 650 H630 M330 590 V650 M372 590 V650"/>
+    <text class="sid" x="340" y="626">D4</text><text class="sname" x="385" y="626">Incidents and Hazards</text>
+  </g>
+  <g id="store-d5">
+    <path class="store" d="M690 590 H990 M690 650 H990 M690 590 V650 M732 590 V650"/>
+    <text class="sid" x="700" y="626">D5</text><text class="sname" x="745" y="618">Purok and Barangay</text><text class="sname" x="745" y="635">Report Versions</text>
+  </g>
+  <g id="store-d6">
+    <path class="store" d="M1050 590 H1350 M1050 650 H1350 M1050 590 V650 M1092 590 V650"/>
+    <text class="sid" x="1060" y="626">D6</text><text class="sname" x="1105" y="618">Review and Verification</text><text class="sname" x="1105" y="635">Decisions</text>
+  </g>
+  <g id="store-d9">
+    <path class="store" d="M690 875 H990 M690 935 H990 M690 875 V935 M732 875 V935"/>
+    <text class="sid" x="700" y="911">D9</text><text class="sname" x="745" y="911">Audit Events</text>
+  </g>
+  <g id="store-d7">
+    <path class="store" d="M1050 875 H1350 M1050 935 H1350 M1050 875 V935 M1092 875 V935"/>
+    <text class="sid" x="1060" y="911">D7</text><text class="sname" x="1105" y="903">SitRep Versions and</text><text class="sname" x="1105" y="920">Approvals</text>
+  </g>
+
+  <!-- Actor/process data flows. Bidirectional lines are paired, separately named flows expanded in the dictionary. -->
+  <path class="pair" d="M280 806 H300 V238 H310"/>
+  <rect class="labelBg" x="288" y="720" width="34" height="20"/><text class="flowLabel" x="296" y="735">F1</text>
+  <path class="pair" d="M1640 470 H1570 V140 H460 V185"/>
+  <rect class="labelBg" x="1010" y="128" width="180" height="20"/><text class="flowLabel" x="1017" y="143">F1 · access configuration / status</text>
+
+  <path class="pair" d="M280 475 H300 V400 H665 V238 H710"/>
+  <rect class="labelBg" x="430" y="388" width="205" height="20"/><text class="flowLabel" x="438" y="403">F2 · credentials / authorization result</text>
+  <path class="pair" d="M280 820 H650 V400 H685 V238 H710"/>
+  <rect class="labelBg" x="410" y="808" width="34" height="20"/><text class="flowLabel" x="418" y="823">F2</text>
+  <path class="pair" d="M1640 490 H1585 V395 H1028 V238 H1010"/>
+  <rect class="labelBg" x="1380" y="383" width="34" height="20"/><text class="flowLabel" x="1388" y="398">F2</text>
+
+  <path class="pair" d="M280 500 H300 V405 H1070 V238 H1110"/>
+  <rect class="labelBg" x="900" y="393" width="145" height="20"/><text class="flowLabel" x="908" y="408">F3 · CDRA baseline package</text>
+  <path class="pair" d="M280 790 H315 V420 H1055 V260 H1110"/>
+  <rect class="labelBg" x="320" y="407" width="204" height="20"/><text class="flowLabel" x="328" y="422">F4 · profile review / correction status</text>
+  <path class="pair" d="M1640 510 H1550 V260 H1410"/>
+  <rect class="labelBg" x="1435" y="248" width="100" height="20"/><text class="flowLabel" x="1443" y="263">F4 · verification</text>
+
+  <path class="pair" d="M280 491 H330"/>
+  <rect class="labelBg" x="286" y="468" width="190" height="20"/><text class="flowLabel" x="294" y="483">F5 · Purok report package / status</text>
+  <path class="flow" d="M630 512 H690"/>
+  <rect class="labelBg" x="620" y="540" width="105" height="20"/><text class="flowLabel" x="628" y="555">F5 · submitted version</text>
+  <path class="pair" d="M280 806 H660 V512 H690"/>
+  <rect class="labelBg" x="435" y="792" width="184" height="20"/><text class="flowLabel" x="443" y="807">F6 · review / consolidation</text>
+  <path class="flow" d="M990 512 H1050"/>
+  <rect class="labelBg" x="975" y="540" width="120" height="20"/><text class="flowLabel" x="983" y="555">F6 · Barangay report</text>
+  <path class="pair" d="M1640 491 H1350"/>
+  <rect class="labelBg" x="1378" y="468" width="214" height="20"/><text class="flowLabel" x="1386" y="483">F7 · verification / reconciliation package</text>
+  <path class="flow" d="M1350 540 H1435 V787 H1350"/>
+  <rect class="labelBg" x="1442" y="650" width="142" height="36"/><text class="flowLabel" x="1450" y="665">F8 · verified SitRep</text><text class="flowLabel" x="1450" y="680">source snapshot</text>
+  <path class="pair" d="M1745 527 V787 H1350"/>
+  <rect class="labelBg" x="1550" y="772" width="172" height="36"/><text class="flowLabel" x="1558" y="787">F9 · SitRep review / approval</text><text class="flowLabel" x="1558" y="802">package, draft, export</text>
+  <path class="pair" d="M1780 527 V1080 H840 V840"/>
+  <rect class="labelBg" x="1080" y="1067" width="314" height="20"/><text class="flowLabel" x="1088" y="1082">F10 · authorized query / records / maps / analytics</text>
+
+  <!-- Process/store data flows -->
+  <path class="flow" d="M430 290 V315"/><text class="flowLabel" x="382" y="307">F11</text>
+  <path class="flow" d="M520 290 V300 H860 V315"/><text class="flowLabel" x="650" y="298">F11</text>
+  <path class="flow" d="M860 315 V290"/><text class="flowLabel" x="870" y="307">F11</text>
+  <path class="pair" d="M1260 290 V315"/><text class="flowLabel" x="1270" y="307">F12</text>
+  <path class="flow" d="M1410 250 H1450 V345 H1470"/><text class="flowLabel" x="1425" y="300">F12</text>
+  <path class="pair" d="M480 565 V590"/><text class="flowLabel" x="490" y="582">F13</text>
+  <path class="pair" d="M840 565 V590"/><text class="flowLabel" x="850" y="582">F13</text>
+  <path class="pair" d="M1200 565 V590"/><text class="flowLabel" x="1210" y="582">F13</text>
+  <path class="pair" d="M1200 840 V875"/><text class="flowLabel" x="1210" y="863">F14</text>
+  <path class="flow" d="M840 840 V875"/><text class="flowLabel" x="850" y="863">F15</text>
+
+  <!-- Cross-cutting-store clarifications -->
+  <rect x="300" y="980" width="1320" height="125" rx="8" fill="#f8fbfd" stroke="#d7e0e7"/>
+  <text class="note" x="325" y="1005">CROSS-CUTTING DATA FLOWS</text>
+  <text class="flowLabel" x="325" y="1030">F12</text><text class="note" x="365" y="1030">CDRA profile versions, review/verification decisions, and source evidence → D3, D6, D8</text>
+  <text class="flowLabel" x="325" y="1054">F13</text><text class="note" x="365" y="1054">Incident/report versions, review/verification decisions, and source evidence → D4, D5, D6, D8</text>
+  <text class="flowLabel" x="325" y="1078">F14</text><text class="note" x="365" y="1078">SitRep source snapshot, review/approval package, version, and release status ↔ D7</text>
+  <text class="flowLabel" x="325" y="1102">F15</text><text class="note" x="365" y="1102">Every state-changing process writes actor, action, record/version, state transition, time, and reason → D9</text>
+
+  <text class="note" x="70" y="1132">The full field-level dictionary and mandate/source mapping are in 02_context_and_dfd_specification.md. No external entity connects directly to a data store.</text>
+</svg>

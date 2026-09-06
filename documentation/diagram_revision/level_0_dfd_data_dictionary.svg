@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200">
+  <defs>
+    <style>
+      .title{font:700 38px Inter,Arial,sans-serif;fill:#0e1a2f}
+      .sub{font:400 17px Inter,Arial,sans-serif;fill:#526074}
+      .card{fill:#fff;stroke:#d3dee6;stroke-width:1.5}
+      .code{font:700 17px Inter,Arial,sans-serif;fill:#1c557e}
+      .head{font:700 16px Inter,Arial,sans-serif;fill:#0e1a2f}
+      .body{font:400 13px Inter,Arial,sans-serif;fill:#35485a}
+      .sourceHead{font:700 15px Inter,Arial,sans-serif;fill:#133d5a}
+      .source{font:400 12px Inter,Arial,sans-serif;fill:#455a6d}
+      .tag{fill:#e8f3fb;stroke:#8fb4cc}
+    </style>
+  </defs>
+  <rect width="1920" height="1200" fill="#f7fafc"/>
+  <text class="title" x="48" y="58">Data-Flow Dictionary &amp; Source Basis</text>
+  <text class="sub" x="48" y="90">Exact field groups behind the compact F1–F15 labels in the Level 0 DFD</text>
+
+  <g transform="translate(48,125)">
+    <rect class="card" width="886" height="155" rx="12"/>
+    <rect class="tag" x="20" y="20" width="62" height="32" rx="6"/><text class="code" x="36" y="43">F1</text>
+    <text class="head" x="98" y="43">Access configuration and account status</text>
+    <text class="body" x="24" y="78">User identity; account state; assigned role; organization; Purok/Barangay/City jurisdiction;</text>
+    <text class="body" x="24" y="99">permission assignment; creator/authorizing account; effective time; resulting account/configuration status.</text>
+    <text class="body" x="24" y="128">Control: no public registration. Barangay creates Purok accounts; DRRM creates Barangay accounts.</text>
+  </g>
+
+  <g transform="translate(986,125)">
+    <rect class="card" width="886" height="155" rx="12"/>
+    <rect class="tag" x="20" y="20" width="62" height="32" rx="6"/><text class="code" x="36" y="43">F2</text>
+    <text class="head" x="98" y="43">Credentials and authorization result</text>
+    <text class="body" x="24" y="78">Account identifier and authentication evidence; active/disabled state; authorized role;</text>
+    <text class="body" x="24" y="99">organization/jurisdiction scope; allowed record states and actions; success/failure result.</text>
+    <text class="body" x="24" y="128">Control: authentication never substitutes for record-level and jurisdiction-level authorization.</text>
+  </g>
+
+  <g transform="translate(48,305)">
+    <rect class="card" width="886" height="200" rx="12"/>
+    <rect class="tag" x="20" y="20" width="86" height="32" rx="6"/><text class="code" x="34" y="43">F3–F4</text>
+    <text class="head" x="122" y="43">CDRA baseline and profile/hazard verification package</text>
+    <text class="body" x="24" y="78">Geography; climate projection/scenario; hazard inventory, location, intensity, frequency/probability;</text>
+    <text class="body" x="24" y="99">historical loss/damage; exposed population/assets; urban-use and natural-resource production areas;</text>
+    <text class="body" x="24" y="120">critical facilities; lifeline utilities; vulnerable groups; sensitivity/vulnerability; adaptive/coping capacity;</text>
+    <text class="body" x="24" y="141">risk score/map; facilities, equipment and resources; source/provenance; version; review/verification decision,</text>
+    <text class="body" x="24" y="162">discrepancy, reason, correction request, reviewer/verifier and time.</text>
+    <text class="body" x="24" y="187">Rule: CDRA is preparedness/planning baseline; it is not current incident-impact data.</text>
+  </g>
+
+  <g transform="translate(986,305)">
+    <rect class="card" width="886" height="200" rx="12"/>
+    <rect class="tag" x="20" y="20" width="86" height="32" rx="6"/><text class="code" x="34" y="43">F5–F7</text>
+    <text class="head" x="122" y="43">Purok report, Barangay consolidation, and verification package</text>
+    <text class="body" x="24" y="78">Incident reference/type; exact location; occurrence/discovery/report/as-of times; operational period; source;</text>
+    <text class="body" x="24" y="99">chronology/narrative; affected population; displacement/evacuation; casualties; damaged houses,</text>
+    <text class="body" x="24" y="120">infrastructure, agriculture and livelihoods; service/lifeline disruption; actions taken; assistance/resources;</text>
+    <text class="body" x="24" y="141">needs/issues; attachments; included/excluded Purok versions; discrepancies; review/verification decision,</text>
+    <text class="body" x="24" y="162">reconciliation, reason, reviewer/verifier and time.</text>
+    <text class="body" x="24" y="187">Rule: submitted/verified versions are retained; corrections create linked versions.</text>
+  </g>
+
+  <g transform="translate(48,530)">
+    <rect class="card" width="886" height="200" rx="12"/>
+    <rect class="tag" x="20" y="20" width="86" height="32" rx="6"/><text class="code" x="34" y="43">F8–F9</text>
+    <text class="head" x="122" y="43">SitRep source snapshot, review, approval, and export package</text>
+    <text class="body" x="24" y="78">Eligible verified source versions at a fixed cut-off/as-of time; report number/type/version; incident chronology;</text>
+    <text class="body" x="24" y="99">prevailing situation; affected population, displacement and evacuation; casualties; damage/loss; related incidents;</text>
+    <text class="body" x="24" y="120">preparedness/response actions; assistance/resources; service status; issues/concerns/needs; recommendations;</text>
+    <text class="body" x="24" y="141">source summary/provenance; unresolved discrepancies; review/correction decision; approver; approval/release time;</text>
+    <text class="body" x="24" y="162">sanitized/public export state.</text>
+    <text class="body" x="24" y="187">Supports Initial, Progress, Terminal, cumulative SitRep, and Final outputs—not one generic PDF.</text>
+  </g>
+
+  <g transform="translate(986,530)">
+    <rect class="card" width="886" height="200" rx="12"/>
+    <rect class="tag" x="20" y="20" width="72" height="32" rx="6"/><text class="code" x="32" y="43">F10</text>
+    <text class="head" x="108" y="43">Authorized query and result</text>
+    <text class="body" x="24" y="78">Jurisdiction-scoped search/filter criteria; incident/profile/SitRep catalog; authorized source-linked records;</text>
+    <text class="body" x="24" y="99">maps; time series; status counts; affected-population and impact totals; unresolved discrepancies;</text>
+    <text class="body" x="24" y="120">approved SitRep exports.</text>
+    <text class="body" x="24" y="151">Privacy: names, faces, precise personal details, casualty records, and attachments remain restricted and are</text>
+    <text class="body" x="24" y="172">sanitized before publication. Access is logged.</text>
+  </g>
+
+  <g transform="translate(48,755)">
+    <rect class="card" width="886" height="170" rx="12"/>
+    <rect class="tag" x="20" y="20" width="102" height="32" rx="6"/><text class="code" x="32" y="43">F11–F14</text>
+    <text class="head" x="138" y="43">Persistent record packages</text>
+    <text class="body" x="24" y="78">F11: users, roles, account states, organizations, jurisdictions, assignments.</text>
+    <text class="body" x="24" y="101">F12: CDRA profile versions, profile/hazard decisions, and source evidence.</text>
+    <text class="body" x="24" y="124">F13: incident/report versions, review/verification decisions, and source evidence.</text>
+    <text class="body" x="24" y="147">F14: SitRep source snapshot, version, review/approval decision, release/export state.</text>
+  </g>
+
+  <g transform="translate(986,755)">
+    <rect class="card" width="886" height="170" rx="12"/>
+    <rect class="tag" x="20" y="20" width="72" height="32" rx="6"/><text class="code" x="32" y="43">F15</text>
+    <text class="head" x="108" y="43">Audit event</text>
+    <text class="body" x="24" y="78">Actor/account; role and jurisdiction; action; affected record and immutable version; prior state; new state;</text>
+    <text class="body" x="24" y="101">decision/reason; timestamp; source IP/device/session where lawful; export/publication event.</text>
+    <text class="body" x="24" y="132">Written by every state-changing process. Audit logging is not a separate user-initiated business process.</text>
+  </g>
+
+  <rect x="48" y="950" width="1824" height="195" rx="12" fill="#edf5fa" stroke="#b9cedc"/>
+  <text class="sourceHead" x="72" y="981">PRIMARY MANDATE AND EVIDENCE BASIS</text>
+  <text class="source" x="72" y="1010">RA 10121 §§3, 12 — disaster impacts; risk assessment/mapping; vulnerable groups; local hazard/vulnerability/climate-risk data; resources and critical infrastructure.</text>
+  <text class="source" x="72" y="1035">DHSUD CDRA Briefer and Supplemental Guidelines — hazard characterization, exposure database, vulnerability/sensitivity, adaptive capacity, maps, and risk scoring.</text>
+  <text class="source" x="72" y="1060">NDRRMOC SOPG 2024 pp. 52–55, 63 — Initial, Progress, Terminal, SitRep and Final reporting; source documentation; cumulative effects; geographically consolidated affected population.</text>
+  <text class="source" x="72" y="1085">Published NDRRMC SitReps: El Niño No. 44; SW Monsoon/TC Goring No. 04; TY Tisoy No. 15; TY Ambo No. 13 — actual field groups, numbering, and as-of presentation.</text>
+  <text class="source" x="72" y="1110">Project ZCDRRMO interview — chronology/narrative, variable operational periods, source limits, retained versions, verification, privacy sanitation, approval, and restricted access.</text>
+  <text class="source" x="72" y="1134">Exact URLs and scope caveats: documentation/diagram_revision/02_context_and_dfd_specification.md</text>
+</svg>

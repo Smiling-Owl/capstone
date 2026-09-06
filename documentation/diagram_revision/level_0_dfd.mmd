@@ -1,82 +1,106 @@
+%% Semantic fallback only. The editable authoritative diagram is level_0_dfd_segregated.drawio.
 flowchart LR
-    P["Purok Reporter"]
-    B["Barangay Reviewer / Reporter"]
-    V["ZCDRRMO Reviewer / Verifier"]
-    A["ZCDRRMO Approver"]
-    SA["DRRM System Administrator"]
-    VW["Authorized DRRM Viewer"]
+    PU["Purok User"]
+    BU["Barangay User"]
+    DA["DRRM Administrator"]
 
-    P1(["1.0 Manage Users, Roles,\nand Jurisdictions"])
-    P2(["2.0 Authenticate and\nAuthorize Access"])
-    P3(["3.0 Capture and Version\nPurok Reports"])
-    P4(["4.0 Review and Consolidate\nBarangay Reports"])
-    P5(["5.0 Verify and Reconcile\nBarangay Reports"])
-    P6(["6.0 Generate, Review, and\nApprove City SitReps"])
-    P7(["7.0 Search Records and\nProduce Analytics"])
+    P1(["1.0 Manage Purok Users"])
+    P2(["2.0 Manage Barangay Users"])
+    P3(["3.0 Maintain Purok CDRA Profile"])
+    P4(["4.0 Maintain Barangay CDRA Profile"])
+    P5(["5.0 Create and Maintain Hazard Record"])
+    P6(["6.0 Verify Purok CDRA Profile"])
+    P7(["7.0 Verify Barangay CDRA Profile"])
+    P8(["8.0 Submit Purok Incident Report"])
+    P9(["9.0 Verify Purok Incident Report"])
+    P10(["10.0 Consolidate and Submit Barangay Incident Report"])
+    P11(["11.0 Verify Barangay Incident Report"])
+    P12(["12.0 Generate, Review, and Approve Situation Report"])
+    P13(["13.0 Browse Purok Incident Report History"])
+    P14(["14.0 Browse Barangay Incident Report History"])
+    P15(["15.0 Browse Situation Report Historical Catalog"])
+    P16(["16.0 View Platform Dashboard"])
+    P17(["17.0 Authenticate and Authorize Access"])
+    P18(["18.0 Verify Hazard Record by Level"])
 
-    D1[("D1 Users, Roles, and Assignments")]
-    D2[("D2 Organizations and Jurisdictions")]
-    D3[("D3 Incidents and Hazards")]
-    D4[("D4 Report Versions")]
-    D5[("D5 Review and Verification Decisions")]
-    D6[("D6 SitRep Versions and Approvals")]
-    D7[("D7 Attachments and Source Evidence")]
-    D8[("D8 Audit Events")]
+    D1[("D1 Purok User Accounts")]
+    D2[("D2 Barangay User Accounts")]
+    D3[("D3 Roles and Jurisdictions")]
+    D4[("D4 Purok CDRA Profile Versions")]
+    D5[("D5 Barangay CDRA Profile Versions")]
+    D6[("D6 Purok Profile Verification Decisions")]
+    D7[("D7 Barangay Profile Verification Decisions")]
+    D8[("D8 Hazard Record Versions")]
+    D9[("D9 Hazard Verification Decisions")]
+    D10[("D10 Purok Incident Report Versions")]
+    D11[("D11 Purok Incident Verification Decisions")]
+    D12[("D12 Barangay Incident Report Versions")]
+    D13[("D13 Barangay Incident Verification Decisions")]
+    D14[("D14 Situation Report Versions and Approvals")]
+    D15[("D15 Attachments and Source Evidence")]
+    D16[("D16 Audit Events")]
 
-    SA -- "User, role, jurisdiction, and system configuration" --> P1
-    P1 -- "Account and configuration status" --> SA
-    P1 <--> D1
-    P1 <--> D2
+    BU -- "Purok account and assignment data" --> P1 --> D1
+    DA -- "Barangay account, role, and jurisdiction data" --> P2 --> D2
+    PU -- "credentials" --> P17
+    BU -- "credentials" --> P17
+    DA -- "credentials" --> P17
+    D1 --> P17
+    D2 --> P17
+    D3 --> P17
+    P17 -- "authentication result" --> PU
+    P17 -- "authentication result" --> BU
+    P17 -- "authentication result" --> DA
 
-    P -- "Credentials" --> P2
-    B -- "Credentials" --> P2
-    V -- "Credentials" --> P2
-    A -- "Credentials" --> P2
-    SA -- "Credentials" --> P2
-    VW -- "Credentials" --> P2
-    P2 -- "Authentication result" --> P
-    P2 -- "Authentication result" --> B
-    P2 -- "Authentication result" --> V
-    P2 -- "Authentication result" --> A
-    P2 -- "Authentication result" --> SA
-    P2 -- "Authentication result" --> VW
-    P2 <--> D1
-    P2 --> D8
+    PU -- "Purok CDRA profile package" --> P3 --> D4
+    D4 -- "submitted Purok profile version" --> P6
+    BU -- "Purok profile review decision" --> P6
+    P6 --> D6
+    P6 -- "verified Purok profile dataset" --> P4
+    BU -- "Barangay CDRA additions and consolidation" --> P4 --> D5
+    D5 -- "submitted Barangay profile version" --> P7
+    DA -- "Barangay profile verification decision" --> P7 --> D7
 
-    P -- "Purok report or corrected report" --> P3
-    P3 -- "Report status and notification" --> P
-    P3 <--> D3
-    P3 <--> D4
-    P3 <--> D7
-    P3 --> D8
+    PU -- "Purok hazard proposal" --> P5
+    BU -- "Barangay hazard proposal" --> P5
+    DA -- "City hazard proposal" --> P5
+    P5 --> D8 --> P18
+    BU -- "Purok-level verification decision" --> P18
+    DA -- "Barangay/City-level verification decision" --> P18 --> D9
 
-    D4 --> P4
-    P4 -- "Assigned Purok reports" --> B
-    B -- "Review decision and Barangay report" --> P4
-    P4 -- "Correction request, report status, and notification" --> B
-    P4 -- "Correction request and notification" --> P
-    P4 <--> D4
-    P4 <--> D5
-    P4 --> D8
+    PU -- "Purok incident report package" --> P8 --> D10
+    D10 -- "submitted Purok report version" --> P9
+    BU -- "Purok report review decision" --> P9 --> D11
+    P9 -- "verified Purok report dataset" --> P10
+    BU -- "Barangay consolidation data" --> P10 --> D12
+    D12 -- "submitted Barangay report version" --> P11
+    DA -- "verification and reconciliation decision" --> P11 --> D13
 
-    D4 --> P5
-    V -- "Verification decision and reconciliation details" --> P5
-    P5 -- "Barangay reports, discrepancies, and notification" --> V
-    P5 -- "Correction request, report status, and notification" --> B
-    P5 <--> D5
-    P5 --> D8
+    D10 --> P13 -- "authorized Purok report history" --> PU
+    D12 --> P14 -- "authorized Barangay report history" --> BU
+    D12 --> P12
+    D13 --> P12
+    D15 --> P12
+    DA -- "Situation Report review/approval decision" --> P12
+    P12 -- "Situation Report draft/approved export" --> DA
+    P12 --> D14 --> P15
+    D4 --> P16
+    D5 --> P16
+    D8 --> P16
+    D10 --> P16
+    D12 --> P16
+    D14 --> P16
 
-    D4 --> P6
-    D5 --> P6
-    A -- "SitRep review and approval decision" --> P6
-    P6 -- "SitRep draft, source summary, and notification" --> A
-    P6 <--> D6
-    P6 --> D8
-
-    VW -- "Search, filter, and dashboard request" --> P7
-    P7 -- "Authorized reports and dashboard data" --> VW
-    D3 --> P7
-    D4 --> P7
-    D5 --> P7
-    D6 --> P7
-    P7 --> D8
+    P1 -. "audit event" .-> D16
+    P2 -. "audit event" .-> D16
+    P3 -. "audit event" .-> D16
+    P4 -. "audit event" .-> D16
+    P5 -. "audit event" .-> D16
+    P6 -. "audit event" .-> D16
+    P7 -. "audit event" .-> D16
+    P8 -. "audit event" .-> D16
+    P9 -. "audit event" .-> D16
+    P10 -. "audit event" .-> D16
+    P11 -. "audit event" .-> D16
+    P12 -. "audit event" .-> D16
+    P18 -. "audit event" .-> D16

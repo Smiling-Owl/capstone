@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SitRepO | Sign in</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+  <a class="skip-link" href="#sign-in">Skip to sign in</a>
+  <main class="login-layout">
+    <section class="login-context" aria-labelledby="system-title">
+      <div class="login-brand" aria-label="SitRepO">
+        <span class="brand-mark" aria-hidden="true">SR</span>
+        <strong>SitRepO</strong>
+      </div>
+
+      <div class="login-intro">
+        <p class="eyebrow">Local disaster reporting workspace</p>
+        <h1 id="system-title">Clear records.<br>Faster consolidation.</h1>
+        <p>Capture local observations, verify every report, and prepare traceable situation reports through one controlled workflow.</p>
+      </div>
+
+      <dl class="workflow-summary" aria-label="Reporting workflow">
+        <div><dt>01</dt><dd><strong>Purok</strong><span>Records initial field conditions</span></dd></div>
+        <div><dt>02</dt><dd><strong>Barangay</strong><span>Reviews and consolidates local reports</span></dd></div>
+        <div><dt>03</dt><dd><strong>DRRM Office</strong><span>Verifies records and prepares SitReps</span></dd></div>
+      </dl>
+
+      <p class="login-classification">Authorized government use only</p>
+    </section>
+
+    <section class="login-access" id="sign-in" aria-labelledby="sign-in-title">
+      <div class="login-form-wrap">
+        <div class="login-heading">
+          <p class="eyebrow">Secure access</p>
+          <h2 id="sign-in-title">Sign in to your workspace</h2>
+          <p>Use the account assigned by your supervising administrative level.</p>
+        </div>
+
+        <form class="login-form">
+          <label for="username">Username or email</label>
+          <input id="username" name="username" type="text" autocomplete="username" required>
+
+          <div class="password-label">
+            <label for="password">Password</label>
+            <span>Case-sensitive</span>
+          </div>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+          <label class="remember-option">
+            <input name="remember" type="checkbox">
+            <span>Keep me signed in on this device</span>
+          </label>
+
+          <button class="login-submit" type="submit">Sign in</button>
+        </form>
+
+        <aside class="account-notice" aria-labelledby="account-notice-title">
+          <span aria-hidden="true">i</span>
+          <div>
+            <h3 id="account-notice-title">Accounts are issued, not self-registered</h3>
+            <p>Purok accounts are created by Barangay personnel. Barangay accounts are created by the DRRM Administrator. Contact your administrator for access or password assistance.</p>
+          </div>
+        </aside>
+
+        <footer class="login-footer">
+          <span>System status: Operational</span>
+          <span>Privacy notice</span>
+          <span>Accessibility</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
