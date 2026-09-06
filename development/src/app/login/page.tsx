@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PrototypeToolbar } from "@/components/prototype-toolbar";
 import { LoginForm } from "./login-form";
 
@@ -8,7 +9,7 @@ export default function LoginPage() {
       <PrototypeToolbar current="login" />
       <main className="login-page-content">
         <header className="institutional-header">
-          <div className="identity-mark" aria-hidden="true">DRRM</div>
+          <Image className="identity-mark" src="/logo.png" alt="SitRepO" width={64} height={64} priority />
           <div className="institutional-identity">
             <h1 id="system-name">Barangay Disaster Situation Record Management and Situation Report Generation System</h1>
           </div>

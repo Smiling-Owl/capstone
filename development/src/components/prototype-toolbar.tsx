@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function PrototypeToolbar({ current }: { current: "login" | "purok" | "barangay" | "drrm" }) {
+export function PrototypeToolbar({ current }: { current: "login" | "purok" | "barangay" | "drrm" | "none" }) {
   return (
     <nav className="prototype-toolbar" aria-label="Prototype role switcher">
       <span>Prototype review</span>
