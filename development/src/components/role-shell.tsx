@@ -74,8 +74,8 @@ export function RoleShell({
           <aside className={`side-navigation${collapsed ? " collapsed" : ""}`}>
             <div className="side-navigation-brand">
               <div className="side-navigation-identity">
-                <Image className="identity-mark" src="/logo.png" alt="" width={collapsed ? 36 : 52} height={collapsed ? 36 : 52} />
-                {!collapsed && <Link className="system-short-name" href="/login">SitRepO</Link>}
+                <Image className="identity-mark" src="/logo.png" alt="" width={52} height={52} />
+                <Link className="system-short-name" href="/login" inert={collapsed}>SitRepO</Link>
               </div>
               <button type="button" className="sidebar-toggle" onClick={toggleSidebar} aria-expanded={!collapsed}>
                 <span aria-hidden="true" />
@@ -84,20 +84,18 @@ export function RoleShell({
                 <span className="visually-hidden">{collapsed ? "Show navigation" : "Hide navigation"}</span>
               </button>
             </div>
-            {!collapsed && (
-              <>
-                <p className="navigation-scope">{subtitle}</p>
-                <nav aria-label="Workspace navigation">{nav.map(navigationItem)}</nav>
-                <p className="navigation-note">Dimmed sections arrive in later prototype checkpoints.</p>
-                <div className="signed-in-user">
-                  <span>{userInitials}</span>
-                  <div>
-                    <strong>{userName}</strong>
-                    <small>Authorized user</small>
-                  </div>
+            <div className="side-navigation-body" inert={collapsed}>
+              <p className="navigation-scope">{subtitle}</p>
+              <nav aria-label="Workspace navigation">{nav.map(navigationItem)}</nav>
+              <p className="navigation-note">Dimmed sections arrive in later prototype checkpoints.</p>
+              <div className="signed-in-user">
+                <span>{userInitials}</span>
+                <div>
+                  <strong>{userName}</strong>
+                  <small>Authorized user</small>
                 </div>
-              </>
-            )}
+              </div>
+            </div>
           </aside>
         )}
         <main className="role-content" id="workspace-main">
