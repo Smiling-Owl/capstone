@@ -1,5 +1,5 @@
 import { RoleShell } from "@/components/role-shell";
-import { DRRM_NAV, ROLE_META } from "@/lib/role-nav";
+import { DRRM_MOBILE_NAV, DRRM_NAV, ROLE_META } from "@/lib/role-nav";
 import { SitRepEditor } from "./sitrep-editor";
 
 export default function SitRepEditorPage() {
@@ -9,7 +9,7 @@ export default function SitRepEditorPage() {
       role="drrm"
       subtitle={meta.subtitle}
       nav={DRRM_NAV}
-      mobileNav={DRRM_NAV}
+      mobileNav={DRRM_MOBILE_NAV}
       activeHref="/drrm/sitreps"
       userInitials={meta.userInitials}
       userName={meta.userName}

@@ -1,0 +1,176 @@
+INTEGRATED DISASTER INCIDENT RECORD MANAGEMENT AND AUTOMATED SITUATION REPORT GENERATION SYSTEM
+COPY-READY SPEAKER NOTES
+
+Use one passage for the matching slide. The notes follow the 43-slide order in the revised final presentation. They describe proposed functions and planned evaluation as proposals, not as completed results.
+
+SLIDE 1 — TITLE PAGE
+
+Good day to the members of the panel. We are Katrina Mae D.G. Perez and RJ P. Somosa, presenting our capstone project proposal, the Integrated Disaster Incident Record Management and Automated Situation Report Generation System. The project examines how incident information can be submitted from the Purok level, reviewed and consolidated at the Barangay level, and used by authorized DRRM personnel to prepare Situation Report drafts.
+
+SLIDE 2 — PRESENTATION FLOW
+
+We will begin with the legal and operational context, including Republic Act No. 10121 and the Operation L!STO preparedness manuals. We will then describe the Situation Report and the current reporting workflow, identify the problems in that workflow, and explain the proposed system and its objectives. The remaining slides cover users, scope, architecture, modules, data models, user flows, development and testing plans, AI use, and the project’s expected significance.
+
+SLIDE 3 — RA 10121: THE MANDATE
+
+Republic Act No. 10121 provides the national framework for disaster risk reduction and management in the Philippines. Section 12 identifies functions of local DRRM offices that include developing and maintaining local risk information, monitoring hazards and vulnerabilities, and supporting information dissemination and coordination. Our proposal responds to these information-management responsibilities. The law does not prescribe this particular software, and the system would not replace the authority of public officials.
+
+SLIDE 4 — OPERATION L!STO MANUAL
+
+Operation L!STO is a DILG and Local Government Academy preparedness initiative. Its manuals provide local governments with minimum preparedness actions and hazard-specific operational guidance. The slide also notes the Region IX rollout covering hydrometeorological and earthquake and tsunami manuals. We use this guidance to explain the broader preparedness context. Our proposed system focuses on incident reporting and Situation Report preparation, so it does not replace local preparedness plans or the manuals’ operational protocols.
+
+SLIDE 5 — SITUATION REPORT
+
+A Situation Report records the known situation at a defined point in time and is updated as verified information changes. The NDRRM Operations Center guidance discussed in our paper identifies Initial, Progress, Terminal, and Final reporting stages. Our proposed document structure covers identification, situation overview, preparedness, consolidated effects, response, issues, and recommendations. Sources, approval details, and annexes are included where applicable. The exact form used by an implementing office should follow the official template that applies to it.
+
+SLIDE 6 — CURRENT WORKFLOW
+
+The paper describes a reporting path that begins with Purok observations and communication to the Barangay. Barangay personnel check the information and prepare an initial account. The information may then pass to ZCDRRMO operations, where staff can request clarification or field checks, consolidate records, and prepare the City Situation Report. Calls, messages, documents, drives, and spreadsheets may all be involved. This is the workflow described in the study, not a measured account of every incident.
+
+SLIDE 7 — IMPLICATIONS OF THE CURRENT WORKFLOW
+
+The paper identifies several possible operational effects of using separate communication and record-keeping channels. Each clarification can add another hand-off. Staff may have to re-enter or summarize information, and it can be difficult to tell which version is current or where a detail came from. Verification also competes with other response duties. These points are qualitative findings from the problem analysis and interview; we are not claiming measured delays or error rates.
+
+SLIDE 8 — POSSIBLE SOLUTIONS AND WHY THEY ARE INSUFFICIENT ALONE
+
+Calls, text messages, and radio remain useful for urgent contact, but by themselves they do not provide a shared record of status, source, corrections, and report versions. Paper forms and spreadsheets support flexible recording and review, but copies can require manual reconciliation. A single-level reporting application can structure submissions, yet may not represent the Purok-to-Barangay-to-DRRM review path or the SitRep lifecycle. The proposed web system combines these record-management functions, while still depending on connectivity.
+
+SLIDE 9 — PROBLEM STATEMENT
+
+The problem statement groups the workflow concerns into four themes: communication delay, manual record management, limited data sharing, and inefficient verification. These concerns are connected. When information passes through multiple channels, staff may need to follow up, reconcile copies, or repeat data entry before they can prepare a consolidated account. The project therefore focuses on managing the reporting process and its records, rather than simply adding another communication channel.
+
+SLIDE 10 — WORKFLOW GAPS AND MANDATED PRACTICE
+
+This slide connects the identified gaps to the responsibilities and reporting practices discussed in the paper. RA 10121 supports local information management and coordination. NDRRM Operations Center guidance uses reporting stages that reflect an evolving situation. The proposed design responds through role-scoped shared records, versioned reports, and human review with recorded reasons and correction history. We want to be clear that these authorities do not require this particular digital platform; they inform the process the system is intended to support.
+
+SLIDE 11 — PROPOSED SYSTEM
+
+The proposed system is a centralized, role-based web application for aggregate profiles, incident reports, verification, report history, and editable Situation Report drafts. We propose it in response to the delays, repeated record handling, limited data sharing, and verification workload described in the paper. Purok personnel submit initial information, Barangay personnel review and consolidate it, and DRRM personnel review eligible Barangay reports and prepare a draft. Authorized officials retain factual review, approval, and release authority.
+
+SLIDE 12 — PROPOSED SYSTEM OBJECTIVES
+
+The general objective is to design, develop, and evaluate an online system for grassroots incident reporting and NDRRM Situation Report consolidation. The specific work includes implementing 17 distinct modules, preserving jurisdiction and source information, recording decisions and corrections, and creating editable report drafts from verified Barangay submissions. Evaluation will cover functionality, integration, security, responsive behavior, user acceptance, and usability. The criteria shown in the manuscript are planned targets; they are not reported outcomes.
+
+SLIDE 13 — PROPOSED SYSTEM FLOWCHART
+
+The flowchart shows the main review gates. Users sign in with accounts issued by an authorized higher-level user. Purok personnel submit a profile or an initial incident report for Barangay review. Accepted Purok information can be consolidated by the Barangay. DRRM personnel then review the Barangay submission. If a reviewer returns a record, the system routes it back with a reason so the responsible level can correct it. Eligible reports support preparation and editing of a SitRep draft, followed by authorized approval and export.
+
+SLIDE 14 — PROPOSED SYSTEM MODULES: OVERVIEW
+
+The system has 17 modules, kept distinct according to the three operating levels. Six modules support Purok account administration, profile creation and verification, incident reporting, incident-report verification, and history. Six corresponding modules support Barangay account administration, profile creation and verification, incident consolidation and reporting, verification, and history. Five modules support DRRM administration, hazard configuration, Situation Report generation and history, and the system dashboard. Review decisions remain with authorized people.
+
+SLIDE 15 — EXISTING SYSTEMS
+
+The paper reviews Bandilyo App, AGAPP, IRespondPH, and Mamamayan as related systems. They address different needs, including mobile reporting, disaster information, citizen reports, LGU review, public-facing information, and routing reports to emergency operations. The comparison is limited to the systems and descriptions reviewed in the manuscript. It is not a comprehensive market evaluation or a claim that those systems lack all of the functions listed as relevant to this proposal.
+
+SLIDE 16 — PROBLEM, OBJECTIVES, AND METHODS
+
+This matrix explains how each problem maps to an objective and a system method. The communication concern maps to role-based submission and status tracking. Manual record handling maps to centralized records, history, and editable drafts. Limited data sharing maps to access based on role and jurisdiction. Verification concerns map to staged human review supported by completeness checks and recorded decisions. Automated checks can help identify missing or inconsistent fields, but they cannot establish whether a field report is factually correct.
+
+SLIDE 17 — USERS AND CHARACTERISTICS
+
+The interface is planned around the work and devices of each role. Purok personnel use a mobile-first browser flow to enter aggregate profile values and initial incident information. Barangay personnel need mobile and desktop access to review Purok submissions, consolidate verified data, and add Barangay-level assessment. DRRM administrators need desktop-capable tools for account and hazard administration, report review, SitRep preparation, and system summaries. The proposal does not assume demographic traits that the paper has not established.
+
+SLIDE 18 — SCOPE AND LIMITATIONS
+
+The proposed scope covers Purok, Barangay, and DRRM Administrator roles, profiles, incident reports, verification, response and recovery Situation Reports, history, dashboards, and exports. It assumes internet access and a centralized database. Offline synchronization, SMS fallback, a native mobile application, public announcements, pre-disaster preparedness, and risk monitoring are outside the stated scope. Before the defense, we should ensure that the manuscript’s multi-organization wording, access matrix, and architecture figure consistently match these stated limits.
+
+SLIDE 19 — ARCHITECTURAL DESIGN
+
+The proposed architecture has four layers. Users access the system through a responsive browser interface, with a mobile-first experience for Purok and desktop-capable workflows for Barangay and DRRM personnel. The application layer handles role-specific processes, required-field checks, verification, aggregation, and SitRep editing. The network layer uses a REST API over HTTPS, and the data layer uses centralized PostgreSQL records, report versions, and audit history. Because the design requires connectivity, it does not promise service during network or power outages.
+
+SLIDE 20 — DETAILED MODULES: PUROK ACCOUNTS AND PROFILES
+
+At the Purok level, authorized Barangay personnel create accounts, assign the correct Barangay, and issue credentials. The Purok profile captures identity and monthly aggregate information about population, housing, vulnerability, and hazard exposure. It does not require named household records. A Barangay reviewer checks the submitted profile and either verifies it or returns it with a reason. These steps help establish a reviewed baseline while keeping account and profile responsibilities at their proper levels.
+
+SLIDE 21 — DETAILED MODULES: PUROK INCIDENT REPORTING
+
+The initial Purok incident report is intentionally simple. It records the hazard, location, observed date and time, initial situation, and affected or exposed unit totals available to the reporter. It is not intended to make Purok personnel complete a detailed city-level damage assessment or the full SitRep. As information changes, later versions can be recorded. Barangay personnel review the report, address duplicates or conflicts, and validate or return it with a reason. The record’s history preserves what changed.
+
+SLIDE 22 — DETAILED MODULES: BARANGAY ACCOUNTS AND PROFILES
+
+DRRM administrators create Barangay accounts and issue credentials. At the profile level, Barangay personnel consolidate verified information submitted by their Puroks rather than independently re-entering the same baseline data. An authorized DRRM reviewer checks the resulting Barangay profile and records a decision. This provides a higher-level review while preserving the relationship between the Barangay summary and the Purok information from which it was formed.
+
+SLIDE 23 — DETAILED MODULES: BARANGAY INCIDENT REPORTING
+
+Barangay reporting adds aggregation and assessment to the initial Purok record. Barangay personnel retrieve eligible verified Purok reports, consolidate the information, and add Barangay-level assessment such as affected population, casualty summary, or damage details. DRRM reviewers examine the submitted Barangay report and may verify, partially verify, return, or reject it with a recorded reason. Only reports that meet the defined verification requirements are eligible for SitRep consolidation.
+
+SLIDE 24 — DETAILED MODULES: DRRM ADMINISTRATION AND HAZARDS
+
+System User Management allows authorized DRRM administrators to view and maintain accounts across the Purok, Barangay, and DRRM roles. The account’s authorship and review history should remain traceable when an account changes status. Hazard Creation records the hazard details and uses hazard types aligned with the participating organization’s Community Disaster Risk Assessment. This supports consistent terminology. The system records the selected classification; it does not independently determine what hazard occurred.
+
+SLIDE 25 — DETAILED MODULES: DRRM REPORTING AND ANALYTICS
+
+For Situation Report Generation, an authorized user selects an incident and reporting cutoff. The system retrieves eligible verified Barangay reports and uses them to prepare an editable, template-based draft. Personnel can review the source information, edit the draft, route it for authorized approval, and export it. The historical catalog supports searching and retrieving prior versions, while the dashboard summarizes role-appropriate operational information. The dashboard should distinguish verified data from provisional submissions so that status is not misrepresented.
+
+SLIDE 26 — DATA FLOW DIAGRAM
+
+The Level 0 Data Flow Diagram shows Purok, Barangay, and DRRM administrators interacting with 17 processes and the project’s principal data stores. Purok processes manage aggregate profile information and initial incident reports. Barangay processes verify and consolidate those records. DRRM processes manage accounts and hazards, review Barangay submissions, and prepare Situation Reports. The arrows describe data entering and leaving processes. The diagram communicates process-level information flow; it does not by itself specify database keys or constraints.
+
+SLIDE 27 — ENTITY RELATIONSHIP DIAGRAM
+
+The Entity Relationship Diagram presents the system’s conceptual data structure. Account is the general entity, with Purok, Barangay, and DRRM account subtypes. Other entity groups represent profiles, housing and hazard exposure, hazards, incident reports and versions, affected population, casualties, damage, Situation Reports, response actions, issues, recommendations, and related effects. Primary identifiers are underlined. At this conceptual stage, relationships are shown without adding foreign-key attributes to the entity boxes, following the ERD convention agreed for this project.
+
+SLIDE 28 — RELATIONAL DATA MODEL
+
+The Relational Data Model translates the conceptual entities into connected database relations. It shows how account and jurisdiction records support access and routing, how profile and hazard tables represent baseline exposure data, and how incident and Situation Report tables preserve updates and their supporting details. Unlike the conceptual ERD on the previous slide, the RDM shows the table-level key structure and relationships needed for implementation. Together, the two diagrams describe different stages of the data design.
+
+SLIDE 29 — USER FLOW: PUROK
+
+Purok personnel sign in using credentials issued by an authorized higher-level user. They review the current verified monthly profile, enter aggregate population, housing, vulnerability, and hazard-exposure values, and submit it for Barangay review. For an incident, they provide the initial hazard, location, time, situation, and affected or exposure counts that they can report. They can then follow the status, make requested corrections, and consult prior versions. The flow uses aggregate information, not named household records.
+
+SLIDE 30 — USER FLOW: BARANGAY
+
+Barangay personnel sign in and review Purok profile and incident submissions. They compare the information with available references and record a verification decision or return it with a reason. Verified Purok profile data contribute to the Barangay profile. For an incident, Barangay personnel consolidate eligible Purok submissions and add higher-level assessment before submitting the report to DRRM. Keeping source reports distinguishable from the Barangay contribution helps preserve provenance and reduces the risk of counting the same effects twice.
+
+SLIDE 31 — USER FLOW: DRRM ADMINISTRATOR
+
+The DRRM Administrator flow covers account administration, hazard configuration, report review, Situation Report preparation, and monitoring. Administrators maintain accounts and configure hazard types according to the organization’s CDRA. Authorized reviewers examine Barangay profiles and reports and return or verify them with a reason. For a SitRep, a preparer selects the incident and cutoff, edits the source-linked draft, and routes it for approval and export. The organization should define who may approve a report so that preparation and approval responsibilities are clear.
+
+SLIDE 32 — OVERVIEW OF THE DEVELOPMENT PLAN
+
+The proposal follows an iterative development and evaluation plan. Requirements work confirms user roles, report fields, authority, and applicable templates. Design work finalizes workflows, the data model, access rules, and interface prototypes. The team then builds and integrates the modules before alpha testing. Beta evaluation gathers feedback from intended users and informs refinement. The manuscript does not establish sprint durations or release dates, so this slide presents phases rather than a dated schedule.
+
+SLIDE 33 — TECHNICALITIES: TECHNOLOGY STACK
+
+The paper proposes a browser-based stack. The frontend uses React.js, Next.js, HTML, and Tailwind CSS. The backend uses Node.js and PostgREST through a REST API protected by HTTPS. OpenAuth is specified for authentication, PostgreSQL for centralized storage, and a virtual private server with a content delivery network for deployment. Users access the system through responsive desktop or mobile browsers. These are the proposed technical choices and remain subject to implementation and testing.
+
+SLIDE 34 — TECHNICALITIES: TESTING
+
+Testing is planned in two broad stages. Alpha testing includes unit and component checks with Jest, API checks with Jest and Supertest, responsive end-to-end checks with Cypress, and system integration and security testing. Beta testing involves intended user roles, a 10-item System Usability Scale questionnaire, and the manuscript’s proposed mean score target of 68 or higher. The zero-unhandled-crash and render-failure criterion is also a planned exit target. No test results are being claimed at this proposal stage.
+
+SLIDE 35 — TECHNICALITIES: AI USAGE
+
+AI assistance has supported work on research organization, mandate mapping, workflow analysis, diagrams, schema planning, interface mockups, and presentation materials. During development, the team plans to use AI for bounded architecture discussions, coding assistance, debugging, and test-case suggestions. Team members remain responsible for checking sources, reviewing generated code, running tests, and validating results. AI is a tool used in the project lifecycle; it is not a feature of the proposed disaster reporting system. Use and disclosure will follow university policy.
+
+SLIDE 36 — SIGNIFICANCE OF THE PROJECT
+
+The proposal may provide Purok personnel with a structured way to submit aggregate information and follow review status. Barangay personnel may use it to review source records and consolidate eligible Purok data. DRRM personnel may use verified records to support monitoring and SitRep preparation. The versioned records could also inform future study of local DRRM information practices. These are expected contributions. Their usefulness and usability still need to be assessed with intended users.
+
+SLIDE 37 — SUMMARY
+
+To summarize, the proposed process begins with an initial aggregate report from Purok. Barangay personnel review and consolidate verified information, then submit a higher-level incident report. Authorized DRRM personnel review eligible submissions and prepare a source-linked Situation Report draft for approval. The system is intended to support a traceable reporting process, while public officials retain responsibility for factual decisions and official release.
+
+SLIDE 38 — REFERENCES
+
+This slide lists selected authorities, guidance, related systems, and interview material used in the presentation. They include Republic Act No. 10121, the NDRRM Operations Center procedures and guidelines, privacy and records laws, the related systems reviewed in the paper, and the ZCDRRMO interview. The full bibliographic entries appear in the revised manuscript. The citations support the context and design rationale; they should not be read as endorsements of the proposed system.
+
+SLIDE 39 — DISCUSSION
+
+That concludes the main presentation. We welcome the panel’s questions and comments on the proposed workflow, the division of responsibilities among Purok, Barangay, and DRRM personnel, the reporting fields, the data model, and the planned evaluation. We will distinguish what the paper documents from what remains a proposed design decision, and we will note any recommendations that require revision before development.
+
+SLIDE 40 — APPENDIX: PROPOSED SYSTEM FLOWCHART
+
+This appendix reproduces Figure 2 from the paper for reference during discussion. It shows the system’s overall sequence, including account-based access, reporting, verification, correction paths, and SitRep preparation. The main presentation summarized this process earlier. We can use this full diagram to answer questions about where a role enters the workflow or how a returned submission moves back to its originator.
+
+SLIDE 41 — APPENDIX: LEVEL 0 DATA FLOW DIAGRAM
+
+This appendix reproduces Figure 27, the Level 0 Data Flow Diagram. It provides the full view of the three actors, the numbered processes, the data stores, and the named flows between them. The diagram is useful for tracing a specific submission or verification status. It represents process and data movement, while the ERD and RDM describe the data structure at different levels.
+
+SLIDE 42 — APPENDIX: ENTITY RELATIONSHIP DIAGRAM
+
+This appendix reproduces Figure 40, the project’s Entity Relationship Diagram. It is available for closer inspection of entity families, account subtypes, attributes, and conceptual relationships. The underlined identifiers indicate primary identifiers, while the boxes do not add foreign-key attributes at this stage. We can refer to this diagram when discussing which records the proposed system needs to retain.
+
+SLIDE 43 — APPENDIX: RELATIONAL DATA MODEL
+
+This final appendix reproduces Figure 41, the connected Relational Data Model. It provides a detailed view of the proposed tables and how records relate through the implementation-level key structure. The model is intended to support the reporting and verification workflow described earlier. It remains a design artifact to be validated against the finalized requirements and implemented schema during the development phase.

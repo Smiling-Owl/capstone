@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="3308" height="2790" viewBox="0 0 3308 2790" role="img" aria-labelledby="title desc">
+  <title id="title">Complete relational data model with foreign-key connections</title>
+  <desc id="desc">All 32 relations in one grouped view. Table cards list columns, generic types, primary and foreign keys. Lines point from each foreign key to its referenced relation.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 z" fill="#789197"/></marker></defs>
+  <style>text{font-family:Inter,Segoe UI,Arial,sans-serif}</style>
+  <rect width="100%" height="100%" fill="#f4f5f2"/>
+  <text x="34" y="35" font-size="11" font-weight="700" letter-spacing="1.8" fill="#597077">CAPSTONE · RELATIONAL DATA MODEL</text>
+  <text x="34" y="64" font-size="21" font-weight="650" fill="#19343b">Complete schema · 32 relations</text>
+  <text x="34" y="144" font-size="16" font-weight="650" fill="#203b42">Accounts and hazards</text>
+  <text x="34" y="164" font-size="11.5" fill="#697b7e">6 relations</text>
+  <text x="864" y="144" font-size="16" font-weight="650" fill="#203b42">Profiles and verification</text>
+  <text x="864" y="164" font-size="11.5" fill="#697b7e">9 relations</text>
+  <text x="1694" y="144" font-size="16" font-weight="650" fill="#203b42">Incident reports</text>
+  <text x="1694" y="164" font-size="11.5" fill="#697b7e">7 relations</text>
+  <text x="2524" y="144" font-size="16" font-weight="650" fill="#203b42">Situation reports</text>
+  <text x="2524" y="164" font-size="11.5" fill="#697b7e">10 relations</text>
+  <path d="M634 574 H646 V206 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M634 694 H654 V206 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M634 764 H662 V541 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M634 865 H670 V206 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M634 954 H678 V661 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M634 1169 H686 V206 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M634 1555 H694 V1022 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M864 505 H702 V661 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M864 625 H710 V206 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1464 657 H1476 V206 H1464" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1464 853 H1484 V206 H1464" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1464 1068 H1492 V206 H1464" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M864 1549 H718 V832 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M864 1669 H726 V206 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1464 1701 H1500 V1212 H1464" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1464 1916 H1508 V1212 H1464" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1464 2112 H1516 V1212 H1464" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M864 2327 H734 V206 H634" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1464 2359 H1524 V206 H1694" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M1694 277 V120 H18 V206 H34" fill="none" stroke="#789197" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M2294 416 H2306 V206 H2294" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M2294 669 H2314 V206 H2294" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M2294 922 H2322 V206 H2294" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M2294 1118 H2330 V206 H2294" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M2294 1371 H2338 V206 H2294" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M2294 1491 H2346 V206 H2294" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M2524 334 V109 H18 V541 H34" fill="none" stroke="#789197" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M3124 454 H3136 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 783 H3144 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 1036 H3152 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 1289 H3160 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 1523 H3168 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 1776 H3176 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 2029 H3184 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 2225 H3192 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <path d="M3124 2554 H3200 V206 H3124" fill="none" stroke="#789197" stroke-width="1.45" marker-end="url(#arrow)"/>
+  <g><rect x="34" y="186" width="600" height="321" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M42 186h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#244c55"/>
+  <text x="48" y="211" font-size="14" font-weight="650" fill="#ffffff">account</text>
+  <text x="620" y="211" text-anchor="end" font-size="10" fill="#e5eeee">14 cols</text>
+  <text x="47" y="243" font-size="10.8" fill="#2b4145">account_id</text>
+  <text x="489" y="243" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="595" y="232" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="608.5" y="243" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="46" y1="249" x2="622" y2="249" stroke="#eef0ee"/>
+  <text x="47" y="262" font-size="10.8" fill="#2b4145">account_username</text>
+  <text x="489" y="262" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="268" x2="622" y2="268" stroke="#eef0ee"/>
+  <text x="47" y="281" font-size="10.8" fill="#2b4145">account_password_hashed</text>
+  <text x="489" y="281" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="287" x2="622" y2="287" stroke="#eef0ee"/>
+  <text x="47" y="300" font-size="10.8" fill="#2b4145">account_name</text>
+  <text x="489" y="300" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="306" x2="622" y2="306" stroke="#eef0ee"/>
+  <text x="47" y="319" font-size="10.8" fill="#2b4145">account_first_name</text>
+  <text x="489" y="319" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="325" x2="622" y2="325" stroke="#eef0ee"/>
+  <text x="47" y="338" font-size="10.8" fill="#2b4145">account_middle_name</text>
+  <text x="489" y="338" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="344" x2="622" y2="344" stroke="#eef0ee"/>
+  <text x="47" y="357" font-size="10.8" fill="#2b4145">account_last_name</text>
+  <text x="489" y="357" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="363" x2="622" y2="363" stroke="#eef0ee"/>
+  <text x="47" y="376" font-size="10.8" fill="#2b4145">account_email</text>
+  <text x="489" y="376" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="382" x2="622" y2="382" stroke="#eef0ee"/>
+  <text x="47" y="395" font-size="10.8" fill="#2b4145">account_phone</text>
+  <text x="489" y="395" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="401" x2="622" y2="401" stroke="#eef0ee"/>
+  <text x="47" y="414" font-size="10.8" fill="#2b4145">account_address</text>
+  <text x="489" y="414" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="46" y1="420" x2="622" y2="420" stroke="#eef0ee"/>
+  <text x="47" y="433" font-size="10.8" fill="#2b4145">account_location</text>
+  <text x="489" y="433" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="439" x2="622" y2="439" stroke="#eef0ee"/>
+  <text x="47" y="452" font-size="10.8" fill="#2b4145">account_status</text>
+  <text x="489" y="452" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="458" x2="622" y2="458" stroke="#eef0ee"/>
+  <text x="47" y="471" font-size="10.8" fill="#2b4145">account_created_at</text>
+  <text x="489" y="471" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="46" y1="477" x2="622" y2="477" stroke="#eef0ee"/>
+  <text x="47" y="490" font-size="10.8" fill="#2b4145">account_created_by</text>
+  <text x="489" y="490" text-anchor="end" font-size="10" fill="#738185">int</text>
+  </g>
+  <g><rect x="34" y="521" width="600" height="106" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M42 521h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#244c55"/>
+  <text x="48" y="546" font-size="14" font-weight="650" fill="#ffffff">drrm_account</text>
+  <text x="620" y="546" text-anchor="end" font-size="10" fill="#e5eeee">2 cols</text>
+  <text x="47" y="578" font-size="10.8" fill="#2b4145">drrm_account_id</text>
+  <text x="489" y="578" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="579" y="567" width="43" height="15" rx="4" fill="#e5eee7"/>
+  <text x="600.5" y="578" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK/FK</text>
+  <text x="47" y="590" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  <line x1="46" y1="597" x2="622" y2="597" stroke="#eef0ee"/>
+  <text x="47" y="610" font-size="10.8" fill="#2b4145">drrm_unit_id</text>
+  <text x="489" y="610" text-anchor="end" font-size="10" fill="#738185">int</text>
+  </g>
+  <g><rect x="34" y="641" width="600" height="157" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M42 641h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#244c55"/>
+  <text x="48" y="666" font-size="14" font-weight="650" fill="#ffffff">barangay_account</text>
+  <text x="620" y="666" text-anchor="end" font-size="10" fill="#e5eeee">4 cols</text>
+  <text x="47" y="698" font-size="10.8" fill="#2b4145">barangay_account_id</text>
+  <text x="489" y="698" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="579" y="687" width="43" height="15" rx="4" fill="#e5eee7"/>
+  <text x="600.5" y="698" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK/FK</text>
+  <text x="47" y="710" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  <line x1="46" y1="717" x2="622" y2="717" stroke="#eef0ee"/>
+  <text x="47" y="730" font-size="10.8" fill="#2b4145">barangay_name</text>
+  <text x="489" y="730" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="736" x2="622" y2="736" stroke="#eef0ee"/>
+  <text x="47" y="749" font-size="10.8" fill="#2b4145">barangay_supervising_drrm</text>
+  <text x="489" y="749" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="46" y1="755" x2="622" y2="755" stroke="#eef0ee"/>
+  <text x="47" y="768" font-size="10.8" fill="#2b4145">created_by_drrm_account_id</text>
+  <text x="489" y="768" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="595" y="757" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="608.5" y="768" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="47" y="780" font-size="9.1" fill="#62777a">FK → drrm_account.drrm_account_id</text>
+  </g>
+  <g><rect x="34" y="812" width="600" height="176" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M42 812h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#244c55"/>
+  <text x="48" y="837" font-size="14" font-weight="650" fill="#ffffff">purok_account</text>
+  <text x="620" y="837" text-anchor="end" font-size="10" fill="#e5eeee">5 cols</text>
+  <text x="47" y="869" font-size="10.8" fill="#2b4145">purok_account_id</text>
+  <text x="489" y="869" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="579" y="858" width="43" height="15" rx="4" fill="#e5eee7"/>
+  <text x="600.5" y="869" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK/FK</text>
+  <text x="47" y="881" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  <line x1="46" y1="888" x2="622" y2="888" stroke="#eef0ee"/>
+  <text x="47" y="901" font-size="10.8" fill="#2b4145">purok_barangay</text>
+  <text x="489" y="901" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="46" y1="907" x2="622" y2="907" stroke="#eef0ee"/>
+  <text x="47" y="920" font-size="10.8" fill="#2b4145">purok_supervising_barangay</text>
+  <text x="489" y="920" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="46" y1="926" x2="622" y2="926" stroke="#eef0ee"/>
+  <text x="47" y="939" font-size="10.8" fill="#2b4145">purok_name</text>
+  <text x="489" y="939" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="945" x2="622" y2="945" stroke="#eef0ee"/>
+  <text x="47" y="958" font-size="10.8" fill="#2b4145">created_by_barangay_account_id</text>
+  <text x="489" y="958" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="595" y="947" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="608.5" y="958" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="47" y="970" font-size="9.1" fill="#62777a">FK → barangay_account.barangay_account_id</text>
+  </g>
+  <g><rect x="34" y="1002" width="600" height="201" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M42 1002h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#244c55"/>
+  <text x="48" y="1027" font-size="14" font-weight="650" fill="#ffffff">hazard</text>
+  <text x="620" y="1027" text-anchor="end" font-size="10" fill="#e5eeee">7 cols</text>
+  <text x="47" y="1059" font-size="10.8" fill="#2b4145">hazard_id</text>
+  <text x="489" y="1059" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="595" y="1048" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="608.5" y="1059" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="46" y1="1065" x2="622" y2="1065" stroke="#eef0ee"/>
+  <text x="47" y="1078" font-size="10.8" fill="#2b4145">hazard_name</text>
+  <text x="489" y="1078" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1084" x2="622" y2="1084" stroke="#eef0ee"/>
+  <text x="47" y="1097" font-size="10.8" fill="#2b4145">hazard_type</text>
+  <text x="489" y="1097" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1103" x2="622" y2="1103" stroke="#eef0ee"/>
+  <text x="47" y="1116" font-size="10.8" fill="#2b4145">hazard_date</text>
+  <text x="489" y="1116" text-anchor="end" font-size="10" fill="#738185">date</text>
+  <line x1="46" y1="1122" x2="622" y2="1122" stroke="#eef0ee"/>
+  <text x="47" y="1135" font-size="10.8" fill="#2b4145">hazard_location</text>
+  <text x="489" y="1135" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1141" x2="622" y2="1141" stroke="#eef0ee"/>
+  <text x="47" y="1154" font-size="10.8" fill="#2b4145">hazard_severity</text>
+  <text x="489" y="1154" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1160" x2="622" y2="1160" stroke="#eef0ee"/>
+  <text x="47" y="1173" font-size="10.8" fill="#2b4145">created_by_account_id</text>
+  <text x="489" y="1173" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="595" y="1162" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="608.5" y="1173" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="47" y="1185" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  </g>
+  <g><rect x="34" y="1217" width="600" height="372" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M42 1217h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#244c55"/>
+  <text x="48" y="1242" font-size="14" font-weight="650" fill="#ffffff">hazard_characteristic</text>
+  <text x="620" y="1242" text-anchor="end" font-size="10" fill="#e5eeee">16 cols</text>
+  <text x="47" y="1274" font-size="10.8" fill="#2b4145">hazard_characteristic_id</text>
+  <text x="489" y="1274" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="595" y="1263" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="608.5" y="1274" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="46" y1="1280" x2="622" y2="1280" stroke="#eef0ee"/>
+  <text x="47" y="1293" font-size="10.8" fill="#2b4145">hazard_characteristic_name</text>
+  <text x="489" y="1293" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1299" x2="622" y2="1299" stroke="#eef0ee"/>
+  <text x="47" y="1312" font-size="10.8" fill="#2b4145">hazard_title</text>
+  <text x="489" y="1312" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1318" x2="622" y2="1318" stroke="#eef0ee"/>
+  <text x="47" y="1331" font-size="10.8" fill="#2b4145">hazard_description</text>
+  <text x="489" y="1331" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="46" y1="1337" x2="622" y2="1337" stroke="#eef0ee"/>
+  <text x="47" y="1350" font-size="10.8" fill="#2b4145">hazard_location_description</text>
+  <text x="489" y="1350" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="46" y1="1356" x2="622" y2="1356" stroke="#eef0ee"/>
+  <text x="47" y="1369" font-size="10.8" fill="#2b4145">hazard_landmark</text>
+  <text x="489" y="1369" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1375" x2="622" y2="1375" stroke="#eef0ee"/>
+  <text x="47" y="1388" font-size="10.8" fill="#2b4145">hazard_assessment_date_time</text>
+  <text x="489" y="1388" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="46" y1="1394" x2="622" y2="1394" stroke="#eef0ee"/>
+  <text x="47" y="1407" font-size="10.8" fill="#2b4145">hazard_intensity_or_magnitude</text>
+  <text x="489" y="1407" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="46" y1="1413" x2="622" y2="1413" stroke="#eef0ee"/>
+  <text x="47" y="1426" font-size="10.8" fill="#2b4145">hazard_intensity_unit</text>
+  <text x="489" y="1426" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1432" x2="622" y2="1432" stroke="#eef0ee"/>
+  <text x="47" y="1445" font-size="10.8" fill="#2b4145">hazard_severity</text>
+  <text x="489" y="1445" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1451" x2="622" y2="1451" stroke="#eef0ee"/>
+  <text x="47" y="1464" font-size="10.8" fill="#2b4145">hazard_duration</text>
+  <text x="489" y="1464" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1470" x2="622" y2="1470" stroke="#eef0ee"/>
+  <text x="47" y="1483" font-size="10.8" fill="#2b4145">hazard_current_status</text>
+  <text x="489" y="1483" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1489" x2="622" y2="1489" stroke="#eef0ee"/>
+  <text x="47" y="1502" font-size="10.8" fill="#2b4145">hazard_record_status</text>
+  <text x="489" y="1502" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="46" y1="1508" x2="622" y2="1508" stroke="#eef0ee"/>
+  <text x="47" y="1521" font-size="10.8" fill="#2b4145">hazard_prepared_by</text>
+  <text x="489" y="1521" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="46" y1="1527" x2="622" y2="1527" stroke="#eef0ee"/>
+  <text x="47" y="1540" font-size="10.8" fill="#2b4145">hazard_submitted_at</text>
+  <text x="489" y="1540" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="46" y1="1546" x2="622" y2="1546" stroke="#eef0ee"/>
+  <text x="47" y="1559" font-size="10.8" fill="#2b4145">hazard_id</text>
+  <text x="489" y="1559" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="595" y="1548" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="608.5" y="1559" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="47" y="1571" font-size="9.1" fill="#62777a">FK → hazard.hazard_id</text>
+  </g>
+  <g><rect x="864" y="186" width="600" height="353" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 186h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="211" font-size="14" font-weight="650" fill="#ffffff">barangay_profile</text>
+  <text x="1450" y="211" text-anchor="end" font-size="10" fill="#e5eeee">15 cols</text>
+  <text x="877" y="243" font-size="10.8" fill="#2b4145">barangay_profile_id</text>
+  <text x="1319" y="243" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="232" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="243" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="249" x2="1452" y2="249" stroke="#eef0ee"/>
+  <text x="877" y="262" font-size="10.8" fill="#2b4145">barangay_name</text>
+  <text x="1319" y="262" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="268" x2="1452" y2="268" stroke="#eef0ee"/>
+  <text x="877" y="281" font-size="10.8" fill="#2b4145">barangay_city</text>
+  <text x="1319" y="281" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="287" x2="1452" y2="287" stroke="#eef0ee"/>
+  <text x="877" y="300" font-size="10.8" fill="#2b4145">barangay_province</text>
+  <text x="1319" y="300" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="306" x2="1452" y2="306" stroke="#eef0ee"/>
+  <text x="877" y="319" font-size="10.8" fill="#2b4145">barangay_population</text>
+  <text x="1319" y="319" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="325" x2="1452" y2="325" stroke="#eef0ee"/>
+  <text x="877" y="338" font-size="10.8" fill="#2b4145">barangay_male_num</text>
+  <text x="1319" y="338" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="344" x2="1452" y2="344" stroke="#eef0ee"/>
+  <text x="877" y="357" font-size="10.8" fill="#2b4145">barangay_female_num</text>
+  <text x="1319" y="357" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="363" x2="1452" y2="363" stroke="#eef0ee"/>
+  <text x="877" y="376" font-size="10.8" fill="#2b4145">barangay_infants_num</text>
+  <text x="1319" y="376" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="382" x2="1452" y2="382" stroke="#eef0ee"/>
+  <text x="877" y="395" font-size="10.8" fill="#2b4145">barangay_children_num</text>
+  <text x="1319" y="395" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="401" x2="1452" y2="401" stroke="#eef0ee"/>
+  <text x="877" y="414" font-size="10.8" fill="#2b4145">barangay_adult_num</text>
+  <text x="1319" y="414" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="420" x2="1452" y2="420" stroke="#eef0ee"/>
+  <text x="877" y="433" font-size="10.8" fill="#2b4145">barangay_senior_num</text>
+  <text x="1319" y="433" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="439" x2="1452" y2="439" stroke="#eef0ee"/>
+  <text x="877" y="452" font-size="10.8" fill="#2b4145">barangay_pwd_num</text>
+  <text x="1319" y="452" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="458" x2="1452" y2="458" stroke="#eef0ee"/>
+  <text x="877" y="471" font-size="10.8" fill="#2b4145">barangay_pregnant_num</text>
+  <text x="1319" y="471" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="477" x2="1452" y2="477" stroke="#eef0ee"/>
+  <text x="877" y="490" font-size="10.8" fill="#2b4145">barangay_lactating_num</text>
+  <text x="1319" y="490" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="496" x2="1452" y2="496" stroke="#eef0ee"/>
+  <text x="877" y="509" font-size="10.8" fill="#2b4145">created_by_barangay_account_id</text>
+  <text x="1319" y="509" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="498" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="509" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="521" font-size="9.1" fill="#62777a">FK → barangay_account.barangay_account_id</text>
+  </g>
+  <g><rect x="864" y="553" width="600" height="214" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 553h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="578" font-size="14" font-weight="650" fill="#ffffff">barangay_profile_verification</text>
+  <text x="1450" y="578" text-anchor="end" font-size="10" fill="#e5eeee">7 cols</text>
+  <text x="877" y="610" font-size="10.8" fill="#2b4145">barangay_profile_verification_id</text>
+  <text x="1319" y="610" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="599" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="610" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="616" x2="1452" y2="616" stroke="#eef0ee"/>
+  <text x="877" y="629" font-size="10.8" fill="#2b4145">reviewer_account_id</text>
+  <text x="1319" y="629" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="618" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="629" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="641" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  <line x1="876" y1="648" x2="1452" y2="648" stroke="#eef0ee"/>
+  <text x="877" y="661" font-size="10.8" fill="#2b4145">barangay_profile_id</text>
+  <text x="1319" y="661" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="650" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="661" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="673" font-size="9.1" fill="#62777a">FK → barangay_profile.barangay_profile_id</text>
+  <line x1="876" y1="680" x2="1452" y2="680" stroke="#eef0ee"/>
+  <text x="877" y="693" font-size="10.8" fill="#2b4145">barangay_profile_verification_decision</text>
+  <text x="1319" y="693" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="699" x2="1452" y2="699" stroke="#eef0ee"/>
+  <text x="877" y="712" font-size="10.8" fill="#2b4145">barangay_profile_verification_reason</text>
+  <text x="1319" y="712" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="876" y1="718" x2="1452" y2="718" stroke="#eef0ee"/>
+  <text x="877" y="731" font-size="10.8" fill="#2b4145">barangay_profile_verification_status</text>
+  <text x="1319" y="731" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="737" x2="1452" y2="737" stroke="#eef0ee"/>
+  <text x="877" y="750" font-size="10.8" fill="#2b4145">barangay_profile_verification_reviewed_at</text>
+  <text x="1319" y="750" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  </g>
+  <g><rect x="864" y="781" width="600" height="201" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 781h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="806" font-size="14" font-weight="650" fill="#ffffff">barangay_profile_hazard_exposure</text>
+  <text x="1450" y="806" text-anchor="end" font-size="10" fill="#e5eeee">7 cols</text>
+  <text x="877" y="838" font-size="10.8" fill="#2b4145">barangay_profile_hazard_exposure_id</text>
+  <text x="1319" y="838" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="827" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="838" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="844" x2="1452" y2="844" stroke="#eef0ee"/>
+  <text x="877" y="857" font-size="10.8" fill="#2b4145">barangay_profile_id</text>
+  <text x="1319" y="857" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="846" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="857" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="869" font-size="9.1" fill="#62777a">FK → barangay_profile.barangay_profile_id</text>
+  <line x1="876" y1="876" x2="1452" y2="876" stroke="#eef0ee"/>
+  <text x="877" y="889" font-size="10.8" fill="#2b4145">barangay_hazard_type</text>
+  <text x="1319" y="889" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="895" x2="1452" y2="895" stroke="#eef0ee"/>
+  <text x="877" y="908" font-size="10.8" fill="#2b4145">barangay_hazard_exposed_families</text>
+  <text x="1319" y="908" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="914" x2="1452" y2="914" stroke="#eef0ee"/>
+  <text x="877" y="927" font-size="10.8" fill="#2b4145">barangay_hazard_exposed_household</text>
+  <text x="1319" y="927" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="933" x2="1452" y2="933" stroke="#eef0ee"/>
+  <text x="877" y="946" font-size="10.8" fill="#2b4145">barangay_hazard_exposed_population</text>
+  <text x="1319" y="946" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="952" x2="1452" y2="952" stroke="#eef0ee"/>
+  <text x="877" y="965" font-size="10.8" fill="#2b4145">barangay_hazard_vulnerable_group</text>
+  <text x="1319" y="965" text-anchor="end" font-size="10" fill="#738185">text</text>
+  </g>
+  <g><rect x="864" y="996" width="600" height="182" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 996h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="1021" font-size="14" font-weight="650" fill="#ffffff">barangay_profile_housing</text>
+  <text x="1450" y="1021" text-anchor="end" font-size="10" fill="#e5eeee">6 cols</text>
+  <text x="877" y="1053" font-size="10.8" fill="#2b4145">barangay_profile_housing_id</text>
+  <text x="1319" y="1053" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1042" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="1053" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="1059" x2="1452" y2="1059" stroke="#eef0ee"/>
+  <text x="877" y="1072" font-size="10.8" fill="#2b4145">barangay_profile_id</text>
+  <text x="1319" y="1072" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1061" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="1072" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="1084" font-size="9.1" fill="#62777a">FK → barangay_profile.barangay_profile_id</text>
+  <line x1="876" y1="1091" x2="1452" y2="1091" stroke="#eef0ee"/>
+  <text x="877" y="1104" font-size="10.8" fill="#2b4145">barangay_total_housing</text>
+  <text x="1319" y="1104" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1110" x2="1452" y2="1110" stroke="#eef0ee"/>
+  <text x="877" y="1123" font-size="10.8" fill="#2b4145">barangay_light_housing</text>
+  <text x="1319" y="1123" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1129" x2="1452" y2="1129" stroke="#eef0ee"/>
+  <text x="877" y="1142" font-size="10.8" fill="#2b4145">barangay_bodies_of_water_housing</text>
+  <text x="1319" y="1142" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1148" x2="1452" y2="1148" stroke="#eef0ee"/>
+  <text x="877" y="1161" font-size="10.8" fill="#2b4145">barangay_near_fault_housing</text>
+  <text x="1319" y="1161" text-anchor="end" font-size="10" fill="#738185">int</text>
+  </g>
+  <g><rect x="864" y="1192" width="600" height="391" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 1192h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="1217" font-size="14" font-weight="650" fill="#ffffff">purok_profile</text>
+  <text x="1450" y="1217" text-anchor="end" font-size="10" fill="#e5eeee">17 cols</text>
+  <text x="877" y="1249" font-size="10.8" fill="#2b4145">purok_profile_id</text>
+  <text x="1319" y="1249" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1238" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="1249" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="1255" x2="1452" y2="1255" stroke="#eef0ee"/>
+  <text x="877" y="1268" font-size="10.8" fill="#2b4145">purok_name</text>
+  <text x="1319" y="1268" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="1274" x2="1452" y2="1274" stroke="#eef0ee"/>
+  <text x="877" y="1287" font-size="10.8" fill="#2b4145">purok_location</text>
+  <text x="1319" y="1287" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="1293" x2="1452" y2="1293" stroke="#eef0ee"/>
+  <text x="877" y="1306" font-size="10.8" fill="#2b4145">purok_barangay</text>
+  <text x="1319" y="1306" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="1312" x2="1452" y2="1312" stroke="#eef0ee"/>
+  <text x="877" y="1325" font-size="10.8" fill="#2b4145">purok_population</text>
+  <text x="1319" y="1325" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1331" x2="1452" y2="1331" stroke="#eef0ee"/>
+  <text x="877" y="1344" font-size="10.8" fill="#2b4145">purok_household_num</text>
+  <text x="1319" y="1344" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1350" x2="1452" y2="1350" stroke="#eef0ee"/>
+  <text x="877" y="1363" font-size="10.8" fill="#2b4145">purok_families_num</text>
+  <text x="1319" y="1363" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1369" x2="1452" y2="1369" stroke="#eef0ee"/>
+  <text x="877" y="1382" font-size="10.8" fill="#2b4145">purok_male_num</text>
+  <text x="1319" y="1382" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1388" x2="1452" y2="1388" stroke="#eef0ee"/>
+  <text x="877" y="1401" font-size="10.8" fill="#2b4145">purok_female_num</text>
+  <text x="1319" y="1401" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1407" x2="1452" y2="1407" stroke="#eef0ee"/>
+  <text x="877" y="1420" font-size="10.8" fill="#2b4145">purok_infants_num</text>
+  <text x="1319" y="1420" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1426" x2="1452" y2="1426" stroke="#eef0ee"/>
+  <text x="877" y="1439" font-size="10.8" fill="#2b4145">purok_children_num</text>
+  <text x="1319" y="1439" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1445" x2="1452" y2="1445" stroke="#eef0ee"/>
+  <text x="877" y="1458" font-size="10.8" fill="#2b4145">purok_adults_num</text>
+  <text x="1319" y="1458" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1464" x2="1452" y2="1464" stroke="#eef0ee"/>
+  <text x="877" y="1477" font-size="10.8" fill="#2b4145">purok_senior_num</text>
+  <text x="1319" y="1477" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1483" x2="1452" y2="1483" stroke="#eef0ee"/>
+  <text x="877" y="1496" font-size="10.8" fill="#2b4145">purok_pwd_num</text>
+  <text x="1319" y="1496" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1502" x2="1452" y2="1502" stroke="#eef0ee"/>
+  <text x="877" y="1515" font-size="10.8" fill="#2b4145">purok_pregnant_num</text>
+  <text x="1319" y="1515" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1521" x2="1452" y2="1521" stroke="#eef0ee"/>
+  <text x="877" y="1534" font-size="10.8" fill="#2b4145">purok_lactating_num</text>
+  <text x="1319" y="1534" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1540" x2="1452" y2="1540" stroke="#eef0ee"/>
+  <text x="877" y="1553" font-size="10.8" fill="#2b4145">created_by_purok_account_id</text>
+  <text x="1319" y="1553" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1542" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="1553" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="1565" font-size="9.1" fill="#62777a">FK → purok_account.purok_account_id</text>
+  </g>
+  <g><rect x="864" y="1597" width="600" height="233" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 1597h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="1622" font-size="14" font-weight="650" fill="#ffffff">purok_profile_verification</text>
+  <text x="1450" y="1622" text-anchor="end" font-size="10" fill="#e5eeee">8 cols</text>
+  <text x="877" y="1654" font-size="10.8" fill="#2b4145">purok_profile_verification_id</text>
+  <text x="1319" y="1654" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1643" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="1654" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="1660" x2="1452" y2="1660" stroke="#eef0ee"/>
+  <text x="877" y="1673" font-size="10.8" fill="#2b4145">reviewer_account_id</text>
+  <text x="1319" y="1673" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1662" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="1673" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="1685" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  <line x1="876" y1="1692" x2="1452" y2="1692" stroke="#eef0ee"/>
+  <text x="877" y="1705" font-size="10.8" fill="#2b4145">purok_profile_id</text>
+  <text x="1319" y="1705" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1694" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="1705" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="1717" font-size="9.1" fill="#62777a">FK → purok_profile.purok_profile_id</text>
+  <line x1="876" y1="1724" x2="1452" y2="1724" stroke="#eef0ee"/>
+  <text x="877" y="1737" font-size="10.8" fill="#2b4145">purok_profile_verification_decision</text>
+  <text x="1319" y="1737" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="1743" x2="1452" y2="1743" stroke="#eef0ee"/>
+  <text x="877" y="1756" font-size="10.8" fill="#2b4145">purok_profile_verification_reason</text>
+  <text x="1319" y="1756" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="876" y1="1762" x2="1452" y2="1762" stroke="#eef0ee"/>
+  <text x="877" y="1775" font-size="10.8" fill="#2b4145">purok_profile_verification_status</text>
+  <text x="1319" y="1775" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="1781" x2="1452" y2="1781" stroke="#eef0ee"/>
+  <text x="877" y="1794" font-size="10.8" fill="#2b4145">purok_profile_verification_date_time</text>
+  <text x="1319" y="1794" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="876" y1="1800" x2="1452" y2="1800" stroke="#eef0ee"/>
+  <text x="877" y="1813" font-size="10.8" fill="#2b4145">purok_profile_verification_reviewed_at</text>
+  <text x="1319" y="1813" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  </g>
+  <g><rect x="864" y="1844" width="600" height="182" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 1844h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="1869" font-size="14" font-weight="650" fill="#ffffff">purok_profile_housing</text>
+  <text x="1450" y="1869" text-anchor="end" font-size="10" fill="#e5eeee">6 cols</text>
+  <text x="877" y="1901" font-size="10.8" fill="#2b4145">purok_profile_housing_id</text>
+  <text x="1319" y="1901" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1890" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="1901" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="1907" x2="1452" y2="1907" stroke="#eef0ee"/>
+  <text x="877" y="1920" font-size="10.8" fill="#2b4145">purok_profile_id</text>
+  <text x="1319" y="1920" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="1909" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="1920" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="1932" font-size="9.1" fill="#62777a">FK → purok_profile.purok_profile_id</text>
+  <line x1="876" y1="1939" x2="1452" y2="1939" stroke="#eef0ee"/>
+  <text x="877" y="1952" font-size="10.8" fill="#2b4145">purok_total_housing</text>
+  <text x="1319" y="1952" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1958" x2="1452" y2="1958" stroke="#eef0ee"/>
+  <text x="877" y="1971" font-size="10.8" fill="#2b4145">purok_light_housing</text>
+  <text x="1319" y="1971" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1977" x2="1452" y2="1977" stroke="#eef0ee"/>
+  <text x="877" y="1990" font-size="10.8" fill="#2b4145">purok_bodies_of_water_housing</text>
+  <text x="1319" y="1990" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="1996" x2="1452" y2="1996" stroke="#eef0ee"/>
+  <text x="877" y="2009" font-size="10.8" fill="#2b4145">purok_near_fault_housing</text>
+  <text x="1319" y="2009" text-anchor="end" font-size="10" fill="#738185">int</text>
+  </g>
+  <g><rect x="864" y="2040" width="600" height="201" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 2040h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="2065" font-size="14" font-weight="650" fill="#ffffff">purok_profile_hazard_exposure</text>
+  <text x="1450" y="2065" text-anchor="end" font-size="10" fill="#e5eeee">7 cols</text>
+  <text x="877" y="2097" font-size="10.8" fill="#2b4145">purok_profile_hazard_exposure_id</text>
+  <text x="1319" y="2097" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="2086" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="2097" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="2103" x2="1452" y2="2103" stroke="#eef0ee"/>
+  <text x="877" y="2116" font-size="10.8" fill="#2b4145">purok_profile_id</text>
+  <text x="1319" y="2116" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="2105" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="2116" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="2128" font-size="9.1" fill="#62777a">FK → purok_profile.purok_profile_id</text>
+  <line x1="876" y1="2135" x2="1452" y2="2135" stroke="#eef0ee"/>
+  <text x="877" y="2148" font-size="10.8" fill="#2b4145">purok_hazard_type</text>
+  <text x="1319" y="2148" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="2154" x2="1452" y2="2154" stroke="#eef0ee"/>
+  <text x="877" y="2167" font-size="10.8" fill="#2b4145">purok_hazard_exposed_families</text>
+  <text x="1319" y="2167" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="2173" x2="1452" y2="2173" stroke="#eef0ee"/>
+  <text x="877" y="2186" font-size="10.8" fill="#2b4145">purok_hazard_exposed_household</text>
+  <text x="1319" y="2186" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="2192" x2="1452" y2="2192" stroke="#eef0ee"/>
+  <text x="877" y="2205" font-size="10.8" fill="#2b4145">purok_hazard_exposed_population</text>
+  <text x="1319" y="2205" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="876" y1="2211" x2="1452" y2="2211" stroke="#eef0ee"/>
+  <text x="877" y="2224" font-size="10.8" fill="#2b4145">purok_hazard_vulnerable_group</text>
+  <text x="1319" y="2224" text-anchor="end" font-size="10" fill="#738185">text</text>
+  </g>
+  <g><rect x="864" y="2255" width="600" height="252" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M872 2255h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#355b78"/>
+  <text x="878" y="2280" font-size="14" font-weight="650" fill="#ffffff">purok_report_verification</text>
+  <text x="1450" y="2280" text-anchor="end" font-size="10" fill="#e5eeee">9 cols</text>
+  <text x="877" y="2312" font-size="10.8" fill="#2b4145">purok_report_verification_id</text>
+  <text x="1319" y="2312" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="2301" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="1438.5" y="2312" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="876" y1="2318" x2="1452" y2="2318" stroke="#eef0ee"/>
+  <text x="877" y="2331" font-size="10.8" fill="#2b4145">reviewer_account_id</text>
+  <text x="1319" y="2331" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="2320" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="2331" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="2343" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  <line x1="876" y1="2350" x2="1452" y2="2350" stroke="#eef0ee"/>
+  <text x="877" y="2363" font-size="10.8" fill="#2b4145">incident_report_id</text>
+  <text x="1319" y="2363" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="1425" y="2352" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="1438.5" y="2363" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="877" y="2375" font-size="9.1" fill="#62777a">FK → incident_report.incident_report_id</text>
+  <line x1="876" y1="2382" x2="1452" y2="2382" stroke="#eef0ee"/>
+  <text x="877" y="2395" font-size="10.8" fill="#2b4145">purok_report_verification_reviewing_org</text>
+  <text x="1319" y="2395" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="2401" x2="1452" y2="2401" stroke="#eef0ee"/>
+  <text x="877" y="2414" font-size="10.8" fill="#2b4145">purok_report_verification_decision</text>
+  <text x="1319" y="2414" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="876" y1="2420" x2="1452" y2="2420" stroke="#eef0ee"/>
+  <text x="877" y="2433" font-size="10.8" fill="#2b4145">purok_report_verification_decision_reason</text>
+  <text x="1319" y="2433" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="876" y1="2439" x2="1452" y2="2439" stroke="#eef0ee"/>
+  <text x="877" y="2452" font-size="10.8" fill="#2b4145">purok_report_verification_correction_req</text>
+  <text x="1319" y="2452" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="876" y1="2458" x2="1452" y2="2458" stroke="#eef0ee"/>
+  <text x="877" y="2471" font-size="10.8" fill="#2b4145">purok_report_verification_consolidation</text>
+  <text x="1319" y="2471" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="876" y1="2477" x2="1452" y2="2477" stroke="#eef0ee"/>
+  <text x="877" y="2490" font-size="10.8" fill="#2b4145">purok_report_verification_at</text>
+  <text x="1319" y="2490" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  </g>
+  <g><rect x="1694" y="186" width="600" height="144" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M1702 186h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#73513b"/>
+  <text x="1708" y="211" font-size="14" font-weight="650" fill="#ffffff">incident_report</text>
+  <text x="2280" y="211" text-anchor="end" font-size="10" fill="#e5eeee">4 cols</text>
+  <text x="1707" y="243" font-size="10.8" fill="#2b4145">incident_report_id</text>
+  <text x="2149" y="243" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="232" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="2268.5" y="243" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="1706" y1="249" x2="2282" y2="249" stroke="#eef0ee"/>
+  <text x="1707" y="262" font-size="10.8" fill="#2b4145">incident_report_level</text>
+  <text x="2149" y="262" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="268" x2="2282" y2="268" stroke="#eef0ee"/>
+  <text x="1707" y="281" font-size="10.8" fill="#2b4145">incident_report_series_createdby</text>
+  <text x="2149" y="281" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="270" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="2268.5" y="281" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="1707" y="293" font-size="9.1" fill="#62777a">FK → account.account_id</text>
+  <line x1="1706" y1="300" x2="2282" y2="300" stroke="#eef0ee"/>
+  <text x="1707" y="313" font-size="10.8" fill="#2b4145">incident_report_series_createdat</text>
+  <text x="2149" y="313" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  </g>
+  <g><rect x="1694" y="344" width="600" height="239" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M1702 344h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#73513b"/>
+  <text x="1708" y="369" font-size="14" font-weight="650" fill="#ffffff">incident_report_version</text>
+  <text x="2280" y="369" text-anchor="end" font-size="10" fill="#e5eeee">9 cols</text>
+  <text x="1707" y="401" font-size="10.8" fill="#2b4145">incident_report_version_id</text>
+  <text x="2149" y="401" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="390" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="2268.5" y="401" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="1706" y1="407" x2="2282" y2="407" stroke="#eef0ee"/>
+  <text x="1707" y="420" font-size="10.8" fill="#2b4145">incident_report_id</text>
+  <text x="2149" y="420" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="409" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="2268.5" y="420" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="1707" y="432" font-size="9.1" fill="#62777a">FK → incident_report.incident_report_id</text>
+  <line x1="1706" y1="439" x2="2282" y2="439" stroke="#eef0ee"/>
+  <text x="1707" y="452" font-size="10.8" fill="#2b4145">incident_report_version_stage</text>
+  <text x="2149" y="452" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="458" x2="2282" y2="458" stroke="#eef0ee"/>
+  <text x="1707" y="471" font-size="10.8" fill="#2b4145">incident_report_version_start</text>
+  <text x="2149" y="471" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="1706" y1="477" x2="2282" y2="477" stroke="#eef0ee"/>
+  <text x="1707" y="490" font-size="10.8" fill="#2b4145">incident_report_version_end</text>
+  <text x="2149" y="490" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="1706" y1="496" x2="2282" y2="496" stroke="#eef0ee"/>
+  <text x="1707" y="509" font-size="10.8" fill="#2b4145">incident_report_version_continuing_threat</text>
+  <text x="2149" y="509" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="515" x2="2282" y2="515" stroke="#eef0ee"/>
+  <text x="1707" y="528" font-size="10.8" fill="#2b4145">incident_report_version_record_status</text>
+  <text x="2149" y="528" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="534" x2="2282" y2="534" stroke="#eef0ee"/>
+  <text x="1707" y="547" font-size="10.8" fill="#2b4145">incident_report_version_draftedby</text>
+  <text x="2149" y="547" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="553" x2="2282" y2="553" stroke="#eef0ee"/>
+  <text x="1707" y="566" font-size="10.8" fill="#2b4145">incident_report_version_prepared_by</text>
+  <text x="2149" y="566" text-anchor="end" font-size="10" fill="#738185">int</text>
+  </g>
+  <g><rect x="1694" y="597" width="600" height="239" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M1702 597h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#73513b"/>
+  <text x="1708" y="622" font-size="14" font-weight="650" fill="#ffffff">incident_report_affected_population</text>
+  <text x="2280" y="622" text-anchor="end" font-size="10" fill="#e5eeee">9 cols</text>
+  <text x="1707" y="654" font-size="10.8" fill="#2b4145">incident_report_affected_population_id</text>
+  <text x="2149" y="654" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="643" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="2268.5" y="654" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="1706" y1="660" x2="2282" y2="660" stroke="#eef0ee"/>
+  <text x="1707" y="673" font-size="10.8" fill="#2b4145">incident_report_id</text>
+  <text x="2149" y="673" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="662" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="2268.5" y="673" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="1707" y="685" font-size="9.1" fill="#62777a">FK → incident_report.incident_report_id</text>
+  <line x1="1706" y1="692" x2="2282" y2="692" stroke="#eef0ee"/>
+  <text x="1707" y="705" font-size="10.8" fill="#2b4145">incident_report_affected_population_category</text>
+  <text x="2149" y="705" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="711" x2="2282" y2="711" stroke="#eef0ee"/>
+  <text x="1707" y="724" font-size="10.8" fill="#2b4145">incident_report_affected_population_purok_count</text>
+  <text x="2149" y="724" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="730" x2="2282" y2="730" stroke="#eef0ee"/>
+  <text x="1707" y="743" font-size="10.8" fill="#2b4145">incident_report_affected_population_family</text>
+  <text x="2149" y="743" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="749" x2="2282" y2="749" stroke="#eef0ee"/>
+  <text x="1707" y="762" font-size="10.8" fill="#2b4145">incident_report_affected_population_person</text>
+  <text x="2149" y="762" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="768" x2="2282" y2="768" stroke="#eef0ee"/>
+  <text x="1707" y="781" font-size="10.8" fill="#2b4145">incident_report_affected_population_evacuation_center</text>
+  <text x="2149" y="781" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="787" x2="2282" y2="787" stroke="#eef0ee"/>
+  <text x="1707" y="800" font-size="10.8" fill="#2b4145">incident_report_affected_population_current</text>
+  <text x="2149" y="800" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="806" x2="2282" y2="806" stroke="#eef0ee"/>
+  <text x="1707" y="819" font-size="10.8" fill="#2b4145">incident_report_affected_population_cumulative</text>
+  <text x="2149" y="819" text-anchor="end" font-size="10" fill="#738185">int</text>
+  </g>
+  <g><rect x="1694" y="850" width="600" height="182" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M1702 850h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#73513b"/>
+  <text x="1708" y="875" font-size="14" font-weight="650" fill="#ffffff">incident_report_casualty_summary</text>
+  <text x="2280" y="875" text-anchor="end" font-size="10" fill="#e5eeee">6 cols</text>
+  <text x="1707" y="907" font-size="10.8" fill="#2b4145">incident_report_affected_casualty_id</text>
+  <text x="2149" y="907" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="896" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="2268.5" y="907" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="1706" y1="913" x2="2282" y2="913" stroke="#eef0ee"/>
+  <text x="1707" y="926" font-size="10.8" fill="#2b4145">incident_report_id</text>
+  <text x="2149" y="926" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="915" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="2268.5" y="926" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="1707" y="938" font-size="9.1" fill="#62777a">FK → incident_report.incident_report_id</text>
+  <line x1="1706" y1="945" x2="2282" y2="945" stroke="#eef0ee"/>
+  <text x="1707" y="958" font-size="10.8" fill="#2b4145">incident_report_affected_casualty_count</text>
+  <text x="2149" y="958" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="964" x2="2282" y2="964" stroke="#eef0ee"/>
+  <text x="1707" y="977" font-size="10.8" fill="#2b4145">incident_report_affected_casualty_injured</text>
+  <text x="2149" y="977" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="983" x2="2282" y2="983" stroke="#eef0ee"/>
+  <text x="1707" y="996" font-size="10.8" fill="#2b4145">incident_report_affected_casualty_ill</text>
+  <text x="2149" y="996" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="1706" y1="1002" x2="2282" y2="1002" stroke="#eef0ee"/>
+  <text x="1707" y="1015" font-size="10.8" fill="#2b4145">incident_report_affected_casualty_missing</text>
+  <text x="2149" y="1015" text-anchor="end" font-size="10" fill="#738185">int</text>
+  </g>
+  <g><rect x="1694" y="1046" width="600" height="258" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M1702 1046h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#73513b"/>
+  <text x="1708" y="1071" font-size="14" font-weight="650" fill="#ffffff">incident_report_damage_assessment</text>
+  <text x="2280" y="1071" text-anchor="end" font-size="10" fill="#e5eeee">10 cols</text>
+  <text x="1707" y="1103" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_id</text>
+  <text x="2149" y="1103" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="1092" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="2268.5" y="1103" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="1706" y1="1109" x2="2282" y2="1109" stroke="#eef0ee"/>
+  <text x="1707" y="1122" font-size="10.8" fill="#2b4145">incident_report_id</text>
+  <text x="2149" y="1122" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2255" y="1111" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="2268.5" y="1122" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="1707" y="1134" font-size="9.1" fill="#62777a">FK → incident_report.incident_report_id</text>
+  <line x1="1706" y1="1141" x2="2282" y2="1141" stroke="#eef0ee"/>
+  <text x="1707" y="1154" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_category</text>
+  <text x="2149" y="1154" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="1160" x2="2282" y2="1160" stroke="#eef0ee"/>
+  <text x="1707" y="1173" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_name</text>
+  <text x="2149" y="1173" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="1179" x2="2282" y2="1179" stroke="#eef0ee"/>
+  <text x="1707" y="1192" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_owner</text>
+  <text x="2149" y="1192" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="1198" x2="2282" y2="1198" stroke="#eef0ee"/>
+  <text x="1707" y="1211" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_classification</text>
+  <text x="2149" y="1211" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="1217" x2="2282" y2="1217" stroke="#eef0ee"/>
+  <text x="1707" y="1230" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_damaged_qty</text>
+  <text x="2149" y="1230" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="1706" y1="1236" x2="2282" y2="1236" stroke="#eef0ee"/>
+  <text x="1707" y="1249" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_affected_area</text>
+  <text x="2149" y="1249" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="1706" y1="1255" x2="2282" y2="1255" stroke="#eef0ee"/>
+  <text x="1707" y="1268" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_estimated_damage</text>
+  <text x="2149" y="1268" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="1706" y1="1274" x2="2282" y2="1274" stroke="#eef0ee"/>
+  <text x="1707" y="1287" font-size="10.8" fill="#2b4145">incident_report_damage_assessment_estimated_loss</text>
+  <text x="2149" y="1287" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  </g>
+  <g><rect x="1694" y="1318" width="600" height="106" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M1702 1318h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#73513b"/>
+  <text x="1708" y="1343" font-size="14" font-weight="650" fill="#ffffff">barangay_incident_report</text>
+  <text x="2280" y="1343" text-anchor="end" font-size="10" fill="#e5eeee">2 cols</text>
+  <text x="1707" y="1375" font-size="10.8" fill="#2b4145">barangay_incident_report_id</text>
+  <text x="2149" y="1375" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2239" y="1364" width="43" height="15" rx="4" fill="#e5eee7"/>
+  <text x="2260.5" y="1375" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK/FK</text>
+  <text x="1707" y="1387" font-size="9.1" fill="#62777a">FK → incident_report.incident_report_id</text>
+  <line x1="1706" y1="1394" x2="2282" y2="1394" stroke="#eef0ee"/>
+  <text x="1707" y="1407" font-size="10.8" fill="#2b4145">barangay_report_status</text>
+  <text x="2149" y="1407" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  </g>
+  <g><rect x="1694" y="1438" width="600" height="125" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M1702 1438h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#73513b"/>
+  <text x="1708" y="1463" font-size="14" font-weight="650" fill="#ffffff">purok_incident_report</text>
+  <text x="2280" y="1463" text-anchor="end" font-size="10" fill="#e5eeee">3 cols</text>
+  <text x="1707" y="1495" font-size="10.8" fill="#2b4145">purok_incident_report_id</text>
+  <text x="2149" y="1495" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="2239" y="1484" width="43" height="15" rx="4" fill="#e5eee7"/>
+  <text x="2260.5" y="1495" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK/FK</text>
+  <text x="1707" y="1507" font-size="9.1" fill="#62777a">FK → incident_report.incident_report_id</text>
+  <line x1="1706" y1="1514" x2="2282" y2="1514" stroke="#eef0ee"/>
+  <text x="1707" y="1527" font-size="10.8" fill="#2b4145">purok_report_status</text>
+  <text x="2149" y="1527" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="1706" y1="1533" x2="2282" y2="1533" stroke="#eef0ee"/>
+  <text x="1707" y="1546" font-size="10.8" fill="#2b4145">purok_report_notes</text>
+  <text x="2149" y="1546" text-anchor="end" font-size="10" fill="#738185">text</text>
+  </g>
+  <g><rect x="2524" y="186" width="600" height="182" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 186h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="211" font-size="14" font-weight="650" fill="#ffffff">situation_report</text>
+  <text x="3110" y="211" text-anchor="end" font-size="10" fill="#e5eeee">6 cols</text>
+  <text x="2537" y="243" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="243" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="232" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="243" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="249" x2="3112" y2="249" stroke="#eef0ee"/>
+  <text x="2537" y="262" font-size="10.8" fill="#2b4145">situation_report_type</text>
+  <text x="2979" y="262" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="268" x2="3112" y2="268" stroke="#eef0ee"/>
+  <text x="2537" y="281" font-size="10.8" fill="#2b4145">situation_report_title</text>
+  <text x="2979" y="281" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="287" x2="3112" y2="287" stroke="#eef0ee"/>
+  <text x="2537" y="300" font-size="10.8" fill="#2b4145">situation_report_created_at</text>
+  <text x="2979" y="300" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="306" x2="3112" y2="306" stroke="#eef0ee"/>
+  <text x="2537" y="319" font-size="10.8" fill="#2b4145">situation_report_version</text>
+  <text x="2979" y="319" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="2536" y1="325" x2="3112" y2="325" stroke="#eef0ee"/>
+  <text x="2537" y="338" font-size="10.8" fill="#2b4145">created_by_drrm_account_id</text>
+  <text x="2979" y="338" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="327" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="338" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="350" font-size="9.1" fill="#62777a">FK → drrm_account.drrm_account_id</text>
+  </g>
+  <g><rect x="2524" y="382" width="600" height="315" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 382h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="407" font-size="14" font-weight="650" fill="#ffffff">situation_report_assistance_provided</text>
+  <text x="3110" y="407" text-anchor="end" font-size="10" fill="#e5eeee">13 cols</text>
+  <text x="2537" y="439" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_id</text>
+  <text x="2979" y="439" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="428" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="439" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="445" x2="3112" y2="445" stroke="#eef0ee"/>
+  <text x="2537" y="458" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="458" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="447" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="458" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="470" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="477" x2="3112" y2="477" stroke="#eef0ee"/>
+  <text x="2537" y="490" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_type</text>
+  <text x="2979" y="490" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="496" x2="3112" y2="496" stroke="#eef0ee"/>
+  <text x="2537" y="509" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_group</text>
+  <text x="2979" y="509" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="515" x2="3112" y2="515" stroke="#eef0ee"/>
+  <text x="2537" y="528" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_cluster</text>
+  <text x="2979" y="528" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="534" x2="3112" y2="534" stroke="#eef0ee"/>
+  <text x="2537" y="547" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_item</text>
+  <text x="2979" y="547" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="553" x2="3112" y2="553" stroke="#eef0ee"/>
+  <text x="2537" y="566" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_provider</text>
+  <text x="2979" y="566" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="572" x2="3112" y2="572" stroke="#eef0ee"/>
+  <text x="2537" y="585" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_quantity</text>
+  <text x="2979" y="585" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="2536" y1="591" x2="3112" y2="591" stroke="#eef0ee"/>
+  <text x="2537" y="604" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_measurement_unit</text>
+  <text x="2979" y="604" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="610" x2="3112" y2="610" stroke="#eef0ee"/>
+  <text x="2537" y="623" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_cost_per_unit</text>
+  <text x="2979" y="623" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="2536" y1="629" x2="3112" y2="629" stroke="#eef0ee"/>
+  <text x="2537" y="642" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_total_value</text>
+  <text x="2979" y="642" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="2536" y1="648" x2="3112" y2="648" stroke="#eef0ee"/>
+  <text x="2537" y="661" font-size="10.8" fill="#2b4145">situation_report_response_action_resource</text>
+  <text x="2979" y="661" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="667" x2="3112" y2="667" stroke="#eef0ee"/>
+  <text x="2537" y="680" font-size="10.8" fill="#2b4145">situation_report_assistance_provided_date_time</text>
+  <text x="2979" y="680" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  </g>
+  <g><rect x="2524" y="711" width="600" height="239" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 711h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="736" font-size="14" font-weight="650" fill="#ffffff">situation_report_recommendation</text>
+  <text x="3110" y="736" text-anchor="end" font-size="10" fill="#e5eeee">9 cols</text>
+  <text x="2537" y="768" font-size="10.8" fill="#2b4145">situation_report_recommendation_id</text>
+  <text x="2979" y="768" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="757" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="768" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="774" x2="3112" y2="774" stroke="#eef0ee"/>
+  <text x="2537" y="787" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="787" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="776" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="787" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="799" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="806" x2="3112" y2="806" stroke="#eef0ee"/>
+  <text x="2537" y="819" font-size="10.8" fill="#2b4145">situation_report_recommendation_action</text>
+  <text x="2979" y="819" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="825" x2="3112" y2="825" stroke="#eef0ee"/>
+  <text x="2537" y="838" font-size="10.8" fill="#2b4145">situation_report_recommendation_target_organization</text>
+  <text x="2979" y="838" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="844" x2="3112" y2="844" stroke="#eef0ee"/>
+  <text x="2537" y="857" font-size="10.8" fill="#2b4145">situation_report_recommendation_priority</text>
+  <text x="2979" y="857" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="863" x2="3112" y2="863" stroke="#eef0ee"/>
+  <text x="2537" y="876" font-size="10.8" fill="#2b4145">situation_report_recommendation_resource</text>
+  <text x="2979" y="876" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="882" x2="3112" y2="882" stroke="#eef0ee"/>
+  <text x="2537" y="895" font-size="10.8" fill="#2b4145">situation_report_recommendation_target_date</text>
+  <text x="2979" y="895" text-anchor="end" font-size="10" fill="#738185">date</text>
+  <line x1="2536" y1="901" x2="3112" y2="901" stroke="#eef0ee"/>
+  <text x="2537" y="914" font-size="10.8" fill="#2b4145">situation_report_recommendation_status</text>
+  <text x="2979" y="914" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="920" x2="3112" y2="920" stroke="#eef0ee"/>
+  <text x="2537" y="933" font-size="10.8" fill="#2b4145">situation_report_recommendation_result</text>
+  <text x="2979" y="933" text-anchor="end" font-size="10" fill="#738185">text</text>
+  </g>
+  <g><rect x="2524" y="964" width="600" height="239" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 964h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="989" font-size="14" font-weight="650" fill="#ffffff">situation_report_issue</text>
+  <text x="3110" y="989" text-anchor="end" font-size="10" fill="#e5eeee">9 cols</text>
+  <text x="2537" y="1021" font-size="10.8" fill="#2b4145">situation_report_issue_id</text>
+  <text x="2979" y="1021" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1010" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="1021" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="1027" x2="3112" y2="1027" stroke="#eef0ee"/>
+  <text x="2537" y="1040" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="1040" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1029" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="1040" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="1052" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="1059" x2="3112" y2="1059" stroke="#eef0ee"/>
+  <text x="2537" y="1072" font-size="10.8" fill="#2b4145">situation_report_issue_category</text>
+  <text x="2979" y="1072" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1078" x2="3112" y2="1078" stroke="#eef0ee"/>
+  <text x="2537" y="1091" font-size="10.8" fill="#2b4145">situation_report_issue_description</text>
+  <text x="2979" y="1091" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="1097" x2="3112" y2="1097" stroke="#eef0ee"/>
+  <text x="2537" y="1110" font-size="10.8" fill="#2b4145">situation_report_issue_identified_at</text>
+  <text x="2979" y="1110" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="1116" x2="3112" y2="1116" stroke="#eef0ee"/>
+  <text x="2537" y="1129" font-size="10.8" fill="#2b4145">situation_report_issue_severity</text>
+  <text x="2979" y="1129" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1135" x2="3112" y2="1135" stroke="#eef0ee"/>
+  <text x="2537" y="1148" font-size="10.8" fill="#2b4145">situation_report_issue_priority</text>
+  <text x="2979" y="1148" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1154" x2="3112" y2="1154" stroke="#eef0ee"/>
+  <text x="2537" y="1167" font-size="10.8" fill="#2b4145">situation_report_issue_responsible_organization</text>
+  <text x="2979" y="1167" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1173" x2="3112" y2="1173" stroke="#eef0ee"/>
+  <text x="2537" y="1186" font-size="10.8" fill="#2b4145">situation_report_issue_status</text>
+  <text x="2979" y="1186" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  </g>
+  <g><rect x="2524" y="1217" width="600" height="220" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 1217h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="1242" font-size="14" font-weight="650" fill="#ffffff">situation_report_calamity_declaration</text>
+  <text x="3110" y="1242" text-anchor="end" font-size="10" fill="#e5eeee">8 cols</text>
+  <text x="2537" y="1274" font-size="10.8" fill="#2b4145">situation_report_calamity_declaration_id</text>
+  <text x="2979" y="1274" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1263" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="1274" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="1280" x2="3112" y2="1280" stroke="#eef0ee"/>
+  <text x="2537" y="1293" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="1293" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1282" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="1293" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="1305" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="1312" x2="3112" y2="1312" stroke="#eef0ee"/>
+  <text x="2537" y="1325" font-size="10.8" fill="#2b4145">situation_report_calamity_declaration_declaring_body</text>
+  <text x="2979" y="1325" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1331" x2="3112" y2="1331" stroke="#eef0ee"/>
+  <text x="2537" y="1344" font-size="10.8" fill="#2b4145">situation_report_calamity_declaration_resolution</text>
+  <text x="2979" y="1344" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="1350" x2="3112" y2="1350" stroke="#eef0ee"/>
+  <text x="2537" y="1363" font-size="10.8" fill="#2b4145">situation_report_calamity_declaration_declaration_date</text>
+  <text x="2979" y="1363" text-anchor="end" font-size="10" fill="#738185">date</text>
+  <line x1="2536" y1="1369" x2="3112" y2="1369" stroke="#eef0ee"/>
+  <text x="2537" y="1382" font-size="10.8" fill="#2b4145">situation_report_calamity_declaration_effective_date</text>
+  <text x="2979" y="1382" text-anchor="end" font-size="10" fill="#738185">date</text>
+  <line x1="2536" y1="1388" x2="3112" y2="1388" stroke="#eef0ee"/>
+  <text x="2537" y="1401" font-size="10.8" fill="#2b4145">situation_report_calamity_declaration_remarks</text>
+  <text x="2979" y="1401" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="1407" x2="3112" y2="1407" stroke="#eef0ee"/>
+  <text x="2537" y="1420" font-size="10.8" fill="#2b4145">situation_report_calamity_declaration_status</text>
+  <text x="2979" y="1420" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  </g>
+  <g><rect x="2524" y="1451" width="600" height="239" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 1451h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="1476" font-size="14" font-weight="650" fill="#ffffff">situation_report_classwork_suspension</text>
+  <text x="3110" y="1476" text-anchor="end" font-size="10" fill="#e5eeee">9 cols</text>
+  <text x="2537" y="1508" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_id</text>
+  <text x="2979" y="1508" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1497" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="1508" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="1514" x2="3112" y2="1514" stroke="#eef0ee"/>
+  <text x="2537" y="1527" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="1527" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1516" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="1527" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="1539" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="1546" x2="3112" y2="1546" stroke="#eef0ee"/>
+  <text x="2537" y="1559" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_type</text>
+  <text x="2979" y="1559" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1565" x2="3112" y2="1565" stroke="#eef0ee"/>
+  <text x="2537" y="1578" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_scope</text>
+  <text x="2979" y="1578" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1584" x2="3112" y2="1584" stroke="#eef0ee"/>
+  <text x="2537" y="1597" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_suspension_start</text>
+  <text x="2979" y="1597" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="1603" x2="3112" y2="1603" stroke="#eef0ee"/>
+  <text x="2537" y="1616" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_suspension_end</text>
+  <text x="2979" y="1616" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="1622" x2="3112" y2="1622" stroke="#eef0ee"/>
+  <text x="2537" y="1635" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_issuing_authority</text>
+  <text x="2979" y="1635" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1641" x2="3112" y2="1641" stroke="#eef0ee"/>
+  <text x="2537" y="1654" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_order</text>
+  <text x="2979" y="1654" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1660" x2="3112" y2="1660" stroke="#eef0ee"/>
+  <text x="2537" y="1673" font-size="10.8" fill="#2b4145">situation_report_classwork_suspension_status</text>
+  <text x="2979" y="1673" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  </g>
+  <g><rect x="2524" y="1704" width="600" height="239" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 1704h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="1729" font-size="14" font-weight="650" fill="#ffffff">situation_report_lifeline_status</text>
+  <text x="3110" y="1729" text-anchor="end" font-size="10" fill="#e5eeee">9 cols</text>
+  <text x="2537" y="1761" font-size="10.8" fill="#2b4145">situation_report_lifeline_status_id</text>
+  <text x="2979" y="1761" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1750" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="1761" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="1767" x2="3112" y2="1767" stroke="#eef0ee"/>
+  <text x="2537" y="1780" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="1780" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="1769" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="1780" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="1792" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="1799" x2="3112" y2="1799" stroke="#eef0ee"/>
+  <text x="2537" y="1812" font-size="10.8" fill="#2b4145">situation_report_lifeline_status_type</text>
+  <text x="2979" y="1812" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1818" x2="3112" y2="1818" stroke="#eef0ee"/>
+  <text x="2537" y="1831" font-size="10.8" fill="#2b4145">situation_report_lifeline_status_operator</text>
+  <text x="2979" y="1831" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1837" x2="3112" y2="1837" stroke="#eef0ee"/>
+  <text x="2537" y="1850" font-size="10.8" fill="#2b4145">situation_report_damage_assessment_classification</text>
+  <text x="2979" y="1850" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="1856" x2="3112" y2="1856" stroke="#eef0ee"/>
+  <text x="2537" y="1869" font-size="10.8" fill="#2b4145">situation_report_damage_assessment_damaged_qty</text>
+  <text x="2979" y="1869" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="2536" y1="1875" x2="3112" y2="1875" stroke="#eef0ee"/>
+  <text x="2537" y="1888" font-size="10.8" fill="#2b4145">situation_report_damage_assessment_affected_area</text>
+  <text x="2979" y="1888" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="2536" y1="1894" x2="3112" y2="1894" stroke="#eef0ee"/>
+  <text x="2537" y="1907" font-size="10.8" fill="#2b4145">situation_report_damage_assessment_estimated_damage</text>
+  <text x="2979" y="1907" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  <line x1="2536" y1="1913" x2="3112" y2="1913" stroke="#eef0ee"/>
+  <text x="2537" y="1926" font-size="10.8" fill="#2b4145">situation_report_damage_assessment_estimated_loss</text>
+  <text x="2979" y="1926" text-anchor="end" font-size="10" fill="#738185">decimal</text>
+  </g>
+  <g><rect x="2524" y="1957" width="600" height="182" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 1957h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="1982" font-size="14" font-weight="650" fill="#ffffff">situation_report_signatory</text>
+  <text x="3110" y="1982" text-anchor="end" font-size="10" fill="#e5eeee">6 cols</text>
+  <text x="2537" y="2014" font-size="10.8" fill="#2b4145">situation_report_signatory_id</text>
+  <text x="2979" y="2014" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="2003" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="2014" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="2020" x2="3112" y2="2020" stroke="#eef0ee"/>
+  <text x="2537" y="2033" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="2033" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="2022" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="2033" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="2045" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="2052" x2="3112" y2="2052" stroke="#eef0ee"/>
+  <text x="2537" y="2065" font-size="10.8" fill="#2b4145">situation_report_signatory_role</text>
+  <text x="2979" y="2065" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2071" x2="3112" y2="2071" stroke="#eef0ee"/>
+  <text x="2537" y="2084" font-size="10.8" fill="#2b4145">situation_report_signatory_name</text>
+  <text x="2979" y="2084" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2090" x2="3112" y2="2090" stroke="#eef0ee"/>
+  <text x="2537" y="2103" font-size="10.8" fill="#2b4145">situation_report_signatory_designation</text>
+  <text x="2979" y="2103" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2109" x2="3112" y2="2109" stroke="#eef0ee"/>
+  <text x="2537" y="2122" font-size="10.8" fill="#2b4145">situation_report_signatory_number</text>
+  <text x="2979" y="2122" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  </g>
+  <g><rect x="2524" y="2153" width="600" height="315" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 2153h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="2178" font-size="14" font-weight="650" fill="#ffffff">situation_report_response_action</text>
+  <text x="3110" y="2178" text-anchor="end" font-size="10" fill="#e5eeee">13 cols</text>
+  <text x="2537" y="2210" font-size="10.8" fill="#2b4145">situation_report_response_action_id</text>
+  <text x="2979" y="2210" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="2199" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="2210" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="2216" x2="3112" y2="2216" stroke="#eef0ee"/>
+  <text x="2537" y="2229" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="2229" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="2218" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="2229" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="2241" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="2248" x2="3112" y2="2248" stroke="#eef0ee"/>
+  <text x="2537" y="2261" font-size="10.8" fill="#2b4145">situation_report_response_action_phase</text>
+  <text x="2979" y="2261" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2267" x2="3112" y2="2267" stroke="#eef0ee"/>
+  <text x="2537" y="2280" font-size="10.8" fill="#2b4145">situation_report_response_action_response_cluster</text>
+  <text x="2979" y="2280" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2286" x2="3112" y2="2286" stroke="#eef0ee"/>
+  <text x="2537" y="2299" font-size="10.8" fill="#2b4145">situation_report_response_action_category</text>
+  <text x="2979" y="2299" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2305" x2="3112" y2="2305" stroke="#eef0ee"/>
+  <text x="2537" y="2318" font-size="10.8" fill="#2b4145">situation_report_response_action_description</text>
+  <text x="2979" y="2318" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="2324" x2="3112" y2="2324" stroke="#eef0ee"/>
+  <text x="2537" y="2337" font-size="10.8" fill="#2b4145">situation_report_response_action_organization</text>
+  <text x="2979" y="2337" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2343" x2="3112" y2="2343" stroke="#eef0ee"/>
+  <text x="2537" y="2356" font-size="10.8" fill="#2b4145">situation_report_response_action_start</text>
+  <text x="2979" y="2356" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="2362" x2="3112" y2="2362" stroke="#eef0ee"/>
+  <text x="2537" y="2375" font-size="10.8" fill="#2b4145">situation_report_response_action_completed</text>
+  <text x="2979" y="2375" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="2381" x2="3112" y2="2381" stroke="#eef0ee"/>
+  <text x="2537" y="2394" font-size="10.8" fill="#2b4145">situation_report_response_action_status</text>
+  <text x="2979" y="2394" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2400" x2="3112" y2="2400" stroke="#eef0ee"/>
+  <text x="2537" y="2413" font-size="10.8" fill="#2b4145">situation_report_response_action_coverage</text>
+  <text x="2979" y="2413" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="2419" x2="3112" y2="2419" stroke="#eef0ee"/>
+  <text x="2537" y="2432" font-size="10.8" fill="#2b4145">situation_report_response_action_resource</text>
+  <text x="2979" y="2432" text-anchor="end" font-size="10" fill="#738185">text</text>
+  <line x1="2536" y1="2438" x2="3112" y2="2438" stroke="#eef0ee"/>
+  <text x="2537" y="2451" font-size="10.8" fill="#2b4145">situation_report_response_action_result</text>
+  <text x="2979" y="2451" text-anchor="end" font-size="10" fill="#738185">text</text>
+  </g>
+  <g><rect x="2524" y="2482" width="600" height="258" rx="8" fill="#ffffff" stroke="#d6dcda"/>
+  <path d="M2532 2482h584a8 8 0 0 1 8 8v32h-600v-32a8 8 0 0 1 8-8z" fill="#596248"/>
+  <text x="2538" y="2507" font-size="14" font-weight="650" fill="#ffffff">situation_report_preemptive_evacuation</text>
+  <text x="3110" y="2507" text-anchor="end" font-size="10" fill="#e5eeee">10 cols</text>
+  <text x="2537" y="2539" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_id</text>
+  <text x="2979" y="2539" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="2528" width="27" height="15" rx="4" fill="#e5eee7"/>
+  <text x="3098.5" y="2539" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">PK</text>
+  <line x1="2536" y1="2545" x2="3112" y2="2545" stroke="#eef0ee"/>
+  <text x="2537" y="2558" font-size="10.8" fill="#2b4145">situation_report_id</text>
+  <text x="2979" y="2558" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <rect x="3085" y="2547" width="27" height="15" rx="4" fill="#e9eff2"/>
+  <text x="3098.5" y="2558" text-anchor="middle" font-size="8.5" font-weight="700" fill="#315763">FK</text>
+  <text x="2537" y="2570" font-size="9.1" fill="#62777a">FK → situation_report.situation_report_id</text>
+  <line x1="2536" y1="2577" x2="3112" y2="2577" stroke="#eef0ee"/>
+  <text x="2537" y="2590" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_subject</text>
+  <text x="2979" y="2590" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2596" x2="3112" y2="2596" stroke="#eef0ee"/>
+  <text x="2537" y="2609" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_families</text>
+  <text x="2979" y="2609" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="2536" y1="2615" x2="3112" y2="2615" stroke="#eef0ee"/>
+  <text x="2537" y="2628" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_persons</text>
+  <text x="2979" y="2628" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="2536" y1="2634" x2="3112" y2="2634" stroke="#eef0ee"/>
+  <text x="2537" y="2647" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_animals</text>
+  <text x="2979" y="2647" text-anchor="end" font-size="10" fill="#738185">int</text>
+  <line x1="2536" y1="2653" x2="3112" y2="2653" stroke="#eef0ee"/>
+  <text x="2537" y="2666" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_center</text>
+  <text x="2979" y="2666" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  <line x1="2536" y1="2672" x2="3112" y2="2672" stroke="#eef0ee"/>
+  <text x="2537" y="2685" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_start</text>
+  <text x="2979" y="2685" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="2691" x2="3112" y2="2691" stroke="#eef0ee"/>
+  <text x="2537" y="2704" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_end</text>
+  <text x="2979" y="2704" text-anchor="end" font-size="10" fill="#738185">datetime</text>
+  <line x1="2536" y1="2710" x2="3112" y2="2710" stroke="#eef0ee"/>
+  <text x="2537" y="2723" font-size="10.8" fill="#2b4145">situation_report_preemptive_evacuation_status</text>
+  <text x="2979" y="2723" text-anchor="end" font-size="10" fill="#738185">varchar</text>
+  </g>
+  <text x="34" y="2774" font-size="10" fill="#617477">PK = primary key · FK = foreign key · Arrows point from an FK to its referenced relation.</text>
+</svg>

@@ -4,10 +4,9 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { RoleShell } from "@/components/role-shell";
 import { StatusBadge } from "@/components/status-badge";
-import { DRRM_NAV, ROLE_META } from "@/lib/role-nav";
+import { DRRM_MOBILE_NAV, DRRM_NAV, ROLE_META } from "@/lib/role-nav";
 import { usePrototypeStore } from "@/lib/prototype-store";
 import { PROFILE_STATUS_LABEL, ProfileStatus } from "@/lib/profile-data";
-import { CDRA_HAZARD_REGISTRY } from "@/lib/hazard-data";
 
 type CatalogKind = "profile" | "incident" | "hazard";
 
@@ -29,7 +28,7 @@ function formatDate(iso?: string) {
 
 export default function DrrmHistoryPage() {
   const meta = ROLE_META.drrm;
-  const { barangayProfiles, barangayIncidentReports, hazardEvents } = usePrototypeStore();
+  const { barangayProfiles, barangayIncidentReports, hazardEvents, hazardTypes } = usePrototypeStore();
   const [search, setSearch] = useState("");
   const [kindFilter, setKindFilter] = useState<"all" | CatalogKind>("all");
   const [statusFilter, setStatusFilter] = useState<"all" | ProfileStatus>("all");
@@ -62,11 +61,11 @@ export default function DrrmHistoryPage() {
       id: e.id,
       kind: "hazard",
       title: e.title,
-      subtitle: CDRA_HAZARD_REGISTRY.find((t) => t.id === e.hazardTypeId)?.name ?? e.hazardTypeId,
+      subtitle: hazardTypes.find((t) => t.id === e.hazardTypeId)?.name ?? e.hazardTypeId,
       status: e.status,
       submittedAt: e.createdAt,
       reviewedAt: e.reviewedAt,
-      href: e.createdByLevel === "barangay" ? "/drrm/hazards" : "/drrm/hazards",
+      href: "/drrm/hazards",
     }));
     return [...profileEntries, ...incidentEntries, ...hazardEntries].sort((a, b) => {
       const aTime = a.reviewedAt ?? a.submittedAt ?? "";
@@ -88,7 +87,7 @@ export default function DrrmHistoryPage() {
       role="drrm"
       subtitle={meta.subtitle}
       nav={DRRM_NAV}
-      mobileNav={DRRM_NAV}
+      mobileNav={DRRM_MOBILE_NAV}
       activeHref="/drrm/history"
       userInitials={meta.userInitials}
       userName={meta.userName}
@@ -100,8 +99,8 @@ export default function DrrmHistoryPage() {
         </div>
       </header>
       <p className="data-freshness">
-        Every Barangay consolidated profile, incident report, and hazard event on file citywide. SitRep catalog
-        entries arrive with the SitRep prototype checkpoint.
+        Every Barangay consolidated profile, incident report, and hazard event on file citywide. SitReps are cataloged
+        separately under SitRep Generation and Review.
       </p>
 
       {notYetSubmitted.length > 0 && (

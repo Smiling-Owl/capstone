@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfcf8">
+  <title>Relational data model · Disaster situation management</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="schema-data.js" defer></script>
+  <script src="viewer.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to schema</a>
+  <header class="app-header">
+    <div><h1>Relational data model</h1></div>
+    <div class="header-meta"><span id="catalog-count">Loading schema…</span><a id="sql-link" href="../../../development/supabase/migrations/202609080001_initial_domain_schema.sql" download>Download SQL</a></div>
+  </header>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Table navigation">
+      <div class="sidebar-tools">
+        <a class="overview-link" id="overview-nav" href="#">Schema overview</a>
+        <a class="connected-nav" id="connected-nav" href="#view=connected">Connected RDM</a>
+        <a class="erd-nav" id="academic-nav" href="#view=erd">ERD image & audit</a>
+        <label for="search">Find a table or attribute</label>
+        <input id="search" name="schema-search" type="search" autocomplete="off" spellcheck="false" placeholder="e.g. population…">
+        <label for="domain">Domain</label>
+        <select id="domain" name="domain"><option value="">All domains</option></select>
+        <p id="search-count" class="quiet" role="status"></p>
+      </div>
+      <nav id="table-index" aria-label="Tables"></nav>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="toolbar">
+        <label class="check-label"><input id="show-fk" type="checkbox" checked> Show FK labels</label>
+        <button id="print" type="button">Print current view</button>
+      </div>
+      <div id="content"><p class="empty">Loading the schema catalog…</p></div>
+      <footer class="page-footer"><p><u>Underlined attributes</u> form the primary key. FK identifies a foreign key; UQ identifies a unique constraint. The logical model includes foreign keys because it represents the relational database.</p><p id="provenance"></p></footer>
+    </main>
+  </div>
+  <p id="announcement" class="sr-only" aria-live="polite"></p>
+</body>
+</html>

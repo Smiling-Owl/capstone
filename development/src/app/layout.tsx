@@ -1,17 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Lexend, Source_Sans_3 } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
-const lexend = Lexend({
-  variable: "--font-display",
-  weight: ["500", "600", "700"],
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-body",
-  weight: ["400", "500", "600"],
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -21,13 +20,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#285F5B",
+  themeColor: "#f2f4ef",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${lexend.variable} ${sourceSans.variable}`}>
+      <body className={`${plexSans.variable} ${plexMono.variable}`}>
         <Providers>{children}</Providers>
       </body>
     </html>

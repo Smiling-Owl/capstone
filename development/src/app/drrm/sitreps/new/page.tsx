@@ -3,17 +3,16 @@
 import { useRouter } from "next/navigation";
 import { RoleShell } from "@/components/role-shell";
 import { StatusBadge } from "@/components/status-badge";
-import { DRRM_NAV, ROLE_META } from "@/lib/role-nav";
+import { DRRM_MOBILE_NAV, DRRM_NAV, ROLE_META } from "@/lib/role-nav";
 import { usePrototypeStore } from "@/lib/prototype-store";
 import { buildInitialSitRepSections } from "@/lib/sitrep-data";
 
 const PREPARER = "DRRM Verification Desk";
-const TEMPLATE_VERSION = "NDRRMC SitRep Template v2024.1";
 
 export default function NewSitRepPage() {
   const meta = ROLE_META.drrm;
   const router = useRouter();
-  const { hazardEvents, barangayIncidentReports, sitreps, generateSitRep } = usePrototypeStore();
+  const { hazardEvents, barangayIncidentReports, sitreps, config, generateSitRep } = usePrototypeStore();
   const eventsWithoutSitrep = hazardEvents.filter((e) => !sitreps.some((s) => s.hazardEventId === e.id));
 
   function handleGenerate(eventId: string) {
@@ -23,7 +22,7 @@ export default function NewSitRepPage() {
       hazardEventId: eventId,
       title: event.title,
       reportingPeriodLabel: "September 2026",
-      templateVersion: TEMPLATE_VERSION,
+      templateVersion: config.sitrep.templateVersion,
       preparedBy: PREPARER,
       includedBarangayIncidentIds: eligibleIncidents.map((r) => r.id),
       sections: buildInitialSitRepSections(event, eligibleIncidents),
@@ -36,7 +35,7 @@ export default function NewSitRepPage() {
       role="drrm"
       subtitle={meta.subtitle}
       nav={DRRM_NAV}
-      mobileNav={DRRM_NAV}
+      mobileNav={DRRM_MOBILE_NAV}
       activeHref="/drrm/sitreps"
       userInitials={meta.userInitials}
       userName={meta.userName}

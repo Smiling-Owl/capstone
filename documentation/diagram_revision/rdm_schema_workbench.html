@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Relational Data Model</title>
+  <style>
+    :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#172b3d;background:#f4f7fa;font-synthesis:none;text-rendering:optimizeLegibility;--ink:#172b3d;--muted:#617486;--line:#d5dfe8;--blue:#1f6699;--focus:#0878bd}
+    *{box-sizing:border-box}body{margin:0;min-width:320px;height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+    .skip-link{position:fixed;left:12px;top:12px;z-index:5;transform:translateY(-160%);padding:8px 12px;border:1px solid #c7d4df;border-radius:7px;background:#fff;color:#172b3d}.skip-link:focus-visible{transform:translateY(0)}
+    button,select{font:inherit;color:inherit}button,select{min-height:34px;border:1px solid #c7d4df;border-radius:7px;background:#fff;padding:6px 10px}button{cursor:pointer;transition:background-color .14s ease,border-color .14s ease}button:hover{background:#edf5fa;border-color:#9eb8ca}button:active{transform:translateY(1px)}:focus-visible{outline:3px solid #1684c4;outline-offset:2px}
+    .topbar{z-index:2;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 7px #1e3c5310;padding:12px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .brand{margin-right:auto;min-width:260px}.brand h1{font-size:18px;line-height:1.2;margin:0;font-weight:680;letter-spacing:-.02em}.brand p{font-size:12px;color:var(--muted);margin:4px 0 0}.brand .source-note{font-size:10px;line-height:1.4;color:#607483;margin-top:3px}
+    .toolbar-group{display:flex;align-items:center;gap:6px}.toolbar-group label{font-size:12px;font-weight:650;color:#425a6e}.toolbar-group select{margin-left:5px}.divider{height:28px;width:1px;background:var(--line);margin:0 3px}
+    .zoom-value{font-size:12px;font-variant-numeric:tabular-nums;color:var(--muted);min-width:42px;text-align:center}
+    .summary{font-size:12px;color:var(--muted);min-width:0;white-space:normal;font-variant-numeric:tabular-nums}
+    #stage{position:relative;flex:1;min-height:0;overflow:hidden;touch-action:none;background-color:#f4f7fa;background-image:radial-gradient(#bccbd6 0.8px,transparent .8px);background-size:20px 20px;cursor:grab;outline:none}#stage.is-panning{cursor:grabbing}
+    #world{position:absolute;left:0;top:0;width:6400px;height:6400px;transform-origin:0 0;will-change:transform}
+    #edges{position:absolute;inset:0;width:6400px;height:6400px;overflow:visible;pointer-events:none}
+    .edge{fill:none;stroke:#71899b;stroke-width:1.6;opacity:.82;vector-effect:non-scaling-stroke}.edge.identifying{stroke:#527f9f;stroke-width:1.9}.edge.related{stroke:#0878bd;stroke-width:2.3;opacity:1}
+    .table-card{position:absolute;width:320px;background:#fff;border:1px solid #cbd7e0;border-radius:9px;box-shadow:0 2px 5px #17344c0c;color:var(--ink);overflow:hidden;cursor:grab;user-select:none;touch-action:none}.table-card:hover{border-color:#91afc3;box-shadow:0 4px 12px #17344c14}.table-card:active{cursor:grabbing}.table-card.selected{border-color:#3280ad;box-shadow:0 0 0 2px #3280ad25,0 5px 14px #17344c17}.table-card:focus-visible{outline:3px solid #1684c4;outline-offset:3px;z-index:1}
+    .table-head{padding:9px 11px 8px;border-top:3px solid var(--module-color,#637d91);border-bottom:1px solid #e4ebf0;background:#f9fbfc;display:flex;align-items:start;justify-content:space-between;gap:8px}.table-name{font:650 13px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.module-tag{font-size:9px;line-height:1.3;color:#4d687c;background:#eaf1f5;border-radius:4px;padding:3px 5px;white-space:nowrap}.attributes{width:100%;border-collapse:collapse;table-layout:fixed;font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace}.attributes th,.attributes td{padding:4px 7px;text-align:left;vertical-align:middle;border-bottom:1px solid #edf1f4}.attributes thead{background:#eef3f6;color:#52697b;font:600 10px/1.3 ui-sans-serif,system-ui,sans-serif}.attributes th:first-child{width:58%}.attributes th:nth-child(2){width:22%}.attributes th:last-child{width:20%}.attributes tbody tr:nth-child(even){background:#f8fafb}.attributes tbody th{font:500 10px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:normal;overflow-wrap:anywhere}.attributes td.attribute-type{font-size:10px;color:#607483}.attributes td.key{white-space:nowrap;font:700 9px/1 ui-sans-serif,system-ui,sans-serif}.key-badge{display:inline-block;color:#805a17;margin-right:3px}.key-badge.fk{color:#1e6d8d}
+    #stage:focus-visible{outline:3px solid #1684c4;outline-offset:-3px}
+    .legend{position:absolute;left:14px;bottom:12px;z-index:1;display:flex;flex-wrap:wrap;gap:7px 14px;align-items:center;max-width:min(680px,calc(100% - 28px));background:#ffffffed;border:1px solid #d2dde5;border-radius:7px;padding:8px 10px;color:#52697b;font-size:10px;line-height:1.35;box-shadow:0 2px 6px #18364b10}.legend-item{display:flex;align-items:center;gap:5px}.line-swatch{width:22px;height:0;border-top:2px solid #71899b}.line-swatch.identifying{border-color:#527f9f;border-top-width:2px}.key-swatch{font:700 10px ui-monospace,monospace;color:#805a17}.legend-note{flex-basis:100%;padding-top:5px;border-top:1px solid #e2e9ee;color:#52697b}
+    .help{position:absolute;right:14px;bottom:12px;z-index:1;background:#ffffffed;border:1px solid #d2dde5;border-radius:7px;padding:7px 10px;color:#52697b;font-size:11px;box-shadow:0 2px 6px #18364b10}
+    #schema-source{display:none}
+    @media(max-width:850px){.topbar{gap:8px;padding:10px}.brand{width:100%;min-width:0}.summary{margin-left:auto}.divider{display:none}.help{display:none}}
+    @media(max-width:540px){.toolbar-group label{font-size:11px}.topbar{padding:8px}.toolbar-group{gap:4px}.toolbar-group button,.toolbar-group select{padding:5px 7px}.legend{left:8px;right:8px;bottom:8px;flex-wrap:wrap;gap:6px 12px}}
+    @media(pointer:coarse){button,select,.toolbar-group button,.toolbar-group select{min-width:44px;min-height:44px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#stage">Skip to schema canvas</a>
+  <header class="topbar" aria-label="Relational model controls">
+    <div class="brand"><h1>Relational Data Model</h1><p>Accounts, hazards, profiles, incidents, and situation reports</p><p class="source-note">Source: logical relational model transcribed from supplied ERD (erd_derived_rdm.dbml). Generic types are placeholders; 32 relations and 36 foreign-key references. No cardinalities or production physical constraints are specified.</p></div>
+    <div class="toolbar-group" role="group" aria-label="Layout controls">
+      <label for="layout">Layout<select id="layout"><option value="module">By module</option><option value="grid">Compact grid</option></select></label>
+      <button id="apply-layout" type="button">Apply Layout</button><button id="reset" type="button">Reset</button>
+    </div>
+    <span class="divider" aria-hidden="true"></span>
+    <div class="toolbar-group" role="group" aria-label="Canvas zoom controls">
+      <button id="zoom-out" type="button" aria-label="Zoom Out">−</button><span class="zoom-value" id="zoom-value" aria-live="polite">100%</span><button id="zoom-in" type="button" aria-label="Zoom In">+</button><button id="fit" type="button">Fit</button>
+    </div>
+    <output class="summary" id="summary" aria-live="polite"></output>
+  </header>
+  <main id="stage" tabindex="0" aria-label="Relational model canvas. Drag a relation card to move it or drag blank canvas space to pan. Use the wheel to zoom.">
+    <div id="world"><svg id="edges" aria-hidden="true"></svg></div>
+    <div class="legend" role="group" aria-label="Foreign-key reference legend"><span class="legend-item"><i class="line-swatch"></i>Foreign-key reference</span><span class="legend-item"><i class="line-swatch identifying"></i>Primary-key / foreign-key reference</span><span class="legend-item"><b class="key-swatch">PK</b>Primary key <b class="key-swatch">FK</b>Foreign key</span><span class="legend-note">Arrowheads point to referenced keys; they do not express cardinality.</span></div>
+    <div class="help">Drag a relation to move it · Drag blank canvas to pan · Wheel to zoom</div>
+  </main>
+  <script type="text/plain" id="schema-source">// Compact paper model transcribed from the user's supplied ERD image.
+// Generic types and selected FK columns make the conceptual relationships
+// concrete; they are not a production-ready physical schema.
+
+// Accounts and hazards
+Table account {
+  account_id int [pk]
+  account_username varchar
+  account_password_hashed varchar
+  account_name varchar
+  account_first_name varchar
+  account_middle_name varchar
+  account_last_name varchar
+  account_email varchar
+  account_phone varchar
+  account_address text
+  account_location varchar
+  account_status varchar
+  account_created_at datetime
+  account_created_by int
+}
+
+Table drrm_account {
+  drrm_account_id int [pk, ref: - account.account_id]
+  drrm_unit_id int
+}
+
+Table barangay_account {
+  barangay_account_id int [pk, ref: - account.account_id]
+  barangay_name varchar
+  barangay_supervising_drrm int
+  created_by_drrm_account_id int [ref: > drrm_account.drrm_account_id]
+}
+
+Table purok_account {
+  purok_account_id int [pk, ref: - account.account_id]
+  purok_barangay int
+  purok_supervising_barangay int
+  purok_name varchar
+  created_by_barangay_account_id int [ref: > barangay_account.barangay_account_id]
+}
+
+Table hazard {
+  hazard_id int [pk]
+  hazard_name varchar
+  hazard_type varchar
+  hazard_date date
+  hazard_location varchar
+  hazard_severity varchar
+  created_by_account_id int [ref: > account.account_id]
+}
+
+Table hazard_characteristic {
+  hazard_characteristic_id int [pk]
+  hazard_characteristic_name varchar
+  hazard_title varchar
+  hazard_description text
+  hazard_location_description text
+  hazard_landmark varchar
+  hazard_assessment_date_time datetime
+  hazard_intensity_or_magnitude decimal
+  hazard_intensity_unit varchar
+  hazard_severity varchar
+  hazard_duration varchar
+  hazard_current_status varchar
+  hazard_record_status varchar
+  hazard_prepared_by int
+  hazard_submitted_at datetime
+  hazard_id int [ref: > hazard.hazard_id]
+}
+
+// Profiles and verification
+Table barangay_profile {
+  barangay_profile_id int [pk]
+  barangay_name varchar
+  barangay_city varchar
+  barangay_province varchar
+  barangay_population int
+  barangay_male_num int
+  barangay_female_num int
+  barangay_infants_num int
+  barangay_children_num int
+  barangay_adult_num int
+  barangay_senior_num int
+  barangay_pwd_num int
+  barangay_pregnant_num int
+  barangay_lactating_num int
+  created_by_barangay_account_id int [ref: > barangay_account.barangay_account_id]
+}
+
+Table barangay_profile_verification {
+  barangay_profile_verification_id int [pk]
+  reviewer_account_id int [ref: > account.account_id]
+  barangay_profile_id int [ref: > barangay_profile.barangay_profile_id]
+  barangay_profile_verification_decision varchar
+  barangay_profile_verification_reason text
+  barangay_profile_verification_status varchar
+  barangay_profile_verification_reviewed_at datetime
+}
+
+Table barangay_profile_hazard_exposure {
+  barangay_profile_hazard_exposure_id int [pk]
+  barangay_profile_id int [ref: > barangay_profile.barangay_profile_id]
+  barangay_hazard_type varchar
+  barangay_hazard_exposed_families int
+  barangay_hazard_exposed_household int
+  barangay_hazard_exposed_population int
+  barangay_hazard_vulnerable_group text
+}
+
+Table barangay_profile_housing {
+  barangay_profile_housing_id int [pk]
+  barangay_profile_id int [ref: > barangay_profile.barangay_profile_id]
+  barangay_total_housing int
+  barangay_light_housing int
+  barangay_bodies_of_water_housing int
+  barangay_near_fault_housing int
+}
+
+Table purok_profile {
+  purok_profile_id int [pk]
+  purok_name varchar
+  purok_location varchar
+  purok_barangay varchar
+  purok_population int
+  purok_household_num int
+  purok_families_num int
+  purok_male_num int
+  purok_female_num int
+  purok_infants_num int
+  purok_children_num int
+  purok_adults_num int
+  purok_senior_num int
+  purok_pwd_num int
+  purok_pregnant_num int
+  purok_lactating_num int
+  created_by_purok_account_id int [ref: > purok_account.purok_account_id]
+}
+
+Table purok_profile_verification {
+  purok_profile_verification_id int [pk]
+  reviewer_account_id int [ref: > account.account_id]
+  purok_profile_id int [ref: > purok_profile.purok_profile_id]
+  purok_profile_verification_decision varchar
+  purok_profile_verification_reason text
+  purok_profile_verification_status varchar
+  purok_profile_verification_date_time datetime
+  purok_profile_verification_reviewed_at datetime
+}
+
+Table purok_profile_housing {
+  purok_profile_housing_id int [pk]
+  purok_profile_id int [ref: > purok_profile.purok_profile_id]
+  purok_total_housing int
+  purok_light_housing int
+  purok_bodies_of_water_housing int
+  purok_near_fault_housing int
+}
+
+Table purok_profile_hazard_exposure {
+  purok_profile_hazard_exposure_id int [pk]
+  purok_profile_id int [ref: > purok_profile.purok_profile_id]
+  purok_hazard_type varchar
+  purok_hazard_exposed_families int
+  purok_hazard_exposed_household int
+  purok_hazard_exposed_population int
+  purok_hazard_vulnerable_group text
+}
+
+Table purok_report_verification {
+  purok_report_verification_id int [pk]
+  reviewer_account_id int [ref: > account.account_id]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  purok_report_verification_reviewing_org varchar
+  purok_report_verification_decision varchar
+  purok_report_verification_decision_reason text
+  purok_report_verification_correction_req text
+  purok_report_verification_consolidation text
+  purok_report_verification_at datetime
+}
+
+// Incident reports
+Table incident_report {
+  incident_report_id int [pk]
+  incident_report_level varchar
+  incident_report_series_createdby int [ref: > account.account_id]
+  incident_report_series_createdat datetime
+}
+
+Table incident_report_version {
+  incident_report_version_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_version_stage varchar
+  incident_report_version_start datetime
+  incident_report_version_end datetime
+  incident_report_version_continuing_threat varchar
+  incident_report_version_record_status varchar
+  incident_report_version_draftedby int
+  incident_report_version_prepared_by int
+}
+
+Table incident_report_affected_population {
+  incident_report_affected_population_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_affected_population_category varchar
+  incident_report_affected_population_purok_count int
+  incident_report_affected_population_family int
+  incident_report_affected_population_person int
+  incident_report_affected_population_evacuation_center varchar
+  incident_report_affected_population_current int
+  incident_report_affected_population_cumulative int
+}
+
+Table incident_report_casualty_summary {
+  incident_report_affected_casualty_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_affected_casualty_count int
+  incident_report_affected_casualty_injured int
+  incident_report_affected_casualty_ill int
+  incident_report_affected_casualty_missing int
+}
+
+Table incident_report_damage_assessment {
+  incident_report_damage_assessment_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_damage_assessment_category varchar
+  incident_report_damage_assessment_name varchar
+  incident_report_damage_assessment_owner varchar
+  incident_report_damage_assessment_classification varchar
+  incident_report_damage_assessment_damaged_qty decimal
+  incident_report_damage_assessment_affected_area decimal
+  incident_report_damage_assessment_estimated_damage decimal
+  incident_report_damage_assessment_estimated_loss decimal
+}
+
+Table barangay_incident_report {
+  barangay_incident_report_id int [pk, ref: - incident_report.incident_report_id]
+  barangay_report_status varchar
+}
+
+Table purok_incident_report {
+  purok_incident_report_id int [pk, ref: - incident_report.incident_report_id]
+  purok_report_status varchar
+  purok_report_notes text
+}
+
+// Situation reports
+Table situation_report {
+  situation_report_id int [pk]
+  situation_report_type varchar
+  situation_report_title varchar
+  situation_report_created_at datetime
+  situation_report_version int
+  created_by_drrm_account_id int [ref: > drrm_account.drrm_account_id]
+}
+
+Table situation_report_assistance_provided {
+  situation_report_assistance_provided_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_assistance_provided_type varchar
+  situation_report_assistance_provided_group varchar
+  situation_report_assistance_provided_cluster varchar
+  situation_report_assistance_provided_item varchar
+  situation_report_assistance_provided_provider varchar
+  situation_report_assistance_provided_quantity decimal
+  situation_report_assistance_provided_measurement_unit varchar
+  situation_report_assistance_provided_cost_per_unit decimal
+  situation_report_assistance_provided_total_value decimal
+  situation_report_response_action_resource varchar
+  situation_report_assistance_provided_date_time datetime
+}
+
+Table situation_report_recommendation {
+  situation_report_recommendation_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_recommendation_action text
+  situation_report_recommendation_target_organization varchar
+  situation_report_recommendation_priority varchar
+  situation_report_recommendation_resource text
+  situation_report_recommendation_target_date date
+  situation_report_recommendation_status varchar
+  situation_report_recommendation_result text
+}
+
+Table situation_report_issue {
+  situation_report_issue_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_issue_category varchar
+  situation_report_issue_description text
+  situation_report_issue_identified_at datetime
+  situation_report_issue_severity varchar
+  situation_report_issue_priority varchar
+  situation_report_issue_responsible_organization varchar
+  situation_report_issue_status varchar
+}
+
+Table situation_report_calamity_declaration {
+  situation_report_calamity_declaration_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_calamity_declaration_declaring_body varchar
+  situation_report_calamity_declaration_resolution text
+  situation_report_calamity_declaration_declaration_date date
+  situation_report_calamity_declaration_effective_date date
+  situation_report_calamity_declaration_remarks text
+  situation_report_calamity_declaration_status varchar
+}
+
+Table situation_report_classwork_suspension {
+  situation_report_classwork_suspension_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_classwork_suspension_type varchar
+  situation_report_classwork_suspension_scope varchar
+  situation_report_classwork_suspension_suspension_start datetime
+  situation_report_classwork_suspension_suspension_end datetime
+  situation_report_classwork_suspension_issuing_authority varchar
+  situation_report_classwork_suspension_order varchar
+  situation_report_classwork_suspension_status varchar
+}
+
+Table situation_report_lifeline_status {
+  situation_report_lifeline_status_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_lifeline_status_type varchar
+  situation_report_lifeline_status_operator varchar
+  situation_report_damage_assessment_classification varchar
+  situation_report_damage_assessment_damaged_qty decimal
+  situation_report_damage_assessment_affected_area decimal
+  situation_report_damage_assessment_estimated_damage decimal
+  situation_report_damage_assessment_estimated_loss decimal
+}
+
+Table situation_report_signatory {
+  situation_report_signatory_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_signatory_role varchar
+  situation_report_signatory_name varchar
+  situation_report_signatory_designation varchar
+  situation_report_signatory_number varchar
+}
+
+Table situation_report_response_action {
+  situation_report_response_action_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_response_action_phase varchar
+  situation_report_response_action_response_cluster varchar
+  situation_report_response_action_category varchar
+  situation_report_response_action_description text
+  situation_report_response_action_organization varchar
+  situation_report_response_action_start datetime
+  situation_report_response_action_completed datetime
+  situation_report_response_action_status varchar
+  situation_report_response_action_coverage text
+  situation_report_response_action_resource text
+  situation_report_response_action_result text
+}
+
+Table situation_report_preemptive_evacuation {
+  situation_report_preemptive_evacuation_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_preemptive_evacuation_subject varchar
+  situation_report_preemptive_evacuation_families int
+  situation_report_preemptive_evacuation_persons int
+  situation_report_preemptive_evacuation_animals int
+  situation_report_preemptive_evacuation_center varchar
+  situation_report_preemptive_evacuation_start datetime
+  situation_report_preemptive_evacuation_end datetime
+  situation_report_preemptive_evacuation_status varchar
+}
+</script>
+  <script>
+    // Source data is embedded from documentation/diagram_revision/erd_derived_rdm.dbml.
+    const source = document.getElementById('schema-source').textContent;
+    const modules = [
+      {name:'Accounts & hazards', color:'#537b93', tables:['account','drrm_account','barangay_account','purok_account','hazard','hazard_characteristic']},
+      {name:'Profiles & verification', color:'#64836f', tables:['barangay_profile','barangay_profile_verification','barangay_profile_hazard_exposure','barangay_profile_housing','purok_profile','purok_profile_verification','purok_profile_housing','purok_profile_hazard_exposure']},
+      {name:'Incident reports', color:'#9a7951', tables:['purok_report_verification','incident_report','incident_report_version','incident_report_affected_population','incident_report_casualty_summary','incident_report_damage_assessment','barangay_incident_report','purok_incident_report']},
+      {name:'Situation reports', color:'#7e7091', tables:['situation_report','situation_report_assistance_provided','situation_report_recommendation','situation_report_issue','situation_report_calamity_declaration','situation_report_classwork_suspension','situation_report_lifeline_status','situation_report_signatory','situation_report_response_action','situation_report_preemptive_evacuation']}
+    ];
+    const moduleFor = new Map(modules.flatMap(group => group.tables.map(name => [name, group])));
+    const tables = [];
+    const refs = [];
+    let current = null;
+    for (const rawLine of source.split(/\r?\n/)) {
+      const line = rawLine.trim();
+      const tableMatch = line.match(/^Table\s+([\w]+)\s*\{/i);
+      if (tableMatch) { current = {name:tableMatch[1], fields:[]}; tables.push(current); continue; }
+      if (line === '}') { current = null; continue; }
+      if (!current || !line || line.startsWith('//')) continue;
+      const fieldMatch = line.match(/^([\w]+)\s+([\w]+)(?:\s+\[([^\]]*)\])?/);
+      if (!fieldMatch) continue;
+      const [, name, type, attributes=''] = fieldMatch;
+      const field = {name, type, pk:/\bpk\b/.test(attributes), fk:/\bref\s*:/.test(attributes)};
+      current.fields.push(field);
+      const refMatch = attributes.match(/\bref\s*:\s*([<>-])\s*([\w]+)\.([\w]+)/);
+      if (refMatch) refs.push({from:current.name, fromField:name, to:refMatch[2], toField:refMatch[3], identifying:refMatch[1]==='-'});
+    }
+    for (const table of tables) table.module = moduleFor.get(table.name)?.name || 'Other';
+    const stage = document.getElementById('stage');
+    const world = document.getElementById('world');
+    const edgeLayer = document.getElementById('edges');
+    const positions = new Map();
+    const cards = new Map();
+    const summary = document.getElementById('summary');
+    let selected = tables[0]?.name || null;
+    let zoom = 1, panX = 28, panY = 28;
+    let gesture = null;
+    const cardWidth = 320;
+    const esc = value => value.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const pos = name => positions.get(name) || {x:0,y:0};
+
+    function buildCards(){
+      for(const table of tables){
+        const card=document.createElement('article');card.className='table-card';card.dataset.table=table.name;
+        const group=moduleFor.get(table.name);
+        const fieldRows=table.fields.map(field=>{
+          const ref=refs.find(item=>item.from===table.name&&item.fromField===field.name);
+          const details=[field.name,field.type,field.pk?'primary key':'',ref?`foreign key to ${ref.to}.${ref.toField}`:''].filter(Boolean).join(', ');
+          const keys=`${field.pk?'<span class="key-badge pk" title="Primary key">PK</span>':''}${field.fk?'<span class="key-badge fk" title="Foreign key">FK</span>':''}`;
+          return `<tr aria-label="${esc(details)}"><th scope="row" class="attribute-name" title="${esc(details)}">${esc(field.name)}</th><td class="attribute-type">${esc(field.type)}</td><td class="key">${keys}</td></tr>`;
+        }).join('');
+        card.innerHTML=`<div class="table-head"><span class="table-name">${esc(table.name)}</span><span class="module-tag">${esc(table.module)}</span></div><table class="attributes" aria-label="${esc(table.name)} relation attributes"><thead><tr><th scope="col">Attribute</th><th scope="col">Type</th><th scope="col">Key</th></tr></thead><tbody>${fieldRows}</tbody></table>`;
+        card.style.setProperty('--module-color',group?.color||'#647b8c');world.append(card);cards.set(table.name,card);
+      }
+    }
+    function applyTransform(){world.style.transform=`translate(${panX}px,${panY}px) scale(${zoom})`;document.getElementById('zoom-value').value=`${Math.round(zoom*100)}%`;document.getElementById('zoom-value').textContent=`${Math.round(zoom*100)}%`}
+    function place(name){const p=pos(name),card=cards.get(name);card.style.left=`${p.x}px`;card.style.top=`${p.y}px`}
+    function renderEdges(){
+      edgeLayer.innerHTML='';
+      const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+      const marker=document.createElementNS('http://www.w3.org/2000/svg','marker');marker.setAttribute('id','fk-arrow');marker.setAttribute('viewBox','0 0 10 10');marker.setAttribute('refX','10');marker.setAttribute('refY','5');marker.setAttribute('markerWidth','7');marker.setAttribute('markerHeight','7');marker.setAttribute('markerUnits','strokeWidth');marker.setAttribute('orient','auto');
+      const tip=document.createElementNS('http://www.w3.org/2000/svg','path');tip.setAttribute('d','M 0 0 L 10 5 L 0 10 z');tip.setAttribute('fill','#71899b');marker.append(tip);defs.append(marker);edgeLayer.append(defs);
+      for(const ref of refs){
+        const a=cards.get(ref.from),b=cards.get(ref.to);if(!a||!b)continue;
+        const pa=pos(ref.from),pb=pos(ref.to),aw=a.offsetWidth,ah=a.offsetHeight,bw=b.offsetWidth,bh=b.offsetHeight;
+        const acx=pa.x+aw/2,acy=pa.y+ah/2,bcx=pb.x+bw/2,bcy=pb.y+bh/2,dx=bcx-acx,dy=bcy-acy;
+        let sx,sy,ex,ey,c1x,c1y,c2x,c2y;
+        if(Math.abs(dx)>=Math.abs(dy)){const dir=Math.sign(dx)||1;sx=acx+dir*aw/2;sy=acy;ex=bcx-dir*bw/2;ey=bcy;c1x=sx+dir*48;c1y=sy;c2x=ex-dir*48;c2y=ey}
+        else{const dir=Math.sign(dy)||1;sx=acx;sy=acy+dir*ah/2;ex=bcx;ey=bcy-dir*bh/2;c1x=sx;c1y=sy+dir*48;c2x=ex;c2y=ey-dir*48}
+        const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',`M ${sx} ${sy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${ex} ${ey}`);path.setAttribute('class',`edge${ref.identifying?' identifying':''}${selected&&[ref.from,ref.to].includes(selected)?' related':''}`);path.setAttribute('data-from',ref.from);path.setAttribute('data-to',ref.to);path.setAttribute('marker-end','url(#fk-arrow)');edgeLayer.append(path);
+      }
+      updateSummary();
+    }
+    function updateSummary(){summary.textContent=`${tables.length} relations · ${refs.length} foreign-key references${selected?` · Selected relation: ${selected}`:''}`}
+    function selectTable(name){selected=name;for(const [table,card] of cards)card.classList.toggle('selected',table===name);renderEdges()}
+    function layout(kind){
+      if(kind==='grid'){
+        const cols=8,gapX=30,rows=Math.ceil(tables.length/cols),rowHeights=Array(rows).fill(0);tables.forEach((table,i)=>{const row=Math.floor(i/cols);rowHeights[row]=Math.max(rowHeights[row],cards.get(table.name).offsetHeight)});let y=36;for(let row=0;row<rows;row++){for(let col=0;col<cols;col++){const table=tables[row*cols+col];if(table)positions.set(table.name,{x:36+col*(cardWidth+gapX),y})}y+=rowHeights[row]+34}
+      }else{
+        const colGap=380,top=40;
+        modules.forEach((group,col)=>{let y=top;for(const name of group.tables){const card=cards.get(name);positions.set(name,{x:36+col*(cardWidth+colGap),y});y+=card.offsetHeight+34}});
+      }
+      for(const name of cards.keys())place(name);renderEdges();fit();
+    }
+    function fit(){
+      if(!tables.length)return;
+      const bounds=tables.reduce((b,t)=>{const p=pos(t.name),c=cards.get(t.name);return{minX:Math.min(b.minX,p.x),minY:Math.min(b.minY,p.y),maxX:Math.max(b.maxX,p.x+c.offsetWidth),maxY:Math.max(b.maxY,p.y+c.offsetHeight)}},{minX:Infinity,minY:Infinity,maxX:-Infinity,maxY:-Infinity});
+      const pad=48,sw=stage.clientWidth,sh=stage.clientHeight;zoom=Math.min(1.2,Math.max(1,sw-pad*2)/(bounds.maxX-bounds.minX),Math.max(1,sh-pad*2)/(bounds.maxY-bounds.minY));panX=(sw-(bounds.maxX-bounds.minX)*zoom)/2-bounds.minX*zoom;panY=(sh-(bounds.maxY-bounds.minY)*zoom)/2-bounds.minY*zoom;applyTransform();
+    }
+    function zoomAt(next,cx=stage.clientWidth/2,cy=stage.clientHeight/2){next=Math.max(.01,Math.min(1.8,next));const rect=stage.getBoundingClientRect(),x=cx-rect.left,y=cy-rect.top,worldX=(x-panX)/zoom,worldY=(y-panY)/zoom;zoom=next;panX=x-worldX*zoom;panY=y-worldY*zoom;applyTransform()}
+    buildCards();layout('module');selectTable(selected);
+    document.getElementById('apply-layout').addEventListener('click',()=>layout(document.getElementById('layout').value));
+    document.getElementById('reset').addEventListener('click',()=>{document.getElementById('layout').value='module';layout('module');selectTable(tables[0]?.name)});
+    document.getElementById('fit').addEventListener('click',fit);document.getElementById('zoom-in').addEventListener('click',()=>zoomAt(zoom*1.15));document.getElementById('zoom-out').addEventListener('click',()=>zoomAt(zoom/1.15));
+    cards.forEach((card,name)=>card.addEventListener('click',()=>selectTable(name)));
+    stage.addEventListener('wheel',event=>{event.preventDefault();zoomAt(zoom*(event.deltaY<0?1.1:1/1.1),event.clientX,event.clientY)},{passive:false});
+    stage.addEventListener('pointerdown',event=>{
+      if(event.button!==0)return;const card=event.target.closest('.table-card');
+      if(card){const name=card.dataset.table;selectTable(name);gesture={kind:'table',id:event.pointerId,name,startX:event.clientX,startY:event.clientY,origin:{...pos(name)},moved:false};card.setPointerCapture(event.pointerId)}
+      else{gesture={kind:'pan',id:event.pointerId,startX:event.clientX,startY:event.clientY,origin:{x:panX,y:panY},moved:false};stage.classList.add('is-panning');stage.setPointerCapture(event.pointerId)}
+    });
+    window.addEventListener('pointermove',event=>{if(!gesture||event.pointerId!==gesture.id)return;const dx=event.clientX-gesture.startX,dy=event.clientY-gesture.startY;if(!gesture.moved&&Math.hypot(dx,dy)<3)return;gesture.moved=true;if(gesture.kind==='table'){positions.set(gesture.name,{x:gesture.origin.x+dx/zoom,y:gesture.origin.y+dy/zoom});place(gesture.name);renderEdges()}else{panX=gesture.origin.x+dx;panY=gesture.origin.y+dy;applyTransform()}});
+    window.addEventListener('pointerup',event=>{if(gesture?.id===event.pointerId){gesture=null;stage.classList.remove('is-panning')}});window.addEventListener('pointercancel',()=>{gesture=null;stage.classList.remove('is-panning')});
+    window.addEventListener('resize',()=>renderEdges());
+  </script>
+</body>
+</html>

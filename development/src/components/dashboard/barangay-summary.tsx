@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePrototypeStore } from "@/lib/prototype-store";
-import { consolidateBarangayTotals } from "@/lib/profile-data";
+import { consolidateBarangayTotals, PROFILE_STATUS_LABEL } from "@/lib/profile-data";
+import { AnalyticsChart } from "@/components/dashboard/analytics-chart";
 
 const BARANGAY = "Barangay Tetuan";
 const QUEUE_STATUSES = new Set(["submitted", "under_review", "correction_requested"]);
@@ -17,6 +18,25 @@ export function BarangayDashboardSummary() {
   const incidentQueue = incidentReports.filter((r) => r.barangay === BARANGAY && QUEUE_STATUSES.has(r.status));
   const pendingHazardEvents = hazardEvents.filter((e) => e.barangay === BARANGAY && e.createdByLevel === "purok" && (e.status === "submitted" || e.status === "under_review"));
   const reportingGaps = puroks.filter((p) => p.status === "draft" || p.status === "not_started");
+  const profileStatusCounts = [...new Set(puroks.map((profile) => profile.status))].map((status) => ({
+    label: PROFILE_STATUS_LABEL[status],
+    value: puroks.filter((profile) => profile.status === status).length,
+  }));
+  const verifiedProfiles = puroks.filter((profile) => profile.status === "verified");
+  const exposureData = ([
+    ["Flood exposure", "exposedToFlood"],
+    ["Landslide exposure", "exposedToLandslide"],
+    ["Storm-surge exposure", "exposedToStormSurge"],
+    ["Fire exposure", "exposedToFireHazard"],
+  ] as const).map(([label, key]) => {
+    const values = verifiedProfiles.map((profile) => profile.data.vulnerability[key]);
+    const notReported = values.filter((value) => value === null).length;
+    return {
+      label,
+      value: verifiedProfiles.length ? values.filter((value) => value === true).length : null,
+      detail: `${verifiedProfiles.length - notReported} reported · ${notReported} not reported`,
+    };
+  });
 
   return (
     <>
@@ -39,6 +59,25 @@ export function BarangayDashboardSummary() {
           <span className="summary-label">Puroks not yet submitted</span>
           <span className="summary-meta">Reporting gap for this period</span>
         </div>
+      </div>
+
+      <div className="analytics-grid">
+        <AnalyticsChart
+          id="barangay-submission-status"
+          title="Purok submission status"
+          description={`${puroks.length} Purok profiles in the current reporting period.`}
+          valueLabel="Profiles"
+          data={profileStatusCounts}
+          emptyMessage="No Purok profiles are available for this period."
+        />
+        <AnalyticsChart
+          id="barangay-verified-exposure"
+          title="Reported hazard exposure"
+          description={`${verifiedProfiles.length} verified Purok profiles only · values count profiles reporting exposure.`}
+          valueLabel="Verified profiles reporting exposure"
+          data={exposureData}
+          emptyMessage="No verified Purok profiles are available. Exposure totals are not reported."
+        />
       </div>
 
       <section className="panel" aria-labelledby="barangay-task-heading">

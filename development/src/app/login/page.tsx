@@ -16,7 +16,7 @@ export default function LoginPage() {
           <p className="access-status">Authorized users only</p>
         </header>
 
-        <section className="login-workspace" id="login-form" aria-labelledby="sign-in-heading">
+        <section className="login-workspace" id="login-form" aria-labelledby="sign-in-heading" tabIndex={-1}>
           <header className="login-intro">
             <h2 id="sign-in-heading">Sign in</h2>
             <p>Use the account assigned to your role and jurisdiction.</p>

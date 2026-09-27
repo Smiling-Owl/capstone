@@ -13,15 +13,15 @@ export const PUROK_NAV: RoleNavItem[] = [
 ];
 
 export const BARANGAY_NAV: RoleNavItem[] = [
-  { label: "Barangay Dashboard", href: "/barangay", enabled: true },
-  { label: "Purok User Management", href: "/barangay/purok-users", enabled: false },
-  { label: "Purok Profile Verification", href: "/barangay/profiles", enabled: true },
-  { label: "Barangay Profile Consolidation", href: "/barangay/consolidation", enabled: true },
-  { label: "Hazard Event Creation", href: "/barangay/hazards", enabled: true },
-  { label: "Purok Incident Verification", href: "/barangay/incidents/verification", enabled: true },
-  { label: "Barangay Incident Reporting", href: "/barangay/incidents", enabled: true },
-  { label: "Purok and Barangay Historical Catalogs", href: "/barangay/history", enabled: true },
-  { label: "Notifications and Account", href: "/barangay/account", enabled: false },
+  { label: "Dashboard", href: "/barangay", enabled: true },
+  { label: "Purok users", href: "/barangay/purok-users", enabled: true },
+  { label: "Profile review", href: "/barangay/profiles", enabled: true },
+  { label: "Consolidation", href: "/barangay/consolidation", enabled: true },
+  { label: "Hazards", href: "/barangay/hazards", enabled: true },
+  { label: "Incident review", href: "/barangay/incidents/verification", enabled: true },
+  { label: "Incident reports", href: "/barangay/incidents", enabled: true },
+  { label: "History", href: "/barangay/history", enabled: true },
+  { label: "Account", href: "/barangay/account", enabled: true },
 ];
 
 export const BARANGAY_MOBILE_NAV: RoleNavItem[] = [
@@ -29,22 +29,22 @@ export const BARANGAY_MOBILE_NAV: RoleNavItem[] = [
   { label: "Profiles", href: "/barangay/profiles", enabled: true },
   { label: "Incidents", href: "/barangay/incidents/verification", enabled: true },
   { label: "Hazards", href: "/barangay/hazards", enabled: true },
-  { label: "More", href: "/barangay/more", enabled: false },
+  { label: "More", href: "/barangay/more", enabled: true },
 ];
 
 export const DRRM_NAV: RoleNavItem[] = [
-  { label: "DRRM Dashboard", href: "/drrm", enabled: true },
-  { label: "Barangay User Management", href: "/drrm/barangay-users", enabled: false },
-  { label: "System User and Permission Management", href: "/drrm/system-users", enabled: false },
-  { label: "Barangay Profile Verification", href: "/drrm/profiles", enabled: true },
-  { label: "CDRA Hazard Registry", href: "/drrm/hazard-registry", enabled: true },
-  { label: "Hazard Event Creation and Review", href: "/drrm/hazards", enabled: true },
-  { label: "Barangay Incident Verification", href: "/drrm/incidents/verification", enabled: true },
-  { label: "SitRep Generation and Structured Editor", href: "/drrm/sitreps", enabled: true },
-  { label: "SitRep Review, Approval, and Export", href: "/drrm/sitreps", enabled: true },
-  { label: "Barangay and SitRep Historical Catalogs", href: "/drrm/history", enabled: true },
-  { label: "System Audit Log", href: "/drrm/audit-log", enabled: false },
-  { label: "Reporting Schedule and Template Configuration", href: "/drrm/configuration", enabled: false },
+  { label: "Dashboard", href: "/drrm", enabled: true },
+  { label: "Barangay users", href: "/drrm/barangay-users", enabled: true },
+  { label: "System users", href: "/drrm/system-users", enabled: true },
+  { label: "Profile review", href: "/drrm/profiles", enabled: true },
+  { label: "Hazard registry", href: "/drrm/hazard-registry", enabled: true },
+  { label: "Hazard review", href: "/drrm/hazards", enabled: true },
+  { label: "Incident review", href: "/drrm/incidents/verification", enabled: true },
+  { label: "SitReps", href: "/drrm/sitreps", enabled: true },
+  { label: "History", href: "/drrm/history", enabled: true },
+  { label: "Audit log", href: "/drrm/audit-log", enabled: true },
+  { label: "Reporting setup", href: "/drrm/configuration", enabled: true },
+  { label: "My account", href: "/drrm/account", enabled: true },
 ];
 
 export const DRRM_MOBILE_NAV: RoleNavItem[] = [
@@ -52,7 +52,7 @@ export const DRRM_MOBILE_NAV: RoleNavItem[] = [
   { label: "Profiles", href: "/drrm/profiles", enabled: true },
   { label: "Incidents", href: "/drrm/incidents/verification", enabled: true },
   { label: "Hazards", href: "/drrm/hazards", enabled: true },
-  { label: "More", href: "/drrm/more", enabled: false },
+  { label: "More", href: "/drrm/more", enabled: true },
 ];
 
 export const ROLE_META = {

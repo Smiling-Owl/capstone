@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/schema_runtime_check.mjs",
+    "catalog": "node tests/schema_runtime_check.mjs --catalog"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8"
+  }
+}

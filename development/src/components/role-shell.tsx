@@ -29,13 +29,17 @@ export function RoleShell({
 }) {
   const isPurok = role === "purok";
   const [collapsed, setCollapsed] = useState(false);
+  const [preferenceLoaded, setPreferenceLoaded] = useState(false);
 
   useEffect(() => {
+    let frame = 0;
     try {
       setCollapsed(window.localStorage.getItem(COLLAPSE_STORAGE_KEY) === "1");
     } catch {
       // localStorage unavailable; keep default expanded state.
     }
+    frame = window.requestAnimationFrame(() => setPreferenceLoaded(true));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   function toggleSidebar() {
@@ -69,7 +73,7 @@ export function RoleShell({
     <>
       <a className="skip-link" href="#workspace-main">Skip to workspace</a>
       <PrototypeToolbar current={role} />
-      <div className={`${isPurok ? "mobile-shell" : "desktop-shell"}${!isPurok && collapsed ? " sidebar-collapsed" : ""}`}>
+      <div className={`${isPurok ? "mobile-shell" : "desktop-shell"}${!isPurok && collapsed ? " sidebar-collapsed" : ""}${!isPurok && !preferenceLoaded ? " sidebar-preference-loading" : ""}`}>
         {!isPurok && (
           <aside className={`side-navigation${collapsed ? " collapsed" : ""}`}>
             <div className="side-navigation-brand">
@@ -87,7 +91,6 @@ export function RoleShell({
             <div className="side-navigation-body" inert={collapsed}>
               <p className="navigation-scope">{subtitle}</p>
               <nav aria-label="Workspace navigation">{nav.map(navigationItem)}</nav>
-              <p className="navigation-note">Dimmed sections arrive in later prototype checkpoints.</p>
               <div className="signed-in-user">
                 <span>{userInitials}</span>
                 <div>
@@ -98,7 +101,7 @@ export function RoleShell({
             </div>
           </aside>
         )}
-        <main className="role-content" id="workspace-main">
+        <main className="role-content" id="workspace-main" tabIndex={-1}>
           {children}
         </main>
         <nav className="mobile-navigation" aria-label="Workspace mobile navigation">

@@ -20,6 +20,12 @@ const roleTitle = {
 
 type Role = keyof typeof roleTitle;
 
+const reportingStages = [
+  { role: "purok", label: "Purok reporting" },
+  { role: "barangay", label: "Barangay review & consolidation" },
+  { role: "drrm", label: "DRRM SitRep" },
+] as const;
+
 export default async function RolePage({ params }: { params: Promise<{ role: string }> }) {
   const { role } = await params;
   if (!(role in roleTitle)) notFound();
@@ -47,6 +53,13 @@ export default async function RolePage({ params }: { params: Promise<{ role: str
         </div>
         <p className="role-mode">Prototype workspace</p>
       </header>
+      <ol className="reporting-lineage" aria-label="Reporting roles and review steps">
+        {reportingStages.map((stage) => (
+          <li key={stage.role} aria-current={stage.role === typedRole ? "step" : undefined}>
+            <strong>{stage.label}</strong>
+          </li>
+        ))}
+      </ol>
       {typedRole === "purok" && <PurokDashboardSummary />}
       {typedRole === "barangay" && <BarangayDashboardSummary />}
       {typedRole === "drrm" && <DrrmDashboardSummary />}

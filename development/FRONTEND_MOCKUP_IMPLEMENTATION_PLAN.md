@@ -178,37 +178,38 @@ Design dials:
 
 ### Palette
 
-- Graphite ink: `#202A2D`
-- Mineral teal: `#285F5B`
-- Teal active/hover: `#1F4B48`
-- Mist canvas: `#F3F5F2`
-- White surface: `#FFFFFF`
-- Soft border: `#D8DEDA`
-- Muted text: `#5D6B68`
+- Forest ink: `#172A25`
+- Field green: `#315F4D`
+- Deep green: `#234C3C`
+- Mist canvas: `#F2F4EF`
+- Warm record surface: `#FFFEFA`
+- Soft border: `#D5DED6`
+- Muted text: `#53635B`
 
 Semantic colors are not brand decoration:
 
 - Urgent or rejected: deep red
 - Pending or correction required: amber
 - Verified or approved: green
-- Informational: mineral teal
+- Informational: field green
 
 ### Typography
 
-- Lexend: headings, navigation, and high-level status
-- Source Sans 3: forms, instructions, tables, timelines, and document content
-- Tabular numerals for counts, dates, times, versions, and report identifiers
+- IBM Plex Sans for interface, headings, forms, tables, and report content
+- IBM Plex Mono for counts, dates, times, versions, and lineage step numbers
+- Tabular numerals for aligned counts, dates, times, versions, and report identifiers
 
 ### Shape and Material
 
 - Small, consistent radii for inputs and controls
 - Panels use borders and spacing before elevation
-- No gradients, glassmorphism, oversized promotional headings, decorative metric cards, or color-only status communication
+- Restrained glass surfaces are reserved for navigation and reporting context; forms and records stay opaque
+- Avoid oversized promotional headings, decorative metric cards, and color-only status communication
 - Touch targets are at least 44 by 44 CSS pixels
 
 ### Signature Interaction
 
-The system's distinctive element is a **source lineage rail**. On consolidated profiles, Barangay reports, and SitReps, it shows how a value travels from Purok source through verification and consolidation to the current document. This makes traceability visible without turning the interface into a technical diagram.
+The system's distinctive elements are the **reporting handoff strip** and **source lineage rail**. Role dashboards orient users across Purok reporting, Barangay review and consolidation, and DRRM SitRep preparation. On consolidated profiles, Barangay reports, and SitReps, the source lineage rail shows how a specific value travels from its source through verification and consolidation to the current document. The dashboard strip communicates role context; only the source lineage rail makes record-level provenance claims.
 
 ## Responsive Model
 
@@ -296,7 +297,7 @@ Each checkpoint is reviewed screen by screen before the next checkpoint begins.
 
 ## Design Self-Critique
 
-The original deep-navy and burnt-orange login was legible but too close to a generic institutional landing page and too promotional for a dense operational system. The first graphite and mineral-teal revision improved identity but still relied on oversized editorial typography and decorative empty space. The governing direction now uses an operational type scale, tighter information hierarchy, and progressive disclosure. Visual distinctiveness is spent on source lineage rather than decoration. The system stays recognizable because its structure reflects the real Purok-to-Barangay-to-DRRM reporting chain.
+The original deep-navy and burnt-orange login was legible but too close to a generic institutional landing page and too promotional for a dense operational system. The first graphite and mineral-teal revision improved identity but still relied on oversized editorial typography and decorative empty space. The governing direction now uses an operational type scale, tighter information hierarchy, and progressive disclosure. The forest-and-paper revision adds restrained glass only around navigation and reporting context, uses IBM Plex for operational typography, and brings the Purok-to-Barangay-to-DRRM handoff into the role dashboards. Record-level traceability remains separate in the source lineage rail, so the role strip does not imply that a specific report has advanced or been accepted.
 
 ## Skill-Governed Quality Passes
 

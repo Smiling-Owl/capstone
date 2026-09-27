@@ -20,6 +20,7 @@ export default function PurokMorePage() {
           <h1>More</h1>
         </div>
       </header>
+      <p className="data-freshness">Tools not shown in the bottom navigation.</p>
       <ol className="record-list">
         <li>
           <Link className="record-row" href="/purok/hazards">
@@ -31,8 +32,26 @@ export default function PurokMorePage() {
             <span className="record-row-action">Open</span>
           </Link>
         </li>
-        <li className="record-list-empty">Notification Center — arrives in a later prototype checkpoint.</li>
-        <li className="record-list-empty">Account and Offline Queue — arrives in a later prototype checkpoint.</li>
+        <li>
+          <Link className="record-row" href="/purok/notifications">
+            <span className="record-row-title">
+              <strong>Notification Center</strong>
+              <span>In-app updates about your profiles, reports, and active hazards</span>
+            </span>
+            <span className="record-row-meta" />
+            <span className="record-row-action">Open</span>
+          </Link>
+        </li>
+        <li>
+          <Link className="record-row" href="/purok/account">
+            <span className="record-row-title">
+              <strong>Account and Offline Queue</strong>
+              <span>Account details, password, saved drafts, and queued offline submissions</span>
+            </span>
+            <span className="record-row-meta" />
+            <span className="record-row-action">Open</span>
+          </Link>
+        </li>
       </ol>
     </RoleShell>
   );

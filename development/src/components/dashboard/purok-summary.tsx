@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePrototypeStore } from "@/lib/prototype-store";
 import { StatusBadge } from "@/components/status-badge";
+import { AnalyticsChart } from "@/components/dashboard/analytics-chart";
 
 const CURRENT_PROFILE_ID = "tetuan-purok-6-2026-09";
 const PUROK_NAME = "Purok 6";
@@ -15,6 +16,9 @@ export function PurokDashboardSummary() {
   const activeEvents = hazardEvents.filter((e) => e.status === "active" && (e.barangay === BARANGAY || e.barangay === "Citywide"));
   const actionableIncidents = incidentReports.filter((r) => r.purokName === PUROK_NAME && r.barangay === BARANGAY && ACTIONABLE_INCIDENT_STATUSES.has(r.status));
   if (!profile) return null;
+  const baselineHousing = profile.previousVerified.housing;
+  const hasHousingSnapshot = [baselineHousing.lightMaterialHouseholds, baselineHousing.mixedMaterialHouseholds, baselineHousing.concreteMaterialHouseholds]
+    .some((value) => value !== null);
 
   const actionLabel =
     profile.status === "draft"
@@ -43,6 +47,22 @@ export function PurokDashboardSummary() {
           <span className="summary-meta">{profile.previousVerified.identification.reportingPeriodLabel}</span>
         </div>
       </div>
+
+      {hasHousingSnapshot && (
+        <AnalyticsChart
+          id="purok-housing-baseline"
+          title="Housing material profile"
+          description={`Last verified snapshot · ${profile.previousVerified.identification.reportingPeriodLabel}. Current-period figures are not charted until this profile is verified.`}
+          chartType="part-to-whole"
+          valueLabel="Households"
+          data={[
+            { label: "Light material households", value: baselineHousing.lightMaterialHouseholds },
+            { label: "Mixed material households", value: baselineHousing.mixedMaterialHouseholds },
+            { label: "Concrete material households", value: baselineHousing.concreteMaterialHouseholds },
+          ]}
+          emptyMessage="Housing composition was not reported in the last verified snapshot."
+        />
+      )}
 
       {profile.status === "correction_requested" && profile.correctionNote && (
         <div className="callout callout-urgent">

@@ -60,9 +60,9 @@ Purok incident report
 | 5.0 | Create and Maintain Hazard Record | Purok, Barangay, and DRRM users create jurisdiction-scoped hazard versions with source evidence. |
 | 6.0 | Verify Purok CDRA Profile | Barangay User accepts, returns, or rejects a specific Purok profile version. |
 | 7.0 | Verify Barangay CDRA Profile | DRRM Administrator accepts, returns, or rejects a specific Barangay profile version. |
-| 8.0 | Submit Purok Incident Report | Purok User submits preliminary and corrected, immutable report versions. |
+| 8.0 | Submit Purok Initial Incident Report | Purok User submits a concise initial report containing the hazard, essential incident metadata, affected-family/person totals, source, and optional evidence. Corrections create immutable successor versions; the report remains an Initial report. |
 | 9.0 | Verify Purok Incident Report | Barangay User reviews Purok evidence and records a version-specific decision or correction request. |
-| 10.0 | Consolidate and Submit Barangay Incident Report | Barangay User consolidates eligible verified Purok reports and Barangay-level facts. |
+| 10.0 | Consolidate and Submit Barangay Incident Report | Barangay User consolidates eligible verified Purok versions, adds sourced Barangay information, and reports affected population, aggregate casualties, and damage assessment. |
 | 11.0 | Verify Barangay Incident Report | DRRM Administrator verifies and reconciles a Barangay report version and its sources. |
 | 12.0 | Generate, Review, and Approve Situation Report | DRRM creates a fixed as-of source snapshot, produces narrative and cumulative tables, records review/approval, and exports. |
 | 13.0 | Browse Purok Incident Report History | Authorized Purok User retrieves retained Purok report versions and statuses. |
@@ -89,11 +89,11 @@ The stores remain separated wherever combining them would hide a Purok-versus-Ba
 | D7 | Barangay Profile Verification Decisions | Verified version, decision, reason, discrepancy/correction request, verifier, timestamp |
 | D8 | Hazard Record Versions | Jurisdiction, geometry/location, characteristics, likelihood/intensity, exposure, source, author, version |
 | D9 | Hazard Verification Decisions | Hazard version, verifying level, decision, reason, correction request, verifier, timestamp |
-| D10 | Purok Incident Report Versions | Preliminary/corrected reports, chronology, impacts, actions, assistance, needs, as-of time |
+| D10 | Purok Initial Incident Report Versions | Hazard and incident reference, reporting Purok, location/landmark, occurrence or observation time, report as-of time, concise prevailing situation, affected-family/person totals with an explicit data state, source, evidence, and version/status |
 | D11 | Purok Incident Verification Decisions | Purok report version, decision, discrepancy, reason, reviewer, timestamp |
-| D12 | Barangay Incident Report Versions | Included Purok versions, Barangay facts, consolidated impacts/actions, discrepancies, as-of time |
+| D12 | Barangay Incident Report Versions | Exact included/excluded verified Purok versions, consolidated affected population, aggregate casualty summary, damage assessment, Barangay-added sourced facts, discrepancies, limitations, as-of time, and version/status |
 | D13 | Barangay Incident Verification Decisions | Barangay report version, verification/reconciliation decision, reason, verifier, timestamp |
-| D14 | Situation Report Versions and Approvals | Report number/type/version, cut-off, source snapshot, narrative, tables, approval/release/export |
+| D14 | Situation Report Versions and Approvals | Report number/type/version, operational period and cut-off, frozen source snapshot, derived population/casualty/damage, DRRM-owned chronology, lifeline/service status, suspensions/declarations, evacuation, preparedness/response actions, assistance, issues, recommendations, approval, release, annex, and export data |
 | D15 | Attachments and Source Evidence | Photos/documents, source type/identity, geolocation, capture time, provenance, integrity metadata |
 | D16 | Audit Events | Actor, action, record/version, prior/new state, timestamp, reason |
 
@@ -110,11 +110,11 @@ History modules read the version stores. They do not need separate “history da
 | Verified Purok profile dataset | Accepted Purok profile version, decision, reviewer, reason, timestamp, limitations, and provenance links |
 | Barangay CDRA additions and consolidation | Included verified Purok versions; Barangay-wide data; cross-Purok facilities/resources; aggregation rules; discrepancies; source; as-of time; version |
 | Hazard proposal / verification package | Jurisdiction and geometry; hazard type/characteristics; likelihood/frequency; intensity/severity; exposed areas; evidence; author/version; decision, reason, correction request, verifier, timestamp |
-| Purok incident report package | Incident reference/type; exact geography; occurrence/discovery/report times; reporting source; chronology; affected population; evacuation; casualties; damaged houses/infrastructure/agriculture/livelihood; service disruption; actions; assistance/resources; needs/issues; attachments; as-of time |
+| Purok initial incident report package | Incident/hazard reference; reporting Purok; exact location and landmark; occurrence or observation time; report as-of time; concise prevailing situation; affected-family and affected-person totals; explicit zero/unknown/provisional/verified/disputed/not-applicable state; reporting source; optional evidence and urgent-needs remarks |
 | Verified Purok report dataset | Accepted Purok report version, decision, reviewer, reason, timestamp, source links, and unresolved limitations |
-| Barangay incident consolidation package | Included verified Purok versions; excluded/returned items and reasons; consolidated impacts/actions; Barangay facts; unresolved discrepancies; source set; as-of time; version |
+| Barangay incident consolidation package | Exact included verified Purok versions; excluded/pending versions and reasons; consolidation cut-off; consolidated affected population; aggregate casualties; damage assessment; separately sourced Barangay additions; unresolved discrepancies and limitations; as-of time; version |
 | Barangay verification / reconciliation package | Submitted Barangay version; source-evidence summary; discrepancy and reconciliation; decision, reason, verifier, and timestamp |
-| Situation Report source snapshot | Eligible verified report versions at a fixed cut-off; chronology and prevailing situation; affected population/displacement/evacuation; casualties; damage/loss; related incidents; actions; assistance/resources; service status; issues/needs; recommendations; provenance and unresolved discrepancies |
+| Situation Report source snapshot | Eligible verified Barangay report and hazard versions at a fixed cut-off; derived affected population, casualty, and damage data with field-level lineage; DRRM-authored chronology, prevailing situation, preparedness, lifelines, suspensions/declarations, evacuation, response actions, assistance, issues, and recommendations; provenance and unresolved limitations |
 | Situation Report review / approval package | Report number/type/version; operational period/as-of time; narrative and cumulative tables; source summary; correction/review decision; approver; approval/release time; export status |
 | Authorized history/dashboard query and result | Jurisdiction-scoped criteria; returned versions, maps, trends, totals, statuses, source links, and authorized export |
 
@@ -136,6 +136,8 @@ The mandates do not prescribe this application's exact database schema or litera
 - Submitted, verified, approved, and released records are immutable. A correction creates a linked version.
 - Purok and Barangay profile, incident, verification, and history responsibilities remain visibly separate.
 - CDRA baseline risk data is not current incident-impact data.
+- Purok Initial reports collect affected-population totals and essential context only. Casualty and damage consolidation belongs to Barangay; the remaining formal Situation Report content belongs to DRRM.
+- Unknown is never converted to numeric zero. Every reported total carries an explicit data state and as-of time.
 - Barangay review, DRRM verification, and DRRM approval/release are distinct permissions.
 - With only the three confirmed external entities, a DRRM-originated hazard uses internal maker-checker separation; approval by a higher external authority is outside scope.
 - Personally identifiable casualty data and attachments require role-based access and sanitation before publication/export.

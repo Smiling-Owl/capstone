@@ -2,17 +2,32 @@
 
 import Link from "next/link";
 import { usePrototypeStore } from "@/lib/prototype-store";
+import { PROFILE_STATUS_LABEL } from "@/lib/profile-data";
+import { AnalyticsChart } from "@/components/dashboard/analytics-chart";
 
 const QUEUE_STATUSES = new Set(["submitted", "under_review", "correction_requested"]);
 
 export function DrrmDashboardSummary() {
-  const { barangayProfiles, barangayIncidentReports, hazardEvents } = usePrototypeStore();
+  const { barangayProfiles, barangayIncidentReports, hazardEvents, hazardTypes } = usePrototypeStore();
   const verified = barangayProfiles.filter((b) => b.status === "verified").length;
   const queue = barangayProfiles.filter((b) => QUEUE_STATUSES.has(b.status));
   const incidentQueue = barangayIncidentReports.filter((r) => QUEUE_STATUSES.has(r.status));
   const pendingHazardEvents = hazardEvents.filter((e) => e.createdByLevel === "barangay" && (e.status === "submitted" || e.status === "under_review"));
   const reportedThisPeriod = barangayProfiles.filter((b) => Boolean(b.submittedAt)).length;
   const overdue = barangayProfiles.filter((b) => !b.submittedAt);
+  const profileStatusCounts = [...new Set(barangayProfiles.map((profile) => profile.status))].map((status) => ({
+    label: PROFILE_STATUS_LABEL[status],
+    value: barangayProfiles.filter((profile) => profile.status === status).length,
+  }));
+  const activeCityEvents = hazardEvents.filter((event) => event.status === "active" && event.city === "Zamboanga City");
+  const activeHazardCounts = [...new Set(activeCityEvents.map((event) => event.hazardTypeId))].map((hazardId) => ({
+    label: hazardTypes.find((hazard) => hazard.id === hazardId)?.name ?? "Other hazard",
+    value: activeCityEvents.filter((event) => event.hazardTypeId === hazardId).length,
+  }));
+  const incidentStatusCounts = [...new Set(barangayIncidentReports.map((report) => report.status))].map((status) => ({
+    label: PROFILE_STATUS_LABEL[status],
+    value: barangayIncidentReports.filter((report) => report.status === status).length,
+  }));
 
   return (
     <>
@@ -30,6 +45,33 @@ export function DrrmDashboardSummary() {
           <span className="summary-label">Source coverage this period</span>
           <span className="summary-meta">Barangays with a submitted profile</span>
         </div>
+      </div>
+
+      <div className="analytics-grid">
+        <AnalyticsChart
+          id="drrm-profile-status"
+          title="Barangay profile coverage"
+          description={`${barangayProfiles.length} city profiles · submission and verification status for this period.`}
+          valueLabel="Barangays"
+          data={profileStatusCounts}
+          emptyMessage="No Barangay profiles are available for this period."
+        />
+        <AnalyticsChart
+          id="drrm-active-hazards"
+          title="Active citywide hazard events"
+          description="Active events recorded in the prototype, grouped by hazard type."
+          valueLabel="Active events"
+          data={activeHazardCounts}
+          emptyMessage="No active citywide hazard events are recorded. This is a reported zero."
+        />
+        <AnalyticsChart
+          id="drrm-incident-status"
+          title="Consolidated incident report status"
+          description={`${barangayIncidentReports.length} saved reports across all available reporting periods.`}
+          valueLabel="Reports"
+          data={incidentStatusCounts}
+          emptyMessage="No consolidated incident reports are available."
+        />
       </div>
 
       <section className="panel" aria-labelledby="drrm-task-heading">

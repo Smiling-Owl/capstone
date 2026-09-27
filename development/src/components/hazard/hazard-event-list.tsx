@@ -1,13 +1,9 @@
 "use client";
 
-import { CDRA_HAZARD_REGISTRY, CreatedByLevel, HazardEvent } from "@/lib/hazard-data";
+import { CreatedByLevel, HazardEvent } from "@/lib/hazard-data";
 import { StatusBadge } from "@/components/status-badge";
 import { ReviewDecisionPanel } from "@/components/review-decision-panel";
 import { usePrototypeStore } from "@/lib/prototype-store";
-
-function hazardTypeName(id: string) {
-  return CDRA_HAZARD_REGISTRY.find((t) => t.id === id)?.name ?? id;
-}
 
 function formatDateTime(iso: string) {
   return new Date(iso).toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
@@ -23,7 +19,11 @@ export function HazardEventList({
   /** Only events created at this level show Verify/Correction/Reject actions. Omit to render read-only. */
   reviewableCreatorLevel?: CreatedByLevel;
 }) {
-  const { verifyHazardEvent, requestHazardEventCorrection, rejectHazardEvent } = usePrototypeStore();
+  const { hazardTypes, verifyHazardEvent, requestHazardEventCorrection, rejectHazardEvent } = usePrototypeStore();
+
+  function hazardTypeName(id: string) {
+    return hazardTypes.find((t) => t.id === id)?.name ?? id;
+  }
 
   if (events.length === 0) {
     return <p className="record-list-empty">No hazard events for this scope yet.</p>;

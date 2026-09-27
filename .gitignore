@@ -1,3 +1,6 @@
 /diagram_revision/node_modules/
 .playwright-mcp/
+/documentation/revisions/.pptx-build-*/
+/erd-preview.png
+/development/supabase/.npm-cache/
 

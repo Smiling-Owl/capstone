@@ -6,11 +6,22 @@
 
 import type { ProfileStatus } from "./profile-data.ts";
 
+export type HazardRegistryStatus = "approved" | "archived";
+
+export const HAZARD_CATEGORY_LABEL: Record<HazardType["category"], string> = {
+  hydrometeorological: "Hydrometeorological",
+  geologic: "Geologic",
+  "human-induced": "Human-induced",
+  biological: "Biological",
+};
+
 export interface HazardType {
   id: string;
   name: string;
   category: "hydrometeorological" | "geologic" | "human-induced" | "biological";
   description: string;
+  /** DRRM-managed registry lifecycle. Absent means the seed type is approved. */
+  status?: HazardRegistryStatus;
 }
 
 export const CDRA_HAZARD_REGISTRY: HazardType[] = [

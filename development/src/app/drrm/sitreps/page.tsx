@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { RoleShell } from "@/components/role-shell";
 import { StatusToneBadge } from "@/components/status-badge";
-import { DRRM_NAV, ROLE_META } from "@/lib/role-nav";
+import { DRRM_MOBILE_NAV, DRRM_NAV, ROLE_META } from "@/lib/role-nav";
 import { usePrototypeStore } from "@/lib/prototype-store";
 import { SITREP_STATUS_LABEL, SITREP_STATUS_TONE } from "@/lib/sitrep-data";
 
@@ -25,7 +25,7 @@ export default function SitRepCatalogPage() {
       role="drrm"
       subtitle={meta.subtitle}
       nav={DRRM_NAV}
-      mobileNav={DRRM_NAV}
+      mobileNav={DRRM_MOBILE_NAV}
       activeHref="/drrm/sitreps"
       userInitials={meta.userInitials}
       userName={meta.userName}

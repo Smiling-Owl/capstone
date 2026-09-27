@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { CDRA_HAZARD_REGISTRY, CreatedByLevel } from "@/lib/hazard-data";
+import { CreatedByLevel } from "@/lib/hazard-data";
 import { usePrototypeStore } from "@/lib/prototype-store";
 
 export function HazardEventCreateForm({
@@ -17,7 +17,8 @@ export function HazardEventCreateForm({
   city: string;
   activateImmediately: boolean;
 }) {
-  const { createHazardEvent } = usePrototypeStore();
+  const { hazardTypes, createHazardEvent } = usePrototypeStore();
+  const approvedTypes = hazardTypes.filter((type) => type.status !== "archived");
   const [hazardTypeId, setHazardTypeId] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -53,7 +54,7 @@ export function HazardEventCreateForm({
             : "Requires DRRM verification before it becomes active."}
       </p>
       {confirmation && (
-        <div className="callout callout-verified">
+        <div className="callout callout-verified" role="status" aria-live="polite">
           <strong>Hazard event submitted</strong>
           <p>It now appears in the list below.</p>
         </div>
@@ -63,7 +64,7 @@ export function HazardEventCreateForm({
           <label htmlFor="hazardTypeId">Hazard type</label>
           <select id="hazardTypeId" value={hazardTypeId} onChange={(e) => setHazardTypeId(e.target.value)} required>
             <option value="" disabled>Select from the CDRA registry</option>
-            {CDRA_HAZARD_REGISTRY.map((type) => (
+            {approvedTypes.map((type) => (
               <option key={type.id} value={type.id}>{type.name}</option>
             ))}
           </select>

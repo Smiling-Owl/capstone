@@ -1,0 +1,368 @@
+// Compact paper model transcribed from the user's supplied ERD image.
+// Generic types and selected FK columns make the conceptual relationships
+// concrete; they are not a production-ready physical schema.
+
+// Accounts and hazards
+Table account {
+  account_id int [pk]
+  account_username varchar
+  account_password_hashed varchar
+  account_name varchar
+  account_first_name varchar
+  account_middle_name varchar
+  account_last_name varchar
+  account_email varchar
+  account_phone varchar
+  account_address text
+  account_location varchar
+  account_status varchar
+  account_created_at datetime
+  account_created_by int
+}
+
+Table drrm_account {
+  drrm_account_id int [pk, ref: - account.account_id]
+  drrm_unit_id int
+}
+
+Table barangay_account {
+  barangay_account_id int [pk, ref: - account.account_id]
+  barangay_name varchar
+  barangay_supervising_drrm int
+  created_by_drrm_account_id int [ref: > drrm_account.drrm_account_id]
+}
+
+Table purok_account {
+  purok_account_id int [pk, ref: - account.account_id]
+  purok_barangay int
+  purok_supervising_barangay int
+  purok_name varchar
+  created_by_barangay_account_id int [ref: > barangay_account.barangay_account_id]
+}
+
+Table hazard {
+  hazard_id int [pk]
+  hazard_name varchar
+  hazard_type varchar
+  hazard_date date
+  hazard_location varchar
+  hazard_severity varchar
+  created_by_account_id int [ref: > account.account_id]
+}
+
+Table hazard_characteristic {
+  hazard_characteristic_id int [pk]
+  hazard_characteristic_name varchar
+  hazard_title varchar
+  hazard_description text
+  hazard_location_description text
+  hazard_landmark varchar
+  hazard_assessment_date_time datetime
+  hazard_intensity_or_magnitude decimal
+  hazard_intensity_unit varchar
+  hazard_severity varchar
+  hazard_duration varchar
+  hazard_current_status varchar
+  hazard_record_status varchar
+  hazard_prepared_by int
+  hazard_submitted_at datetime
+  hazard_id int [ref: > hazard.hazard_id]
+}
+
+// Profiles and verification
+Table barangay_profile {
+  barangay_profile_id int [pk]
+  barangay_name varchar
+  barangay_city varchar
+  barangay_province varchar
+  barangay_population int
+  barangay_male_num int
+  barangay_female_num int
+  barangay_infants_num int
+  barangay_children_num int
+  barangay_adult_num int
+  barangay_senior_num int
+  barangay_pwd_num int
+  barangay_pregnant_num int
+  barangay_lactating_num int
+  created_by_barangay_account_id int [ref: > barangay_account.barangay_account_id]
+}
+
+Table barangay_profile_verification {
+  barangay_profile_verification_id int [pk]
+  reviewer_account_id int [ref: > account.account_id]
+  barangay_profile_id int [ref: > barangay_profile.barangay_profile_id]
+  barangay_profile_verification_decision varchar
+  barangay_profile_verification_reason text
+  barangay_profile_verification_status varchar
+  barangay_profile_verification_reviewed_at datetime
+}
+
+Table barangay_profile_hazard_exposure {
+  barangay_profile_hazard_exposure_id int [pk]
+  barangay_profile_id int [ref: > barangay_profile.barangay_profile_id]
+  barangay_hazard_type varchar
+  barangay_hazard_exposed_families int
+  barangay_hazard_exposed_household int
+  barangay_hazard_exposed_population int
+  barangay_hazard_vulnerable_group text
+}
+
+Table barangay_profile_housing {
+  barangay_profile_housing_id int [pk]
+  barangay_profile_id int [ref: > barangay_profile.barangay_profile_id]
+  barangay_total_housing int
+  barangay_light_housing int
+  barangay_bodies_of_water_housing int
+  barangay_near_fault_housing int
+}
+
+Table purok_profile {
+  purok_profile_id int [pk]
+  purok_name varchar
+  purok_location varchar
+  purok_barangay varchar
+  purok_population int
+  purok_household_num int
+  purok_families_num int
+  purok_male_num int
+  purok_female_num int
+  purok_infants_num int
+  purok_children_num int
+  purok_adults_num int
+  purok_senior_num int
+  purok_pwd_num int
+  purok_pregnant_num int
+  purok_lactating_num int
+  created_by_purok_account_id int [ref: > purok_account.purok_account_id]
+}
+
+Table purok_profile_verification {
+  purok_profile_verification_id int [pk]
+  reviewer_account_id int [ref: > account.account_id]
+  purok_profile_id int [ref: > purok_profile.purok_profile_id]
+  purok_profile_verification_decision varchar
+  purok_profile_verification_reason text
+  purok_profile_verification_status varchar
+  purok_profile_verification_date_time datetime
+  purok_profile_verification_reviewed_at datetime
+}
+
+Table purok_profile_housing {
+  purok_profile_housing_id int [pk]
+  purok_profile_id int [ref: > purok_profile.purok_profile_id]
+  purok_total_housing int
+  purok_light_housing int
+  purok_bodies_of_water_housing int
+  purok_near_fault_housing int
+}
+
+Table purok_profile_hazard_exposure {
+  purok_profile_hazard_exposure_id int [pk]
+  purok_profile_id int [ref: > purok_profile.purok_profile_id]
+  purok_hazard_type varchar
+  purok_hazard_exposed_families int
+  purok_hazard_exposed_household int
+  purok_hazard_exposed_population int
+  purok_hazard_vulnerable_group text
+}
+
+Table purok_report_verification {
+  purok_report_verification_id int [pk]
+  reviewer_account_id int [ref: > account.account_id]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  purok_report_verification_reviewing_org varchar
+  purok_report_verification_decision varchar
+  purok_report_verification_decision_reason text
+  purok_report_verification_correction_req text
+  purok_report_verification_consolidation text
+  purok_report_verification_at datetime
+}
+
+// Incident reports
+Table incident_report {
+  incident_report_id int [pk]
+  incident_report_level varchar
+  incident_report_series_createdby int [ref: > account.account_id]
+  incident_report_series_createdat datetime
+}
+
+Table incident_report_version {
+  incident_report_version_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_version_stage varchar
+  incident_report_version_start datetime
+  incident_report_version_end datetime
+  incident_report_version_continuing_threat varchar
+  incident_report_version_record_status varchar
+  incident_report_version_draftedby int
+  incident_report_version_prepared_by int
+}
+
+Table incident_report_affected_population {
+  incident_report_affected_population_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_affected_population_category varchar
+  incident_report_affected_population_purok_count int
+  incident_report_affected_population_family int
+  incident_report_affected_population_person int
+  incident_report_affected_population_evacuation_center varchar
+  incident_report_affected_population_current int
+  incident_report_affected_population_cumulative int
+}
+
+Table incident_report_casualty_summary {
+  incident_report_affected_casualty_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_affected_casualty_count int
+  incident_report_affected_casualty_injured int
+  incident_report_affected_casualty_ill int
+  incident_report_affected_casualty_missing int
+}
+
+Table incident_report_damage_assessment {
+  incident_report_damage_assessment_id int [pk]
+  incident_report_id int [ref: > incident_report.incident_report_id]
+  incident_report_damage_assessment_category varchar
+  incident_report_damage_assessment_name varchar
+  incident_report_damage_assessment_owner varchar
+  incident_report_damage_assessment_classification varchar
+  incident_report_damage_assessment_damaged_qty decimal
+  incident_report_damage_assessment_affected_area decimal
+  incident_report_damage_assessment_estimated_damage decimal
+  incident_report_damage_assessment_estimated_loss decimal
+}
+
+Table barangay_incident_report {
+  barangay_incident_report_id int [pk, ref: - incident_report.incident_report_id]
+  barangay_report_status varchar
+}
+
+Table purok_incident_report {
+  purok_incident_report_id int [pk, ref: - incident_report.incident_report_id]
+  purok_report_status varchar
+  purok_report_notes text
+}
+
+// Situation reports
+Table situation_report {
+  situation_report_id int [pk]
+  situation_report_type varchar
+  situation_report_title varchar
+  situation_report_created_at datetime
+  situation_report_version int
+  created_by_drrm_account_id int [ref: > drrm_account.drrm_account_id]
+}
+
+Table situation_report_assistance_provided {
+  situation_report_assistance_provided_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_assistance_provided_type varchar
+  situation_report_assistance_provided_group varchar
+  situation_report_assistance_provided_cluster varchar
+  situation_report_assistance_provided_item varchar
+  situation_report_assistance_provided_provider varchar
+  situation_report_assistance_provided_quantity decimal
+  situation_report_assistance_provided_measurement_unit varchar
+  situation_report_assistance_provided_cost_per_unit decimal
+  situation_report_assistance_provided_total_value decimal
+  situation_report_response_action_resource varchar
+  situation_report_assistance_provided_date_time datetime
+}
+
+Table situation_report_recommendation {
+  situation_report_recommendation_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_recommendation_action text
+  situation_report_recommendation_target_organization varchar
+  situation_report_recommendation_priority varchar
+  situation_report_recommendation_resource text
+  situation_report_recommendation_target_date date
+  situation_report_recommendation_status varchar
+  situation_report_recommendation_result text
+}
+
+Table situation_report_issue {
+  situation_report_issue_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_issue_category varchar
+  situation_report_issue_description text
+  situation_report_issue_identified_at datetime
+  situation_report_issue_severity varchar
+  situation_report_issue_priority varchar
+  situation_report_issue_responsible_organization varchar
+  situation_report_issue_status varchar
+}
+
+Table situation_report_calamity_declaration {
+  situation_report_calamity_declaration_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_calamity_declaration_declaring_body varchar
+  situation_report_calamity_declaration_resolution text
+  situation_report_calamity_declaration_declaration_date date
+  situation_report_calamity_declaration_effective_date date
+  situation_report_calamity_declaration_remarks text
+  situation_report_calamity_declaration_status varchar
+}
+
+Table situation_report_classwork_suspension {
+  situation_report_classwork_suspension_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_classwork_suspension_type varchar
+  situation_report_classwork_suspension_scope varchar
+  situation_report_classwork_suspension_suspension_start datetime
+  situation_report_classwork_suspension_suspension_end datetime
+  situation_report_classwork_suspension_issuing_authority varchar
+  situation_report_classwork_suspension_order varchar
+  situation_report_classwork_suspension_status varchar
+}
+
+Table situation_report_lifeline_status {
+  situation_report_lifeline_status_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_lifeline_status_type varchar
+  situation_report_lifeline_status_operator varchar
+  situation_report_damage_assessment_classification varchar
+  situation_report_damage_assessment_damaged_qty decimal
+  situation_report_damage_assessment_affected_area decimal
+  situation_report_damage_assessment_estimated_damage decimal
+  situation_report_damage_assessment_estimated_loss decimal
+}
+
+Table situation_report_signatory {
+  situation_report_signatory_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_signatory_role varchar
+  situation_report_signatory_name varchar
+  situation_report_signatory_designation varchar
+  situation_report_signatory_number varchar
+}
+
+Table situation_report_response_action {
+  situation_report_response_action_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_response_action_phase varchar
+  situation_report_response_action_response_cluster varchar
+  situation_report_response_action_category varchar
+  situation_report_response_action_description text
+  situation_report_response_action_organization varchar
+  situation_report_response_action_start datetime
+  situation_report_response_action_completed datetime
+  situation_report_response_action_status varchar
+  situation_report_response_action_coverage text
+  situation_report_response_action_resource text
+  situation_report_response_action_result text
+}
+
+Table situation_report_preemptive_evacuation {
+  situation_report_preemptive_evacuation_id int [pk]
+  situation_report_id int [ref: > situation_report.situation_report_id]
+  situation_report_preemptive_evacuation_subject varchar
+  situation_report_preemptive_evacuation_families int
+  situation_report_preemptive_evacuation_persons int
+  situation_report_preemptive_evacuation_animals int
+  situation_report_preemptive_evacuation_center varchar
+  situation_report_preemptive_evacuation_start datetime
+  situation_report_preemptive_evacuation_end datetime
+  situation_report_preemptive_evacuation_status varchar
+}

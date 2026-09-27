@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { RoleShell } from "@/components/role-shell";
 import { StatusBadge } from "@/components/status-badge";
-import { BARANGAY_NAV, ROLE_META } from "@/lib/role-nav";
+import { BARANGAY_MOBILE_NAV, BARANGAY_NAV, ROLE_META } from "@/lib/role-nav";
 import { usePrototypeStore } from "@/lib/prototype-store";
 import { PROFILE_STATUS_LABEL, ProfileStatus } from "@/lib/profile-data";
 import { INCIDENT_VERSION_LABEL } from "@/lib/hazard-data";
@@ -84,7 +84,7 @@ export default function BarangayHistoryPage() {
       role="barangay"
       subtitle={meta.subtitle}
       nav={BARANGAY_NAV}
-      mobileNav={BARANGAY_NAV}
+      mobileNav={BARANGAY_MOBILE_NAV}
       activeHref="/barangay/history"
       userInitials={meta.userInitials}
       userName={meta.userName}
