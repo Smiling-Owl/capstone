@@ -88,37 +88,37 @@ for (const relationship of erd.relationships) {
   if (relationship.cardinality) {
     assert.deepEqual(Object.keys(relationship.cardinality).sort(), ['from', 'to']);
     for (const marker of Object.values(relationship.cardinality)) {
-      assert.ok(['bar', 'doubleBar', 'fork'].includes(marker), `Unsupported cardinality marker ${marker}`);
+      assert.ok(['bar', 'doubleBar', 'barFork'].includes(marker), `Unsupported cardinality marker ${marker}`);
     }
   }
 }
 // Ordered source-image transcription; null endpoints are intentionally unresolved.
 const auditedRelationships = [
-  ['hazard_characteristic', 'hazard', 'includes', 'fork', 'bar'],
-  ['barangay_profile', 'barangay_profile_hazard_exposure', 'includes', 'doubleBar', 'fork'],
+  ['hazard_characteristic', 'hazard', 'includes', 'barFork', 'bar'],
+  ['barangay_profile', 'barangay_profile_hazard_exposure', 'includes', 'doubleBar', 'barFork'],
   ['barangay_profile', 'barangay_profile_housing', 'includes', 'doubleBar', 'bar'],
-  ['purok_profile', 'purok_profile_hazard_exposure', 'includes', 'doubleBar', 'fork'],
+  ['purok_profile', 'purok_profile_hazard_exposure', 'includes', 'doubleBar', 'barFork'],
   ['purok_profile', 'purok_profile_housing', 'includes', 'bar', 'bar'],
-  ['incident_report', 'incident_report_version', 'includes', 'fork', 'doubleBar'],
-  ['incident_report', 'incident_report_affected_population', 'includes', 'fork', 'doubleBar'],
-  ['incident_report', 'incident_report_casualty', 'includes', 'fork', 'doubleBar'],
-  ['incident_report', 'incident_report_damage', 'includes', 'fork', 'bar'],
+  ['incident_report', 'incident_report_version', 'includes', 'barFork', 'doubleBar'],
+  ['incident_report', 'incident_report_affected_population', 'includes', 'barFork', 'doubleBar'],
+  ['incident_report', 'incident_report_casualty', 'includes', 'barFork', 'doubleBar'],
+  ['incident_report', 'incident_report_damage', 'includes', 'barFork', 'bar'],
   ...[
     'situation_report_assistance', 'situation_report_recommendation', 'situation_report_issue',
     'situation_report_calamity', 'situation_report_classwork', 'situation_report_lifeline',
     'situation_report_signatory', 'situation_report_response', 'situation_report_evacuation'
-  ].map(target => ['situation_report', target, 'includes', 'doubleBar', 'fork']),
-  ['account', 'hazard', 'creates', 'bar', 'fork'],
-  ['drrm_account', 'barangay_account', 'creates', 'bar', 'fork'],
+  ].map(target => ['situation_report', target, 'includes', 'doubleBar', 'barFork']),
+  ['account', 'hazard', 'creates', 'bar', 'barFork'],
+  ['drrm_account', 'barangay_account', 'creates', 'bar', 'barFork'],
   ['drrm_account', 'situation_report', 'creates', null, null],
-  ['barangay_account', 'purok_account', 'creates', 'bar', 'fork'],
+  ['barangay_account', 'purok_account', 'creates', 'bar', 'barFork'],
   ['barangay_account', 'barangay_profile', 'creates', 'doubleBar', 'doubleBar'],
   ['purok_account', 'purok_profile', 'creates', 'doubleBar', 'doubleBar'],
-  ['drrm_account', 'barangay_profile_verification', 'verifies', 'bar', 'fork'],
+  ['drrm_account', 'barangay_profile_verification', 'verifies', 'barFork', 'barFork'],
   ['barangay_account', 'purok_profile_verification', 'verifies', null, null],
   ['barangay_profile', 'barangay_profile_verification', 'verifies', null, null],
   ['purok_profile', 'purok_profile_verification', 'verifies', null, null],
-  ['purok_report_verification', 'incident_report', 'verifies', 'doubleBar', 'fork']
+  ['purok_report_verification', 'incident_report', 'verifies', 'doubleBar', 'barFork']
 ];
 assert.equal(erd.relationships.length, 29, 'Source ERD relationship count changed');
 assert.deepEqual(JSON.parse(JSON.stringify(erd.relationships.map(({ from, to, label, cardinality }) => [

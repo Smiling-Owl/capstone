@@ -21,8 +21,9 @@
 #erd-panel .erd-canvas{position:relative;flex:1;min-height:0;overflow:hidden;touch-action:none;background:#f4f7fa radial-gradient(#bccbd6 .8px,transparent .8px) 0 0/20px 20px;cursor:grab;outline:none}
 #erd-panel .erd-canvas.is-panning{cursor:grabbing}
 #erd-panel .erd-canvas:focus-visible{outline:3px solid #1684c4;outline-offset:-3px}
-#erd-panel .erd-legend{position:absolute;left:12px;bottom:12px;z-index:3;display:flex;align-items:center;gap:14px;max-width:calc(100% - 24px);padding:7px 10px;border:1px solid #cbd7e0;border-radius:7px;background:#ffffffed;color:#425a6e;box-shadow:0 2px 8px #17344c12;font:600 11px/1.2 ui-sans-serif,system-ui,sans-serif;pointer-events:none}
+#erd-panel .erd-legend{position:absolute;left:12px;bottom:12px;z-index:3;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;max-width:calc(100% - 24px);padding:7px 10px;border:1px solid #cbd7e0;border-radius:7px;background:#ffffffed;color:#425a6e;box-shadow:0 2px 8px #17344c12;font:600 11px/1.2 ui-sans-serif,system-ui,sans-serif;pointer-events:none}
 #erd-panel .erd-legend span{display:flex;align-items:center;gap:4px;white-space:nowrap}
+#erd-panel .erd-legend code{color:#263f53;font:700 11px ui-monospace,monospace}
 #erd-panel .erd-legend svg{width:31px;height:15px;overflow:visible;flex:none}
 #erd-panel .erd-legend path{fill:none;stroke:#415c70;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
 #erd-panel .erd-world{position:absolute;left:0;top:0;width:6400px;height:5600px;transform-origin:0 0;will-change:transform}

@@ -1,4 +1,7 @@
 /diagram_revision/node_modules/
+/documentation/diagram_revision/dist/
+/documentation/diagram_revision/.env
+/documentation/diagram_revision/schema-version.json
 .playwright-mcp/
 /documentation/revisions/.pptx-build-*/
 /erd-preview.png

@@ -47,7 +47,7 @@
       <p><a href="diagrams_final/final/ERD.png" target="_blank" rel="noreferrer">Open original ERD image</a></p>
       ${data.notes.map(note => `<p>${note}</p>`).join('')}
       <div id="erd-unmarked"></div>
-      <p>Notation: PK marks the underlined primary key. Three-prong Crow’s-foot marks indicate many; one perpendicular bar indicates one; two bars indicate exactly one. These marks encode multiplicity, not direction. Connectors have no arrowheads or optionality circles. D marks a disjoint subtype group.</p>
+      <p>Notation: PK marks the underlined primary key. <code>|</code> means one; <code>||</code> means exactly one (mandatory one); <code>|&lt;</code> means one or more (mandatory many). Endpoint marks encode multiplicity, not direction. The source has no optionality circles. D marks a disjoint subtype group.</p>
       <p>Drag an entity to move it, or focus it and use arrow keys. Drag open canvas space to pan; use the wheel to zoom.</p>
     </div></details>`;
 
@@ -55,9 +55,9 @@
     <div class="erd-canvas" id="erd-canvas" tabindex="0" role="region" aria-label="Interactive ERD. Drag an entity or focus it and use arrow keys to move it. Drag empty canvas to pan or use the mouse wheel to zoom.">
       <div class="erd-world" id="erd-world"><svg class="erd-links" id="erd-links" aria-label="Entity relationships"></svg></div>
       <div class="erd-legend" role="note" aria-label="Relationship endpoint notation">
-        <span><svg viewBox="0 0 40 18" aria-hidden="true"><path d="M1 9H16M16 9L25 2M16 9H25M16 9L25 16"/></svg>Many</span>
-        <span><svg viewBox="0 0 40 18" aria-hidden="true"><path d="M1 9H22M22 2V16"/></svg>One</span>
-        <span><svg viewBox="0 0 40 18" aria-hidden="true"><path d="M1 9H18M22 2V16M30 2V16"/></svg>Exactly one</span>
+        <span><svg viewBox="0 0 40 18" aria-hidden="true"><path d="M1 9H19M19 2V16"/></svg><code>|</code> One (mandatory)</span>
+        <span><svg viewBox="0 0 40 18" aria-hidden="true"><path d="M1 9H14M14 2V16M23 2V16"/></svg><code>||</code> Exactly one</span>
+        <span><svg viewBox="0 0 40 18" aria-hidden="true"><path d="M1 9H13M13 2V16M17 9L31 2M17 9H31M17 9L31 16"/></svg><code>|&lt;</code> One or more (mandatory many)</span>
       </div>
     </div>`;
 
@@ -329,12 +329,14 @@
       d: `M ${x1} ${y1} L ${x2} ${y2}`,
       class: 'erd-cardinality', 'data-index': index
     }));
-    if (kind === 'bar' || kind === 'doubleBar') {
-      for (const offset of (kind === 'bar' ? [12] : [12, 20]).map(value => value * glyphScale)) {
+    if (kind === 'bar' || kind === 'doubleBar' || kind === 'barFork') {
+      for (const offset of (kind === 'doubleBar' ? [12, 20] : [12]).map(value => value * glyphScale)) {
         const p = at(offset);
         line(p.x - px * 9 * glyphScale, p.y - py * 9 * glyphScale, p.x + px * 9 * glyphScale, p.y + py * 9 * glyphScale);
       }
-    } else if (kind === 'fork') {
+    }
+    if (kind === 'barFork') {
+      // Keep the source order: mandatory-one bar, then the crow's foot.
       const convergence = at(26);
       for (const offset of [-11, 0, 11]) {
         const tip = { x: endpoint.x + dx * 4 * glyphScale + px * offset * glyphScale, y: endpoint.y + dy * 4 * glyphScale + py * offset * glyphScale };

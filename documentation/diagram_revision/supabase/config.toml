@@ -1,0 +1,4 @@
+project_id = "schema-workbench"
+
+[functions.workbench-invite]
+verify_jwt = true

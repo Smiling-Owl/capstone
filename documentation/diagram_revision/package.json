@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "build": "node build.mjs",
+    "schema:export": "node scripts/export-schema.mjs",
+    "test:workbench": "node workbench-cloud-check.mjs"
+  },
   "dependencies": {
     "@mermaid-js/mermaid-cli": "^11.16.0"
   }
