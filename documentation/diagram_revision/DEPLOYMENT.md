@@ -1,6 +1,6 @@
 # Schema Workbench deployment
 
-The deployed app is a static Vercel site backed by Supabase Auth and Postgres. Its HTML and JavaScript do not contain the ERD, RDM, or PostgreSQL schema payloads. The owner exports a snapshot from the local repository; the app publishes it through an owner-only Postgres RPC. Signed-in active members read snapshots and annotations through RLS.
+The deployed app is a static Vercel site backed by Supabase Auth and Postgres. Its HTML and JavaScript do not contain the ERD, RDM, or PostgreSQL schema payloads. The owner exports a snapshot from the local repository; the app publishes it through an owner-only Postgres RPC. Published schema snapshots are anonymously readable; annotations, including annotation reads, remain behind sign-in and active owner/panelist membership.
 
 The Supabase publishable/anonymous key is public browser configuration. A service-role key is never used by Vercel or included in the static build; the invite/revoke Edge Function reads it only on Supabase.
 
@@ -14,7 +14,7 @@ npx supabase link --project-ref YOUR_PROJECT_REF
 npx supabase db push
 ```
 
-The migration creates owner/panelist memberships, immutable version snapshots, annotations and replies, the invitation trigger, indexes, and forced RLS. Do not edit the older application migration for this workbench feature.
+The migrations create owner/panelist memberships, immutable version snapshots, annotations and replies, the invitation trigger, indexes, and forced RLS. The follow-up `202609290001_public_schema_read.sql` grants the `anon` role read access to published snapshots only. Apply it before expecting the public viewer to load. It does not grant anonymous access to annotations, publishing, invitations, or memberships. Because a snapshot contains the full ERD, RDM, and PostgreSQL schema, anyone with the site URL can inspect all published versions.
 
 In Supabase **Authentication → Providers → Email**, enable email/password sign-in and turn off public sign-ups. Set **Site URL** to the production Vercel origin and add that origin as an allowed redirect URL. Invitations return to `/` where the workbench handles the invite token and password setup.
 
@@ -77,8 +77,8 @@ npm run test:workbench
 node workbench-check.mjs
 ```
 
-On the deployed site, verify an invited panelist can annotate a table, attribute, and relationship, reply, switch versions, and reload. Verify a panelist’s publish request is denied, an owner can resolve/reopen, and revoked access fails on the next API request. Exercise ERD, RDM, PostgreSQL diagram, and SQL source view for each version.
+On the deployed site, verify a signed-out visitor can switch between published versions and inspect ERD, RDM, PostgreSQL diagram, and SQL source; the visitor must not read or write annotations. Then verify an invited active panelist can annotate a table, attribute, and relationship, reply, switch versions, and reload. Verify a panelist’s publish request is denied, an owner can resolve/reopen, and revoked access fails on the next API request.
 
-The build copies only the HTML, CSS, viewer/runtime JavaScript, and layout libraries. It omits `erd-source-data.js`, the embedded RDM source block, `postgres-schema-source.js`, and any exported JSON. Schema payloads become readable to active invited members only. The underlying repository still contains the authored source diagrams and SQL; if the Git repository is public, those source files are public independently of the deployed app.
+The build copies only the HTML, CSS, viewer/runtime JavaScript, and layout libraries. It omits `erd-source-data.js`, the embedded RDM source block, `postgres-schema-source.js`, and any exported JSON. The underlying repository still contains the authored source diagrams and SQL; if the Git repository is public, those source files are public independently of the deployed app.
 
 Remote Auth, RLS, email delivery, and Vercel deployment require project credentials and must be verified after provisioning; local checks cannot simulate Supabase’s database policies or email provider.

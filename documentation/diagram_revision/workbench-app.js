@@ -3,17 +3,40 @@ import { createWorkbenchApi } from './workbench-api.mjs';
 const config = window.WORKBENCH_CONFIG || {};
 const sessionKey = 'schema-workbench-session';
 const versionKey = 'schema-workbench-version';
-let api, membership, currentVersion, currentSnapshot, selectedTarget, inviteSession, returnFocus;
+let api, membership, currentVersion, currentSnapshot, selectedTarget, inviteSession, returnFocus, authReturnFocus;
 const html = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 
-function authScreen(message = '', setPassword = false) {
+function authScreen(message = '', setPassword = false, reloadOnSuccess = false, allowBrowsing = false) {
+  authReturnFocus = document.querySelector('.auth-screen[role="dialog"]') ? authReturnFocus : document.activeElement;
   document.body.classList.add('auth-pending');
   document.querySelector('.auth-screen')?.remove();
-  const screen = document.createElement('main');
+  const screen = document.createElement('div');
   screen.className = 'auth-screen';
-  screen.innerHTML = `<form class="auth-form"><h1>${setPassword ? 'Set your password' : 'Schema Workbench'}</h1><p>${setPassword ? 'Choose a password to finish accepting your panelist invitation.' : 'Sign in with the email invitation sent to your account.'}</p>${setPassword ? '' : '<label for="auth-email">Email</label><input id="auth-email" name="email" type="email" autocomplete="username" required>'}<label for="auth-password">${setPassword ? 'New password' : 'Password'}</label><input id="auth-password" name="password" type="password" autocomplete="${setPassword ? 'new-password' : 'current-password'}" minlength="8" required><button type="submit">${setPassword ? 'Save password' : 'Sign in'}</button><div class="auth-error" role="alert">${html(message)}</div></form>`;
+  screen.setAttribute('role', 'dialog'); screen.setAttribute('aria-modal', 'true'); screen.setAttribute('aria-labelledby', 'auth-title'); screen.tabIndex = -1;
+  screen.innerHTML = `<form class="auth-form"><h1 id="auth-title">${setPassword ? 'Set your password' : 'Schema Workbench'}</h1><p>${setPassword ? 'Choose a password to finish accepting your panelist invitation.' : 'Sign in with the email invitation sent to your account.'}</p>${setPassword ? '' : '<label for="auth-email">Email</label><input id="auth-email" name="email" type="email" autocomplete="username" required>'}<label for="auth-password">${setPassword ? 'New password' : 'Password'}</label><input id="auth-password" name="password" type="password" autocomplete="${setPassword ? 'new-password' : 'current-password'}" minlength="8" required><button type="submit">${setPassword ? 'Save password' : 'Sign in'}</button><div class="auth-error" role="alert">${html(message)}</div></form>`;
   document.body.append(screen);
-  const form = screen.querySelector('form'), button = form.querySelector('button'), alert = form.querySelector('[role=alert]');
+  const form = screen.querySelector('form'), button = form.querySelector('[type=submit]'), alert = form.querySelector('[role=alert]');
+  const dismiss = () => {
+    if (!allowBrowsing) return;
+    screen.remove(); document.body.classList.remove('auth-pending');
+    if (authReturnFocus?.isConnected) authReturnFocus.focus?.();
+    authReturnFocus = null;
+  };
+  screen.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && allowBrowsing) { event.preventDefault(); dismiss(); return; }
+    if (event.key !== 'Tab') return;
+    const focusable = [...screen.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')];
+    if (!focusable.length) { event.preventDefault(); screen.focus(); return; }
+    const first = focusable[0], last = focusable.at(-1), active = document.activeElement;
+    if (event.shiftKey && (active === first || !screen.contains(active))) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && (active === last || !screen.contains(active))) { event.preventDefault(); first.focus(); }
+  });
+  screen.querySelector('input')?.focus();
+  if (allowBrowsing) {
+    const browse = document.createElement('button'); browse.type = 'button'; browse.textContent = 'Continue browsing';
+    browse.addEventListener('click', dismiss);
+    form.append(browse);
+  }
   form.addEventListener('submit', async event => {
     event.preventDefault(); button.disabled = true; button.textContent = 'Signing in…'; alert.textContent = '';
     try {
@@ -25,7 +48,8 @@ function authScreen(message = '', setPassword = false) {
         history.replaceState(null, '', location.pathname + location.search);
       } else data = await api.signIn(form.elements.email.value.trim(), form.elements.password.value);
       sessionStorage.setItem(sessionKey, JSON.stringify(data));
-      await startApp();
+      if (reloadOnSuccess && !setPassword) location.reload();
+      else await startApp();
     } catch (error) { alert.textContent = error.message; button.disabled = false; button.textContent = 'Sign in'; }
   });
 }
@@ -35,6 +59,12 @@ function emptyVersionsScreen() {
   document.querySelector('.auth-screen')?.remove();
   const screen = document.createElement('main');
   screen.className = 'auth-screen';
+  if (!membership) {
+    screen.innerHTML = '<section class="auth-form"><h1>No schema published</h1><p>The owner has not published a schema version yet.</p><button type="button" id="public-sign-in">Sign in</button></section>';
+    screen.querySelector('#public-sign-in').addEventListener('click', () => authScreen());
+    document.body.append(screen);
+    return;
+  }
   if (membership.role !== 'owner') {
     screen.innerHTML = '<section class="auth-form"><h1>Schema not published yet</h1><p>The owner has not published a schema version. You can return after the owner publishes the first version.</p><button type="button" id="empty-sign-out">Sign out</button></section>';
     screen.querySelector('#empty-sign-out').addEventListener('click', () => { sessionStorage.removeItem(sessionKey); location.reload(); });
@@ -107,10 +137,11 @@ function targetFor(element) {
 
 function drawerMarkup() {
   const drawer = document.createElement('aside'); drawer.className = 'annotation-drawer'; drawer.id = 'annotation-drawer'; drawer.setAttribute('aria-hidden', 'true'); drawer.setAttribute('aria-label', 'Schema annotations'); drawer.inert = true;
-  drawer.innerHTML = `<header class="annotation-head"><div><h2 id="annotation-title" tabindex="-1">Annotations</h2><p id="annotation-subtitle"></p></div><button type="button" id="annotation-close" aria-label="Close annotations">Close</button></header><div class="annotation-thread-list" id="annotation-threads" aria-live="polite"></div><form class="annotation-compose" id="annotation-compose"><label for="annotation-content">Add a comment</label><textarea id="annotation-content" maxlength="8000" required></textarea><button type="submit">Comment</button><div class="cloud-status" id="annotation-status" role="status"></div></form>`;
+  drawer.innerHTML = `<header class="annotation-head"><div><h2 id="annotation-title" tabindex="-1">Annotations</h2><p id="annotation-subtitle"></p></div><button type="button" id="annotation-close" aria-label="Close annotations">Close</button></header>${membership ? '<div class="annotation-thread-list" id="annotation-threads" aria-live="polite"></div><form class="annotation-compose" id="annotation-compose"><label for="annotation-content">Add a comment</label><textarea id="annotation-content" maxlength="8000" required></textarea><button type="submit">Comment</button><div class="cloud-status" id="annotation-status" role="status"></div></form>' : '<div class="annotation-thread-list"><p class="annotation-empty">Sign in with an active workbench account to view or add annotations.</p><button type="button" id="annotation-sign-in">Sign in to annotate</button></div>'}`;
   document.body.append(drawer);
   drawer.querySelector('#annotation-close').addEventListener('click', closeDrawer);
-  drawer.querySelector('#annotation-compose').addEventListener('submit', submitRoot);
+  if (membership) drawer.querySelector('#annotation-compose').addEventListener('submit', submitRoot);
+  else drawer.querySelector('#annotation-sign-in').addEventListener('click', () => authScreen('', false, true, true));
   return drawer;
 }
 let drawer;
@@ -120,7 +151,7 @@ function openDrawer(target) {
   if (drawer.getAttribute('aria-hidden') === 'true') returnFocus = document.activeElement;
   selectedTarget = target; document.querySelector('.annotation-target')?.classList.remove('annotation-target'); target.element?.classList.add('annotation-target');
   drawer.querySelector('#annotation-title').textContent = 'Annotations'; drawer.querySelector('#annotation-subtitle').textContent = `${currentVersion.name} · ${target.type} · ${target.label}`;
-  drawer.inert = false; drawer.setAttribute('aria-hidden', 'false'); drawer.querySelector('#annotation-close').focus(); loadThreads();
+  drawer.inert = false; drawer.setAttribute('aria-hidden', 'false'); drawer.querySelector('#annotation-close').focus(); if (membership) loadThreads();
 }
 
 const createdAt = value => new Date(value).toLocaleString();
@@ -170,7 +201,7 @@ async function submitReply(event) {
 }
 
 function addCloudBar(versions) {
-  const bar = document.createElement('div'); bar.className = 'cloud-bar'; bar.innerHTML = `<label for="schema-version">Version<select id="schema-version"></select></label><label for="review-target">Review an item<select id="review-target"><option value="">Select table, attribute, or relationship…</option></select></label><span class="cloud-user">${html(membership.email)} · ${html(membership.role)}</span><div class="cloud-admin" hidden><label for="schema-snapshot-file">Publish snapshot<input id="schema-snapshot-file" type="file" accept="application/json,.json"></label><input id="schema-version-name" maxlength="120" placeholder="Version name" aria-label="New schema version name"><button id="schema-publish" type="button">Publish</button><label for="panelist-email">Panelist email<input id="panelist-email" type="email" placeholder="panelist@example.edu" autocomplete="email"></label><button id="panelist-invite" type="button">Invite</button><button id="panelist-resend" type="button">Resend invitation</button><button id="access-toggle" type="button" aria-expanded="false" aria-controls="member-list">Manage access</button><div class="member-list" id="member-list" role="region" aria-label="Panelist access" hidden></div></div><span class="cloud-status" id="cloud-status" role="status"></span><button id="sign-out" type="button">Sign out</button>`;
+  const bar = document.createElement('div'); bar.className = 'cloud-bar'; bar.innerHTML = `<label for="schema-version">Version<select id="schema-version"></select></label><label for="review-target">${membership ? 'Review an item' : 'Annotate an item'}<select id="review-target"><option value="">Select table, attribute, or relationship…</option></select></label>${membership ? `<span class="cloud-user">${html(membership.email)} · ${html(membership.role)}</span>` : '<button type="button" class="cloud-sign-in" id="cloud-sign-in">Sign in to annotate</button>'}<div class="cloud-admin" hidden><label for="schema-snapshot-file">Publish snapshot<input id="schema-snapshot-file" type="file" accept="application/json,.json"></label><input id="schema-version-name" maxlength="120" placeholder="Version name" aria-label="New schema version name"><button id="schema-publish" type="button">Publish</button><label for="panelist-email">Panelist email<input id="panelist-email" type="email" placeholder="panelist@example.edu" autocomplete="email"></label><button id="panelist-invite" type="button">Invite</button><button id="panelist-resend" type="button">Resend invitation</button><button id="access-toggle" type="button" aria-expanded="false" aria-controls="member-list">Manage access</button><div class="member-list" id="member-list" role="region" aria-label="Panelist access" hidden></div></div><span class="cloud-status" id="cloud-status" role="status"></span>${membership ? '<button id="sign-out" type="button">Sign out</button>' : ''}`;
   document.querySelector('.topbar').append(bar);
   const select = bar.querySelector('#schema-version');
   for (const version of versions) { const option = document.createElement('option'); option.value = version.id; option.textContent = `${version.name} · ${createdAt(version.published_at)}`; select.append(option); }
@@ -179,8 +210,9 @@ function addCloudBar(versions) {
   const targetSelect = bar.querySelector('#review-target');
   for (const target of currentSnapshot.targets) targetSelect.add(new Option(`${target.type} · ${target.id}`, `${target.type}:${target.id}`));
   targetSelect.addEventListener('change', () => { const value = targetSelect.value; if (!value) return; const split = value.indexOf(':'); openDrawer({ type: value.slice(0, split), id: value.slice(split + 1), label: value.slice(split + 1) }); targetSelect.value = ''; });
-  const admin = bar.querySelector('.cloud-admin'); admin.hidden = membership.role !== 'owner';
-  bar.querySelector('#sign-out').addEventListener('click', () => { sessionStorage.removeItem(sessionKey); sessionStorage.removeItem(versionKey); location.reload(); });
+  const admin = bar.querySelector('.cloud-admin'); admin.hidden = membership?.role !== 'owner';
+  if (membership) bar.querySelector('#sign-out').addEventListener('click', () => { sessionStorage.removeItem(sessionKey); sessionStorage.removeItem(versionKey); location.reload(); });
+  else bar.querySelector('#cloud-sign-in').addEventListener('click', () => authScreen('', false, true, true));
   bar.querySelector('#schema-publish').addEventListener('click', async () => {
     const status = bar.querySelector('#cloud-status'), file = bar.querySelector('#schema-snapshot-file').files[0], name = bar.querySelector('#schema-version-name').value.trim();
     if (!file || !name) { status.textContent = 'Choose a snapshot JSON file and enter a version name.'; return; }
@@ -259,13 +291,23 @@ async function startApp() {
         catch { authScreen('The invitation link is invalid or has expired. Ask the owner to send a new one.'); return; }
       }
     }
-    if (!session?.access_token) { authScreen(); return; }
-    api.setSession(session);
-    if (session.expires_at && session.expires_at * 1000 < Date.now() + 30000) {
-      session = await api.refresh(session.refresh_token); sessionStorage.setItem(sessionKey, JSON.stringify(session));
+    if (session?.access_token) {
+      api.setSession(session);
+      try {
+        if (session.expires_at && session.expires_at * 1000 < Date.now() + 30000) {
+          session = await api.refresh(session.refresh_token); sessionStorage.setItem(sessionKey, JSON.stringify(session));
+        }
+        membership = await api.membership();
+        if (!membership?.active || !['owner', 'panelist'].includes(membership.role)) throw new Error('No active workbench membership.');
+      } catch {
+        session = null; membership = null;
+        sessionStorage.removeItem(sessionKey);
+        api.setSession(null);
+      }
+    } else {
+      api.setSession(null);
+      membership = null;
     }
-    membership = await api.membership();
-    if (!membership?.active || !['owner', 'panelist'].includes(membership.role)) { sessionStorage.removeItem(sessionKey); authScreen('This account has no active invitation.'); return; }
     const versions = await api.versions();
     if (!versions.length) { emptyVersionsScreen(); return; }
     const wanted = sessionStorage.getItem(versionKey);
