@@ -46,6 +46,7 @@ assert.equal(calls.at(-1).url.endsWith('/rpc/publish_workbench_schema_version'),
 
 const migration = await readFile(new URL('./supabase/migrations/202609280001_schema_workbench_review.sql', import.meta.url), 'utf8');
 const publicReadMigration = await readFile(new URL('./supabase/migrations/202609290001_public_schema_read.sql', import.meta.url), 'utf8');
+const cloudCss = await readFile(new URL('./workbench-cloud.css', import.meta.url), 'utf8');
 assert.match(migration, /alter table public\.workbench_invitations enable row level security;[\s\S]*?alter table public\.workbench_invitations force row level security;/);
 assert.match(migration, /create policy workbench_schema_publish[\s\S]*?created_by = auth\.uid\(\) and private\.workbench_role\(\) = 'owner'/);
 assert.match(migration, /workbench_annotation_edit_own[\s\S]*?private\.workbench_role\(\) in \('owner', 'panelist'\)/);
@@ -61,6 +62,7 @@ assert.match(publicReadMigration, /revoke all on public\.workbench_schema_versio
 assert.match(publicReadMigration, /create policy workbench_schema_public_read[\s\S]*?for select to anon[\s\S]*?using \(true\)/);
 assert.match(publicReadMigration, /revoke all on public\.workbench_annotations from anon;/);
 assert.doesNotMatch(publicReadMigration, /grant\s+select[^;]*workbench_annotations/i, 'annotations remain unavailable to anonymous SQL role');
+assert.match(cloudCss, /\.cloud-admin\[hidden\]\s*\{\s*display:\s*none\s*\}/, 'guest admin controls stay hidden despite the flex display rule');
 const inviteFunction = await readFile(new URL('./supabase/functions/workbench-invite/index.ts', import.meta.url), 'utf8');
 assert.match(inviteFunction, /body\.action === 'resend'/);
 assert.doesNotMatch(inviteFunction, /workbench_invitations'\)\.delete/);
