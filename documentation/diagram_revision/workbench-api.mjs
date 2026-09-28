@@ -44,6 +44,20 @@ export function createWorkbenchApi(config, fetchImpl = fetch) {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password })
       }, false)));
     },
+    async signInAnonymously() {
+      return saveSession(withExpiry(await request('/auth/v1/signup', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: {} })
+      }, false)));
+    },
+    guestAccess(action, data = {}) {
+      return request('/functions/v1/workbench-guest-access', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action, ...data }) });
+    },
+    async redeemPanelCode(code, displayName) {
+      return this.guestAccess('redeem', { code, displayName });
+    },
+    guestStatus() { return this.guestAccess('status'); },
+    generatePanelCode() { return this.guestAccess('generate'); },
+    revokePanelCode() { return this.guestAccess('revoke'); },
     signOut() { session = null; },
     async membership() {
       const rows = await request(`/rest/v1/workbench_memberships?select=user_id,email,role,active&user_id=eq.${encodeURIComponent(session.user.id)}&limit=1`);

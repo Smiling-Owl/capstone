@@ -2,3 +2,6 @@ project_id = "schema-workbench"
 
 [functions.workbench-invite]
 verify_jwt = true
+
+[functions.workbench-guest-access]
+verify_jwt = true

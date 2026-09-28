@@ -13,9 +13,27 @@ function authScreen(message = '', setPassword = false, reloadOnSuccess = false, 
   const screen = document.createElement('div');
   screen.className = 'auth-screen';
   screen.setAttribute('role', 'dialog'); screen.setAttribute('aria-modal', 'true'); screen.setAttribute('aria-labelledby', 'auth-title'); screen.tabIndex = -1;
-  screen.innerHTML = `<form class="auth-form"><h1 id="auth-title">${setPassword ? 'Set your password' : 'Schema Workbench'}</h1><p>${setPassword ? 'Choose a password to finish accepting your panelist invitation.' : 'Sign in with the email invitation sent to your account.'}</p>${setPassword ? '' : '<label for="auth-email">Email</label><input id="auth-email" name="email" type="email" autocomplete="username" required>'}<label for="auth-password">${setPassword ? 'New password' : 'Password'}</label><input id="auth-password" name="password" type="password" autocomplete="${setPassword ? 'new-password' : 'current-password'}" minlength="8" required><button type="submit">${setPassword ? 'Save password' : 'Sign in'}</button><div class="auth-error" role="alert">${html(message)}</div></form>`;
+  screen.innerHTML = `<form class="auth-form"><h1 id="auth-title">${setPassword ? 'Set your password' : 'Schema Workbench'}</h1><p>${setPassword ? 'Choose a password to finish accepting your panelist invitation.' : 'Sign in with an invitation, or use a panel code.'}</p>${setPassword ? '' : '<div class="auth-switch"><button type="button" id="auth-use-password" aria-pressed="true">Account sign in</button><button type="button" id="auth-use-code" aria-pressed="false">Use panel code</button></div><div id="auth-account-fields"><label for="auth-email">Email</label><input id="auth-email" name="email" type="email" autocomplete="username" required>'}<label for="auth-password">${setPassword ? 'New password' : 'Password'}</label><input id="auth-password" name="password" type="password" autocomplete="${setPassword ? 'new-password' : 'current-password'}" minlength="8" required>${setPassword ? '' : '</div><div id="auth-code-fields" hidden><label for="auth-display-name">Display name</label><input id="auth-display-name" name="displayName" maxlength="60" autocomplete="name" placeholder="Your name for comments" disabled><label for="auth-panel-code">Panel code</label><input id="auth-panel-code" name="panelCode" type="text" inputmode="text" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" placeholder="ABCD-EFGH-JKLM-NPQR" disabled><p class="auth-note">Your name is self-reported and shown as unverified to other reviewers.</p></div>'}<button type="submit">${setPassword ? 'Save password' : 'Sign in'}</button><div class="auth-error" role="alert">${html(message)}</div></form>`;
   document.body.append(screen);
   const form = screen.querySelector('form'), button = form.querySelector('[type=submit]'), alert = form.querySelector('[role=alert]');
+  let guestMode = false;
+  if (!setPassword) {
+    const switchMode = guest => {
+      guestMode = guest;
+      form.querySelector('#auth-account-fields').hidden = guest;
+      form.querySelector('#auth-code-fields').hidden = !guest;
+      form.elements.email.required = !guest;
+      form.elements.password.required = !guest;
+      form.elements.displayName.disabled = !guest; form.elements.displayName.required = guest;
+      form.elements.panelCode.disabled = !guest; form.elements.panelCode.required = guest;
+      form.querySelector('#auth-use-password').setAttribute('aria-pressed', String(!guest));
+      form.querySelector('#auth-use-code').setAttribute('aria-pressed', String(guest));
+      button.textContent = guest ? 'Continue with panel code' : 'Sign in';
+      (guest ? form.elements.displayName : form.elements.email).focus();
+    };
+    form.querySelector('#auth-use-password').addEventListener('click', () => switchMode(false));
+    form.querySelector('#auth-use-code').addEventListener('click', () => switchMode(true));
+  }
   const dismiss = () => {
     if (!allowBrowsing) return;
     screen.remove(); document.body.classList.remove('auth-pending');
@@ -46,11 +64,15 @@ function authScreen(message = '', setPassword = false, reloadOnSuccess = false, 
         data = { ...api.session, user: await api.getUser() };
         api.setSession(data);
         history.replaceState(null, '', location.pathname + location.search);
+      } else if (guestMode) {
+        if (!api.session?.user?.is_anonymous) await api.signInAnonymously();
+        await api.redeemPanelCode(form.elements.panelCode.value, form.elements.displayName.value);
+        data = api.session;
       } else data = await api.signIn(form.elements.email.value.trim(), form.elements.password.value);
       sessionStorage.setItem(sessionKey, JSON.stringify(data));
-      if (reloadOnSuccess && !setPassword) location.reload();
+      if ((reloadOnSuccess || guestMode) && !setPassword) location.reload();
       else await startApp();
-    } catch (error) { alert.textContent = error.message; button.disabled = false; button.textContent = 'Sign in'; }
+    } catch (error) { alert.textContent = error.message; button.disabled = false; button.textContent = guestMode ? 'Continue with panel code' : 'Sign in'; }
   });
 }
 
@@ -137,7 +159,7 @@ function targetFor(element) {
 
 function drawerMarkup() {
   const drawer = document.createElement('aside'); drawer.className = 'annotation-drawer'; drawer.id = 'annotation-drawer'; drawer.setAttribute('aria-hidden', 'true'); drawer.setAttribute('aria-label', 'Schema annotations'); drawer.inert = true;
-  drawer.innerHTML = `<header class="annotation-head"><div><h2 id="annotation-title" tabindex="-1">Annotations</h2><p id="annotation-subtitle"></p></div><button type="button" id="annotation-close" aria-label="Close annotations">Close</button></header>${membership ? '<div class="annotation-thread-list" id="annotation-threads" aria-live="polite"></div><form class="annotation-compose" id="annotation-compose"><label for="annotation-content">Add a comment</label><textarea id="annotation-content" maxlength="8000" required></textarea><button type="submit">Comment</button><div class="cloud-status" id="annotation-status" role="status"></div></form>' : '<div class="annotation-thread-list"><p class="annotation-empty">Sign in with an active workbench account to view or add annotations.</p><button type="button" id="annotation-sign-in">Sign in to annotate</button></div>'}`;
+  drawer.innerHTML = `<header class="annotation-head"><div><h2 id="annotation-title" tabindex="-1">Annotations</h2><p id="annotation-subtitle"></p></div><button type="button" id="annotation-close" aria-label="Close annotations">Close</button></header>${membership ? `<div class="annotation-thread-list" id="annotation-threads" aria-live="polite"></div><form class="annotation-compose" id="annotation-compose"><label for="annotation-content">Add a comment</label><textarea id="annotation-content" maxlength="8000" required></textarea><button type="submit">Comment</button><div class="cloud-status" id="annotation-status" role="status"></div>${membership.role === 'guest' ? '<p class="auth-note">Guest reviewer · self-reported name, unverified</p>' : ''}</form>` : '<div class="annotation-thread-list"><p class="annotation-empty">Sign in with an active workbench account or use a panel code to view and add annotations.</p><button type="button" id="annotation-sign-in">Sign in to annotate</button></div>'}`;
   document.body.append(drawer);
   drawer.querySelector('#annotation-close').addEventListener('click', closeDrawer);
   if (membership) drawer.querySelector('#annotation-compose').addEventListener('submit', submitRoot);
@@ -160,10 +182,10 @@ function renderThreadList(rows) {
   const replies = new Map();
   for (const row of rows.filter(item => item.parent_id !== null)) replies.set(row.thread_id, [...(replies.get(row.thread_id) || []), row]);
   const rootHtml = roots.map(root => {
-    const author = `Reviewer ${root.author_id.slice(0, 8)}`;
+    const author = root.author_label || `Reviewer ${root.author_id.slice(0, 8)}`;
     const statusAction = membership.role === 'owner' ? `<button type="button" data-status-id="${root.id}" data-status="${root.status === 'open' ? 'resolved' : 'open'}">${root.status === 'open' ? 'Resolve' : 'Reopen'}</button>` : '';
-    const replyHtml = (replies.get(root.thread_id) || []).map(reply => `<div class="annotation-reply"><div class="annotation-meta">Reviewer ${reply.author_id.slice(0, 8)} · ${html(createdAt(reply.created_at))}</div><p>${html(reply.content)}</p></div>`).join('');
-    return `<article class="annotation-thread"><div class="annotation-meta">${author} · ${html(createdAt(root.created_at))} · ${html(root.status)}</div><p>${html(root.content)}</p>${statusAction}<form class="annotation-reply-form" data-thread="${root.thread_id}"><label class="visually-hidden" for="reply-${root.id}">Reply to comment</label><textarea id="reply-${root.id}" maxlength="8000" required placeholder="Write a reply"></textarea><button type="submit">Reply</button></form>${replyHtml}</article>`;
+    const replyHtml = (replies.get(root.thread_id) || []).map(reply => `<div class="annotation-reply"><div class="annotation-meta">${html(reply.author_label || `Reviewer ${reply.author_id.slice(0, 8)}`)} · ${html(createdAt(reply.created_at))}</div><p>${html(reply.content)}</p></div>`).join('');
+    return `<article class="annotation-thread"><div class="annotation-meta">${html(author)} · ${html(createdAt(root.created_at))} · ${html(root.status)}</div><p>${html(root.content)}</p>${statusAction}<form class="annotation-reply-form" data-thread="${root.thread_id}"><label class="visually-hidden" for="reply-${root.id}">Reply to comment</label><textarea id="reply-${root.id}" maxlength="8000" required placeholder="Write a reply"></textarea><button type="submit">Reply</button></form>${replyHtml}</article>`;
   }).join('');
   const list = drawer.querySelector('#annotation-threads');
   list.innerHTML = rootHtml || '<p class="annotation-empty">No comments on this item yet.</p>';
@@ -201,7 +223,7 @@ async function submitReply(event) {
 }
 
 function addCloudBar(versions) {
-  const bar = document.createElement('div'); bar.className = 'cloud-bar'; bar.innerHTML = `<label for="schema-version">Version<select id="schema-version"></select></label><label for="review-target">${membership ? 'Review an item' : 'Annotate an item'}<select id="review-target"><option value="">Select table, attribute, or relationship…</option></select></label>${membership ? `<span class="cloud-user">${html(membership.email)} · ${html(membership.role)}</span>` : '<button type="button" class="cloud-sign-in" id="cloud-sign-in">Sign in to annotate</button>'}<div class="cloud-admin" hidden><label for="schema-snapshot-file">Publish snapshot<input id="schema-snapshot-file" type="file" accept="application/json,.json"></label><input id="schema-version-name" maxlength="120" placeholder="Version name" aria-label="New schema version name"><button id="schema-publish" type="button">Publish</button><label for="panelist-email">Panelist email<input id="panelist-email" type="email" placeholder="panelist@example.edu" autocomplete="email"></label><button id="panelist-invite" type="button">Invite</button><button id="panelist-resend" type="button">Resend invitation</button><button id="access-toggle" type="button" aria-expanded="false" aria-controls="member-list">Manage access</button><div class="member-list" id="member-list" role="region" aria-label="Panelist access" hidden></div></div><span class="cloud-status" id="cloud-status" role="status"></span>${membership ? '<button id="sign-out" type="button">Sign out</button>' : ''}`;
+  const bar = document.createElement('div'); bar.className = 'cloud-bar'; bar.innerHTML = `<label for="schema-version">Version<select id="schema-version"></select></label><label for="review-target">${membership ? 'Review an item' : 'Annotate an item'}<select id="review-target"><option value="">Select table, attribute, or relationship…</option></select></label>${membership ? `<span class="cloud-user">${html(membership.email || `Guest · ${membership.displayName}`)} · ${html(membership.role)}</span>` : '<button type="button" class="cloud-sign-in" id="cloud-sign-in">Sign in to annotate</button>'}<div class="cloud-admin" hidden><label for="schema-snapshot-file">Publish snapshot<input id="schema-snapshot-file" type="file" accept="application/json,.json"></label><input id="schema-version-name" maxlength="120" placeholder="Version name" aria-label="New schema version name"><button id="schema-publish" type="button">Publish</button><section class="guest-code-controls" aria-label="Guest reviewer access"><button id="guest-code-generate" type="button">Generate panel code</button><button id="guest-code-revoke" type="button">Revoke panel code</button><div class="guest-code-reveal" id="guest-code-reveal" hidden><p>Share this code with panelists. It is shown once and expires in 24 hours.</p><code id="guest-code-value"></code><button id="guest-code-copy" type="button">Copy code</button><span id="guest-code-expiry"></span></div></section><label for="panelist-email">Panelist email<input id="panelist-email" type="email" placeholder="panelist@example.edu" autocomplete="email"></label><button id="panelist-invite" type="button">Invite</button><button id="panelist-resend" type="button">Resend invitation</button><button id="access-toggle" type="button" aria-expanded="false" aria-controls="member-list">Manage access</button><div class="member-list" id="member-list" role="region" aria-label="Panelist access" hidden></div></div><span class="cloud-status" id="cloud-status" role="status"></span>${membership ? '<button id="sign-out" type="button">Sign out</button>' : ''}`;
   document.querySelector('.topbar').append(bar);
   const select = bar.querySelector('#schema-version');
   for (const version of versions) { const option = document.createElement('option'); option.value = version.id; option.textContent = `${version.name} · ${createdAt(version.published_at)}`; select.append(option); }
@@ -213,6 +235,29 @@ function addCloudBar(versions) {
   const admin = bar.querySelector('.cloud-admin'); admin.hidden = membership?.role !== 'owner';
   if (membership) bar.querySelector('#sign-out').addEventListener('click', () => { sessionStorage.removeItem(sessionKey); sessionStorage.removeItem(versionKey); location.reload(); });
   else bar.querySelector('#cloud-sign-in').addEventListener('click', () => authScreen('', false, true, true));
+  if (membership?.role === 'owner') {
+    const status = bar.querySelector('#cloud-status'), reveal = bar.querySelector('#guest-code-reveal');
+    bar.querySelector('#guest-code-generate').addEventListener('click', async event => {
+      const button = event.currentTarget; button.disabled = true; reveal.hidden = true; bar.querySelector('#guest-code-value').textContent = ''; status.textContent = 'Generating code…';
+      try {
+        const result = await api.generatePanelCode();
+        bar.querySelector('#guest-code-value').textContent = result.code;
+        bar.querySelector('#guest-code-expiry').textContent = `Expires ${createdAt(result.expiresAt)}. Generate a new code to revoke this one.`;
+        reveal.hidden = false; status.textContent = 'New panel code ready. Copy it now; it will not be shown again.';
+      } catch (error) { status.textContent = error.message; }
+      finally { button.disabled = false; }
+    });
+    bar.querySelector('#guest-code-revoke').addEventListener('click', async event => {
+      const button = event.currentTarget; button.disabled = true;
+      try { await api.revokePanelCode(); reveal.hidden = true; bar.querySelector('#guest-code-value').textContent = ''; status.textContent = 'Panel code revoked. Existing guest annotation access has ended.'; }
+      catch (error) { status.textContent = error.message; }
+      finally { button.disabled = false; }
+    });
+    bar.querySelector('#guest-code-copy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(bar.querySelector('#guest-code-value').textContent); status.textContent = 'Panel code copied.'; }
+      catch { status.textContent = 'Copy was unavailable. Select and copy the code manually.'; }
+    });
+  }
   bar.querySelector('#schema-publish').addEventListener('click', async () => {
     const status = bar.querySelector('#cloud-status'), file = bar.querySelector('#schema-snapshot-file').files[0], name = bar.querySelector('#schema-version-name').value.trim();
     if (!file || !name) { status.textContent = 'Choose a snapshot JSON file and enter a version name.'; return; }
@@ -297,8 +342,13 @@ async function startApp() {
         if (session.expires_at && session.expires_at * 1000 < Date.now() + 30000) {
           session = await api.refresh(session.refresh_token); sessionStorage.setItem(sessionKey, JSON.stringify(session));
         }
-        membership = await api.membership();
-        if (!membership?.active || !['owner', 'panelist'].includes(membership.role)) throw new Error('No active workbench membership.');
+        const member = await api.membership();
+        if (member?.active && ['owner', 'panelist'].includes(member.role)) membership = member;
+        else {
+          const guest = await api.guestStatus();
+          if (!guest.active) throw new Error('No active workbench membership or panel-code session.');
+          membership = { role: 'guest', displayName: guest.displayName };
+        }
       } catch {
         session = null; membership = null;
         sessionStorage.removeItem(sessionKey);
