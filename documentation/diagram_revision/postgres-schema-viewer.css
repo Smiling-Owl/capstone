@@ -1,0 +1,46 @@
+.pgsv-root{height:100%;min-height:0;display:flex;flex-direction:column;background:#f4f7fa;color:#172b3d;font:13px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.pgsv-root[hidden]{display:none}
+#postgres-toolbar.pgsv-toolbar{min-height:46px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 12px;background:#fff;border-bottom:1px solid #d5dfe8}
+.pgsv-toolbar button,.pgsv-toolbar a,.pgsv-toolbar input{font:inherit}
+.pgsv-toolbar .pgsv-search-label{font-size:12px;font-weight:600;color:#425a6e}
+.pgsv-search-group{display:flex;align-items:center;gap:4px}
+.pgsv-search{width:min(28vw,300px);min-width:150px;height:32px;padding:5px 9px;border:1px solid #c7d4df;border-radius:6px;background:#fff;color:#172b3d}
+.pgsv-search::placeholder{color:#718596}
+.pgsv-search-count{min-width:84px;padding:0 4px;color:#617486;font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pgsv-toolbar-spacer{flex:1}
+.pgsv-toolbar button{min-height:32px;padding:5px 9px}
+.pgsv-wrap-label{display:flex;align-items:center;gap:6px;padding:0 4px;color:#425a6e;font-size:12px;white-space:nowrap}
+.pgsv-wrap-label input{width:15px;height:15px;accent-color:#1f6699}
+.pgsv-download{display:inline-flex;align-items:center;min-height:32px;padding:5px 9px;border:1px solid #c7d4df;border-radius:6px;background:#fff;color:#244f6a;text-decoration:none;font-size:12px}
+.pgsv-download:hover{background:#edf5fa;border-color:#9eb8ca}
+.pgsv-copy-status{min-width:52px;color:#52697b;font-size:11px}
+#postgres-panel{flex:1;min-height:0;overflow:hidden}
+.pgsv-filebar{height:36px;flex:none;display:flex;align-items:center;gap:12px;padding:0 13px;border-bottom:1px solid #263b4b;background:#1d2d3a;color:#d9e4ec;font:11px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.pgsv-file-name{font-weight:650;color:#f1f5f8}
+.pgsv-file-meta{color:#9fb0bf;font-variant-numeric:tabular-nums}
+.pgsv-source-link{margin-left:auto;color:#a8c8dc;text-decoration:underline;text-underline-offset:3px}
+.pgsv-editor{height:calc(100% - 62px);overflow:auto;background:#152431;color:#d8e1e8;scrollbar-color:#486072 #152431;scrollbar-width:thin;tab-size:2}
+.pgsv-editor:focus-visible{outline:3px solid #1684c4;outline-offset:-3px}
+.pgsv-code{display:block;min-width:max-content;margin:0;padding:10px 0 24px;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;font-variant-ligatures:none;white-space:pre}
+.pgsv-line{display:flex;min-height:19.2px}
+.pgsv-line:hover{background:#ffffff08}
+.pgsv-line-number{position:sticky;left:0;z-index:1;flex:none;width:58px;padding:0 12px 0 0;background:#152431;color:#738797;text-align:right;user-select:none;font-variant-numeric:tabular-nums}
+.pgsv-line-content{display:inline-block;padding-right:24px}
+.pgsv-editor.is-wrapped .pgsv-code{min-width:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.pgsv-editor.is-wrapped .pgsv-line{display:flex}
+.pgsv-editor.is-wrapped .pgsv-line-content{min-width:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.pgsv-keyword{color:#9bbcff;font-weight:600}
+.pgsv-type{color:#79d4c2}
+.pgsv-string{color:#d6b779}
+.pgsv-comment{color:#8296a4;font-style:italic}
+.pgsv-number{color:#c5a9e8}
+.pgsv-function{color:#e7a98a}
+.pgsv-quoted{color:#b7d49a}
+.pgsv-operator{color:#b8c9d6}
+.pgsv-match{padding:0;background:#8c6d21;color:inherit;border-radius:2px;box-shadow:0 0 0 1px #c49d3e}
+.pgsv-match.is-active{background:#c8902c;color:#17212a;box-shadow:0 0 0 2px #f4c76c}
+.pgsv-source-credit{height:26px;flex:none;padding:5px 12px;background:#f4f7fa;color:#607483;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pgsv-source-credit code{font:10px ui-monospace,SFMono-Regular,Consolas,monospace;color:#425a6e}
+@media(max-width:700px){#postgres-toolbar.pgsv-toolbar{gap:6px;padding:6px 8px}.pgsv-toolbar .pgsv-search-label{flex-basis:100%}.pgsv-search{width:min(58vw,300px)}.pgsv-toolbar-spacer{display:none}.pgsv-copy-status{min-width:0}.pgsv-editor{height:calc(100% - 62px)}.pgsv-filebar{gap:8px;padding:0 9px}.pgsv-file-meta{font-size:10px}}
+@media(pointer:coarse){.pgsv-toolbar button,.pgsv-download{min-height:40px}.pgsv-search{height:40px}}
+@media(prefers-reduced-motion:reduce){.pgsv-root *{scroll-behavior:auto!important;transition:none!important}}

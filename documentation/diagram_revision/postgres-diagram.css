@@ -1,0 +1,87 @@
+.pgd-controls[hidden], .pgd-root[hidden] { display: none !important; }
+.pgd-controls {
+  align-items: center; display: flex; flex-wrap: nowrap; gap: 7px; padding: 7px 12px;
+  border-bottom: 1px solid #dce3ea; background: #f8fafc; color: #334155;
+  font: 12px/1.2 "Segoe UI", Arial, sans-serif;
+}
+.pgd-controls label { color: #475569; font-size: 11px; font-weight: 650; }
+.pgd-controls input, .pgd-controls select, .pgd-controls button {
+  height: 30px; border: 1px solid #cbd5e1; border-radius: 6px; background: white;
+  color: #172b43; font: inherit;
+}
+.pgd-controls input { width: min(180px, 20vw); padding: 0 9px; }
+.pgd-controls select { max-width: 210px; padding: 0 22px 0 8px; }
+.pgd-controls button { min-width: 32px; padding: 0 9px; cursor: pointer; }
+.pgd-controls button:hover, .pgd-controls select:hover { border-color: #7893ad; }
+.pgd-controls button:focus-visible, .pgd-controls input:focus-visible, .pgd-controls select:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+.pgd-canvas-legend { background: #ffffffed; border: 1px solid #d6dee7; border-radius: 5px; bottom: 10px; box-shadow: 0 1px 4px #19334f12; color: #64748b; font: 10px/1.35 "Segoe UI", Arial, sans-serif; padding: 5px 7px; pointer-events: none; position: absolute; right: 10px; z-index: 5; }
+.pgd-canvas-legend b { color: #31577b; font-size: 9px; margin-left: 4px; }
+.pgd-root { background: #f4f7fa; color: #172b43; display: flex; flex-direction: column; height: calc(100vh - 190px); min-height: 390px; overflow: hidden; }
+.pgd-viewport {
+  background-color: #f5f8fb; background-image: radial-gradient(#c5d1de 1px, transparent 1px);
+  background-position: 0 0; background-size: 19px 19px; flex: 1; min-height: 0; overflow: hidden;
+  position: relative; touch-action: none; user-select: none;
+}
+.pgd-viewport:focus-visible { outline: 2px solid #3b82f6; outline-offset: -2px; }
+.pgd-world { left: 0; position: absolute; top: 0; transform-origin: 0 0; will-change: transform; }
+.pgd-edges, .pgd-nodes { left: 0; position: absolute; top: 0; }
+.pgd-edges { overflow: visible; pointer-events: none; }
+.pgd-nodes { pointer-events: none; }
+.pgd-edge { fill: none; pointer-events: stroke; stroke: #788ea2; stroke-width: 1.45; opacity: .68; }
+.pgd-edge.is-dimmed { opacity: .09; }
+.pgd-overview-edge { opacity: .11; stroke-width: 1.1; }
+.pgd-overview-edge.is-related { opacity: .9; stroke: #356d96; stroke-width: 2; }
+.pgd-edge.is-related { opacity: .96; stroke: #326d96; stroke-width: 2.2; }
+.pgd-edge.is-selection-muted { opacity: .035; }
+.pgd-table {
+  background: #fff; border: 1px solid #a9bac9; border-radius: 7px; box-shadow: 0 2px 6px #19334f14;
+  cursor: grab; left: 0; min-width: 290px; overflow: hidden; pointer-events: auto; position: absolute;
+  user-select: none; width: 300px;
+}
+.pgd-table.is-dragging { cursor: grabbing; box-shadow: 0 8px 24px #19334f2e; z-index: 2; }
+.pgd-table.is-dimmed { opacity: .32; }
+.pgd-table.is-selection-muted { opacity: .36; }
+.pgd-table.is-related { border-color: #8faec4; }
+.pgd-table.is-match, .pgd-table.is-focused { border-color: #27618a; box-shadow: 0 0 0 2px #a8cce6, 0 4px 12px #19334f20; z-index: 1; }
+.pgd-table:focus-visible { outline: 2px solid #2f73a0; outline-offset: 2px; z-index: 3; }
+.pgd-table.is-external { border-style: dashed; border-color: #9580a5; }
+.pgd-table-head { align-items: center; background: #eaf0f5; border-bottom: 1px solid #cbd6e0; display: flex; gap: 8px; min-height: 34px; padding: 5px 8px; }
+.pgd-table-head strong { color: #1f3e5c; font: 650 12px/1.25 "Segoe UI", Arial, sans-serif; overflow-wrap: anywhere; }
+.pgd-overview-meta { color: #718294; display: none; font: 9px/1.2 "Segoe UI", Arial, sans-serif; margin-left: auto; text-align: right; }
+.pgd-schema { color: #62758a; flex: none; font: 10px/1.2 "Cascadia Code", Consolas, monospace; }
+.pgd-columns { padding: 3px 0; }
+.pgd-column {
+  align-items: center; background: #fff; border-bottom: 1px solid #eef2f5; display: grid;
+  grid-template-columns: minmax(0, 1fr) 37px minmax(70px, .85fr) 19px 15px; gap: 3px;
+  min-height: 22px; padding: 2px 7px; position: relative;
+}
+.pgd-column:last-child { border-bottom: 0; }
+.pgd-column:nth-child(even) { background: #fafbfd; }
+.pgd-attribute { color: #243a50; font: 10px/1.25 "Cascadia Code", Consolas, monospace; overflow-wrap: anywhere; }
+.pgd-key-cell { display: inline-flex; gap: 2px; }
+.pgd-key { border-radius: 3px; font: 700 8px/1.2 "Segoe UI", Arial, sans-serif; padding: 2px 3px; }
+.pgd-key-pk { background: #e7f0fa; color: #24567e; }
+.pgd-key-fk { background: #edf2f7; color: #52677c; }
+.pgd-key-uq { background: #f3edfa; color: #694b8c; }
+.pgd-type { color: #617588; font: 9px/1.2 "Cascadia Code", Consolas, monospace; overflow-wrap: anywhere; }
+.pgd-null { color: #9aa8b5; font: 8px/1 "Segoe UI", Arial, sans-serif; text-align: center; }
+.pgd-default { align-items: center; background: #eef4eb; border-radius: 50%; color: #55734c; display: inline-flex; font: 700 8px/1 "Segoe UI", Arial, sans-serif; height: 13px; justify-content: center; width: 13px; }
+.pgd-composite { background: #f8f6fb; border-top: 1px solid #ebe6f1; color: #715988; font: 9px/1.3 "Cascadia Code", Consolas, monospace; padding: 5px 8px; }
+.pgd-indexes { background: #fbf8ef; border-top: 1px solid #eee6d2; color: #766641; font: 9px/1.4 "Cascadia Code", Consolas, monospace; overflow-wrap: anywhere; padding: 5px 8px; }
+.pgd-indexes b { color: #6b592f; font-family: "Segoe UI", Arial, sans-serif; }
+.pgd-indexes span { color: #887a5b; }
+.pgd-nodes.is-overview .pgd-table { min-width: 228px; width: 228px; }
+.pgd-nodes.is-overview .pgd-table-head { align-items: flex-start; flex-direction: column; gap: 2px; min-height: 0; padding: 5px 8px; }
+.pgd-nodes.is-overview .pgd-schema { display: none; }
+.pgd-nodes.is-overview .pgd-table.is-external .pgd-schema { display: block; }
+.pgd-nodes.is-overview .pgd-table-head strong { font-size: 11px; line-height: 1.15; }
+.pgd-nodes.is-overview .pgd-overview-meta { display: block; margin-left: 0; text-align: left; }
+.pgd-nodes.is-overview .pgd-columns, .pgd-nodes.is-overview .pgd-composite, .pgd-nodes.is-overview .pgd-indexes { display: none; }
+.pgd-status { background: #f8fafc; border-top: 1px solid #dce3ea; color: #5b6c7c; flex: none; font: 11px/1.2 "Segoe UI", Arial, sans-serif; min-height: 26px; padding: 7px 12px; }
+@media (max-width: 760px) {
+  .pgd-controls { flex-wrap: wrap; gap: 5px; padding: 7px; }
+  .pgd-controls input { width: 128px; }
+  .pgd-controls select { max-width: 140px; }
+  .pgd-root { height: calc(100vh - 220px); }
+  .pgd-canvas-legend { bottom: 5px; font-size: 9px; max-width: calc(100% - 20px); right: 5px; }
+}

@@ -1,0 +1,59 @@
+#erd-toolbar{gap:8px}
+#erd-toolbar .erd-toolbar-group{display:flex;align-items:center;gap:6px}
+#erd-toolbar label{color:#425a6e;font-size:12px;font-weight:650}
+#erd-toolbar select,#erd-toolbar button{min-height:34px;border:1px solid #c7d4df;border-radius:7px;background:#fff;color:#172b3d;padding:6px 10px;font:inherit}
+#erd-toolbar button{cursor:pointer;transition:background-color .14s ease,border-color .14s ease}
+#erd-toolbar button:hover,#erd-toolbar select:hover{background:#edf5fa;border-color:#9eb8ca}
+#erd-toolbar button:focus-visible,#erd-toolbar select:focus-visible{outline:3px solid #1684c4;outline-offset:2px}
+#erd-toolbar .erd-zoom-value{min-width:42px;color:#617486;text-align:center;font-size:12px;font-variant-numeric:tabular-nums}
+#erd-toolbar .erd-more{position:relative;margin-left:auto;color:#617486;font-size:12px}
+#erd-toolbar .erd-more summary{min-height:34px;display:flex;align-items:center;padding:0 8px;border:1px solid transparent;border-radius:7px;color:#52697b;font-weight:600;cursor:pointer;list-style:none}
+#erd-toolbar .erd-more summary::-webkit-details-marker{display:none}
+#erd-toolbar .erd-more summary::after{content:"⌄";margin-left:7px;font-size:14px}
+#erd-toolbar .erd-more[open] summary,#erd-toolbar .erd-more summary:hover{border-color:#d5dfe8;background:#f6f9fb}
+#erd-toolbar .erd-more-content{position:absolute;right:0;top:calc(100% + 5px);z-index:4;width:min(440px,calc(100vw - 24px));max-height:min(68vh,560px);overflow:auto;padding:10px 12px;border:1px solid #d5dfe8;border-radius:8px;background:#fff;box-shadow:0 8px 22px #17344c18;line-height:1.5}
+#erd-toolbar .erd-more-content p{margin:0 0 8px}
+#erd-toolbar .erd-more-content p:last-child{margin:0}
+#erd-toolbar .erd-unmarked-heading{margin-top:10px!important;font-weight:700;color:#344e62}
+#erd-toolbar .erd-unmarked-list{max-height:190px;overflow:auto;margin:0 0 10px;padding-left:20px;color:#425a6e}
+#erd-toolbar .erd-unmarked-list li{margin:0 0 4px}
+#erd-toolbar .erd-status{margin-left:auto;color:#617486;font-size:12px}
+#erd-panel .erd-canvas{position:relative;flex:1;min-height:0;overflow:hidden;touch-action:none;background:#f4f7fa radial-gradient(#bccbd6 .8px,transparent .8px) 0 0/20px 20px;cursor:grab;outline:none}
+#erd-panel .erd-canvas.is-panning{cursor:grabbing}
+#erd-panel .erd-canvas:focus-visible{outline:3px solid #1684c4;outline-offset:-3px}
+#erd-panel .erd-legend{position:absolute;left:12px;bottom:12px;z-index:3;display:flex;align-items:center;gap:14px;max-width:calc(100% - 24px);padding:7px 10px;border:1px solid #cbd7e0;border-radius:7px;background:#ffffffed;color:#425a6e;box-shadow:0 2px 8px #17344c12;font:600 11px/1.2 ui-sans-serif,system-ui,sans-serif;pointer-events:none}
+#erd-panel .erd-legend span{display:flex;align-items:center;gap:4px;white-space:nowrap}
+#erd-panel .erd-legend svg{width:31px;height:15px;overflow:visible;flex:none}
+#erd-panel .erd-legend path{fill:none;stroke:#415c70;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+#erd-panel .erd-world{position:absolute;left:0;top:0;width:6400px;height:5600px;transform-origin:0 0;will-change:transform}
+#erd-panel .erd-links{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+#erd-panel .erd-link{fill:none;stroke:#496477;stroke-width:var(--erd-stroke-width,1.1px);opacity:.96;pointer-events:stroke;cursor:pointer;stroke-linecap:square;stroke-linejoin:miter}
+#erd-panel .erd-link.is-related{stroke:#0878bd;stroke-width:calc(var(--erd-stroke-width,1.1px)*1.35);opacity:1}
+#erd-panel .erd-link.is-muted{opacity:.18}
+#erd-panel .erd-link-label{fill:#30495d;font:650 12px/1.2 ui-sans-serif,system-ui,sans-serif;text-anchor:middle;paint-order:stroke;stroke:#f4f7fa;stroke-width:5px;stroke-linejoin:round;pointer-events:none}
+#erd-panel .erd-link-label.is-muted{opacity:.22}
+#erd-panel .erd-cardinality{fill:none;stroke:#344f63;stroke-width:var(--erd-stroke-width,1.1px);stroke-linecap:square;stroke-linejoin:miter;opacity:1;pointer-events:none}
+#erd-panel .erd-cardinality.is-related{stroke:#0878bd;stroke-width:calc(var(--erd-stroke-width,1.1px)*1.35);opacity:1}
+#erd-panel .erd-cardinality.is-muted{opacity:.16}
+#erd-panel .erd-subtype-link.is-related{stroke:#0878bd;stroke-width:2.5;opacity:1}
+#erd-panel .erd-specialization{fill:#fff;stroke:#71899b;stroke-width:var(--erd-stroke-width,1.1px)}
+#erd-panel .erd-specialization.is-related{stroke:#0878bd;stroke-width:calc(var(--erd-stroke-width,1.1px)*1.35)}
+#erd-panel .erd-specialization-label{fill:#172b3d;font:700 12px ui-sans-serif,system-ui,sans-serif;text-anchor:middle;dominant-baseline:central}
+#erd-panel .erd-group-label{fill:#52697b;font:650 14px ui-sans-serif,system-ui,sans-serif;letter-spacing:.01em}
+#erd-panel .erd-domain-outline{fill:#fff8;stroke:#a8bac7;stroke-width:1.25;stroke-dasharray:5 5;vector-effect:non-scaling-stroke;pointer-events:none}
+#erd-panel .erd-entity{position:absolute;width:390px;overflow:hidden;border:1px solid #cbd7e0;border-radius:8px;background:#fff;color:#172b3d;box-shadow:0 2px 5px #17344c0c;cursor:grab;touch-action:none;user-select:none}
+#erd-panel .erd-entity:hover{border-color:#91afc3;box-shadow:0 4px 12px #17344c14}
+#erd-panel .erd-entity:active{cursor:grabbing}
+#erd-panel .erd-entity.is-selected{border-color:#3280ad;box-shadow:0 0 0 2px #3280ad25,0 5px 14px #17344c17}
+#erd-panel .erd-entity:focus-visible{outline:3px solid #1684c4;outline-offset:3px;z-index:2}
+#erd-panel .erd-entity-header{padding:8px 10px;border-top:3px solid var(--erd-group-color,#637d91);border-bottom:1px solid #e4ebf0;background:#f9fbfc}
+#erd-panel .erd-entity-header h3{margin:0;font:650 12px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+#erd-panel .erd-fields{width:100%;border-collapse:collapse;table-layout:fixed;font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace}
+#erd-panel .erd-fields th,#erd-panel .erd-fields td{padding:4px 7px;border-bottom:1px solid #edf1f4;text-align:left;vertical-align:middle}
+#erd-panel .erd-fields tbody tr:nth-child(even){background:#f8fafb}
+#erd-panel .erd-field-name{font-weight:500;overflow-wrap:anywhere}
+#erd-panel .erd-key-cell{width:36px;text-align:right!important;white-space:nowrap}
+#erd-panel .erd-pk{color:#805a17;font:700 9px ui-sans-serif,system-ui,sans-serif}
+#erd-panel .erd-empty{padding:20px;color:#617486}
+@media(max-width:720px){#erd-panel .erd-entity{width:340px}}
+@media(pointer:coarse){#erd-toolbar button,#erd-toolbar select{min-height:44px;min-width:44px}}
